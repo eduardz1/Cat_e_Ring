@@ -18,4 +18,8 @@ e resi disponibili in tempo reale
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>940</x><y>360</y><w>230</w><h>80</h></coordinates><panel_attributes>Oltre al tabellone dei turni il sistema deve 
 sintetizzare anche una tabella coi compiti 
 suddivisi per servizio</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>90</x><y>580</y><w>810</w><h>180</h></coordinates><panel_attributes>OPT
-fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>390</x><y>160</y><w>220</w><h>30</h></coordinates><panel_attributes>Apro a partire da un menu o servizio?
+bg=yellow
+
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
