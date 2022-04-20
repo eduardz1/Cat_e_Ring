@@ -13,11 +13,11 @@
 
 | **#** | **Attore** | **Sistema** |
 |:------|:-----------|:------------|
-| 1 | Apre un foglio per un determinato servizio a partire da un menu esistente | Registra il foglio creato a partire da un menu pubblicato |
+| 1 | Apre un foglio per un determinato servizio a partire da un servizio esistente | Registra il foglio creato a partire da un menu pubblicato |
 | |  *Se desidera passa al punto 2 altrimenti termina il caso d'uso* | |
 | 2 | *Opzionalmente* consulta il tabellone dei turni | |
 | 3 | *Opzionalmente* inserisce voci non presenti nel menu | |
-| 4 | *Opzionalmente* <ul><li>assegna cuochi a preparazioni</li><li>assegna quantità e porzioni di un piatto</li><li>inserisce una stima dei tempi di preparazione di un piatto</li><ul> | Registra le informazioni inserite dallo chef |
+| 4 | *Opzionalmente* <ul><li>assegna cuochi a compiti</li><li>assegna quantità e porzioni di un piatto</li><li>inserisce una stima dei tempi di preparazione di un piatto</li><ul> | Registra le informazioni inserite dallo chef |
 | | *Ripete 2 finché non soddisfatto* | |
 
 ### Estensione 4a
@@ -40,3 +40,17 @@
 |:------|:-------|:---------|
 | 4d.1 | Resetta il foglio organizzativo | Ripristina tutti i campi del foglio |
 
+### Eccezione 4c.a
+| **#** | **Attore** | **Sistema** |
+|:------|:-------|:---------|
+| 4c.a.1 | Il compito relativo è già sttao completato | |
+
+### Eccezione 4c.b
+| **#** | **Attore** | **Sistema** |
+|:------|:-------|:---------|
+| 4c.b.1 | L'utente non ha il permesso di effettuare modifiche ||
+
+### Eccezione 4d.a
+| **#** | **Attore** | **Sistema** |
+|:------|:-------|:---------|
+| 4d.a.1 | L'utente non ha il permesso di effettuare modifiche ||
