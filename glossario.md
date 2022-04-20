@@ -2,7 +2,7 @@
 
 | **Termine** | **Descrizione** | **Sinonimi** |
 |:------------|:----------------|:-------------|
-| *Attori*
+| *Attori* ||
 | Chef        | Stabilisce il menù per gli eventi e ne supervisiona la preparazione. ||
 | Cliente     | Colui che commissiona l’organizzazione di un evento ||
 | Cuoco       | Prepara il cibo. ||
