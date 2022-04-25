@@ -68,7 +68,8 @@ fg=#1EA1A1
 si trova in v
 m2=1
 m1=0..n</panel_attributes><additional_attributes>130;10;130;140;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1040</x><y>210</y><w>200</w><h>90</h></coordinates><panel_attributes>Foglio Organizzativo
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>240</y><w>330</w><h>260</h></coordinates><panel_attributes>lt=-
+--
+Pubblicato: sì/no</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>240</y><w>330</w><h>260</h></coordinates><panel_attributes>lt=-
 si trova in v
 m2=1
 m1=0..n</panel_attributes><additional_attributes>280;10;240;10;240;230;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>50</y><w>890</w><h>180</h></coordinates><panel_attributes>lt=-
