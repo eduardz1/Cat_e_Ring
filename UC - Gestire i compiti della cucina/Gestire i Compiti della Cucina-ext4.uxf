@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLActor</id><coordinates><x>50</x><y>0</y><w>60</w><h>110</h></coordinates><panel_attributes>Chef</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>90</y><w>30</w><h>1220</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1200;10;10</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>730</x><y>10</y><w>110</w><h>50</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>50</y><w>30</w><h>1270</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1250;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>120</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLActor</id><coordinates><x>50</x><y>0</y><w>60</w><h>110</h></coordinates><panel_attributes>Chef</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>90</y><w>30</w><h>1220</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1200;10;10</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>730</x><y>10</y><w>110</w><h>50</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>50</y><w>30</w><h>1270</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1250;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>120</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 1 - apriFoglio(servizio)</panel_attributes><additional_attributes>710;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>150</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 foglio</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>210</y><w>850</w><h>900</h></coordinates><panel_attributes>OPT
 fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>290</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
@@ -8,16 +8,13 @@ tabelloneTurni</panel_attributes><additional_attributes>10;20;710;20</additional
 fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>20</x><y>500</y><w>810</w><h>590</h></coordinates><panel_attributes>OPT
 fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>390</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
 3 - inserisciVoce(voceExtra?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>420</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
-ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>550</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4.1 - nuovoCompito(mansioneDiCucina, cuocoAssegnato)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>30</x><y>530</y><w>790</w><h>550</h></coordinates><panel_attributes>ALT
+ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>30</x><y>530</y><w>790</w><h>550</h></coordinates><panel_attributes>ALT
 --
 
 
 
 
 
-
-
 -.
 
 
@@ -35,6 +32,9 @@ ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes>
 
 
 
+
+
+-.
 
 
 
@@ -44,19 +44,18 @@ ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes>
 -.
 fg=#D3001B
 layer=0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>20</x><y>380</y><w>810</w><h>100</h></coordinates><panel_attributes>OPT
-fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>600</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4.2 - inserisciInfoCompito(compito, quantità?, porzioni?, stimaTempoPreparazione?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>570</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
-ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>620</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
-ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>680</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4a.1 - cambiaOrdineCompito(compito)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>710</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
-ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>770</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4b.1 - annotaCuocoNonNecessario(compito)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>800</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>550</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4 - nuovoCompito(mansioneDiCucina, cuocoAssegnato?, quantità?, porzioni?, stimaTempoPreparazione?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>580</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>640</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4a.1 - cambiaOrdineCompito(compito)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>680</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>740</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4b.1 - annotaCuocoNonNecessario(compito)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>760</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>910</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4c.2 - eliminaInfoPiatto(piatto?, quantità?, porzioni? , stimeTempoPreparazione?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>860</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4c.1 - eliminaInfoPreparazione(preparazione?, cuocoAssegnato?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>880</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+4d.1 - modificaInfoCompito(compito, cuocoAssegnato?, quantità?, porzioni?, stimaTempoPreparazione?)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>820</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4c.1 - eliminaCompito(compito)</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>850</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>930</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>990</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-4d.1 - resettaFoglio()</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1020</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+4e.1 - resettaFoglio()</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1020</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>820</x><y>100</y><w>200</w><h>80</h></coordinates><panel_attributes>L'operazione di chiusura è implicita, 
 I cambiamenti vengono salvati e
 resi disponibili in tempo reale
@@ -65,4 +64,5 @@ deve sintetizzare anche una tabella
 coi compiti sudivisi per servizio</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1160</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
 5 - pubblicaFoglio()</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1200</y><w>730</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
 ok</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>20</x><y>1150</y><w>810</w><h>100</h></coordinates><panel_attributes>OPT
-fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+fg=#128C86</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>860</x><y>910</y><w>200</w><h>40</h></coordinates><panel_attributes>Se info == null allora l'informazione
+è rimossa da compito</panel_attributes><additional_attributes></additional_attributes></element></diagram>

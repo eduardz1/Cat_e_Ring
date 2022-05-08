@@ -1,6 +1,7 @@
 # Gestire le Ricette
 
 ## Informazioni generali
+
 **Nome caso d'uso**: Gestire le ricette
 **Portata**: Sistema
 **Livello**: Obiettivo utente
