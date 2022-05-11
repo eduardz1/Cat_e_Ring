@@ -106,7 +106,7 @@ contiene v
 {ordered} </panel_attributes><additional_attributes>10;270;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>950</x><y>590</y><w>130</w><h>70</h></coordinates><panel_attributes>Preparazione
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>740</y><w>160</w><h>90</h></coordinates><panel_attributes>Procedura di Cucina
 --
-pubblicato: si/no
+pubblicato: sì/no
 tempo: numero
 nome: testo
 preparabile in anticipo: sì/no</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>650</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;90;10;50;90;50;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>650</y><w>120</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;90;100;50;10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>780</y><w>520</w><h>50</h></coordinates><panel_attributes>lt=-
@@ -133,11 +133,11 @@ di un altro svolto in precedenza
 bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>300</y><w>270</w><h>500</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2=0..1
-serve per ^</panel_attributes><additional_attributes>10;10;10;470;250;470</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1320</x><y>560</y><w>490</w><h>110</h></coordinates><panel_attributes>Una Procedura di Cucina pro serve per un Menu m se e solo se vale una delle seguenti
-condizioni:
+serve per ^</panel_attributes><additional_attributes>10;10;10;470;250;470</additional_attributes></element><element><id>UMLNote</id><coordinates><x>880</x><y>450</y><w>400</w><h>120</h></coordinates><panel_attributes>Una Procedura di Cucina pro serve per un Menu m se e solo se vale
+una delle seguenti condizioni:
 - Esiste una Voce v appartenente a m tale che v fa riferimento a pro
-- Esistono una Sezione s e una Voce v tali che m contiene s, v appartiene a s e v
-fa riferimento a pro
+- Esistono una Sezione s e una Voce v tali che m contiene s,
+v appartiene a s e v fa riferimento a pro
 - Esiste un’altra mansione man2 che /serve per m tale che man2 usa pro
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>600</x><y>1020</y><w>570</w><h>160</h></coordinates><panel_attributes>dato un Turno T, stato temporale di T = passato
 se data di T è uguale a data correte e ora di fine è
@@ -151,42 +151,20 @@ e ora di inizio &lt; ora corrente &gt; ora di fine
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>20</y><w>520</w><h>160</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=0..n
-è proprietario di &gt;</panel_attributes><additional_attributes>10;20;480;20;480;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>440</y><w>140</w><h>70</h></coordinates><panel_attributes>Ingrediente
---
-Dose: numero</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>500</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=-
-compone &gt;
-m2=0..n
-m1=1..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>500</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=-
-compone &gt;
-m2=0..n
-m1=1..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1450</x><y>720</y><w>110</w><h>70</h></coordinates><panel_attributes>Passo
+è proprietario di &gt;</panel_attributes><additional_attributes>10;20;480;20;480;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1450</x><y>720</y><w>110</w><h>70</h></coordinates><panel_attributes>Passo
 --
 descrizione: testo
-fg=red
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1180</x><y>760</y><w>290</w><h>50</h></coordinates><panel_attributes>lt=-
 formato da &gt;
 m2=0..n
 m1=0..n
-fg=red
 </panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1582</x><y>750</y><w>140</w><h>70</h></coordinates><panel_attributes>Ingrediente
 --
 Dose: numero
-fg=red
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1180</x><y>790</y><w>420</w><h>50</h></coordinates><panel_attributes>lt=-
 &lt; compone
 m2=1..n
-m1=0..n
-fg=red
-</panel_attributes><additional_attributes>10;20;400;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1580</x><y>710</y><w>170</w><h>30</h></coordinates><panel_attributes>Chiedi se si può fare sta cosa
-fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>350</y><w>140</w><h>70</h></coordinates><panel_attributes>Passo
---
-Descrizione: testo</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>370</y><w>100</w><h>240</h></coordinates><panel_attributes>lt=-
-formato da &gt;
-m2=0..n
-m1=0..n</panel_attributes><additional_attributes>80;20;10;20;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>370</y><w>120</w><h>240</h></coordinates><panel_attributes>lt=-
-&lt; formato da
-m2=0..n
-m1=0..n</panel_attributes><additional_attributes>10;20;80;20;80;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>820</y><w>160</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=0..n</panel_attributes><additional_attributes>10;20;400;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>820</y><w>170</w><h>120</h></coordinates><panel_attributes>lt=-
 variante di &gt;
 m2=0..n
-m1=0..n</panel_attributes><additional_attributes>10;10;10;100;120;100;120;10</additional_attributes></element></diagram>
+m1=0..n</panel_attributes><additional_attributes>10;10;10;100;130;100;130;10</additional_attributes></element></diagram>
