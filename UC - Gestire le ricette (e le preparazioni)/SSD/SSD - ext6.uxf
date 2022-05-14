@@ -1,0 +1,51 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLActor</id><coordinates><x>240</x><y>20</y><w>60</w><h>110</h></coordinates><panel_attributes>Cuoco</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>830</x><y>30</y><w>110</w><h>50</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>80</y><w>30</w><h>1070</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1050</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>70</y><w>30</w><h>1080</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1060</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>220</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+1. CreaProcedura(nome)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>260</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>320</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+2. aggiungePassi(collezione di passi)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>360</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>310</y><w>750</w><h>100</h></coordinates><panel_attributes>optional
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>430</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+3. dettagliaProcedura(ingredienti?, dosi?, tempistica?)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>470</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>520</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4. consultaRicettario()
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>550</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ricettario
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>190</x><y>190</y><w>770</w><h>230</h></coordinates><panel_attributes>loop
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>180</x><y>160</y><w>790</w><h>450</h></coordinates><panel_attributes>loop
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>630</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+5. aggiungiPreprazioneComeIngrediente(Preparazione)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>660</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>750</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+6. modificaPasso(Passo)</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>430</y><w>750</w><h>80</h></coordinates><panel_attributes>optional
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>520</y><w>750</w><h>80</h></coordinates><panel_attributes>optional
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>620</y><w>750</w><h>80</h></coordinates><panel_attributes>optional
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>740</y><w>750</w><h>80</h></coordinates><panel_attributes>optional
+fg=#009ce0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>780</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+passo modificato</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>920</y><w>750</w><h>80</h></coordinates><panel_attributes>optional
+fg=#9b9b9b</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>930</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+7. classificaProcedura(collezione di annotazioni?, preparabile in anticipo/non preparabile in anticipo?)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>960</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>170</x><y>130</y><w>810</w><h>880</h></coordinates><panel_attributes>loop
+fg=#fcdc00</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>1020</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+8. pubblica(Preparazione/Ricetta, nome?)
+fg=#9b9b9b</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>1060</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+ok
+fg=#9b9b9b</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>190</x><y>710</y><w>770</w><h>200</h></coordinates><panel_attributes>alternative
+fg=#fa28ff
+--
+
+
+
+
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>840</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+6a. modificaOrdinePassi(ordine)</panel_attributes><additional_attributes>10;20;620;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>870</y><w>640</w><h>40</h></coordinates><panel_attributes>lt=.&gt;&gt;
+nuovo ordine</panel_attributes><additional_attributes>620;20;10;20</additional_attributes></element></diagram>
