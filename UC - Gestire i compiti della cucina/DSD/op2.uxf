@@ -4,8 +4,8 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>48</x>
-      <y>296</y>
+      <x>96</x>
+      <y>288</y>
       <w>48</w>
       <h>48</h>
     </coordinates>
@@ -17,8 +17,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>64</x>
-      <y>336</y>
+      <x>112</x>
+      <y>328</y>
       <w>24</w>
       <h>464</h>
     </coordinates>
@@ -28,8 +28,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>320</y>
+      <x>264</x>
+      <y>312</y>
       <w>208</w>
       <h>24</h>
     </coordinates>
@@ -39,8 +39,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>336</y>
+      <x>368</x>
+      <y>328</y>
       <w>24</w>
       <h>464</h>
     </coordinates>
@@ -50,10 +50,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>320</x>
-      <y>368</y>
+      <x>368</x>
+      <y>376</y>
       <w>16</w>
-      <h>352</h>
+      <h>384</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -61,44 +61,44 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>64</x>
-      <y>368</y>
+      <x>112</x>
+      <y>360</y>
       <w>272</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-addProcedure(propcedure)</panel_attributes>
+addProcedure(procedure)</panel_attributes>
     <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
-      <y>320</y>
+      <x>520</x>
+      <y>312</y>
       <w>240</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>SummSheet.CurrentSheet: SummarySheet</panel_attributes>
+    <panel_attributes>SummSheet.currentSheet: SummarySheet</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
-      <y>336</y>
+      <x>632</x>
+      <y>328</y>
       <w>24</w>
-      <h>464</h>
+      <h>272</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;320.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>584</x>
-      <y>368</y>
+      <x>632</x>
+      <y>408</y>
       <w>16</w>
-      <h>368</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -106,7 +106,7 @@ addProcedure(propcedure)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>328</x>
+      <x>376</x>
       <y>392</y>
       <w>272</w>
       <h>32</h>
@@ -118,8 +118,8 @@ addAssignment(procedure)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>432</y>
+      <x>640</x>
+      <y>424</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
@@ -130,8 +130,8 @@ create(procedure)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>440</y>
+      <x>808</x>
+      <y>432</y>
       <w>112</w>
       <h>24</h>
     </coordinates>
@@ -141,8 +141,8 @@ create(procedure)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>808</x>
-      <y>456</y>
+      <x>856</x>
+      <y>448</y>
       <w>24</w>
       <h>96</h>
     </coordinates>
@@ -152,10 +152,10 @@ create(procedure)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>808</x>
-      <y>472</y>
+      <x>856</x>
+      <y>464</y>
       <w>16</w>
-      <h>56</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -163,8 +163,8 @@ create(procedure)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>472</y>
+      <x>864</x>
+      <y>464</y>
       <w>200</w>
       <h>48</h>
     </coordinates>
@@ -176,8 +176,8 @@ itemProcedure = procedure
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>504</y>
+      <x>640</x>
+      <y>496</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -188,8 +188,8 @@ Ag</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>328</x>
-      <y>544</y>
+      <x>376</x>
+      <y>536</y>
       <w>272</w>
       <h>32</h>
     </coordinates>
@@ -200,8 +200,8 @@ Ag</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>64</x>
-      <y>576</y>
+      <x>112</x>
+      <y>664</y>
       <w>272</w>
       <h>32</h>
     </coordinates>
@@ -212,19 +212,19 @@ Ag</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>448</y>
+      <x>1016</x>
+      <y>320</y>
       <w>280</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>CurrentSheet.Assignments: Arraylist&lt;Assignment&gt;</panel_attributes>
+    <panel_attributes>CurrentSheet.assignments: Arraylist&lt;Assignment&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>528</y>
+      <x>640</x>
+      <y>520</y>
       <w>528</w>
       <h>32</h>
     </coordinates>
@@ -235,23 +235,154 @@ add(Ag)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1104</x>
-      <y>464</y>
+      <x>1152</x>
+      <y>336</y>
       <w>24</w>
-      <h>152</h>
+      <h>272</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1104</x>
-      <y>528</y>
+      <x>1152</x>
+      <y>536</y>
       <w>16</w>
-      <h>48</h>
+      <h>32</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>152</x>
+      <y>384</y>
+      <w>1152</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes>ALT [SummSheet.currentSheet != null]
+fg=#761C8C
+lw=2
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>560</y>
+      <w>200</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+notifyProcedureAdded(ag)</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;40.0;20.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>376</x>
+      <y>592</y>
+      <w>16</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>264</y>
+      <w>184</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>er: SummarySheetEventReceiver: 
+SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>288</y>
+      <w>24</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>384</x>
+      <y>616</y>
+      <w>416</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+updateProcedureAdded(summSheet.currentSheet, ag)</panel_attributes>
+    <additional_attributes>10.0;20.0;500.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>784</x>
+      <y>632</y>
+      <w>16</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>312</x>
+      <y>600</y>
+      <w>520</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>LOOP for all er in eventReceivers
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>712</y>
+      <w>272</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
   </element>
 </diagram>

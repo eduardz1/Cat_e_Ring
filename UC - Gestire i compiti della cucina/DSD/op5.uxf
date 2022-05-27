@@ -5,7 +5,7 @@
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>154</y>
+      <y>165</y>
       <w>66</w>
       <h>66</h>
     </coordinates>
@@ -18,18 +18,18 @@
     <id>Relation</id>
     <coordinates>
       <x>22</x>
-      <y>209</y>
+      <y>220</y>
       <w>33</w>
-      <h>649</h>
+      <h>836</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;570.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;740.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>561</x>
-      <y>220</y>
+      <y>231</y>
       <w>286</w>
       <h>33</h>
     </coordinates>
@@ -40,20 +40,20 @@
     <id>Relation</id>
     <coordinates>
       <x>704</x>
-      <y>242</y>
+      <y>253</y>
       <w>33</w>
-      <h>638</h>
+      <h>869</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;770.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>704</x>
-      <y>286</y>
+      <y>319</y>
       <w>22</w>
-      <h>484</h>
+      <h>759</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -62,7 +62,7 @@
     <id>Relation</id>
     <coordinates>
       <x>22</x>
-      <y>286</y>
+      <y>297</y>
       <w>704</w>
       <h>44</h>
     </coordinates>
@@ -74,7 +74,7 @@ defineAssignment(assignment: Assignment, c?: cook, d: String, t?: String, s: Shi
     <id>UMLClass</id>
     <coordinates>
       <x>1232</x>
-      <y>220</y>
+      <y>231</y>
       <w>330</w>
       <h>33</h>
     </coordinates>
@@ -85,20 +85,20 @@ defineAssignment(assignment: Assignment, c?: cook, d: String, t?: String, s: Shi
     <id>Relation</id>
     <coordinates>
       <x>1386</x>
-      <y>242</y>
+      <y>253</y>
       <w>33</w>
-      <h>638</h>
+      <h>594</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;520.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1386</x>
-      <y>286</y>
+      <y>363</y>
       <w>22</w>
-      <h>506</h>
+      <h>418</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -107,19 +107,19 @@ defineAssignment(assignment: Assignment, c?: cook, d: String, t?: String, s: Shi
     <id>Relation</id>
     <coordinates>
       <x>715</x>
-      <y>319</y>
+      <y>341</y>
       <w>693</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-createAssignment(assignment: Assignment, c?: cook, d: String, t?: String, s: Shift)</panel_attributes>
+createAssignment(assignment: Assignment, c?: cook, q: String, t?: String, s: Shift)</panel_attributes>
     <additional_attributes>10.0;20.0;610.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>715</x>
-      <y>638</y>
+      <y>759</y>
       <w>693</w>
       <h>44</h>
     </coordinates>
@@ -131,7 +131,7 @@ assignment</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1617</x>
-      <y>297</y>
+      <y>286</y>
       <w>231</w>
       <h>33</h>
     </coordinates>
@@ -142,20 +142,20 @@ assignment</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1727</x>
-      <y>319</y>
+      <y>308</y>
       <w>33</w>
-      <h>517</h>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;450.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1727</x>
-      <y>341</y>
+      <y>396</y>
       <w>22</w>
-      <h>66</h>
+      <h>77</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -164,19 +164,19 @@ assignment</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1738</x>
-      <y>352</y>
-      <w>154</w>
+      <y>396</y>
+      <w>176</w>
       <h>66</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-this.cook=c</panel_attributes>
+this.selCook=c</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1397</x>
-      <y>341</y>
+      <y>374</y>
       <w>352</w>
       <h>44</h>
     </coordinates>
@@ -187,32 +187,32 @@ setCook(c)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1386</x>
-      <y>418</y>
-      <w>363</w>
+      <x>1397</x>
+      <y>495</y>
+      <w>352</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-setDose(d)</panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+setQuantity(q)</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1738</x>
-      <y>440</y>
-      <w>154</w>
+      <y>517</y>
+      <w>176</w>
       <h>66</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-this.dose=d</panel_attributes>
+this.quantity=q</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1397</x>
-      <y>517</y>
+      <y>594</y>
       <w>352</w>
       <h>44</h>
     </coordinates>
@@ -224,19 +224,19 @@ setTime(t)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1738</x>
-      <y>539</y>
-      <w>187</w>
+      <y>616</y>
+      <w>154</w>
       <h>66</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-this.LocalTime=t</panel_attributes>
+this.Time=t</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1397</x>
-      <y>605</y>
+      <y>693</y>
       <w>352</w>
       <h>44</h>
     </coordinates>
@@ -248,20 +248,9 @@ setShift(s)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1727</x>
-      <y>418</y>
+      <y>517</y>
       <w>22</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1727</x>
-      <y>528</y>
-      <w>22</w>
-      <h>77</h>
+      <h>66</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -272,7 +261,18 @@ setShift(s)</panel_attributes>
       <x>1727</x>
       <y>616</y>
       <w>22</w>
-      <h>77</h>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1727</x>
+      <y>715</y>
+      <w>22</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -281,24 +281,192 @@ setShift(s)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1738</x>
-      <y>627</y>
-      <w>154</w>
+      <y>715</y>
+      <w>176</w>
       <h>66</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-this.Shift=s</panel_attributes>
+this.selShift=s</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>22</x>
-      <y>660</y>
+      <y>913</y>
       <w>704</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 assignment</panel_attributes>
     <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>319</x>
+      <y>341</y>
+      <w>1639</w>
+      <h>671</h>
+    </coordinates>
+    <panel_attributes>ALT [SummSheet.currentSheet != null 
+&amp;&amp; SummSheet.currentSheet.hasAssignement(as)]
+fg=#761C8C
+lw=2
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1309</x>
+      <y>594</y>
+      <w>572</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>OPT 
+[t!=null]
+fg=#128C86</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1111</x>
+      <y>374</y>
+      <w>814</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>OPT
+[c!=null 
+&amp;&amp; ShiftManager.isAvaiable(c, s)]
+fg=#128C86</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>715</x>
+      <y>792</y>
+      <w>341</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+notifyAssignmentDefined(assignment)</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;30.0;20.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>715</x>
+      <y>814</y>
+      <w>22</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1100</x>
+      <y>154</y>
+      <w>242</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>er: SummarySheetEventReceiver: 
+SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1210</x>
+      <y>198</y>
+      <w>33</w>
+      <h>726</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1210</x>
+      <y>869</y>
+      <w>22</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>726</x>
+      <y>847</y>
+      <w>506</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+updateAssignmentDefined(SummSheet.CurrentSheet, assignment)</panel_attributes>
+    <additional_attributes>10.0;20.0;440.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>22</x>
+      <y>957</y>
+      <w>704</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>451</x>
+      <y>836</y>
+      <w>781</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>LOOP for all er in eventReceivers
+fg=blue</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
