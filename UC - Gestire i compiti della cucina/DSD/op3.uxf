@@ -1,0 +1,44 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;610&lt;/x&gt;&lt;y&gt;30&lt;/y&gt;&lt;w&gt;340&lt;/w&gt;&lt;h&gt;40&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;halign=center
+*1 createMenu*
+lw=0
+fontsize=20
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLGeneric</id><coordinates><x>560</x><y>390</y><w>160</w><h>50</h></coordinates><panel_attributes>summSheetMgr:
+SummarySheetManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>430</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;510</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>430</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;510</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>440</y><w>410</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+changeAssignmentsOrder(assignment, position)</panel_attributes><additional_attributes>390;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>630</x><y>460</y><w>20</w><h>440</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>430</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;510</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1110</x><y>690</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>670</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+remove(assignment)</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>490</y><w>1360</w><h>450</h></coordinates><panel_attributes>alt 
+
+[currentSheet == null
+|| !currentSheet.hasAssignment(assignment)]
+--
+
+
+-.
+
+
+
+
+-.
+
+fontsize=11
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>520</y><w>400</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;380;20</additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>710</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+add(position, assignment)</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1110</x><y>730</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>20</x><y>580</y><w>210</w><h>50</h></coordinates><panel_attributes>[position &lt; 0 || position &gt;= currentSheet.assignmentsSize()]
+style=wordwrap
+fontsize=11</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>430</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes>10;10;10;510</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1290</x><y>850</y><w>20</w><h>20</h></coordinates><panel_attributes>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>830</y><w>660</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+updateAssignmentsRearranged(currentSheet)
+</panel_attributes><additional_attributes>640;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>510</x><y>810</y><w>830</w><h>70</h></coordinates><panel_attributes>for each
+er in receivers
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1210</x><y>390</y><w>170</w><h>50</h></coordinates><panel_attributes>er:
+SummarySheetEventReceiver
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>220</x><y>370</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1030</x><y>390</y><w>170</w><h>50</h></coordinates><panel_attributes>currentSheet.assignments: 
+ArrayList&lt;Assignments&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>720</y><w>350</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+notifyAssignmentsRearranged(currentSheet)</panel_attributes><additional_attributes>20;60;90;60;90;10;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>640</x><y>780</y><w>20</w><h>110</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>800</x><y>390</y><w>150</w><h>50</h></coordinates><panel_attributes>summSheet.currentSheet:
+SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>430</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;510</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>640</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+moveAssignments(section, position)</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>870</x><y>660</y><w>20</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>170</y><w>340</w><h>40</h></coordinates><panel_attributes>halign=center
+*3 changeAssignmentOrder*
+lw=0
+fontsize=20
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

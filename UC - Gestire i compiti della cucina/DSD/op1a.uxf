@@ -1,0 +1,35 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;770&lt;/x&gt;&lt;y&gt;170&lt;/y&gt;&lt;w&gt;340&lt;/w&gt;&lt;h&gt;40&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;halign=center
+*3 changeAssignmentOrder*
+lw=0
+fontsize=20
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLGeneric</id><coordinates><x>710</x><y>300</y><w>170</w><h>50</h></coordinates><panel_attributes>summarySheetMgr:
+SummarySheetManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>340</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>340</y><w>30</w><h>350</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;330</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>370</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+chooseSummarySheet(sheet)</panel_attributes><additional_attributes>410;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>780</x><y>390</y><w>20</w><h>280</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>600</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+setCurrentSummarySheet(sheet)</panel_attributes><additional_attributes>10;40;50;40;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>650</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+currentSummarySheet</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>240</x><y>450</y><w>1010</w><h>260</h></coordinates><panel_attributes>alt 
+
+[!user.isChef()]
+--
+
+
+-.
+
+
+
+
+-.
+fontsize=11
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>490</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>390</y><w>460</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+getCurrentUser( )</panel_attributes><additional_attributes>440;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>410</y><w>460</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+user</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1190</x><y>300</y><w>120</w><h>50</h></coordinates><panel_attributes>userMgr:
+UserManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>340</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1230</x><y>410</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>240</x><y>530</y><w>160</w><h>50</h></coordinates><panel_attributes>[menu.isInUse()
+|| !menu.isOwner(user)]
+style=wordwrap
+fontsize=11</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>540</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+throw SummarySheetException</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>330</x><y>280</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>90</y><w>340</w><h>40</h></coordinates><panel_attributes>halign=center
+*1a chooseSummarySheet*
+lw=0
+fontsize=20
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
