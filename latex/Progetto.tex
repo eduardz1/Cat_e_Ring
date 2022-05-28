@@ -1,0 +1,311 @@
+\documentclass[letterpaper, italian]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{csvsimple}
+\usepackage[hidelinks, unicode]{hyperref}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{contour}
+\usepackage{ulem}
+\usepackage{bookmark}
+\usepackage{enumitem}
+% \usepackage[landscape,twocolumn]{geometry} here if we want to make it landscape later
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
+\renewcommand{\thesubsection}{\thesection.\alph{section}} % removes reference of \chapter to avoid "0."
+% \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
+
+\title{
+    \leavevmode{\includegraphics[width=0.8\textwidth]{resources/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
+    Cat \& Ring \\
+    \large Gestire le Ricette
+}
+\author{Eduard Antonovic Occhipinti, Riccardo Cardona}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{UC Dettagliato}
+
+\chapter{Modello di Dominio e SSD}
+\section{Modello di Dominio}
+\section{Diagrammi di Sequenza di Sistema}
+
+\chapter{Contratti delle Operazioni}
+\textbf{Pre-condizione generale}{: l'utente è identificato come Cuoco o come Chef}\textit{c}
+
+\section[creaProcedura]{\texorpdfstring{creaProcedura(\myuline{nome}: Testo, \myuline{èRicetta}: sì/no)}}\label{h.n5k8dzisnnko}
+\textbf{Pre-condizioni:} -\newline
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {[\textbf{Se} \myuline{èRicetta} == sì]}
+      \setlist{nolistsep}
+      \begin{itemize}[label=$-$, noitemsep]
+            \item È stata creata un'istanza \textit{p} di Ricetta
+            \item \textit{p.pubblicato} = no
+            \item \textit{p.nome } = \myuline{nome}
+      \end{itemize}
+      \item {[\textbf{Se} \myuline{èRicetta} == no]}
+      \setlist{nolistsep}
+      \begin{itemize}[label=$-$, noitemsep]
+            \item È stata creata un'istanza \textit{p} di Preparazione
+            \item \textit{p.pubblicato} = no
+            \item \textit{p.nome } = \myuline{nome}
+      \end{itemize}
+      \item \textit{p}\textbf{ si trova} nel ricettario
+      \item \textit{c }\textbf{è proprietario di}\textit{ p}
+\end{itemize}
+
+\subsection[creaVarianteProcedura]{\texorpdfstring{creaVarianteProcedura(\myuline{procedura}: Procedura, \myuline{}{nome}: Testo)}}\label{h.4pfv8u235m4y}
+\textbf{Pre-condizioni:} -\newline
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {È stata creata un'istanza }\textit{p}{ di Procedura}
+      \setlist{nolistsep}
+      \begin{itemize}[label=$-$, noitemsep]
+            \item \textit{p.pubblicato }{= no}
+            \item \textit{p.tempo }{= }\myuline{procedura.tempo}
+            \item \textit{p.nome }{= }\myuline{}{nome}
+            \item \textit{p.preparabileInAnticipo }{= }\myuline{procedura.preparabileInAnticipo}
+            \item {Per ogni Passo }\textit{pas}{ tale che }\myuline{procedura}
+                  \textbf{ è formata da }\textit{pas }{è stata creata un'istanza }
+                  \textit{ps}{ di Passo tale che}
+            \setlist{nolistsep}
+            \begin{itemize}[label=$-$, noitemsep]
+                  \item \textit{ps.descrizione }{= }\textit{pas.descrizione}
+                  \item \textit{p }{è}{~}\textbf{formata da }\textit{ps}
+            \end{itemize}
+            \item {Per ogni Ingrediente }\textit{ing}{~tale che }\textit{ing}{~}
+                  {compone}{~}\myuline{procedura}{~}{è stata creata un'istanza }
+                  \textit{i}{~di Ingrediente tale che}
+            \setlist{nolistsep}
+            \begin{itemize}[label=$-$, noitemsep]
+                  \item \textit{i.nome }{= }\textit{ing.nome}
+                  \item \textit{i.dose }{= }\textit{ing.dose}
+                  \item \textit{i }\textbf{compone}\textit{~p}
+            \end{itemize}
+      \item \textit{p }\textbf{variante di }\myuline{procedura}
+      \item \textit{p }\textbf{si trova nel }{Ricettario}
+      \end{itemize}
+      \item \textit{c }\textbf{è proprietario di}\textit{~p}
+\end{itemize}
+
+\subsection[apriProceduraPerModifica]{\texorpdfstring{apriProceduraPerModifica(\myuline{procedura}: Procedura)}}\label{h.y0wiqdm1uq8i}
+\textbf{Pre-condizioni: }{-}\newline
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item {se c }\textbf{è proprietario di}{~}\myuline{procedura}{, }\myuline{procedura}{~non
+        }\textbf{riguarda}{~nessun Assegnamento e non }\textbf{serve }{per nessun Menù}
+      \setlist{nolistsep}
+      \begin{itemize}[label=$-$, noitemsep]
+            \item {{[}}\textbf{Se}{~}\myuline{procedura.pubblicato}{~= si{]} }\myuline{procedura.pubblicato}{~= no}
+      \end{itemize}
+\end{itemize}
+
+
+\subsection[eliminaProcedura]{\texorpdfstring{eliminaProcedura(\myuline{procedura}: Procedura)}}\label{h.au1glj4lcszr}
+\textbf{Pre-condizioni: }{-}\newline
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {se }\textit{c }{è }\textbf{proprietario di}{~}\myuline{procedura}{, }\myuline{procedura}{~non }
+      \textbf{riguarda}{~nessun Assegnamento e non }\textbf{serve }{per nessun Menù}
+      \setlist{nolistsep}
+      \begin{itemize}[label=$-$, noitemsep]
+            \item {per ogni Passo }\textit{p}{ tale che }\myuline{procedura}{~è }
+                  \textbf{formata}{~da }\textit{p}{, }\textit{p}{ è eliminato}
+            \item {per ogni Ingrediente }\textit{i}{ tale che }\myuline{procedura}
+                  {~è }\textbf{composto}{~da }\textit{i}{, }\textit{i}{ è eliminato}
+      \end{itemize}
+      \item \myuline{procedura}{~è eliminata}
+\end{itemize}
+
+\section[aggiungePasso]{\texorpdfstring{aggiungePasso(\myuline{descrizione}:{~Testo, }\myuline{prep}: sì/no)}}\label{h.tszsgr5cfwm3}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è stata creata una istanza }\textit{pa}{ di Passo}
+      \item \textit{pa.descrizione = }\myuline{descrizione}
+      \item \textit{pa.preparabileInAnticipo }{= }\myuline{prep}
+      \item \textit{p}{ è }\textbf{formato }{da }\textit{pa}
+\end{itemize}
+
+\subsection[creaRaggruppamento]{\texorpdfstring{creaRaggruppamento (\myuline{descrizione}: testo)}}\label{a.1-crearaggruppamento-descrizione-testo}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:} -
+
+\subsection[inserisciPassoRaggruppamento]{\texorpdfstring{inserisciPassoRaggruppamento(\myuline{descrizione}: testo)}}\label{a.2-inseriscipassoraggruppamento-descrizione-testo}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:} -
+
+\section[aggiungiIngrediente]{\texorpdfstring{aggiungiIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}?: testo)}}\label{h.rhtfki5g8w24}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è stata creata una istanza }\textit{i}{ di Ingrediente}
+      \item \textit{i.nome }{= }\myuline{ingrediente}
+      \item {{[}}\textbf{Se}{ sono specificate le }\myuline{dosi}{{]} }\textit{i.dose }{= }\myuline{dosi}
+      \item \textit{i }\textbf{compone }\textit{p}
+\end{itemize}
+
+\subsection[modificaIngrediente]{\texorpdfstring{modificaIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}: testo)}}\label{h.btq829z3u51f}
+\textbf{Pre-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una procedura }\textit{p }{e esiste un}
+            \myuline{ingrediente}{~}\textit{i}{~tale che }\textit{p}{~è }\textbf{composto}{~da }\textit{i}
+\end{itemize}
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item \textit{i.dose }{= }\myuline{dosi}
+\end{itemize}
+
+\subsection[eliminaIngrediente]{\texorpdfstring{eliminaIngrediente(\myuline{ingrediente}: Ingrediente)}}\label{h.6moldj1jg97t}
+\textbf{Pre-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una procedura }\textit{p }{e esiste un}
+            \myuline{ingrediente}{~}\textit{i}{~tale che }\textit{p}{~è }\textbf{composto}{~da }\textit{i}
+\end{itemize}
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item {l'istanza }\myuline{ingrediente}{ viene eliminata}
+\end{itemize}
+
+\section[consultaRicettario]{\texorpdfstring{consultaRicettario()}}\label{h.w08r7f8npm2z}
+\textbf{Pre-condizioni:}{ -}\newline
+\textbf{Post-condizioni: }{-}\newline
+
+\section[aggiungiPreparazioneComeIngrediente]{\texorpdfstring{aggiungiPreparazioneComeIngrediente(\myuline{preparazione}: Preparazione)}}\label{h.3umm3owhjhiq}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item \myuline{preparazione}\textbf{ è ingrediente}{~in }\textit{p}
+\end{itemize}
+
+\subsection[eliminaPreparazioneComeIngrediente]{\texorpdfstring{eliminaPreparazioneComeIngrediente(\myuline{preparazione}: Preparazione)}}\label{a.1-eliminapreparazionecomeingredientepreparazione-preparazione}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:} % TODO
+
+\section[modificaPasso]{\texorpdfstring{modificaPasso(\myuline{passo}: Passo, }\myuline{descrizione}{: testo)}}\label{h.vw6rupgvnaur}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}{ e }\textit{p }
+            {è }\textbf{formato da }\myuline{passo}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item \myuline{passo.descrizione}{~= }\myuline{descrizione}
+\end{itemize}
+
+\subsection[modificaOrdinePassi]{\texorpdfstring{modificaOrdinePassi(\myuline{ordinamento})}}\label{h.9ehcjm882e53}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+      \item {l'associazione}\textbf{~formato da}{~tra }\textit{p}{~e }\textit{i}
+            {~Passi è stata modificata in accordo a }\myuline{ordinamento}
+\end{itemize}
+
+\subsection[eliminaPasso]{\texorpdfstring{eliminaPasso(\myuline{passo}: Passo)}}\label{b.1-eliminapassopasso-passo}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni: } % TODO
+
+\section[dettagliaProcedura]{\texorpdfstring{dettagliaProcedura(\myuline{annotazione}: testo, }
+\myuline{porzioni}{?: numero, }\myuline{tAttvità}{?: LocalTime, } \myuline{tTotale}
+{?: LocalTime, }\myuline{tUltimazione} {?: LocalTime)}}\label{h.rc4f999olfrs}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {viene creata una nuova istanza }\textit{a }{di Annotazione}
+      \item \textit{a.descrizione }{= }\myuline{annotazione}
+      \item \textit{p }{è }\textbf{classificata}{~da }\textit{a}
+      \item {{[}}\textbf{Se}{~sono specificate le }\myuline{porzioni}{{]} }\textit{p.porzioni }{= }\myuline{porzioni}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tAttività}{{]} }\textit{p.tempoDiAttività }{= }\myuline{tAttività}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tTotale}{{]} }\textit{p.tempoTotale }{= }\myuline{tTotale}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tUltimazione}{{]} }\textit{p.tempoDiUltimazione }{= }\myuline{tUltimazione}
+\end{itemize}
+
+\subsection[modificaDettagliProcedura]{\texorpdfstring{modificaDettagliProcedura(}\myuline{annotazione}{: Annotazione, }\myuline{descrizione}{: 
+testo, }\myuline{porzioni?}{: numero, }\myuline{tAttvità}{?: LocalTime, }\myuline{tTotale}{?:
+LocalTime, }\myuline{tUltimazione}{?: LocalTime)}}\label{h.vmiiciyams7p}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p }{che è classificata da}{~}\myuline{annotazione}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item \myuline{annotazione.tag}{ = }\myuline{descrizione}
+      \item {{[}}\textbf{Se}{~sono specificate le }\myuline{porzioni}{]} \textit{p.porzioni}{ = }\myuline{porzioni}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tAttività}{{]} }\textit{p.tempoDiAttività }{= }\myuline{tAttività}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tTotale}{{]} }\textit{p.tempoTotale }{= }\myuline{tTotale}
+      \item {{[}}\textbf{Se}{~è specificata una }\myuline{tUltimazione}{{]} }\textit{p.tempoDiUltimazione }{= }\myuline{tUltimazione}
+\end{itemize}
+
+\subsection[eliminaAnnotazione]{\texorpdfstring{eliminaAnnotazione (\myuline{annotazione}: Annotazione)}}\label{h.b1ybdk3i4rdw}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p }{che è classificata da}{~}\myuline{annotazione}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {l'istanza }\myuline{annotazione}{ viene eliminata}
+\end{itemize}
+
+\section[pubblica]{\texorpdfstring{pubblica(\myuline{nome}?: testo)}}\label{h.b034hx47hgkh}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:} % TODO Builder pattern maybe?
+\begin{itemize}[label=$-$, noitemsep]
+      \item {{[}}\textbf{Se }\myuline{nome}{~}{specificato}{{]} }\textit{p.nome }{= }\myuline{nome}
+      \item \textit{p.pubblicato }{= sì}
+\end{itemize}
+
+\subsection[terminaSenzaPubblicare]{\texorpdfstring{terminaSenzaPubblicare()}}\label{h.g9jb5nwngrzz}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+      \item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni: }{-}
+
+\chapter{Progettazione}
+\section{Domain Class Diagram}
+\section{Design Sequence Diagram}
+
+\chapter{Implementazione}
+\end{document}
