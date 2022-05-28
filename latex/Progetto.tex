@@ -8,6 +8,10 @@
 \usepackage{ulem}
 \usepackage{bookmark}
 \usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{xcolor}
 % \usepackage[landscape,twocolumn]{geometry} here if we want to make it landscape later
 
 \renewcommand{\ULdepth}{1.8pt}
@@ -19,7 +23,7 @@
 }
 
 \renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
-\renewcommand{\thesubsection}{\thesection.\alph{section}} % removes reference of \chapter to avoid "0."
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}} % removes reference of \chapter to avoid "0."
 % \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
 
 \title{
@@ -36,6 +40,223 @@
 \tableofcontents
 
 \chapter{UC Dettagliato}
+
+\section*{Informazioni generali}
+\textbf{Nome caso d'uso}{: Gestire le ricette}\newline
+\textbf{Portata}{: Sistema}\newline
+\textbf{Livello}{: Obiettivo utente}\newline
+\textbf{Attore primario}{: Cuoco}\newline
+\textbf{Parti Interessate}\newline
+\textbf{Pre-condizioni}{: L'attore deve essere autenticato come Cuoco}\newline
+\textbf{Garanzie di successo o post-condizioni}{: La procedura di cucina è salvata}
+
+\section*{Scenario Principale di Successo}
+
+\begin{table}[H]\centering
+\csvreader[
+    tabular = |c|p{7cm}|p{4cm}|,
+    respect sharp,
+    table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+    late after line = \\\hline
+]{resources/csv/scenario_principale_di_successo.csv}{}{
+    \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 1}
+\begin{table}[H]\centering\caption{Estensione 1a}
+\csvreader[
+    tabular = |c|p{7cm}|p{4cm}|,
+    respect sharp,
+    table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+    late after line = \\\hline
+]{resources/csv/estensione1a.csv}{}{
+    \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 1b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione1b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 1c}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione1c.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Eccezioni 1}
+\begin{table}[H]\centering\color{red}\caption{Eccezione 1b.1a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/eccezione1b1a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\color{red}\caption{Eccezione 1b.1b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/eccezione1b1b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\color{red}\caption{Eccezione 1c.1a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/eccezione1c1a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\color{red}\caption{Eccezione 1c.1b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/eccezione1c1b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 2}
+\begin{table}[H]\centering\caption{Estensione 2a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione2a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 3}
+\begin{table}[H]\centering\caption{Estensione 3a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione3a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 3b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione3b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 5}
+\begin{table}[H]\centering\caption{Estensione 5a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione5a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 6}
+\begin{table}[H]\centering\caption{Estensione 6a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione6a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 6b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione6b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 7}
+\begin{table}[H]\centering\caption{Estensione 7a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione7a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 7b}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione7b.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\begin{table}[H]\centering\caption{Estensione 7c}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione7c.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
+\section*{Estensioni 8}
+\begin{table}[H]\centering\caption{Estensione 8a}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{resources/csv/estensione8a.csv}{}{
+      \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
 
 \chapter{Modello di Dominio e SSD}
 \section{Modello di Dominio}
@@ -66,6 +287,7 @@
       \item \textit{c }\textbf{è proprietario di}\textit{ p}
 \end{itemize}
 
+\newpage
 \subsection[creaVarianteProcedura]{\texorpdfstring{creaVarianteProcedura(\myuline{procedura}: Procedura, \myuline{}{nome}: Testo)}}\label{h.4pfv8u235m4y}
 \textbf{Pre-condizioni:} -\newline
 \textbf{Post-condizioni:}
@@ -129,6 +351,7 @@
       \item \myuline{procedura}{~è eliminata}
 \end{itemize}
 
+\newpage
 \section[aggiungePasso]{\texorpdfstring{aggiungePasso(\myuline{descrizione}:{~Testo, }\myuline{prep}: sì/no)}}\label{h.tszsgr5cfwm3}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -169,6 +392,7 @@
       \item \textit{i }\textbf{compone }\textit{p}
 \end{itemize}
 
+\newpage
 \subsection[modificaIngrediente]{\texorpdfstring{modificaIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}: testo)}}\label{h.btq829z3u51f}
 \textbf{Pre-condizioni: }
 \begin{itemize}[label=$-$, noitemsep]
