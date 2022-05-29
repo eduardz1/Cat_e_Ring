@@ -60,8 +60,7 @@ public class MenuFeaturesDialog {
         ObservableMap<String, Boolean> features = CatERing.getInstance().getMenuManager().getCurrentMenu().getFeatures();
 
         // Creo un table model a partire dalla mappa di features
-        ArrayList<String> fnames = new ArrayList<>();
-        fnames.addAll(features.keySet());
+        ArrayList<String> fnames = new ArrayList<>(features.keySet());
         Collections.sort(fnames);
         rows = FXCollections.observableArrayList();
         for (String s: fnames) {
@@ -76,12 +75,7 @@ public class MenuFeaturesDialog {
         featureNameCol.setCellValueFactory(new PropertyValueFactory<>("featureName"));
         TableColumn<FeatureRow, Boolean> featureValCol = new TableColumn<>("Value");
         featureValCol.setCellValueFactory(new PropertyValueFactory<>("featureValue"));
-        featureValCol.setCellFactory(c -> new CheckBoxTableCell<>(new Callback<Integer, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(Integer integer) {
-                return rows.get(integer).featureValue;
-            }
-        }));
+        featureValCol.setCellFactory(c -> new CheckBoxTableCell<>(integer -> rows.get(integer).featureValue));
 
         featuresTable.getColumns().add(featureNameCol);
         featuresTable.getColumns().add(featureValCol);

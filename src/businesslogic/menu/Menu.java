@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import persistence.BatchUpdateHandler;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

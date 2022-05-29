@@ -3,11 +3,10 @@ package businesslogic.recipe;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Recipe {
     private static final Map<Integer, Recipe> all = new HashMap<>();

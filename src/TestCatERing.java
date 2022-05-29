@@ -38,7 +38,7 @@ public class TestCatERing {
                     System.out.println("\t" + s);
                 }
             }
-            System.out.println("");
+            System.out.println();
 
             System.out.println("\nTEST GET RECIPES AND INSERT ITEM IN SECTION");
             ObservableList<Recipe> recipes = CatERing.getInstance().getRecipeManager().getRecipes();
