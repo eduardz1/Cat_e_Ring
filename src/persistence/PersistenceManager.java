@@ -1,5 +1,6 @@
 package persistence;
 
+import java.io.Console;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -27,8 +28,15 @@ public class PersistenceManager {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
         username = scanner.nextLine();
-        System.out.println("Password: ");
-        password = scanner.nextLine();
+
+        Console console = System.console();
+        if (console != null) { // if running on a terminal instead of an IDE
+            password = new String(console.readPassword("Password: "));
+        } else {
+            System.out.println("Password: ");
+            password = scanner.nextLine();
+        }
+
         scanner.close();
     }
 
