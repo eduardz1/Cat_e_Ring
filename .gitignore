@@ -2,8 +2,6 @@
 .idea
 .obsidian
 
-*.iml
-
 #directories
 out
 lib
