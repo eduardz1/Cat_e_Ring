@@ -220,7 +220,7 @@ public class MenuManager {
     public void deleteItem(MenuItem mi) throws UseCaseLogicException {
         if (currentMenu == null)
             throw new UseCaseLogicException();
-        Section sec = null;
+        Section sec;
         try {
             sec = currentMenu.getSectionForItem(mi);
         } catch (IllegalArgumentException ex) {

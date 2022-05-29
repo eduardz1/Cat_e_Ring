@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class PersistenceManager {
-    private static String url = "jdbc:mysql://localhost:3306/catering";
+    private static final String url = "jdbc:mysql://localhost:3306/catering";
     private static String username;
     private static String password;
 
@@ -12,7 +12,7 @@ public class PersistenceManager {
 
     public static String escapeString(String input) {
         input = input.replace("\\", "\\\\");
-        input = input.replace("\'", "\\\'");
+        input = input.replace("'", "\\'");
         input = input.replace("\"", "\\\"");
         input = input.replace("\n", "\\n");
         input = input.replace("\t", "\\t");
@@ -66,7 +66,7 @@ public class PersistenceManager {
         logIn();
         try (
                 Connection conn = DriverManager.getConnection(url, username, password);
-                PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS);) {
+                PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS)) {
             for (int i = 0; i < itemNumber; i++) {
                 handler.handleBatchItem(ps, i);
                 ps.addBatch();

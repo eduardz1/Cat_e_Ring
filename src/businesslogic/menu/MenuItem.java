@@ -90,8 +90,8 @@ public class MenuItem {
                 sectionid +
                 ", " +
                 "'" + PersistenceManager.escapeString(mi.description) + "', " +
-                +mi.itemRecipe.getId() + ", " +
-                +pos + ");";
+                mi.itemRecipe.getId() + ", " +
+                pos + ");";
         PersistenceManager.executeUpdate(itemInsert);
 
         mi.id = PersistenceManager.getLastId();

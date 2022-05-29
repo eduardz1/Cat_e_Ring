@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import persistence.BatchUpdateHandler;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,11 +67,11 @@ public class Section {
     }
 
     public String testString() {
-        String result = name + "\n";
+        StringBuilder result = new StringBuilder(name + "\n");
         for (MenuItem mi : sectionItems) {
-            result += "\t" + mi.toString() + "\n";
+            result.append("\t").append(mi.toString()).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public String toString() {
@@ -147,13 +146,10 @@ public class Section {
         ObservableList<Section> result = FXCollections.observableArrayList();
         String query = "SELECT * FROM MenuSections WHERE menu_id = " + menu_id +
                 " ORDER BY position";
-        PersistenceManager.executeQuery(query, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                Section s = new Section(rs.getString("name"));
-                s.id = rs.getInt("id");
-                result.add(s);
-            }
+        PersistenceManager.executeQuery(query, rs -> {
+            Section s = new Section(rs.getString("name"));
+            s.id = rs.getInt("id");
+            result.add(s);
         });
 
         for (Section s : result) {
@@ -190,7 +186,7 @@ public class Section {
             }
 
             @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+            public void handleGeneratedIds(ResultSet rs, int count) {
                 // no generated ids to handle
             }
         });

@@ -2,21 +2,18 @@ package businesslogic.user;
 
 import javafx.collections.FXCollections;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class User {
 
-    private static Map<Integer, User> loadedUsers = FXCollections.observableHashMap();
+    private static final Map<Integer, User> loadedUsers = FXCollections.observableHashMap();
 
     public enum Role {
         SERVIZIO, CUOCO, CHEF, ORGANIZZATORE
-    };
+    }
 
     private int id;
     private String username;
@@ -69,26 +66,20 @@ public class User {
 
     private static User getUser(String userQuery) {
         User u = new User();
-        PersistenceManager.executeQuery(userQuery, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                u.id = rs.getInt("id");
-                u.username = rs.getString("username");
-            }
+        PersistenceManager.executeQuery(userQuery, rs -> {
+            u.id = rs.getInt("id");
+            u.username = rs.getString("username");
         });
         if (u.id > 0) {
             loadedUsers.put(u.id, u);
             String roleQuery = "SELECT * FROM UserRoles WHERE user_id=" + u.id;
-            PersistenceManager.executeQuery(roleQuery, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    String role = rs.getString("role_id");
-                    switch (role.charAt(0)) {
-                        case 'c' -> u.roles.add(Role.CUOCO);
-                        case 'h' -> u.roles.add(Role.CHEF);
-                        case 'o' -> u.roles.add(Role.ORGANIZZATORE);
-                        case 's' -> u.roles.add(Role.SERVIZIO);
-                    }
+            PersistenceManager.executeQuery(roleQuery, rs -> {
+                String role = rs.getString("role_id");
+                switch (role.charAt(0)) {
+                    case 'c' -> u.roles.add(Role.CUOCO);
+                    case 'h' -> u.roles.add(Role.CHEF);
+                    case 'o' -> u.roles.add(Role.ORGANIZZATORE);
+                    case 's' -> u.roles.add(Role.SERVIZIO);
                 }
             });
         }
