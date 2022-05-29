@@ -5,8 +5,6 @@ import businesslogic.UseCaseLogicException;
 import businesslogic.menu.Menu;
 import businesslogic.menu.MenuException;
 import businesslogic.user.User;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
