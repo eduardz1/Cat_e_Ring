@@ -3,11 +3,12 @@ package persistence;
 import com.sun.javafx.binding.StringFormatter;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class PersistenceManager {
-    private static String url = "jdbc:mysql://localhost:8889/catering?serverTimezone=UTC";
-    private static String username = "root";
-    private static String password = "root";
+    private static String url = "jdbc:mysql://localhost:3306/catering";
+    private static String username;
+    private static String password;
 
     private static int lastId;
 
@@ -19,7 +20,20 @@ public class PersistenceManager {
         input = input.replace("\t", "\\t");
         return input;
     }
+
+    private static void logIn() {
+        if(username != null && password != null) return;
+
+        System.out.println("Inserire username e password per accedere al database");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Username: ");
+        username = scanner.nextLine();
+        System.out.println("Password: ");
+        password = scanner.nextLine();
+        scanner.close();
+    }
     public static void testSQLConnection() {
+        logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users");
              ResultSet rs = ps.executeQuery()) {
@@ -34,6 +48,7 @@ public class PersistenceManager {
     }
 
     public static void executeQuery(String query, ResultHandler handler) {
+        logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = conn.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
@@ -48,6 +63,7 @@ public class PersistenceManager {
 
     public static int[] executeBatchUpdate(String parametrizedQuery, int itemNumber, BatchUpdateHandler handler) {
         int[] result = new int[0];
+        logIn();
         try (
                 Connection conn = DriverManager.getConnection(url, username, password);
                 PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS);
@@ -73,6 +89,7 @@ public class PersistenceManager {
 
     public static int executeUpdate(String update) {
         int result = 0;
+        logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
             result = ps.executeUpdate();

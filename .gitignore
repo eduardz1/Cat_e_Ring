@@ -1,7 +1,8 @@
 .vscode
+#.idea just to make it quicker
 .obsidian
 
-#diretcories
+#directories
 out
 lib
 
