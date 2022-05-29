@@ -9,8 +9,10 @@ import javafx.collections.ObservableList;
 public class TestCatERing2ef {
     public static void main(String[] args) {
         try {
-            /* System.out.println("TEST DATABASE CONNECTION");
-            PersistenceManager.testSQLConnection();*/
+            /*
+             * System.out.println("TEST DATABASE CONNECTION");
+             * PersistenceManager.testSQLConnection();
+             */
             CatERing.getInstance().getUserManager().fakeLogin("Lidia");
             System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
             Menu m = CatERing.getInstance().getMenuManager().createMenu("Menu Pinco Pallino");
@@ -29,7 +31,7 @@ public class TestCatERing2ef {
             System.out.println(m.testString());
 
             System.out.println("\nTEST MOVE ITEM");
-            CatERing.getInstance().getMenuManager().moveMenuItem(it1, antipasti,2);
+            CatERing.getInstance().getMenuManager().moveMenuItem(it1, antipasti, 2);
             CatERing.getInstance().getMenuManager().moveMenuItem(freeit, 0);
             System.out.println(m.testString());
 

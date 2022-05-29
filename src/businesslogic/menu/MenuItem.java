@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import persistence.BatchUpdateHandler;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,11 +41,9 @@ public class MenuItem {
         return id;
     }
 
-
     public String toString() {
         return description;
     }
-
 
     public String getDescription() {
         return description;
@@ -63,8 +60,6 @@ public class MenuItem {
     public void setItemRecipe(Recipe itemRecipe) {
         this.itemRecipe = itemRecipe;
     }
-
-
 
     // STATIC METHODS FOR PERSISTENCE
 
@@ -86,15 +81,17 @@ public class MenuItem {
             }
         });
     }
+
     public static void saveNewItem(int menuid, int sectionid, MenuItem mi, int pos) {
-        String itemInsert = "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES (" +
+        String itemInsert = "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES ("
+                +
                 menuid +
                 ", " +
                 sectionid +
                 ", " +
                 "'" + PersistenceManager.escapeString(mi.description) + "', " +
-                + mi.itemRecipe.getId() + ", " +
-                + pos + ");";
+                mi.itemRecipe.getId() + ", " +
+                pos + ");";
         PersistenceManager.executeUpdate(itemInsert);
 
         mi.id = PersistenceManager.getLastId();
@@ -107,14 +104,11 @@ public class MenuItem {
                 " AND " +
                 "section_id = " + sec_id +
                 " ORDER BY position";
-        PersistenceManager.executeQuery(query, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                MenuItem mi = new MenuItem();
-                mi.description = rs.getString("description");
-                result.add(mi);
-                recids.add(rs.getInt("recipe_id"));
-            }
+        PersistenceManager.executeQuery(query, rs -> {
+            MenuItem mi = new MenuItem();
+            mi.description = rs.getString("description");
+            result.add(mi);
+            recids.add(rs.getInt("recipe_id"));
         });
 
         // carico qui le ricette perché non posso innestare due connessioni al DB
@@ -124,6 +118,7 @@ public class MenuItem {
 
         return result;
     }
+
     public static void saveSection(int sec_id, MenuItem mi) {
         String upd = "UPDATE MenuItems SET section_id = " + sec_id +
                 " WHERE id = " + mi.id;

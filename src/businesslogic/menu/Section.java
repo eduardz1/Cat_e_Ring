@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import persistence.BatchUpdateHandler;
 import persistence.PersistenceManager;
-import persistence.ResultHandler;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +25,7 @@ public class Section {
         this.id = 0;
         this.name = s.name;
         this.sectionItems = FXCollections.observableArrayList();
-        for (MenuItem original: s.sectionItems) {
+        for (MenuItem original : s.sectionItems) {
             this.sectionItems.add(new MenuItem(original));
         }
     }
@@ -35,11 +34,9 @@ public class Section {
         this.sectionItems.add(mi);
     }
 
-
     public void updateItems(ObservableList<MenuItem> newItems) {
         ObservableList<MenuItem> updatedList = FXCollections.observableArrayList();
-        for (int i = 0; i < newItems.size(); i++) {
-            MenuItem mi = newItems.get(i);
+        for (MenuItem mi : newItems) {
             MenuItem prev = this.findItemById(mi.getId());
             if (prev == null) {
                 updatedList.add(mi);
@@ -54,12 +51,12 @@ public class Section {
     }
 
     private MenuItem findItemById(int id) {
-        for (MenuItem mi: sectionItems) {
-            if (mi.getId() == id) return mi;
+        for (MenuItem mi : sectionItems) {
+            if (mi.getId() == id)
+                return mi;
         }
         return null;
     }
-
 
     public int getItemPosition(MenuItem mi) {
         return this.sectionItems.indexOf(mi);
@@ -70,11 +67,11 @@ public class Section {
     }
 
     public String testString() {
-        String result = name + "\n";
-        for (MenuItem mi: sectionItems) {
-            result += "\t" + mi.toString() + "\n";
+        StringBuilder result = new StringBuilder(name + "\n");
+        for (MenuItem mi : sectionItems) {
+            result.append("\t").append(mi.toString()).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public String toString() {
@@ -97,7 +94,6 @@ public class Section {
         return sectionItems.size();
     }
 
-
     public void moveItem(MenuItem mi, int position) {
         sectionItems.remove(mi);
         sectionItems.add(position, mi);
@@ -106,7 +102,6 @@ public class Section {
     public void removeItem(MenuItem mi) {
         sectionItems.remove(mi);
     }
-
 
     // STATIC METHODS FOR PERSISTENCE
     public static void saveNewSection(int menuid, Section sec, int posInMenu) {
@@ -140,35 +135,30 @@ public class Section {
         });
 
         // salva le voci delle sezioni
-        for (Section s: sections) {
+        for (Section s : sections) {
             if (s.sectionItems.size() > 0) {
                 MenuItem.saveAllNewItems(menuid, s.id, s.sectionItems);
             }
         }
     }
 
-
     public static ObservableList<Section> loadSectionsFor(int menu_id) {
         ObservableList<Section> result = FXCollections.observableArrayList();
         String query = "SELECT * FROM MenuSections WHERE menu_id = " + menu_id +
                 " ORDER BY position";
-        PersistenceManager.executeQuery(query, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                Section s = new Section(rs.getString("name"));
-                s.id = rs.getInt("id");
-                result.add(s);
-            }
+        PersistenceManager.executeQuery(query, rs -> {
+            Section s = new Section(rs.getString("name"));
+            s.id = rs.getInt("id");
+            result.add(s);
         });
 
-        for (Section s: result) {
+        for (Section s : result) {
             // load items
             s.sectionItems = MenuItem.loadItemsFor(menu_id, s.id);
         }
 
         return result;
     }
-
 
     public static void deleteSection(int menu_id, Section s) {
         // delete items
@@ -180,13 +170,11 @@ public class Section {
         PersistenceManager.executeUpdate(secdel);
     }
 
-
     public static void saveSectionName(Section s) {
         String upd = "UPDATE MenuSections SET name = '" + PersistenceManager.escapeString(s.name) + "'" +
                 " WHERE id = " + s.id;
         PersistenceManager.executeUpdate(upd);
     }
-
 
     public static void saveItemOrder(Section s) {
         String upd = "UPDATE MenuItems SET position = ? WHERE id = ?";
@@ -198,7 +186,7 @@ public class Section {
             }
 
             @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+            public void handleGeneratedIds(ResultSet rs, int count) {
                 // no generated ids to handle
             }
         });

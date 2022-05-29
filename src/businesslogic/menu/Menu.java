@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Menu {
-    private static Map<Integer, Menu> loadedMenus = FXCollections.observableHashMap();
+    private static final Map<Integer, Menu> loadedMenus = FXCollections.observableHashMap();
     private int id;
     private String title;
     private boolean published;
     private boolean inUse;
 
-    private ObservableMap<String, Boolean> featuresMap;
+    private final ObservableMap<String, Boolean> featuresMap;
     private ObservableList<MenuItem> freeItems;
     private ObservableList<Section> sections;
 
@@ -44,7 +44,6 @@ public class Menu {
 
         this.featuresMap = FXCollections.observableHashMap();
 
-
         for (String s : menuFeatures) {
             this.featuresMap.put(s, false);
         }
@@ -61,17 +60,17 @@ public class Menu {
         this.inUse = false;
         this.owner = owner;
         this.featuresMap = FXCollections.observableHashMap();
-        for (String feat: m.featuresMap.keySet()) {
+        for (String feat : m.featuresMap.keySet()) {
             this.featuresMap.put(feat, m.featuresMap.get(feat));
         }
 
         this.sections = FXCollections.observableArrayList();
-        for (Section original: m.sections) {
+        for (Section original : m.sections) {
             this.sections.add(new Section(original));
         }
 
         this.freeItems = FXCollections.observableArrayList();
-        for (MenuItem original: m.freeItems) {
+        for (MenuItem original : m.freeItems) {
             this.freeItems.add(new MenuItem(original));
         }
 
@@ -92,32 +91,31 @@ public class Menu {
     }
 
     public String testString() {
-        String result = this.toString() + "\n";
+        StringBuilder result = new StringBuilder(this + "\n");
         for (String f : featuresMap.keySet()) {
-            result += f + ": " + featuresMap.get(f) + "\n";
+            result.append(f).append(": ").append(featuresMap.get(f)).append("\n");
         }
 
-        result += "\n";
+        result.append("\n");
         for (Section sec : sections) {
-            result += sec.testString();
-            result += "\n";
+            result.append(sec.testString());
+            result.append("\n");
         }
 
         if (freeItems.size() > 0) {
-            result += "\n" + "VOCI LIBERE:\n";
+            result.append("\nVOCI LIBERE:\n");
         }
         for (MenuItem mi : freeItems) {
-            result += "\t" + mi.toString() + "\n";
+            result.append("\t").append(mi.toString()).append("\n");
         }
 
-        return result;
+        return result.toString();
     }
 
     public String toString() {
         return title + " (autore: " + owner.getUserName() + ")," + (published ? " " : " non ") +
                 "pubblicato," + (inUse ? " " : " non ") + "in uso";
     }
-
 
     public int getId() {
         return id;
@@ -138,7 +136,6 @@ public class Menu {
         freeItems.add(new MenuItem(all[4]));
         freeItems.add(new MenuItem(all[5]));
     }
-
 
     public Section addSection(String name) {
         Section sec = new Section(name);
@@ -169,7 +166,8 @@ public class Menu {
             if (sec.getItemPosition(mi) >= 0)
                 return sec;
         }
-        if (freeItems.indexOf(mi) >= 0) return null;
+        if (freeItems.contains(mi))
+            return null;
         throw new IllegalArgumentException();
     }
 
@@ -185,11 +183,9 @@ public class Menu {
         this.title = title;
     }
 
-
     public void setPublished(boolean b) {
         published = b;
     }
-
 
     public boolean isInUse() {
         return this.inUse;
@@ -205,8 +201,7 @@ public class Menu {
 
     public void updateFreeItems(ObservableList<MenuItem> newItems) {
         ObservableList<MenuItem> updatedList = FXCollections.observableArrayList();
-        for (int i = 0; i < newItems.size(); i++) {
-            MenuItem mi = newItems.get(i);
+        for (MenuItem mi : newItems) {
             MenuItem prev = this.findItemById(mi.getId());
             if (prev == null) {
                 updatedList.add(mi);
@@ -222,15 +217,15 @@ public class Menu {
 
     private MenuItem findItemById(int id) {
         for (MenuItem mi : freeItems) {
-            if (mi.getId() == id) return mi;
+            if (mi.getId() == id)
+                return mi;
         }
         return null;
     }
 
     private void updateSections(ObservableList<Section> newSections) {
         ObservableList<Section> updatedList = FXCollections.observableArrayList();
-        for (int i = 0; i < newSections.size(); i++) {
-            Section sec = newSections.get(i);
+        for (Section sec : newSections) {
             Section prev = this.findSectionById(sec.getId());
             if (prev == null) {
                 updatedList.add(sec);
@@ -246,11 +241,11 @@ public class Menu {
 
     private Section findSectionById(int id) {
         for (Section s : sections) {
-            if (s.getId() == id) return s;
+            if (s.getId() == id)
+                return s;
         }
         return null;
     }
-
 
     public void removeSection(Section s, boolean deleteItems) {
         if (!deleteItems) {
@@ -267,12 +262,10 @@ public class Menu {
         return freeItems.size();
     }
 
-
     public void moveSection(Section sec, int position) {
         sections.remove(sec);
         sections.add(position, sec);
     }
-
 
     public void changeItemSection(MenuItem mi, Section oldsec, Section sec) {
         if (oldsec == null) {
@@ -295,8 +288,10 @@ public class Menu {
 
     public void removeItem(MenuItem mi) {
         Section sec = getSectionForItem(mi);
-        if (sec == null) freeItems.remove(mi);
-        else sec.removeItem(mi);
+        if (sec == null)
+            freeItems.remove(mi);
+        else
+            sec.removeItem(mi);
     }
 
     // STATIC METHODS FOR PERSISTENCE
@@ -346,11 +341,10 @@ public class Menu {
     public static void saveMenuFeatures(Menu m) {
         // Delete existing features if any
         String updDel = "DELETE FROM MenuFeatures WHERE menu_id = " + m.getId();
-        int ret = PersistenceManager.executeUpdate(updDel);
+        PersistenceManager.executeUpdate(updDel);
 
         featuresToDB(m);
     }
-
 
     public static void saveMenuPublished(Menu m) {
         String upd = "UPDATE Menus SET published = " + m.published +
@@ -371,12 +365,11 @@ public class Menu {
             }
 
             @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+            public void handleGeneratedIds(ResultSet rs, int count) {
                 // non ci sono id autogenerati in MenuFeatures
             }
         });
     }
-
 
     public static void deleteMenu(Menu m) {
         // delete sections
@@ -391,7 +384,6 @@ public class Menu {
         String delFeat = "DELETE FROM MenuFeatures WHERE menu_id = " + m.getId();
         PersistenceManager.executeUpdate(delFeat);
 
-
         String del = "DELETE FROM Menus WHERE id = " + m.getId();
         PersistenceManager.executeUpdate(del);
         loadedMenus.remove(m);
@@ -404,24 +396,21 @@ public class Menu {
         ArrayList<Menu> oldMenus = new ArrayList<>();
         ArrayList<Integer> oldMids = new ArrayList<>();
 
-        PersistenceManager.executeQuery(query, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                int id = rs.getInt("id");
-                if (loadedMenus.containsKey(id)) {
-                    Menu m = loadedMenus.get(id);
-                    m.title = rs.getString("title");
-                    m.published = rs.getBoolean("published");
-                    oldMids.add(rs.getInt("owner_id"));
-                    oldMenus.add(m);
-                } else {
-                    Menu m = new Menu();
-                    m.id = id;
-                    m.title = rs.getString("title");
-                    m.published = rs.getBoolean("published");
-                    newMids.add(rs.getInt("owner_id"));
-                    newMenus.add(m);
-                }
+        PersistenceManager.executeQuery(query, rs -> {
+            int id = rs.getInt("id");
+            if (loadedMenus.containsKey(id)) {
+                Menu m = loadedMenus.get(id);
+                m.title = rs.getString("title");
+                m.published = rs.getBoolean("published");
+                oldMids.add(rs.getInt("owner_id"));
+                oldMenus.add(m);
+            } else {
+                Menu m = new Menu();
+                m.id = id;
+                m.title = rs.getString("title");
+                m.published = rs.getBoolean("published");
+                newMids.add(rs.getInt("owner_id"));
+                newMenus.add(m);
             }
         });
 
@@ -431,12 +420,7 @@ public class Menu {
 
             // load features
             String featQ = "SELECT * FROM MenuFeatures WHERE menu_id = " + m.id;
-            PersistenceManager.executeQuery(featQ, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    m.featuresMap.put(rs.getString("name"), rs.getBoolean("value"));
-                }
-            });
+            PersistenceManager.executeQuery(featQ, rs -> m.featuresMap.put(rs.getString("name"), rs.getBoolean("value")));
 
             // load sections
             m.sections = Section.loadSectionsFor(m.id);
@@ -446,12 +430,9 @@ public class Menu {
 
             // find if "in use"
             String inuseQ = "SELECT * FROM Services WHERE approved_menu_id = " + m.id;
-            PersistenceManager.executeQuery(inuseQ, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    // se c'è anche un solo risultato vuol dire che il menù è in uso
-                    m.inUse = true;
-                }
+            PersistenceManager.executeQuery(inuseQ, rs -> {
+                // se c'è anche un solo risultato vuol dire che il menù è in uso
+                m.inUse = true;
             });
         }
 
@@ -462,12 +443,8 @@ public class Menu {
             // load features
             m.featuresMap.clear();
             String featQ = "SELECT * FROM MenuFeatures WHERE menu_id = " + m.id;
-            PersistenceManager.executeQuery(featQ, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    m.featuresMap.put(rs.getString("name"), rs.getBoolean("value"));
-                }
-            });
+            PersistenceManager.executeQuery(featQ,
+                    rs -> m.featuresMap.put(rs.getString("name"), rs.getBoolean("value")));
 
             // load sections
             m.updateSections(Section.loadSectionsFor(m.id));
@@ -478,16 +455,13 @@ public class Menu {
             // find if "in use"
             String inuseQ = "SELECT * FROM Services WHERE approved_menu_id = " + m.id +
                     " OR " +
-                    "proposed_menu_id = "+ m.id;
-            PersistenceManager.executeQuery(inuseQ, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    // se c'è anche un solo risultato vuol dire che il menù è in uso
-                    m.inUse = true;
-                }
+                    "proposed_menu_id = " + m.id;
+            PersistenceManager.executeQuery(inuseQ, rs -> {
+                // se c'è anche un solo risultato vuol dire che il menù è in uso
+                m.inUse = true;
             });
         }
-        for (Menu m: newMenus) {
+        for (Menu m : newMenus) {
             loadedMenus.put(m.id, m);
         }
         return FXCollections.observableArrayList(loadedMenus.values());
@@ -503,12 +477,11 @@ public class Menu {
             }
 
             @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+            public void handleGeneratedIds(ResultSet rs, int count) {
                 // no generated ids to handle
             }
         });
     }
-
 
     public static void saveFreeItemOrder(Menu m) {
         String upd = "UPDATE MenuItems SET position = ? WHERE id = ?";
@@ -520,7 +493,7 @@ public class Menu {
             }
 
             @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+            public void handleGeneratedIds(ResultSet rs, int count) {
                 // no generated ids to handle
             }
         });

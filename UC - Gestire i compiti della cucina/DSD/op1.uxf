@@ -24,8 +24,8 @@ SummarySheetReceiver
 </panel_attributes><additional_attributes>10;10;10;1090</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>1190</y><w>810</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 updatSummarySheetCreated(s)
 </panel_attributes><additional_attributes>790;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1450</x><y>1210</y><w>20</w><h>20</h></coordinates><panel_attributes>
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>320</x><y>90</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>650</x><y>1140</y><w>20</w><h>110</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>190</x><y>280</y><w>1320</w><h>1020</h></coordinates><panel_attributes>ALT
-[!user.isChef()]
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>320</x><y>90</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>650</x><y>1140</y><w>20</w><h>110</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>140</x><y>280</y><w>1370</w><h>1020</h></coordinates><panel_attributes>ALT
+[currentSheet == null || !user.isChef()]
 --
 
 
@@ -41,7 +41,7 @@ notifySummarySheetAdded(s)</panel_attributes><additional_attributes>10;10;70;10;
 *1 createSummarySheet*
 lw=0
 fontsize=20
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>200</x><y>361</y><w>150</w><h>30</h></coordinates><panel_attributes>[event.assignedTo != user]
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>160</x><y>361</y><w>150</w><h>30</h></coordinates><panel_attributes>[event.assignedTo != user]
 fontsize=11</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>770</x><y>681</y><w>670</w><h>320</h></coordinates><panel_attributes>for each
 procedure in service.getMenu()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>740</y><w>30</w><h>180</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>760</y><w>240</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 this.itermProcedure = procedure</panel_attributes><additional_attributes>10;50;50;50;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>820</y><w>180</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-

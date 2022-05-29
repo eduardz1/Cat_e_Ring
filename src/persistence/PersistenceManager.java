@@ -1,12 +1,10 @@
 package persistence;
 
-import com.sun.javafx.binding.StringFormatter;
-
 import java.sql.*;
 import java.util.Scanner;
 
 public class PersistenceManager {
-    private static String url = "jdbc:mysql://localhost:3306/catering";
+    private static final String url = "jdbc:mysql://localhost:3306/catering";
     private static String username;
     private static String password;
 
@@ -14,7 +12,7 @@ public class PersistenceManager {
 
     public static String escapeString(String input) {
         input = input.replace("\\", "\\\\");
-        input = input.replace("\'", "\\\'");
+        input = input.replace("'", "\\'");
         input = input.replace("\"", "\\\"");
         input = input.replace("\n", "\\n");
         input = input.replace("\t", "\\t");
@@ -22,7 +20,8 @@ public class PersistenceManager {
     }
 
     private static void logIn() {
-        if(username != null && password != null) return;
+        if (username != null && password != null)
+            return;
 
         System.out.println("Inserire username e password per accedere al database");
         Scanner scanner = new Scanner(System.in);
@@ -32,11 +31,12 @@ public class PersistenceManager {
         password = scanner.nextLine();
         scanner.close();
     }
+
     public static void testSQLConnection() {
         logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users");
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users");
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("username");
@@ -50,8 +50,8 @@ public class PersistenceManager {
     public static void executeQuery(String query, ResultHandler handler) {
         logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 handler.handle(rs);
             }
@@ -66,8 +66,7 @@ public class PersistenceManager {
         logIn();
         try (
                 Connection conn = DriverManager.getConnection(url, username, password);
-                PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS);
-        ) {
+                PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS)) {
             for (int i = 0; i < itemNumber; i++) {
                 handler.handleBatchItem(ps, i);
                 ps.addBatch();
@@ -91,7 +90,7 @@ public class PersistenceManager {
         int result = 0;
         logIn();
         try (Connection conn = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
+                PreparedStatement ps = conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
             result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
