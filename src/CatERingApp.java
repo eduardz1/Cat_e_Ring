@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CatERingApp extends Application {
 
@@ -15,7 +16,7 @@ public class CatERingApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ui/main.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/main.fxml")));
             primaryStage.setTitle("Cat&Ring");
             primaryStage.setScene(new Scene(root, 1080, 720));
             primaryStage.show();

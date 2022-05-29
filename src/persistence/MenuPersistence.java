@@ -48,7 +48,8 @@ public class MenuPersistence implements MenuEventReceiver {
     @Override
     public void updateSectionDeleted(Menu m, Section s, boolean itemsDeleted) {
         Section.deleteSection(m.getId(), s);
-        if (!itemsDeleted) MenuItem.saveAllNewItems(m.getId(), 0, s.getItems());
+        if (!itemsDeleted)
+            MenuItem.saveAllNewItems(m.getId(), 0, s.getItems());
     }
 
     @Override
@@ -87,6 +88,7 @@ public class MenuPersistence implements MenuEventReceiver {
         MenuItem.removeItem(mi);
         if (sec != null) {
             Section.saveItemOrder(sec);
-        } else Menu.saveFreeItemOrder(m);
+        } else
+            Menu.saveFreeItemOrder(m);
     }
 }

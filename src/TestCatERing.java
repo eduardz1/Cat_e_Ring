@@ -13,8 +13,10 @@ import java.util.Map;
 public class TestCatERing {
     public static void main(String[] args) {
         try {
-            /* System.out.println("TEST DATABASE CONNECTION");
-            PersistenceManager.testSQLConnection();*/
+            /*
+             * System.out.println("TEST DATABASE CONNECTION");
+             * PersistenceManager.testSQLConnection();
+             */
             System.out.println("TEST FAKE LOGIN");
             CatERing.getInstance().getUserManager().fakeLogin("Lidia");
             System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
@@ -30,9 +32,9 @@ public class TestCatERing {
 
             System.out.println("\nTEST GET EVENT INFO");
             ObservableList<EventInfo> events = CatERing.getInstance().getEventManager().getEventInfo();
-            for (EventInfo e: events) {
+            for (EventInfo e : events) {
                 System.out.println(e);
-                for (ServiceInfo s: e.getServices()) {
+                for (ServiceInfo s : e.getServices()) {
                     System.out.println("\t" + s);
                 }
             }
