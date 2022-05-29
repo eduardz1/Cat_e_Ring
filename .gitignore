@@ -1,6 +1,10 @@
 .vscode
 .obsidian
 
+#diretcories
+out
+lib
+
 # LaTeX
 *.aux
 *.glo

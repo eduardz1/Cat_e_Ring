@@ -1,7 +1,15 @@
 package businesslogic.recipe;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class RecipeManager {
-    private ArrayList<Recipe> recipes;
+
+    public RecipeManager() {
+        Recipe.loadAllRecipes();
+    }
+
+    public ObservableList<Recipe> getRecipes() {
+        return FXCollections.unmodifiableObservableList(Recipe.getAllRecipes());
+    }
 }
