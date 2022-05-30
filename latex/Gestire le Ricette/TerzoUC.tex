@@ -1,0 +1,83 @@
+\documentclass[letterpaper, italian]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{csvsimple}
+\usepackage[hidelinks, unicode]{hyperref}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{contour}
+\usepackage{ulem}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{float} 
+\usepackage{xcolor}
+\usepackage{rotating} % to insert figures rotate 90 degrees
+\usepackage{typearea}
+\usepackage[letterpaper]{geometry}
+% \usepackage{titlesec} doesn't work with KOMA
+
+\renewcommand{\ULdepth}{1.8pt} % underline depth
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{% better underline
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\newcommand{\uselandscape}{% to insert landscape pages inside portrait document
+  \cleardoublepage
+  \KOMAoptions{paper=landscape}%
+  \recalctypearea
+  \areaset{2.0\textwidth}{2.0\textheight}% adjust here: \areaset{<text body width>}{<text body height>}
+}
+
+\AtBeginDocument{%
+  \storeareas\normalpapersize
+}
+\BeforeRestoreareas{\cleardoublepage}
+
+\renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}} % removes reference of \chapter to avoid "0."
+% \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it} does not work with KOMA :(
+
+\title{
+    \leavevmode{\includegraphics[width=0.8\textwidth]{../resources/img/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
+    Cat \& Ring \\
+    \large Gestire le Ricette (e le Preparazioni)
+}
+\author{Eduard Antonovic Occhipinti, Riccardo Cardona}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\part{Requisiti}
+\chapter{UC Dettagliato}
+\input{UC Dettagliato.tex}
+
+\chapter{Modello di Dominio e SSD}
+\uselandscape
+\section{Modello di Dominio}
+\begin{figure}[H]
+      \includegraphics[width=\textwidth]{../resources/img/Domain Model.png}
+\end{figure}
+
+\newpage
+\section{Diagrammi di Sequenza di Sistema}
+
+\normalpapersize
+\chapter{Contratti delle Operazioni}
+\input{Contratti.tex}
+
+\part{Progettazione}
+\uselandscape
+\chapter{Domain Class Diagram}
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{../resources/img/Domain Class Diagram.png}
+\end{figure}
+\chapter{Design Sequence Diagram}
+
+\end{document}

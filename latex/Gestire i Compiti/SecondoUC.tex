@@ -41,7 +41,7 @@
 % \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
 
 \title{
-    \leavevmode{\includegraphics[width=0.8\textwidth]{resources/img/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
+    \leavevmode{\includegraphics[width=0.8\textwidth]{../resources/img/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
     Cat \& Ring \\
     \large Gestire i Compiti della Cucina
 }
@@ -55,28 +55,30 @@
 
 \part{Requisiti}
 \chapter{UC Dettagliato}
-
-\section*{Informazioni generali}
-\textbf{Nome caso d'uso}{: Gestire le ricette}\newline
-\textbf{Portata}{: Sistema}\newline
-\textbf{Livello}{: Obiettivo utente}\newline
-\textbf{Attore primario}{: Cuoco}\newline
-\textbf{Parti Interessate}\newline
-\textbf{Pre-condizioni}{: L'attore deve essere autenticato come Cuoco}\newline
-\textbf{Garanzie di successo o post-condizioni}{: La procedura di cucina è salvata}
-
-\section*{Scenario Principale di Successo}
+\input{UC Dettagliato.tex}
 
 \chapter{Modello di Dominio e SSD}
+\uselandscape
 \section{Modello di Dominio}
+\begin{figure}[H]
+      \includegraphics[width=\textwidth]{../resources/img/Domain Model.png}
+\end{figure}
+
+\newpage
 \section{Diagrammi di Sequenza di Sistema}
 
+\normalpapersize
 \chapter{Contratti delle Operazioni}
-\textbf{Pre-condizione generale}{: l'utente è identificato come Chef}\textit{h}
+\input{Contratti.tex}
 
 \part{Progettazione}
+\uselandscape
 \chapter{Domain Class Diagram}
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{../resources/img/Domain Class Diagram.png}
+\end{figure}
 \chapter{Design Sequence Diagram}
 
+\normalpapersize
 \chapter{Implementazione}
 \end{document}

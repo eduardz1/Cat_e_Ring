@@ -1,0 +1,155 @@
+\textbf{Pre-condizione generale}{: l'utente è identificato come Chef }\textit{h}
+
+\section[creaFoglioRiepilogativo]{\texorpdfstring{creaFoglioRiepilogativo(\myuline{servizio}: Servizio, \myuline{evento}: Evento)}}\label{h.n5k8dzisnnko}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {evento}{ }\textbf{prevede }{servizio}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {{[}\textbf{Se }{evento}{ è }\textbf{assegnato} a \textit{h}{]}}
+	\begin{itemize}[label=$-$, noitemsep]
+	\item {crea un'istanza }\textit{f}{ di FoglioRiepilogativo}
+	\item \myuline{servizio}{ è }\textbf{riferito}{ a }\textit{f}
+	\item {dato un Menu }\textit{m}{ usato in }\myuline{servizio}{:}
+		\begin{itemize}[label=$-$, noitemsep]
+			\item {per ogni Procedura }\textit{pro}{ che }\textbf{serve per }\textit{m}
+				  { è stata creata una istanza }\textit{a}{ di Assegnamento, }
+				  \textit{a}\textbf{ riguarda }\textit{pro}{ e }\textit{f }\textbf{contiene}\textit{ a}
+			\item \textit{a.completato}{ = no}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\subsection[scegliFoglioRiepilogativo]{\texorpdfstring{scegliFoglioRiepilogativo(\myuline{foglio}: FoglioRiepilogativo)}}\label{h.mtur9qf1842f}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {il servizio }\textit{s}{, che si }\textbf{riferisce}{ a }\myuline{foglio}
+		  {, }\textbf{prevede}{ un Evento e che è }\textbf{assegnato}{ a }\textit{h}
+\end{itemize}
+\textbf{Post-condizioni: }{-}
+
+\section[aggiungiProcedura]{\texorpdfstring{aggiungiProcedura(\myuline{procedura}: Procedura)}}\label{h.dhz9dhqjmi4g}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {è stata creata una istanza }\textit{a}{ di Assegnamento}
+	\item \textit{a }\textbf{riguarda}{ la procedura }\textit{pro}
+	\item \textit{f}{ }\textbf{contiene}{ }\textit{a}
+\end{itemize}
+
+\subsection[eliminaProcedura]{\texorpdfstring{eliminaProcedura(\myuline{procedura}: Procedura)}}\label{h.s4zynktv9olt}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {per ogni }{Assegnamento}\textit{ a }\textbf{contenuto }{in }\textit{f}
+		  { con }\textit{a}{ che }\textbf{riguarda }\myuline{procedura}{, le istanze }\textit{a}{ sono eliminate}
+\end{itemize}
+
+\section[riordinaElencoAssegnamenti]{\texorpdfstring{riordinaElencoAssegnamenti(\myuline{ordinamento})}}\label{h.rhtfki5g8w24}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+\end{itemize}
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+	\item {l'associazione }\textbf{contiene }{tra }\textit{f}{ e gli Assegnamenti è modificata
+		  in accordo a }\myuline{ordinamento}
+\end{itemize}
+
+\section[consultaTabelloneTurni]{\texorpdfstring{consultaTabelloneTurni()}}\label{h.w08r7f8npm2z}
+\textbf{Pre-condizioni: }{-}\newline
+\textbf{Post-condizioni: }{-}
+
+\section[generaAssegnamento]{\texorpdfstring{generaAssegnamento(\myuline{assegnamento}{:
+			  Assegnamento, }\myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
+			  testo, }\myuline{dosi}{?: testo, }\myuline{continuazione}?: Assegnamento)}}\label{h.3umm3owhjhiq}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
+		  { si }\textbf{svolge}{ in }\myuline{turno}
+	\item {{[}}\textbf{Se }\myuline{cuoco}{ è specificato{]}}
+	\begin{itemize}[label=$-$, noitemsep]
+		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }
+			  \myuline{turno}{{]} }\myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
+	\end{itemize}
+	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
+	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
+	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato e }\textbf{se }
+		  \myuline{continuazione}{ != }\myuline{assegnamento}{]}
+		\begin{itemize}[label=$-$, noitemsep]
+			\item \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
+		\end{itemize}
+\end{itemize}
+
+\subsection[specificaAssegnamentoCompletato]{\texorpdfstring{specificaAssegnamentoCompletato(\myuline{assegnamento}: Assegnamento)}}\label{h.c49s37d45gzr}
+\textbf{Pre-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
+\end{itemize}
+\textbf{Post-condizioni: }
+\begin{itemize}[label=$-$, noitemsep]
+	\item \myuline{assegnamento.completato}{ = sì}
+\end{itemize}
+
+\subsection[modificaAssegnamento]{\texorpdfstring{modificaAssegnamento(\myuline{assegnamento}:
+			  Assegnamento, \myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
+			  testo, }\myuline{dosi}?: testo)}}\label{h.vw6rupgvnaur}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
+		  { si }\textbf{svolge}{ in }\myuline{turno}
+	\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ è specificato{]}}
+	\begin{itemize}[label=$-$, noitemsep]
+		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }\myuline{turno}{{]} }
+			  \myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
+	\end{itemize}
+	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
+	\item {{[}}\textbf{Se}{ }\myuline{tempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
+\end{itemize}
+
+\subsection[eliminaAssegnamento]{\texorpdfstring{eliminaAssegnamento(\myuline{assegnamento}: Assegnamento)}}\label{h.g9i7rk2xvxb7}
+\textbf{Pre-condizioni:  }
+\begin{itemize}[label=$-$, noitemsep]
+	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
+	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item
+		  {{[}}\textbf{Se esiste}{ un Turno }\textit{t}{ }{tale che}{ }\myuline{assegnamento}{ è
+		  }\textbf{svolto }{in }\textit{t}{ e }\textbf{Se esiste}{ un Cuoco }\textit{c}{ }{tale
+		  che}{ }\myuline{assegnamento}{ è }\textbf{eseguito}{ da }\textit{c}{{]} l'associazione }\textbf{lavora
+		  in}{ tra }\textit{c}{ e }\textit{t}{ è stata eliminata }
+	\item
+		  {{[}\textbf{Se esiste} un un assegnamento }\textit{a1}{ che è }\textbf{continuato }{da
+		  }\myuline{assegnamento }{ed esiste un assegnamento }\textit{a2}{ che è }\textbf{continuazione
+		  }{di }\myuline{assegnamento}{{]} l'associazione è }\textbf{continuazione }{di tra }\textit{a1}
+		  {e }\myuline{assegnamento}{ è eliminata, l'associazione è }\textbf{continuazione
+		  }{di tra }\textit{a2}{ e }\myuline{assegnamento}{ è eliminata }\textit{a2}{ è
+		  }\textbf{continuazione }{di }\textit{a1}
+	\item
+		  {[}\textbf{Se esiste}{ un assegnamento }\textit{a1}{ che che è }\textbf{continuato}{ da
+		  }\myuline{assegnamento}{{]}   l'associazione è }\textbf{continuazione }{di }\textit{a1}{ e
+		  }\myuline{assegnamento}{ è eliminata}
+\end{itemize}
+
+\textit{(controllare se eliminando un' istanza nel programma viene associato
+null)}
