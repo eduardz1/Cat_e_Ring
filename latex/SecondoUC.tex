@@ -12,7 +12,8 @@
 \usepackage{booktabs}
 \usepackage{float}
 \usepackage{xcolor}
-% \usepackage[landscape,twocolumn]{geometry} here if we want to make it landscape later
+\usepackage{typearea}
+\usepackage[letterpaper]{geometry}
 
 \renewcommand{\ULdepth}{1.8pt}
 \contourlength{0.8pt}
@@ -22,12 +23,25 @@
   \llap{\contour{white}{#1}}%
 }
 
+\newcommand{\uselandscape}{% to insert landscape pages inside portrait document
+  \cleardoublepage
+  \KOMAoptions{paper=landscape}%
+  \recalctypearea
+  \areaset{2.0\textwidth}{2.0\textheight}% adjust here: \areaset{<text body width>}{<text body height>}
+}
+
+\AtBeginDocument{%
+  \storeareas\normalpapersize
+}
+\BeforeRestoreareas{\cleardoublepage}
+
+
 \renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}} % removes reference of \chapter to avoid "0."
 % \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
 
 \title{
-    \leavevmode{\includegraphics[width=0.8\textwidth]{resources/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
+    \leavevmode{\includegraphics[width=0.8\textwidth]{resources/img/Universita-degli-studi-di-torino-logo.png}\newline\newline}\\
     Cat \& Ring \\
     \large Gestire i Compiti della Cucina
 }
