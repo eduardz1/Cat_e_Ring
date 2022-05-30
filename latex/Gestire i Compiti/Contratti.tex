@@ -12,6 +12,7 @@
 	\item {crea un'istanza }\textit{f}{ di FoglioRiepilogativo}
 	\item \myuline{servizio}{ è }\textbf{riferito}{ a }\textit{f}
 	\item {dato un Menu }\textit{m}{ usato in }\myuline{servizio}{:}
+	\setlist{nolistsep}
 		\begin{itemize}[label=$-$, noitemsep]
 			\item {per ogni Procedura }\textit{pro}{ che }\textbf{serve per }\textit{m}
 				  { è stata creata una istanza }\textit{a}{ di Assegnamento, }
@@ -80,6 +81,7 @@
 	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
 		  { si }\textbf{svolge}{ in }\myuline{turno}
 	\item {{[}}\textbf{Se }\myuline{cuoco}{ è specificato{]}}
+	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
 		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }
 			  \myuline{turno}{{]} }\myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
@@ -87,10 +89,7 @@
 	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
 	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
 	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato e }\textbf{se }
-		  \myuline{continuazione}{ != }\myuline{assegnamento}{]}
-		\begin{itemize}[label=$-$, noitemsep]
-			\item \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
-		\end{itemize}
+		  \myuline{continuazione}{ != }\myuline{assegnamento}{]} \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
 \end{itemize}
 
 \subsection[specificaAssegnamentoCompletato]{\texorpdfstring{specificaAssegnamentoCompletato(\myuline{assegnamento}: Assegnamento)}}\label{h.c49s37d45gzr}
@@ -117,6 +116,7 @@
 	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
 		  { si }\textbf{svolge}{ in }\myuline{turno}
 	\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ è specificato{]}}
+	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
 		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }\myuline{turno}{{]} }
 			  \myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
