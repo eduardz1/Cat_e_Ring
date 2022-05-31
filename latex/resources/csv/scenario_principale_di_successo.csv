@@ -1,6 +1,6 @@
 {#},Attore,Sistema
 1,Crea una nuova procedura di cucina passandogli un nome specificando se la procedura è una ricetta o una preparazione,Registra i passi della procedura
-2,Opzionalmente aggiunge uno o più passi alla procedura,Registra i passi della procedura
+2,Opzionalmente aggiunge uno o più passi alla procedura e opzionalmente specificando le ripetizioni,Registra i passi della procedura
 { },\textit{Se desidera creare una variante di una ricetta torna al passo 1},
 3,Annota gli ingredienti con opzionalmente le dosi,
 { },\textit{Ripete finché non è soddisfatto},

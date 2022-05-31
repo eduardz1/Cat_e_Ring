@@ -1,4 +1,3 @@
 {#},Attore,Sistema
-2a.1,Opzionalmente crea un raggruppamento di passi,Registra il nuovo raggruppamento di passi
-2a.2,Opzionalmente aggiunge uno o più passi nel raggruppamento,Registra i passi all’interno del raggruppamento appena creato
+2a.1,Opzionalmente crea un raggruppamento di passi dati uno o più passi semplici da inserire nella procedure e opzionalmente specificando le ripetizioni,Registra il nuovo raggruppamento di passi nella procedura
 { },\textit{Se desidera creare una variante di una ricetta torna al passo 1},
