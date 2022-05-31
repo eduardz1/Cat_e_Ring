@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class PersistenceManager {
-    private static final String url = "jdbc:mysql://localhost:3306/catering";
+    private static final String url = "jdbc:mysql://localhost:3306/catering?serverTimezone=UTC";
     private static String username;
     private static String password;
 
@@ -33,12 +33,14 @@ public class PersistenceManager {
         if (console != null) { // if running on a terminal instead of an IDE
             password = new String(console.readPassword("Password: "));
         } else {
-            System.out.println("Password: ");
+           System.out.println("Password: ");
             password = scanner.nextLine();
         }
 
         scanner.close();
     }
+
+
 
     public static void testSQLConnection() {
         logIn();

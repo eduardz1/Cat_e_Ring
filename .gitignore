@@ -32,4 +32,8 @@ lib
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.class
 
+Cat_e_Ring.iml
+CatERing.iml
+CatERing.iml
