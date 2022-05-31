@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
   <help_text>Space for diagram notes</help_text>
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>320</x>
+      <x>333</x>
       <y>0</y>
-      <w>60</w>
-      <h>110</h>
+      <w>54</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Cuoco</panel_attributes>
     <additional_attributes/>
@@ -16,10 +16,10 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>910</x>
-      <y>10</y>
-      <w>110</w>
-      <h>50</h>
+      <x>864</x>
+      <y>9</y>
+      <w>99</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Sistema</panel_attributes>
     <additional_attributes/>
@@ -27,32 +27,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>60</y>
-      <w>30</w>
+      <x>351</x>
+      <y>54</y>
+      <w>27</w>
       <h>1170</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1280.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>50</y>
-      <w>30</w>
-      <h>1170</h>
+      <x>900</x>
+      <y>45</y>
+      <w>27</w>
+      <h>1215</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1330.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>200</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>153</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
 1. CreaProcedura(nome, Preparazione/Ricetta)
@@ -62,10 +62,36 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>240</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>180</y>
+      <w>576</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;
+procedura registrata
+fg=#9b9b9b</panel_attributes>
+    <additional_attributes>620.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>216</y>
+      <w>576</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+2. aggiungePasso(descrizione, preparabile in anticipo?)
+fg=#9b9b9b</panel_attributes>
+    <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>252</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok
@@ -73,74 +99,48 @@ fg=#9b9b9b</panel_attributes>
     <additional_attributes>620.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>297</x>
+      <y>207</y>
+      <w>675</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>loop
+fg=#9b9b9b</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>310</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>342</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-2. aggiungePasso(descrizione, preparabile in anticipo?, ripetizioni?)</panel_attributes>
+3. aggiungiIngrediente(ingrediente, dosi?)</panel_attributes>
     <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>350</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>369</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok</panel_attributes>
     <additional_attributes>620.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>300</x>
-      <y>300</y>
-      <w>690</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>loop
-fg=#fcdc00</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>640</y>
-      <w>640</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;
-3. aggiungiIngrediente(ingrediente, dosi?)
-fg=#9b9b9b</panel_attributes>
-    <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>340</x>
-      <y>680</y>
-      <w>640</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;&gt;
-ok
-fg=#9b9b9b</panel_attributes>
-    <additional_attributes>620.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>340</x>
-      <y>730</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>576</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
 4. consultaRicettario()
@@ -150,10 +150,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>760</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>603</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ricettario
@@ -163,22 +163,22 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>270</x>
-      <y>180</y>
-      <w>800</w>
-      <h>450</h>
+      <x>288</x>
+      <y>153</y>
+      <w>693</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>loop
-fg=#fcdc00</panel_attributes>
+fg=#9b9b9b</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>260</x>
-      <y>150</y>
-      <w>810</w>
-      <h>670</h>
+      <x>279</x>
+      <y>126</y>
+      <w>711</w>
+      <h>531</h>
     </coordinates>
     <panel_attributes>loop
 fg=#fcdc00</panel_attributes>
@@ -187,10 +187,10 @@ fg=#fcdc00</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>840</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>675</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
 5. aggiungiPrepazioneComeIngrediente(Preparazione)
@@ -200,10 +200,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>870</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>702</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok
@@ -213,36 +213,23 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>930</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>756</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-6. modificaPasso(Passo)
+6. modificaPasso(Passo, descrizione)
 fg=#9b9b9b</panel_attributes>
     <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>280</x>
-      <y>640</y>
-      <w>750</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>loop
-fg=#9b9b9b
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>280</x>
-      <y>730</y>
-      <w>750</w>
-      <h>80</h>
+      <x>297</x>
+      <y>576</y>
+      <w>675</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>optional
 fg=#9b9b9b</panel_attributes>
@@ -251,10 +238,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>280</x>
-      <y>830</y>
-      <w>750</w>
-      <h>80</h>
+      <x>297</x>
+      <y>666</y>
+      <w>675</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>optional
 fg=#9b9b9b</panel_attributes>
@@ -263,10 +250,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>280</x>
-      <y>920</y>
-      <w>750</w>
-      <h>80</h>
+      <x>297</x>
+      <y>747</y>
+      <w>675</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>optional
 fg=#9b9b9b</panel_attributes>
@@ -275,10 +262,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>960</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>783</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 passo modificato
@@ -288,10 +275,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>280</x>
-      <y>1010</y>
-      <w>750</w>
-      <h>80</h>
+      <x>297</x>
+      <y>828</y>
+      <w>675</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>optional
 fg=#9b9b9b</panel_attributes>
@@ -300,10 +287,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>1020</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>837</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
 7. dettagliaProcedura(annotazioni, porzioni?, tAttività?, tTotale?, tUltimazione?)
@@ -313,10 +300,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>1050</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>864</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok
@@ -326,10 +313,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>250</x>
-      <y>120</y>
-      <w>830</w>
-      <h>980</h>
+      <x>270</x>
+      <y>99</y>
+      <w>738</w>
+      <h>810</h>
     </coordinates>
     <panel_attributes>loop
 fg=#fcdc00</panel_attributes>
@@ -338,10 +325,10 @@ fg=#fcdc00</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>1110</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>909</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
 8. pubblica(nome?)
@@ -351,10 +338,10 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>1140</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>945</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok
@@ -364,23 +351,31 @@ fg=#9b9b9b</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>280</x>
-      <y>270</y>
-      <w>780</w>
-      <h>350</h>
+      <x>288</x>
+      <y>315</y>
+      <w>693</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>loop
+fg=#fcdc00
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>333</x>
+      <y>324</y>
+      <w>639</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>alt
+
 --
 
 
 
-
-
-
 -.
-
-
-
 
 
 
@@ -393,22 +388,22 @@ layer=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>420</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>414</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-2a.1. CreaRaggruppametoPassi(Passi, preparabile in anticipo?, ripetizioni?)</panel_attributes>
+3a.1 modificaIngrediente (ingrediente, dosi)</panel_attributes>
     <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>460</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>441</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok</panel_attributes>
@@ -417,49 +412,25 @@ ok</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>530</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>477</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-2b.1. CreaVariantePassi(Passi, preparabie in anticipo?)</panel_attributes>
+3b.1 EliminaIngrediente (ingrediente)</panel_attributes>
     <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>580</y>
-      <w>640</w>
-      <h>40</h>
+      <x>351</x>
+      <y>513</y>
+      <w>576</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;
 ok</panel_attributes>
     <additional_attributes>620.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>290</x>
-      <y>410</y>
-      <w>710</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>loop
-fg=#fcdc00</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>290</x>
-      <y>520</y>
-      <w>700</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>loop
-fg=#fcdc00</panel_attributes>
-    <additional_attributes/>
   </element>
 </diagram>
