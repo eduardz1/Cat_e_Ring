@@ -65,7 +65,7 @@
 	  }\textbf{riguarda}{~nessun Assegnamento e non }\textbf{serve }{per nessun Menù}
 	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
-		\item {{[}}\textbf{Se}{~}\myuline{procedura.pubblicato}{~= si{]} }\myuline{procedura.pubblicato}{~= no}
+		\item {{[}}\textbf{Se}{~}\myuline{procedura.pubblicato}{~= sì{]} }\myuline{procedura.pubblicato}{~= no}
 	\end{itemize}
 \end{itemize}
 
@@ -87,32 +87,55 @@
 \end{itemize}
 
 \newpage
-\section[aggiungePasso]{\texorpdfstring{aggiungePasso(\myuline{descrizione}:{~Testo, }\myuline{prep}: sì/no)}}\label{h.tszsgr5cfwm3}
+\section[aggiungePasso]{\texorpdfstring{aggiungePasso(\myuline{descrizione}:{~Testo, }\myuline{prep}?: sì/no, \myuline{ripetizioni}?: numero)}}\label{h.tszsgr5cfwm3}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {è in corso la definizione di una Procedura }\textit{p}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {è stata creata una istanza }\textit{pa}{ di Passo}
+	\item {è stata creata una istanza }\textit{ps}{ di Passo semplice}
 	\item \textit{pa.descrizione = }\myuline{descrizione}
-	\item \textit{pa.preparabileInAnticipo }{= }\myuline{prep}
-	\item \textit{p}{ è }\textbf{formato }{da }\textit{pa}
+	\item {[}\textbf{Se }\myuline{prep}{ è specificato}{] } \textit{ps.preparabileInAnticipo }{= }\myuline{prep}\newline
+				\textbf{altrimenti} \textit{ps.preparabileInAnticipo }{= }\myuline{no}
+	\item {[}\textbf{Se }{ sono specificate delle }\myuline{ripetizioni}{] } \textit{ps.ripetizione }{= }\myuline{ripetizioni}
+	\item \textit{p}{ è }\textbf{formato }{da }\textit{ps}
 \end{itemize}
 
-\subsection[creaRaggruppamento]{\texorpdfstring{creaRaggruppamento (\myuline{descrizione}: testo)}}\label{a.1-crearaggruppamento-descrizione-testo}
+\subsection[creaRaggruppamentoPassi]{\texorpdfstring{creaRaggruppamentoPassi(\myuline{descrizione}: testo, \myuline{lista p1,...,pN di Passi}: Passo, \myuline{ripetizioni}?: numero)}}\label{a.1-crearaggruppamento-descrizione-testo}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {è in corso la definizione di una Procedura }\textit{p}
 \end{itemize}
-\textbf{Post-condizioni:} -
+\textbf{Post-condizioni:} 
+\begin{itemize}[label=$-$, noitemsep]
+	\item {è stata creata una istanza }\textit{pr}{ Raggruppamento}
+  \item \textit{pr.descrizione = }\myuline{descrizione}
+  \item \textit{pr}{ è }\textbf{formato}{ da tutti e soli i passi }\textit{p}{ appartenenti alla }\myuline{lista di Passi}
+  \item {[}\textbf{Se }{ sono specificate delle }\myuline{ripetizioni}{] } \textit{pr.ripetizione }{= }\myuline{ripetizioni}
+  \item \textit{p}{ è }\textbf{formato }{da }\textit{pr}
+\end{itemize}
 
-\subsection[inserisciPassoRaggruppamento]{\texorpdfstring{inserisciPassoRaggruppamento(\myuline{descrizione}: testo)}}\label{a.2-inseriscipassoraggruppamento-descrizione-testo}
+\subsection[creaVariantePassi]{\texorpdfstring{creaVariantePassi(\myuline{Passo1}: Passo, \myuline{Passo2}: Passo)}}\label{a.2-inseriscipassoraggruppamento-descrizione-testo}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {è in corso la definizione di una Procedura }\textit{p}
 \end{itemize}
-\textbf{Post-condizioni:} -
+\textbf{Post-condizioni:} 
+\begin{itemize}[label=$-$, noitemsep]
+	\item \myuline{Passo1}{ è }\textbf{variante di }\myuline{Passo 2}
+\end{itemize}
+
+
+\subsection[inserisciPassoRaggruppamento]{\texorpdfstring{CreaVariante(\myuline{descrizione}: testo)}}\label{a.3-inseriscipassoraggruppamento-descrizione-testo}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {è in corso la definizione di una Procedura }\textit{p}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item
+\end{itemize}
 
 \section[aggiungiIngrediente]{\texorpdfstring{aggiungiIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}?: testo)}}\label{h.rhtfki5g8w24}
 \textbf{Pre-condizioni:}
@@ -171,7 +194,7 @@
 \end{itemize}
 \textbf{Post-condizioni:} % TODO
 
-\section[modificaPasso]{\texorpdfstring{modificaPasso(\myuline{passo}: Passo, }\myuline{descrizione}{: testo)}}\label{h.vw6rupgvnaur}
+\section[modificaPasso]{\texorpdfstring{modificaPasso(\myuline{passo}: Passo, }\myuline{descrizione}{: testo, \myuline{prep}?: sì/no)}}\label{h.vw6rupgvnaur}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {è in corso la definizione di una Procedura }\textit{p}{ e }\textit{p }
@@ -179,7 +202,7 @@
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item \myuline{passo.descrizione}{~= }\myuline{descrizione}
+	\item \myuline{passo.descrizione}{ = }\myuline{descrizione}
 \end{itemize}
 
 \subsection[modificaOrdinePassi]{\texorpdfstring{modificaOrdinePassi(\myuline{ordinamento})}}\label{h.9ehcjm882e53}
