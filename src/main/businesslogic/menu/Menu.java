@@ -497,4 +497,13 @@ public class Menu {
             }
         });
     }
+
+    public ArrayList<MenuItem> getAllItems() { // TODO check wheter to use ArrayList or ObservableList
+        ArrayList<MenuItem> items = new ArrayList<>();
+        for (Section s : this.sections) {
+            items.addAll(s.getItems());
+        }
+        items.addAll(this.freeItems);
+        return items;
+    }
 }

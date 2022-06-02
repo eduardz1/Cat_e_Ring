@@ -48,7 +48,7 @@ fontsize=20
 +hasSection(sec: Section): boolean
 +sectionsSize(): int
 +moveSection(sec: Section, pos: int)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>700</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
++getAllItems(): ArrayList&lt;MenuItem&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>700</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 currentMenu
 m1=0..1</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>960</y><w>260</w><h>100</h></coordinates><panel_attributes>MenuItem
 --
@@ -109,7 +109,7 @@ currentUser
 m1=0..1
 </panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>60</y><w>220</w><h>500</h></coordinates><panel_attributes>lt=&lt;-
 owner
-m1=1</panel_attributes><additional_attributes>200;20;10;20;10;480</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>610</y><w>310</w><h>180</h></coordinates><panel_attributes>ProcedureManager
+m1=1</panel_attributes><additional_attributes>200;20;10;20;10;480</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>610</y><w>310</w><h>130</h></coordinates><panel_attributes>ProcedureManager
 --
 
 --
@@ -153,7 +153,7 @@ preparations
 +hasAssignment(as: Assignment): boolean
 +AssignmentCompleted(as: Assignment)
 +removeProcedure(pro: Procedure)
-+moveAssignment(as: Assignment, position: Integer)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2040</x><y>610</y><w>600</w><h>320</h></coordinates><panel_attributes>SummarySheetManager
++moveAssignment(as: Assignment, position: Integer)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2040</x><y>610</y><w>600</w><h>350</h></coordinates><panel_attributes>SummarySheetManager
 --
 
 --
@@ -163,8 +163,9 @@ preparations
 -notifyAssignmentCompleted(as: Assignment)
 -notifySummarySheetAdded(ss: SummarySheet)
 -notifyProcedureRemoved(pro: Procedure)
--notifyAssignmentRearranged(ss: SummarySheet)
+-notifyAssignmentRearranged(as: Assignment)
 -notifyAssignmentModified(assignment)
+-notifyProcedureRemoved(ss: SummarySheet, pro: Procedure)
 --
 *operation methods*
 +addProcedure(pro: Procedure)
@@ -174,6 +175,7 @@ preparations
 +procedureReady(as: Assignment)
 +createSummarySheet(service: Service, event: Event): SummarySheet
 +setCurretSummarySheet(ss: SummarySheet)
++chooseSummarySheet(ss: SummarySheet) : SummarySheet
 +changeAssigmentOrder(as: Assignment, position: Integer)
 +getShiftBoard(): ArrayList&lt;Shift&gt;
 
@@ -196,7 +198,7 @@ recipes
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2080</x><y>1300</y><w>980</w><h>620</h></coordinates><panel_attributes>ShiftManagement
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2160</x><y>1370</y><w>300</w><h>100</h></coordinates><panel_attributes>ShiftManager
 --
-
+-notifyShiftRemoved(c: Cook, sh: Shift)
 --
 +isAvailable(c: Cook, s: Shift): boolean
 +getShifts(): ArrayList&lt;Shift&gt;
@@ -218,7 +220,7 @@ m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attribu
 myCook (HashMap)
 m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>120</w><h>570</h></coordinates><panel_attributes>lt=-&gt;
 selShift</panel_attributes><additional_attributes>60;10;60;550;10;550</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>180</w><h>770</h></coordinates><panel_attributes>lt=-&gt;
-selCook</panel_attributes><additional_attributes>120;10;120;750;10;750</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2130</x><y>1040</y><w>440</w><h>170</h></coordinates><panel_attributes>SummarySheetEventReceiver
+selCook</panel_attributes><additional_attributes>120;10;120;750;10;750</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2130</x><y>1020</y><w>440</w><h>190</h></coordinates><panel_attributes>SummarySheetEventReceiver
 {interface}
 --
 
@@ -228,10 +230,11 @@ selCook</panel_attributes><additional_attributes>120;10;120;750;10;750</addition
 /+updateAssignmentCompleted(ss: SummarySheet, as: Assignment)/
 /+updateSummarySheetCreated(ss: SummarySheet)/
 /+updateProcedureRemoved(ss: SummarySheet, pro: Procedure)/
-/+updateAssignmentRearranged(ss: SummarySheet)/
-/+updateAssignmentModified(SummSheet.CurrentSheet, assignment)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2300</x><y>920</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
+/+updateAssignmentRearranged(as: Assignment)/
+/+updateAssignmentModified(ss: SummSheet, as: Assignment)/
+/+updateProcedureRemoved(ss: SUmmarySheet, pro: Procedure)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2300</x><y>950</y><w>110</w><h>90</h></coordinates><panel_attributes>lt=-&gt;
 eventReceivers
-m2=0..n</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>3390</x><y>580</y><w>660</w><h>360</h></coordinates><panel_attributes>ServiceManagement
+m2=0..n</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>3390</x><y>580</y><w>660</w><h>360</h></coordinates><panel_attributes>ServiceManagement
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3410</x><y>610</y><w>300</w><h>100</h></coordinates><panel_attributes>ServiceManager
 --
 

@@ -5,5 +5,6 @@ package main.businesslogic.shift;
  */
 public interface ShiftManagerEventReceiver {
 
-  
+    void updateShiftRemoved(Cook cook, Shift shift);
+
 }

@@ -1,6 +1,5 @@
 package main.businesslogic.summarysheet;
 
-import java.security.Provider.Service;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -9,6 +8,7 @@ import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.Event;
 import main.businesslogic.menu.MenuException;
 import main.businesslogic.procedure.Procedure;
+import main.businesslogic.service.Service;
 import main.businesslogic.shift.Cook;
 import main.businesslogic.shift.Shift;
 import main.businesslogic.user.User;
@@ -25,12 +25,29 @@ public class SummarySheetManager {
         this.eventReceivers = new ArrayList<>();
     }
 
-    public void addProcedure(Procedure pro) {
-        // TODO
+    public Assignment addProcedure(Procedure pro) throws UseCaseLogicException {
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        
+        Assignment as = this.currentSheet.addAssignment(pro);
+        this.notifyProcedureAdded(as);
+        return as;
     }
 
-    public void removeProcedure(Procedure pro) {
-        // TODO
+    public void removeProcedure(Procedure pro) throws UseCaseLogicException {
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
+            throw new UseCaseLogicException("Only chefs can remove procedures");
+        }
+        if(!currentSheet.isAssigned(pro)) {
+            throw new UseCaseLogicException("Cannot remove assigned procedure");
+        }
+
+        currentSheet.removeProcedure(pro); // FIXME check return if necessary
+        this.notifyProcedureRemoved(pro);
     }
 
     public void defineAssignment(Assignment as, String quantity, Shift shift, Cook cook, LocalTime time,
@@ -84,8 +101,15 @@ public class SummarySheetManager {
     }
     // #endregion
 
-    public void procedureReady(Assignment as) {
-        // TODO
+    public void procedureReady(Assignment as) throws UseCaseLogicException{
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        if(this.currentSheet.hasAssignment(as) < 0){
+            throw new UseCaseLogicException("No assignment in current Sheet");
+        }
+        currentSheet.assignmentCompleted(as);
+        this.notifyAssignmentCompleted(as);
     }
 
     public SummarySheet createSummarySheet(Service service, Event event) throws UseCaseLogicException, SummarySheetException {
@@ -97,7 +121,7 @@ public class SummarySheetManager {
         if (event.assignedTo() != user)
             throw new SummarySheetException();
         
-        SummarySheet sheet = new SummarySheet(service, event);
+        SummarySheet sheet = new SummarySheet(service);
         this.setCurrentSummarySheet(sheet);
         this.notifySummarySheetAdded(sheet);
 
@@ -112,11 +136,36 @@ public class SummarySheetManager {
         this.currentSheet = sheet;
     }
 
-    public void changeAssignmentOrder(Assignment as, Assignment cont) {
-        // TODO
+    public void changeAssignmentOrder(Assignment as, int position) throws UseCaseLogicException {
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
+            throw new UseCaseLogicException("Only chefs can change assignment order");
+        }
+        if(currentSheet.hasAssignment(as) < 0) {
+            throw new UseCaseLogicException("Summary Sheet does not contain assignment");
+        }
+        if (position < 0 || position >= currentSheet.getAssignments().size()) {
+            throw new IllegalArgumentException();
+        }
+
+        this.currentSheet.moveAssignments(as, position);
+        this.notifyAssignmentRearranged(as);
     }
 
-    public ArrayList<Shift> getShiftBoard() {
+    public ArrayList<Shift> getShiftBoard() throws UseCaseLogicException {
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
+            throw new UseCaseLogicException("Only chefs can get shift board");
+        }
+
+        return CatERing.getInstance().getShiftManager().getShifts();
+    }
+
+    public SummarySheet chooseSummarySheet(SummarySheet sheet) {
         // TODO
         return null;
     }
@@ -147,15 +196,21 @@ public class SummarySheetManager {
         }
     }
 
-    private void notifyAssignmentRearranged(SummarySheet ss) {
+    private void notifyAssignmentRearranged(Assignment as) {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
-            eventReceiver.updateAssignmentRearranged(ss);
+            eventReceiver.updateAssignmentRearranged(as);
         }
     }
 
     private void notifyAssignmentModified(Assignment as) {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
             eventReceiver.updateAssignmentModified(currentSheet, as);
+        }
+    }
+
+    private void notifyProcedureRemoved(Procedure pro) {
+        for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
+            eventReceiver.updateProcedureRemoved(currentSheet, pro);
         }
     }
 }
