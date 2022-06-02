@@ -22,7 +22,7 @@
 \end{table}
 
 \section*{Estensioni 1}
-\begin{table}[H]\centering\caption{Estensione 1a}
+\begin{table}[H]\centering\caption*{Estensione 1a}
 \csvreader[
     tabular = |c|p{7cm}|p{4cm}|,
     respect sharp,
@@ -33,7 +33,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 1b}
+\begin{table}[H]\centering\caption*{Estensione 1b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -44,7 +44,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 1c}
+\begin{table}[H]\centering\caption*{Estensione 1c}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -56,7 +56,7 @@
 \end{table}
 
 \section*{Eccezioni 1}
-\begin{table}[H]\centering\color{red}\caption{Eccezione 1b.1a}
+\begin{table}[H]\centering\color{red}\caption*{Eccezione 1b.1a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -67,7 +67,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\color{red}\caption{Eccezione 1b.1b}
+\begin{table}[H]\centering\color{red}\caption*{Eccezione 1b.1b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -78,7 +78,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\color{red}\caption{Eccezione 1c.1a}
+\begin{table}[H]\centering\color{red}\caption*{Eccezione 1c.1a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -89,7 +89,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\color{red}\caption{Eccezione 1c.1b}
+\begin{table}[H]\centering\color{red}\caption*{Eccezione 1c.1b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -101,7 +101,7 @@
 \end{table}
 
 \section*{Estensioni 2}
-\begin{table}[H]\centering\caption{Estensione 2a}
+\begin{table}[H]\centering\caption*{Estensione 2a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -112,8 +112,19 @@
 }
 \end{table}
 
+\begin{table}[H]\centering\caption*{Estensione 2b}
+      \csvreader[
+            tabular = |c|p{7cm}|p{4cm}|,
+            respect sharp,
+            table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+            late after line = \\\hline
+      ]{../resources/csv/gestire_le_ricette/estensione2b.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii
+      }
+\end{table}
+
 \section*{Estensioni 3}
-\begin{table}[H]\centering\caption{Estensione 3a}
+\begin{table}[H]\centering\caption*{Estensione 3a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -124,7 +135,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 3b}
+\begin{table}[H]\centering\caption*{Estensione 3b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -136,7 +147,7 @@
 \end{table}
 
 \section*{Estensioni 5}
-\begin{table}[H]\centering\caption{Estensione 5a}
+\begin{table}[H]\centering\caption*{Estensione 5a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -148,7 +159,7 @@
 \end{table}
 
 \section*{Estensioni 6}
-\begin{table}[H]\centering\caption{Estensione 6a}
+\begin{table}[H]\centering\caption*{Estensione 6a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -159,7 +170,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 6b}
+\begin{table}[H]\centering\caption*{Estensione 6b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -171,7 +182,7 @@
 \end{table}
 
 \section*{Estensioni 7}
-\begin{table}[H]\centering\caption{Estensione 7a}
+\begin{table}[H]\centering\caption*{Estensione 7a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -182,7 +193,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 7b}
+\begin{table}[H]\centering\caption*{Estensione 7b}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -193,7 +204,7 @@
 }
 \end{table}
 
-\begin{table}[H]\centering\caption{Estensione 7c}
+\begin{table}[H]\centering\caption*{Estensione 7c}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,
@@ -205,7 +216,7 @@
 \end{table}
 
 \section*{Estensioni 8}
-\begin{table}[H]\centering\caption{Estensione 8a}
+\begin{table}[H]\centering\caption*{Estensione 8a}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
       respect sharp,

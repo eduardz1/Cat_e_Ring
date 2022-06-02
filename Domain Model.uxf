@@ -159,9 +159,10 @@ formato da &gt;
 {ordered}
 m2=0..n
 m1=0..n
-</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1840</x><y>870</y><w>140</w><h>70</h></coordinates><panel_attributes>Ingrediente
+</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1840</x><y>860</y><w>140</w><h>80</h></coordinates><panel_attributes>Ingrediente
 --
-dose: testo
+dose: numero
+unità di misura: testo
 nome: testo
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1370</x><y>910</y><w>490</w><h>50</h></coordinates><panel_attributes>lt=-
 &lt; compone
@@ -176,7 +177,7 @@ m2=0..n
 --
 tag: testo
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>950</y><w>120</w><h>110</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
-calssificata da v
+classificata da v
 m2=0..n
 m1=0..n</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>0</y><w>1490</w><h>980</h></coordinates><panel_attributes>lt=-
 è proprietario di &gt;
@@ -189,6 +190,7 @@ ripetizione: numero</panel_attributes><additional_attributes></additional_attrib
 --
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1760</x><y>640</y><w>190</w><h>70</h></coordinates><panel_attributes>raggruppamento
 --
+fg=#1BE1A1
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1780</x><y>810</y><w>160</w><h>70</h></coordinates><panel_attributes>lt=-
 variante di v
 m2=0..1

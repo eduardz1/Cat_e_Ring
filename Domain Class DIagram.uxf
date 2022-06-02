@@ -121,7 +121,7 @@ m1=1</panel_attributes><additional_attributes>200;20;10;20;10;480</additional_at
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1460</x><y>650</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
 m2=0..n
 Procedures
-</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2020</x><y>570</y><w>1340</w><h>660</h></coordinates><panel_attributes>SummarySheetManagement
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2010</x><y>570</y><w>1350</w><h>660</h></coordinates><panel_attributes>SummarySheetManagement
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2630</x><y>630</y><w>130</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 currentSheet
 m1=0..1</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2890</x><y>790</y><w>100</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
@@ -169,9 +169,9 @@ preparations
 *operation methods*
 +addProcedure(pro: Procedure)
 +removeProcedure(pro: Procedure)
-+defineAssignment(assignment: Assignment, c?: cook, q: String, t?: Time, s: Shift, continuation?: Assignment)
-+ModifyAssignment(assignment: Assignment, c?: cook, q: String, t?: String, s: Shift)
-+ProcedureReady(as: Assignment)
++defineAssignment(assignment: Assignment, c?: cook, q: String, t?: LocalTime, s: Shift, continuation?: Assignment)
++modifyAssignment(assignment: Assignment, c?: cook, q: String, t?: LocalTime, s: Shift)
++procedureReady(as: Assignment)
 +createSummarySheet(service: Service, event: Event): SummarySheet
 +setCurretSummarySheet(ss: SummarySheet)
 +changeAssigmentOrder(as: Assignment, position: Integer)
@@ -210,14 +210,14 @@ recipes
 -startTime: Time
 -endTime: Time
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2450</x><y>1400</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2450</x><y>1400</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
 shiftBoard
-m2=0..1</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2750</x><y>1480</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+m2=0..1</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2750</x><y>1480</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=-&gt;
 myShift
-m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2750</x><y>1670</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2750</x><y>1670</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=-&gt;
 myCook (HashMap)
-m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>120</w><h>570</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-selShift</panel_attributes><additional_attributes>60;10;60;550;10;550</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>180</w><h>770</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>120</w><h>570</h></coordinates><panel_attributes>lt=-&gt;
+selShift</panel_attributes><additional_attributes>60;10;60;550;10;550</additional_attributes></element><element><id>Relation</id><coordinates><x>2880</x><y>1070</y><w>180</w><h>770</h></coordinates><panel_attributes>lt=-&gt;
 selCook</panel_attributes><additional_attributes>120;10;120;750;10;750</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2130</x><y>1040</y><w>440</w><h>170</h></coordinates><panel_attributes>SummarySheetEventReceiver
 {interface}
 --
@@ -229,7 +229,7 @@ selCook</panel_attributes><additional_attributes>120;10;120;750;10;750</addition
 /+updateSummarySheetCreated(ss: SummarySheet)/
 /+updateProcedureRemoved(ss: SummarySheet, pro: Procedure)/
 /+updateAssignmentRearranged(ss: SummarySheet)/
-/+updateAssignmentModified(SummSheet.CurrentSheet, assignment)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2300</x><y>920</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+/+updateAssignmentModified(SummSheet.CurrentSheet, assignment)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2300</x><y>920</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
 eventReceivers
 m2=0..n</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>3390</x><y>580</y><w>660</w><h>360</h></coordinates><panel_attributes>ServiceManagement
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3410</x><y>610</y><w>300</w><h>100</h></coordinates><panel_attributes>ServiceManager
@@ -240,15 +240,15 @@ m2=0..n</panel_attributes><additional_attributes>10;10;10;120</additional_attrib
 --
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>3330</x><y>730</y><w>400</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-service</panel_attributes><additional_attributes>10;10;130;10;130;120;380;120</additional_attributes></element><element><id>Relation</id><coordinates><x>3700</x><y>650</y><w>160</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-evento</panel_attributes><additional_attributes>10;20;140;20;140;120</additional_attributes></element><element><id>Relation</id><coordinates><x>3050</x><y>930</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>3330</x><y>730</y><w>400</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
+service</panel_attributes><additional_attributes>10;10;130;10;130;120;380;120</additional_attributes></element><element><id>Relation</id><coordinates><x>3700</x><y>650</y><w>160</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
+evento</panel_attributes><additional_attributes>10;20;140;20;140;120</additional_attributes></element><element><id>Relation</id><coordinates><x>3050</x><y>930</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=-&gt;
 continuation</panel_attributes><additional_attributes>10;10;110;10;110;110;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2173</x><y>1621</y><w>310</w><h>160</h></coordinates><panel_attributes>ShiftManagerEventReceiver
 {interface}
 --
 
 --
 /+updateShiftRemoved(c: Cook, sh: Shift)/
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2310</x><y>1460</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2310</x><y>1460</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=-&gt;
 eventReceivers
 m2=0..n</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element></diagram>

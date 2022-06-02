@@ -16,6 +16,7 @@
 \usepackage{typearea}
 \usepackage[letterpaper]{geometry}
 \usepackage{lipsum}
+\usepackage{caption}
 
 \makeatletter % removes Chpater N from Chapter title without using titlesec, can be very useful in KOMA environments
 \def\@makechapterhead#1{%
@@ -55,8 +56,7 @@
 \BeforeRestoreareas{\cleardoublepage}
 
 \renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}.1} % removes reference of \chapter to avoid "0."
-\renewcommand{\thesubsubsection}{\thesubsection.2} % removes reference of \chapter to avoid "0."
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}.1}
 % \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
 
 \title{

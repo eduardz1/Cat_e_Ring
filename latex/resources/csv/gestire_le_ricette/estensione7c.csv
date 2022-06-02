@@ -1,5 +1,4 @@
 {#},Attore,Sistema
-7c.1,Opzionalmente crea una procedura passando un nome e specificando se è una ricetta o una preparazione,Registra la nuova procedura
+7c.1,Opzionalmente crea una procedura passando un nome e specificando se è una ricetta o una preparazione,Registra la nuova procedura e la salva nel ricettario
 7c.2,Opzionalmente seleziono uno o più passi da inserire nella procedura appena creata,Registra i passi della procedura
 7c.3,Opzionalmente seleziono uno o più ingredienti con relative dosi da inserire nella procedura appena creata,Registra gli ingredienti della procedura
-7c.4,Inserisci procedura nel ricettario,Registra la procedura nel ricettario

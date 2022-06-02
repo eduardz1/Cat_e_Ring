@@ -69,7 +69,7 @@
 \textbf{Post-condizioni: }{-}
 
 \section[generaAssegnamento]{\texorpdfstring{generaAssegnamento(\myuline{assegnamento}{:
-			  Assegnamento, }\myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
+			  Assegnamento, }\myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{:
 			  testo, }\myuline{dosi}{?: testo, }\myuline{continuazione}?: Assegnamento)}}\label{h.3umm3owhjhiq}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -80,16 +80,16 @@
 \begin{itemize}[label=$-$, noitemsep]
 	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
 		  { si }\textbf{svolge}{ in }\myuline{turno}
+	\item \myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
 	\item {{[}}\textbf{Se }\myuline{cuoco}{ è specificato{]}}
 	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
-		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }
-			  \myuline{turno}{{]} }\myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
+		\item {{[}}\textbf{Se}{ }\myuline{cuoco}\textbf{lavora in }
+			  \myuline{turno}{ e }\myuline{stimaTempo}{ <tuno.} {{]} }\myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
 	\end{itemize}
 	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
-	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
 	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato e }\textbf{se }
-		  \myuline{continuazione}{ != }\myuline{assegnamento}{]} \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
+		  \myuline{continuazione}{ $\neq$ }\myuline{assegnamento}{]} \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
 \end{itemize}
 
 \subsection[specificaAssegnamentoCompletato]{\texorpdfstring{specificaAssegnamentoCompletato(\myuline{assegnamento}: Assegnamento)}}\label{h.c49s37d45gzr}
@@ -104,7 +104,7 @@
 \end{itemize}
 
 \subsection[modificaAssegnamento]{\texorpdfstring{modificaAssegnamento(\myuline{assegnamento}:
-			  Assegnamento, \myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
+			  Assegnamento, \myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{:
 			  testo, }\myuline{dosi}?: testo)}}\label{h.vw6rupgvnaur}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
