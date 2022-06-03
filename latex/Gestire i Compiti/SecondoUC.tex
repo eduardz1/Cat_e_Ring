@@ -15,6 +15,8 @@
 \usepackage{typearea}
 \usepackage[letterpaper]{geometry}
 \usepackage{lipsum}
+\usepackage{makecell}
+\usepackage{caption}
 
 \makeatletter % removes Chpater N from Chapter title without using titlesec, can be very useful in KOMA environments
 \def\@makechapterhead#1{%
@@ -33,10 +35,10 @@
   }}
 \makeatother
 
-\renewcommand{\ULdepth}{1.8pt}
+\renewcommand{\ULdepth}{1.8pt} % underline depth
 \contourlength{0.8pt}
 
-\newcommand{\myuline}[1]{%
+\newcommand{\myuline}[1]{% better underline
   \uline{\phantom{#1}}%
   \llap{\contour{white}{#1}}%
 }
@@ -53,9 +55,8 @@
 }
 \BeforeRestoreareas{\cleardoublepage}
 
-
 \renewcommand{\thesection}{\arabic{section}} % removes reference of \chapter to avoid "0."
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}} % removes reference of \chapter to avoid "0."
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}.1}
 % \titleformat{\chapter}{\normalfont\huge}{\thechapter}{20pt}{\huge\it}
 
 \title{
