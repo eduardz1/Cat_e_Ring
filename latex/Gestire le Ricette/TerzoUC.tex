@@ -17,6 +17,9 @@
 \usepackage[letterpaper]{geometry}
 \usepackage{lipsum}
 \usepackage{caption}
+\usepackage{multirow}
+% \usepackage{showframe}
+\usepackage{array}
 
 \makeatletter % removes Chpater N from Chapter title without using titlesec, can be very useful in KOMA environments
 \def\@makechapterhead#1{%
@@ -81,11 +84,12 @@
 \begin{figure}[H]
       \includegraphics[width=\textwidth]{../resources/img/Domain Model.png}
 \end{figure}
-
-\newpage
-\chapter{Diagrammi di Sequenza di Sistema}
-
 \normalpapersize
+
+\clearpage
+\chapter{Diagrammi di Sequenza di Sistema}
+\input{Diagrammi di Sequenza di Sistema.tex}
+
 \chapter{Contratti delle Operazioni}
 \input{Contratti.tex}
 

@@ -8,213 +8,178 @@
 \textbf{Pre-condizioni}{: L'attore deve essere autenticato come Cuoco}\newline
 \textbf{Garanzie di successo o post-condizioni}{: La procedura di cucina è salvata}
 
-\section*{Scenario Principale di Successo}
+\small
+\section*{Scenario Principale di Successo}\addcontentsline{toc}{section}{Scenario Principale di Successo}
+\def\arraystretch{1.55}%  1 is the default, change whatever you need
+\begin{tabular}{|c|p{7cm}|p{6.5cm}|}
+      \hline\bfseries \# & \bfseries Attore                                                                                                                 & \bfseries Sistema                                         \\\hline
 
-\begin{table}[H]\centering
-\csvreader[
-    tabular = |c|p{7cm}|p{4cm}|,
-    respect sharp,
-    table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-    late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/scenario_principale_di_successo.csv}{}{
-    \csvcoli & \csvcolii & \csvcoliii
-}
+      1                  & Crea una nuova procedura di cucina passandogli un nome specificando se la procedura è una ricetta o una preparazione             & Registra la nuova procedura e la salva nel ricettario     \\\hline
+      2                  & Opzionalmente aggiunge uno o più passi alla procedura e opzionalmente specificando le ripetizioni e se è preparabile in anticipo & Registra i passi della procedura                          \\\hline
+      \multicolumn{3}{|r|}{\textit{Se desidera creare una variante di una ricetta torna al passo 1}}                                                                                                                    \\\hline
+      3                  & Annota gli ingredienti con opzionalmente le dosi                                                                                 &                                                           \\\hline
+      \multicolumn{3}{|r|}{\textit{Ripete finché non è soddisfatto}}                                                                                                                                                    \\\hline
+      4                  & Opzionalmente consulta il ricettario                                                                                             & Fornisce il ricettario                                    \\\hline
+      \multicolumn{3}{|r|}{\textit{Se desidera creare una variante di una preparazione torna al passo 1}}                                                                                                               \\\hline
+      5                  & Opzionalmente usa una preparazione del ricettario come ingrediente della procedura                                               & Registra la preparazione come ingrediente della procedura \\\hline
+      6                  & Opzionalmente modifica un passo della procedura,Registra il nuovo passo della procedura                                          &                                                           \\\hline
+      7                  & Opzionalmente dettaglia la procedura inserendo le porzioni, la tempistica e annota se può essere preparata in anticipo           & Registra le nuove informazioni alla procedura             \\\hline
+      \multicolumn{3}{|r|}{\textit{Se desidera torna al passo 2 altrimenti prosegue}}                                                                                                                                   \\\hline
+      8                  & Pubblica la procedura nel ricettario opzionalmente modificando il titolo                                                         & La procedura diventa visibile a tutti nel ricettario      \\\hline
+\end{tabular}
+
+\addcontentsline{toc}{subsection}{Estensioni 1}
+\begin{table}[H]\caption*{Estensione 1a}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+            \hline\bfseries \# & \bfseries Attore                                                                & \bfseries Sistema           \\\hline
+            1a.1               & Crea una variante di una procedura dandogli un nome riferito a quello originale & Registra la nuova procedura \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 1}
-\begin{table}[H]\centering\caption*{Estensione 1a}
-\csvreader[
-    tabular = |c|p{7cm}|p{4cm}|,
-    respect sharp,
-    table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-    late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione1a.csv}{}{
-    \csvcoli & \csvcolii & \csvcoliii
-}
+\begin{table}[H]\caption*{Estensione 1b}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+            \hline\bfseries \# & \bfseries Attore                   & \bfseries Sistema                                                                             \\\hline
+            1b.1               & Apri una procedura per modificarla & Fornisce la procedura richiesta rendendola non più visibile a tutti e utilizzabile in un menù \\\hline
+      \end{tabular}
 \end{table}
 
-\begin{table}[H]\centering\caption*{Estensione 1b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione1b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+\begin{table}[H]\caption*{Estensione 1c}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                & \bfseries Sistema                    \\\hline
+            1c.1               & Elimina una procedura esistente & Elimina una procedura dal ricettario \\\hline
+      \end{tabular}
 \end{table}
 
-\begin{table}[H]\centering\caption*{Estensione 1c}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione1c.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
-\end{table}
-
-\section*{Eccezioni 1}
+\addcontentsline{toc}{subsection}{\indent\color{red}{Eccezioni 1}}
 \begin{table}[H]\centering\color{red}\caption*{Eccezione 1b.1a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/eccezione1b1a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{5.8cm}|}
+            \hline\bfseries \# & \bfseries Attore                   & \bfseries Sistema                                  \\\hline
+            1b.1a.1            & Apri una procedura per modificarla & La procedura serve per un menù in uno in un evento \\\hline
+            \multicolumn{3}{|r|}{\textit{Termina il caso d'uso}}                                                         \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\color{red}\caption*{Eccezione 1b.1b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/eccezione1b1b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{5.8cm}|}
+            \hline\bfseries \# & \bfseries Attore                   & \bfseries Sistema                                                                                          \\\hline
+            1b.1b.1            & Apri una procedura per modificarla & La procedura non è di proprietà dell’attore che sta cercando di modificarlo pertanto non si può proseguire \\\hline
+            \multicolumn{3}{|r|}{\textit{Termina il caso d'uso}}                                                                                                                 \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\color{red}\caption*{Eccezione 1c.1a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/eccezione1c1a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{5.8cm}|}
+            \hline\bfseries \# & \bfseries Attore                & \bfseries Sistema                                  \\\hline
+            1c.1a.1            & Elimina una procedura esistente & La procedura serve per un menù in uno in un evento \\\hline
+            \multicolumn{3}{|r|}{\textit{Termina il caso d'uso}}                                                      \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\color{red}\caption*{Eccezione 1c.1b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/eccezione1c1b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{5.8cm}|}
+            \hline\bfseries \# & \bfseries Attore                & \bfseries Sistema                                                                                         \\\hline
+            1c.1b.1            & Elimina una procedura esistente & La procedura non è di proprietà dell’attore che sta cercando di eliminarlo pertanto non si può proseguire \\\hline
+            \multicolumn{3}{|r|}{\textit{Termina il caso d'uso}}                                                                                                             \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 2}
+\addcontentsline{toc}{subsection}{Estensioni 2}
 \begin{table}[H]\centering\caption*{Estensione 2a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione2a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                                                                                                                                                   & \bfseries Sistema                                         \\\hline
+            2a.1               & Opzionalmente crea un raggruppamento di passi dati uno o più passi semplici da inserire nella procedure e opzionalmente specificando le ripetizioni e se è preparabile in anticipo & Registra il nuovo raggruppamento di passi nella procedura \\\hline
+            \multicolumn{3}{|r|}{\textit{Se desidera creare una variante di una ricetta torna al passo 1}}                                                                                                                                                                      \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\caption*{Estensione 2b}
-      \csvreader[
-            tabular = |c|p{7cm}|p{4cm}|,
-            respect sharp,
-            table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-            late after line = \\\hline
-      ]{../resources/csv/gestire_le_ricette/estensione2b.csv}{}{
-            \csvcoli & \csvcolii & \csvcoliii
-      }
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                                                                                                                 & \bfseries Sistema                                          \\\hline
+            2b.1               & Opzionalmente crea una variante di un passo inserendo 2 passi da inserire nella procedura e opzionalmente indicando se è preparabile in anticipo & Registra il nuovo raggruppamento di passi per la procedura \\\hline
+            \multicolumn{3}{|r|}{\textit{Se desidera creare una variante di una ricetta torna al passo 1}}                                                                                                                                     \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 3}
+\addcontentsline{toc}{subsection}{Estensioni 3}
 \begin{table}[H]\centering\caption*{Estensione 3a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione3a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                   & \bfseries Sistema                                             \\\hline
+            3a.1               & Modifico le dosi di un ingrediente della procedura & Registro la procedura con le dosi dell’ingrediente modificato \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\caption*{Estensione 3b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione3b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                       & \bfseries Sistema                     \\\hline
+            3b.1               & Elimino un ingrediente della procedura & Elimino l’ingrediente dalla procedura \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 5}
+\addcontentsline{toc}{subsection}{Estensioni 5}
 \begin{table}[H]\centering\caption*{Estensione 5a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione5a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                       & \bfseries Sistema                                            \\\hline
+            5a.1               & Elimino una procedura come ingrediente & Elimino la procedura come ingrediente della procedura creata \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 6}
+\addcontentsline{toc}{subsection}{Estensioni 6}
 \begin{table}[H]\centering\caption*{Estensione 6a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione6a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                          & \bfseries Sistema                                  \\\hline
+            6a.1               & Opzionalmente modifico l’ordine dei passi della procedura & Registra il nuovo ordine dei passi nella procedura \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\caption*{Estensione 6b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione6b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                               & \bfseries Sistema                \\\hline
+            6b.1               & Opzionalmente elimino un passo della procedura & Elimino il passo della procedura \\\hline
+      \end{tabular}
 \end{table}
 
-\section*{Estensioni 7}
+\addcontentsline{toc}{subsection}{Estensioni 7}
 \begin{table}[H]\centering\caption*{Estensione 7a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione7a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                  & \bfseries Sistema                               \\\hline
+            7a.1               & Opzionalmente modifica i dettagli della procedura & Registra la procedura con i dettagli modificati \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\caption*{Estensione 7b}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione7b.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                      & \bfseries Sistema                     \\\hline
+            7b.1               & Opzionalmente elimina una annotazione dalla procedura & Elimina l’annotazione dalla procedura \\\hline
+      \end{tabular}
 \end{table}
 
 \begin{table}[H]\centering\caption*{Estensione 7c}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione7c.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                                                                          & \bfseries Sistema                                     \\\hline
+            7c.1               & Opzionalmente crea una procedura passando un nome e specificando se è una ricetta o una preparazione      & Registra la nuova procedura e la salva nel ricettario \\\hline
+            7c.2               & Opzionalmente seleziono uno o più passi da inserire nella procedura appena creata                         & Registra i passi della procedura                      \\\hline
+            7c.3               & Opzionalmente seleziono uno o più ingredienti con relative dosi da inserire nella procedura appena creata & Registra gli ingredienti della procedura              \\\hline
+      \end{tabular}
 \end{table}
 
+<<<<<<< HEAD
 \begin{table}[H]\centering\caption*{Estensione 7d}
 \csvreader[
       tabular = |c|p{7cm}|p{4cm}|,
@@ -227,13 +192,14 @@
 \end{table}
 
 \section*{Estensioni 8}
+=======
+\addcontentsline{toc}{subsection}{Estensioni 8}
+>>>>>>> 6491773aff0b18f7e70da2e532004b01041c1ffc
 \begin{table}[H]\centering\caption*{Estensione 8a}
-\csvreader[
-      tabular = |c|p{7cm}|p{4cm}|,
-      respect sharp,
-      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
-      late after line = \\\hline
-]{../resources/csv/gestire_le_ricette/estensione8a.csv}{}{
-      \csvcoli & \csvcolii & \csvcoliii
-}
+      \small
+      \begin{tabular}{|c|p{7cm}|p{6.24cm}|}
+            \hline\bfseries \# & \bfseries Attore                                 & \bfseries Sistema \\\hline
+            8a.1               & Conclude il lavoro senza pubblicare la procedura &                   \\\hline
+      \end{tabular}
 \end{table}
+\normalsize

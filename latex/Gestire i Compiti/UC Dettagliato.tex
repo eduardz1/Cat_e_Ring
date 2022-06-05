@@ -8,4 +8,75 @@
 \textbf{Pre-condizioni}{: L'attore deve essere autenticato come Cuoco}\newline
 \textbf{Garanzie di successo o post-condizioni}{: La procedura di cucina è salvata}
 
-\section*{Scenario Principale di Successo}
+\section*{Scenario Principale di Successo}\addcontentsline{toc}{section}{Scenario Principale di Successo}
+\def\arraystretch{1.55}
+\begin{table}[H]\centering
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.5cm}|}
+        \hline\bfseries \# & \bfseries Attore                                                                                                                                              & \bfseries Sistema                                                                                                                                               \\\hline
+        1                  & Genera il foglio riepilogativo per un servizio di un evento (di cui ha ricevuto l’incarico)                                                                   & Registra il nuovo foglio riepilogativo per il servizio specificato in modo che contenga tutte le preparazioni e ricette previste dal menù associato al servizio \\\hline
+        \multicolumn{3}{|r|}{\textit{Se desidera prosegue con il passo 2 altrimenti termina il caso d’uso}}                                                                                                                                                                                                                                                  \\\hline
+        2                  & Opzionalmente aggiunge preparazioni e ricette all’elenco delle cose da fare                                                                                   & Registra l’aggiunta di preparazioni e ricette al foglio riepilogativo                                                                                           \\\hline
+        3                  & Opzionalmente ordina l’elenco                                                                                                                                 & Registra l’ordinamento del foglio riepilogativo                                                                                                                 \\\hline
+        \multicolumn{3}{|r|}{Se vuole lavorare su più fogli riepilogativi ripete dal passo 1}                                                                                                                                                                                                                                                                \\
+        \multicolumn{3}{|r|}{Se non vuole assegnare dei compiti torna al passo 2 o termina il caso d’uso}                                                                                                                                                                                                                                                    \\\hline
+        4                  & Opzionalmente, consulta tabellone di turni                                                                                                                    & Fornisce tabellone dei turni                                                                                                                                    \\\hline
+        5                  & Assegna un compito specificando cosa (ricetta/preparazione), quando (turno) e opzionalmente chi (cuoco)                                                       & Registra nel foglio riepilogativo un nuovo assegnamento e aggiorna il tabellone dei turni di conseguenza                                                        \\\hline
+        6                  & Opzionalmente, indica una stima del tempo richiesto per lo svolgimento del compito appena assegnato, e la quantità/porzioni preparate in un dato assegnamento & Registra le informazioni fornite sul tabellone dei turni e sul foglio riepilogativo                                                                             \\\hline
+        \multicolumn{3}{|r|}{Ripete dal passo 4 sinché non è soddisfatto}                                                                                                                                                                                                                                                                                    \\
+        \multicolumn{3}{|r|}{Se desidera torna al passo 2, se no termina il caso d’uso}                                                                                                                                                                                                                                                                      \\\hline
+    \end{tabular}
+\end{table}
+
+\addcontentsline{toc}{subsection}{Estensioni 1}
+\begin{table}[H]\centering\caption*{Estensione 1a}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore                                                                                               & \bfseries Sistema                          \\\hline
+        1a.1               & Parte da un foglio riepilogativo esistente (tra quelli dei servizi degli eventi di cui ha ricevuto l’incarico) & Fornisce un foglio ripeligoativo esistente \\\hline
+        \multicolumn{3}{|r|}{Se desidera prosegue al passo due altrimenti temrina il caso d'uso}                                                                                         \\\hline
+    \end{tabular}
+\end{table}
+
+\addcontentsline{toc}{subsection}{Estensioni 2}
+\begin{table}[H]\centering\caption*{Estensione 2a}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore                                                             & \bfseries Sistema                                                         \\\hline
+        2a.1               & Opzionalmente elimina una ricetta o una preparazione dall’elenco dei compiti & Registra l’eliminazione di preparazioni o ricette al foglio riepilogativo \\\hline
+    \end{tabular}
+\end{table}
+
+\addcontentsline{toc}{subsection}{Estensioni 5}
+\begin{table}[H]\centering\caption*{Estensione 5a}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore                                    & \bfseries Sistema                                                                                   \\\hline
+        5a.1               & Specifica che una ricetta/preparazione è già pronta & Registra nel foglio riepilogativo che una ricetta/preparazione in un dato assegnamento è già pronta \\\hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]\centering\caption*{Estensione 5b}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore         & \bfseries Sistema                                      \\\hline
+        5b.1               & Modifica un assegnamento & Registra il nuovo foglio con l’assegnamento modificato \\\hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]\centering\caption*{Estensione 5c}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore        & \bfseries Sistema                                     \\\hline
+        5c.1               & Elimina un assegnamento & Registra il nuovo foglio con l’assegnamento eliminato \\\hline
+    \end{tabular}
+\end{table}
+
+% \section*{Eccezioni 5}
+\begin{table}\centering\caption*{Estensione 5d}
+    \small
+    \begin{tabular}{|c|p{7cm}|p{6.23cm}|}
+        \hline\bfseries \# & \bfseries Attore                                                                                        & \bfseries Sistema                                 \\\hline
+        5d.1               & Assegna un compito specificando cosa (ricetta/preparazione), quando (turno) e opzionalmente chi (cuoco) & \color{red}{Cuoco non disponibile nel dato turno} \\\hline
+    \end{tabular}
+\end{table}
