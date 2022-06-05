@@ -228,8 +228,7 @@
 	\item {{[}}\textbf{Se}{~è specificata una }\myuline{tUltimazione}{{]} }\textit{p.tempoDiUltimazione }{= }\myuline{tUltimazione}
 \end{itemize}
 
-\subsection[modificaDettagliProcedura]{\texorpdfstring{modificaDettagliProcedura(\myuline{annotazione}{: Annotazione, }\myuline{descrizione}{: 
-testo, }\myuline{porzioni?}{: numero, }\myuline{tAttività}{?: LocalTime, }\myuline{tTotale}{?:
+\subsection[modificaDettagliProcedura]{\texorpdfstring{modificaDettagliProcedura(\myuline{porzioni?}{: numero, }\myuline{tAttività}{?: LocalTime, }\myuline{tTotale}{?:
 LocalTime, }\myuline{tUltimazione}?: LocalTime)}}\label{modificaDettagliProcedura}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -237,11 +236,21 @@ LocalTime, }\myuline{tUltimazione}?: LocalTime)}}\label{modificaDettagliProcedur
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item \myuline{annotazione.tag}{ = }\myuline{descrizione}
 	\item {{[}}\textbf{Se}{~sono specificate le }\myuline{porzioni}{]} \textit{p.porzioni}{ = }\myuline{porzioni}
 	\item {{[}}\textbf{Se}{~è specificata una }\myuline{tAttività}{{]} }\textit{p.tempoDiAttività }{= }\myuline{tAttività}
 	\item {{[}}\textbf{Se}{~è specificata una }\myuline{tTotale}{{]} }\textit{p.tempoTotale }{= }\myuline{tTotale}
 	\item {{[}}\textbf{Se}{~è specificata una }\myuline{tUltimazione}{{]} }\textit{p.tempoDiUltimazione }{= }\myuline{tUltimazione}
+\end{itemize}
+
+\subsection[modificaTagAnnotazione]{\texorpdfstring{modificaTagAnnotazione(\myuline{annotazione}: Annotazione, \myuline{descrizione}: testo)}}\label{modificaTagAnnotazione}
+\textbf{Pre-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item {è in corso la definizione di una Procedura }\textit{p }
+	\item \textit{p }{è classificata da}{~}\myuline{annotazione}
+\end{itemize}
+\textbf{Post-condizioni:}
+\begin{itemize}[label=$-$, noitemsep]
+	\item \textit{annotazione.tag}{ = }\myuline{}{descrizione}
 \end{itemize}
 
 \subsection[eliminaAnnotazione]{\texorpdfstring{eliminaAnnotazione(\myuline{annotazione}: Annotazione)}}\label{eliminaAnnotazione}
@@ -282,7 +291,7 @@ LocalTime, }\myuline{tUltimazione}?: LocalTime)}}\label{modificaDettagliProcedur
 \end{itemize}
 
 \begingroup
-\renewcommand{\thesubsection}{\thesection.c.2}
+\renewcommand{\thesubsection}{\thesection.d.2}
 \subsection[inserisciPassi]{\texorpdfstring{inserisciPassi(\myuline{lista pa1,...,paN di Passi}: Passo)}}\label{inserisciPassi}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -297,7 +306,7 @@ LocalTime, }\myuline{tUltimazione}?: LocalTime)}}\label{modificaDettagliProcedur
 \endgroup
 
 \begingroup
-\renewcommand{\thesubsection}{\thesection.c.3}
+\renewcommand{\thesubsection}{\thesection.d.3}
 \subsection[inserisciIngredienti]{\texorpdfstring{inserisciIngredienti(\myuline{ingrediente}: Ingrediente, \myuline{dose}: numero)}}\label{inserisciIngredienti-7}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]

@@ -215,6 +215,17 @@
 }
 \end{table}
 
+\begin{table}[H]\centering\caption*{Estensione 7d}
+\csvreader[
+      tabular = |c|p{7cm}|p{4cm}|,
+      respect sharp,
+      table head = \hline\bfseries \# & \bfseries Attore & \bfseries Sistema\\\hline,
+      late after line = \\\hline
+]{../resources/csv/gestire_le_ricette/estensione7d.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii
+}
+\end{table}
+
 \section*{Estensioni 8}
 \begin{table}[H]\centering\caption*{Estensione 8a}
 \csvreader[

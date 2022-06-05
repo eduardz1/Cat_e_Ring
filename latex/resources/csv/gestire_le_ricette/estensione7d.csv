@@ -1,0 +1,4 @@
+{#},Attore,Sistema
+7d.1,Opzionalmente crea una procedura passando un nome e specificando se è una ricetta o una preparazione,Registra la nuova procedura e la salva nel ricettario
+7d.2,Opzionalmente seleziono uno o più passi da inserire nella procedura appena creata,Registra i passi della procedura
+7d.3,Opzionalmente seleziono uno o più ingredienti con relative dosi da inserire nella procedura appena creata,Registra gli ingredienti della procedura
