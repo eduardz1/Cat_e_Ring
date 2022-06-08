@@ -105,7 +105,7 @@ public class SummarySheetManager {
         if(this.currentSheet == null) {
             throw new UseCaseLogicException("No current sheet");
         }
-        if(this.currentSheet.hasAssignment(as) < 0){
+        if(!this.currentSheet.hasAssignment(as)){
             throw new UseCaseLogicException("No assignment in current Sheet");
         }
         currentSheet.assignmentCompleted(as);
@@ -143,7 +143,7 @@ public class SummarySheetManager {
         if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
             throw new UseCaseLogicException("Only chefs can change assignment order");
         }
-        if(currentSheet.hasAssignment(as) < 0) {
+        if(!currentSheet.hasAssignment(as)) {
             throw new UseCaseLogicException("Summary Sheet does not contain assignment");
         }
         if (position < 0 || position >= currentSheet.getAssignments().size()) {

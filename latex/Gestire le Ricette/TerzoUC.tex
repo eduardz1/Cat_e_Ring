@@ -20,6 +20,7 @@
 \usepackage{multirow}
 % \usepackage{showframe}
 \usepackage{array}
+\usepackage[export]{adjustbox}
 
 \makeatletter % removes Chpater N from Chapter title without using titlesec, can be very useful in KOMA environments
 \def\@makechapterhead#1{%
@@ -86,9 +87,7 @@
 \end{figure}
 \normalpapersize
 
-\clearpage
-\chapter{Diagrammi di Sequenza di Sistema}
-\input{Diagrammi di Sequenza di Sistema.tex}
+\include{Diagrammi di Sequenza di Sistema.tex}
 
 \chapter{Contratti delle Operazioni}
 \input{Contratti.tex}
@@ -97,7 +96,8 @@
 \uselandscape
 \chapter{Domain Class Diagram}
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{../resources/img/Domain Class Diagram.png}
+  \centering
+  \includegraphics[max width=\textwidth, max height=143mm]{../resources/img/Domain Class Diagram.png}
 \end{figure}
 \chapter{Design Sequence Diagrams}
 

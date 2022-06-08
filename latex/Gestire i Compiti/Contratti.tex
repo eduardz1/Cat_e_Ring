@@ -3,7 +3,7 @@
 \section[creaFoglioRiepilogativo]{\texorpdfstring{creaFoglioRiepilogativo(\myuline{servizio}: Servizio, \myuline{evento}: Evento)}}\label{h.n5k8dzisnnko}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {evento}{ }\textbf{prevede }{servizio}
+	\item {allo Chef h }\textbf{è assegnato un}{evento che }{ }\textbf{prevede }{servizio}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -69,27 +69,29 @@
 \textbf{Post-condizioni: }{-}
 
 \section[generaAssegnamento]{\texorpdfstring{generaAssegnamento(\myuline{assegnamento}{:
-			  Assegnamento, }\myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{:
+			  Assegnamento, }\myuline{turno}{?: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
 			  testo, }\myuline{dosi}{?: testo, }\myuline{continuazione}?: Assegnamento)}}\label{h.3umm3owhjhiq}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
 	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
+	\item {il }\myuline{cuoco}{ ha dato disponibilità per }\myuline{turno}
+	\item {il }\myuline{turno}{ non si è ancora svolto}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
-		  { si }\textbf{svolge}{ in }\myuline{turno}
-	\item \myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
+	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}{ si }\textbf{svolge}{ in }\myuline{turno}
+	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
 	\item {{[}}\textbf{Se }\myuline{cuoco}{ è specificato{]}}
 	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
-		\item {{[}}\textbf{Se}{ }\myuline{cuoco}\textbf{lavora in }
-			  \myuline{turno}{ e }\myuline{stimaTempo}{ <tuno.} {{]} }\myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}   %TODO
+		\item {{[}}\textbf{Se}{esiste una istanza} \textit{ct} {Cuoco in turno che associa}\textit{cuoco} e \textit{turno}{]} \myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}  
 	\end{itemize}
-	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
+	\item {{[}}\textbf{Se}{ }\myuline{dosi}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
 	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato e }\textbf{se }
 		  \myuline{continuazione}{ $\neq$ }\myuline{assegnamento}{]} \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
+    \item {[}\textbf{Se esiste}{un }\myuline{cuoco}{ c che } \textbf{esegue }\myuline{assegnamento }{e }\textbf{Se }\myuline{assegnamento.tempoStimato}{ è definito}{]}
+    {l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $-$ \myuline{assegnamento.tempoStimato}	  
 \end{itemize}
 
 \subsection[specificaAssegnamentoCompletato]{\texorpdfstring{specificaAssegnamentoCompletato(\myuline{assegnamento}: Assegnamento)}}\label{h.c49s37d45gzr}
@@ -103,28 +105,6 @@
 	\item \myuline{assegnamento.completato}{ = sì}
 \end{itemize}
 
-\subsection[modificaAssegnamento]{\texorpdfstring{modificaAssegnamento(\myuline{assegnamento}:
-			  Assegnamento, \myuline{turno}{: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{:
-			  testo, }\myuline{dosi}?: testo)}}\label{h.vw6rupgvnaur}
-\textbf{Pre-condizioni:}
-\begin{itemize}[label=$-$, noitemsep]
-	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
-	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
-\end{itemize}
-\textbf{Post-condizioni:}
-\begin{itemize}[label=$-$, noitemsep]
-	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}
-		  { si }\textbf{svolge}{ in }\myuline{turno}
-	\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ è specificato{]}}
-	\setlist{nolistsep}
-	\begin{itemize}[label=$-$, noitemsep]
-		\item {{[}}\textbf{Se}{ }\myuline{cuoco}{ non }\textbf{lavora in }\myuline{turno}{{]} }
-			  \myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}
-	\end{itemize}
-	\item {{[}}\textbf{Se}{ }\myuline{quantità}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
-	\item {{[}}\textbf{Se}{ }\myuline{tempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
-\end{itemize}
-
 \subsection[eliminaAssegnamento]{\texorpdfstring{eliminaAssegnamento(\myuline{assegnamento}: Assegnamento)}}\label{h.g9i7rk2xvxb7}
 \textbf{Pre-condizioni:  }
 \begin{itemize}[label=$-$, noitemsep]
@@ -134,22 +114,12 @@
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item
-		  {{[}}\textbf{Se esiste}{ un Turno }\textit{t}{ }{tale che}{ }\myuline{assegnamento}{ è
-		  }\textbf{svolto }{in }\textit{t}{ e }\textbf{Se esiste}{ un Cuoco }\textit{c}{ }{tale
-		  che}{ }\myuline{assegnamento}{ è }\textbf{eseguito}{ da }\textit{c}{{]} l'associazione }\textbf{lavora
-		  in}{ tra }\textit{c}{ e }\textit{t}{ è stata eliminata }
-	\item
 		  {{[}\textbf{Se esiste} un un assegnamento }\textit{a1}{ che è }\textbf{continuato }{da
-		  }\myuline{assegnamento }{ed esiste un assegnamento }\textit{a2}{ che è }\textbf{continuazione
-		  }{di }\myuline{assegnamento}{{]} l'associazione è }\textbf{continuazione }{di tra }\textit{a1}
-		  {e }\myuline{assegnamento}{ è eliminata, l'associazione è }\textbf{continuazione
-		  }{di tra }\textit{a2}{ e }\myuline{assegnamento}{ è eliminata }\textit{a2}{ è
-		  }\textbf{continuazione }{di }\textit{a1}
-	\item
-		  {[}\textbf{Se esiste}{ un assegnamento }\textit{a1}{ che che è }\textbf{continuato}{ da
-		  }\myuline{assegnamento}{{]}   l'associazione è }\textbf{continuazione }{di }\textit{a1}{ e
-		  }\myuline{assegnamento}{ è eliminata}
+		  }\myuline{assegnamento}{ ed esiste un assegnamento }\textit{a2}{ che è }\textbf{continuazione
+		  }{di }\myuline{assegnamento}{]} \textit{a2}{ è }\textbf{continuazione }{di }\textit{a1}
+	\item \myuline{assegnamento} è stato eliminato
+	\item {[}\textbf{Se esiste }{un }\myuline{cuoco}{ c che } \textbf{esegue }\myuline{assegnamento}{, }
+	\textbf{Se esiste}{ un Turno }\textit{t}{ }{tale che}{ }\myuline{assegnamento}{ è}\textbf{svolto }{in }\textit{t}
+	{ e }\textbf{Se }\myuline{assegnamento.tempoStimato}{ è definito}{]}
+	{l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $+$ \myuline{assegnamento.tempoStimato}
 \end{itemize}
-
-\textit{(controllare se eliminando un' istanza nel programma viene associato
-null)}

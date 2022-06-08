@@ -123,18 +123,16 @@
 	\item \myuline{Passo1}{ è }\textbf{variante di }\myuline{Passo 2}
 \end{itemize}
 
-\section[aggiungiIngrediente]{\texorpdfstring{aggiungiIngrediente(\myuline{nome}{: testo, }\myuline{dosi}?: numero, \myuline{unitàDiMisura}?: testo)}}\label{aggiungiIngrediente}
+\section[aggiungiIngrediente]{\texorpdfstring{aggiungiIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}?: numero, \myuline{unitàDiMisura}?: testo)}}\label{aggiungiIngrediente}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {è in corso la definizione di una Procedura }\textit{p}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {è stata creata una istanza }\textit{i}{ di Ingrediente}
-	\item \textit{i.nome }{= }\myuline{nome}
+	\item {è stata creata una istanza }\textit{i}{ di Ingrediente in Procedura che associa }\myuline{ingrediente}{ a }\textit{p}
 	\item {{[}}\textbf{Se}{ sono specificate le }\myuline{dosi}{{]} }\textit{i.dose }{= }\myuline{dosi}
  	\item {{[}}\textbf{Se }\myuline{unitàDiMisura}{ specificata}{{]} }\textit{i.unitàDiMisura }{= }\myuline{unitàDiMisura}
-	\item \textit{i }\textbf{compone }\textit{p}
 \end{itemize}
 
 \subsection[modificaIngrediente]{\texorpdfstring{modificaIngrediente(\myuline{ingrediente}{: Ingrediente, }\myuline{dosi}: numero, \myuline{unitàDiMisura}?: testo)}}\label{modificaIngrediente}
@@ -256,7 +254,7 @@ LocalTime, }\myuline{tUltimazione}?: LocalTime)}}\label{modificaDettagliProcedur
 
 \subsection[eliminaAnnotazione]{\texorpdfstring{eliminaAnnotazione(\myuline{annotazione}: Annotazione)}}\label{eliminaAnnotazione}
 \textbf{Pre-condizioni:}
-\begin{itemize}[label=$-$, noitemsep]
+\begin{itemize}[label=$-$, noitemsep] 
 	\item {è in corso la definizione di una Procedura }\textit{p }
 	\item \textit{p }{è classificata da}{~}\myuline{annotazione}
 \end{itemize}

@@ -11,12 +11,10 @@ ShiftManager
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>290</y><w>30</w><h>360</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;340</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>784</x><y>510</y><w>20</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>574</x><y>490</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 getShifts( )</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>574</x><y>550</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
 shifts</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>314</x><y>570</y><w>270</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-shifts</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>294</x><y>230</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>344</x><y>10</y><w>340</w><h>40</h></coordinates><panel_attributes>halign=center
-*4 getShiftBoard*
-lw=0
-fontsize=20
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>84</x><y>390</y><w>880</w><h>240</h></coordinates><panel_attributes>ALT
+shifts</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>294</x><y>230</y><w>90</w><h>70</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>84</x><y>390</y><w>750</w><h>240</h></coordinates><panel_attributes>ALT
 [currentSheet == null || !user.isChef()]
+fg=#4CAF50
+lw=2
 --
 
 
