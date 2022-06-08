@@ -1,0 +1,99 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLActor</id><coordinates><x>332</x><y>0</y><w>70</w><h>110</h></coordinates><panel_attributes>Chef</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>1002</x><y>30</y><w>110</w><h>50</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>90</y><w>40</w><h>1310</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>20;10;10;1290</additional_attributes></element><element><id>Relation</id><coordinates><x>1042</x><y>70</y><w>30</w><h>1340</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1320</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>200</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+1. CreaFoglioRiepilogativo(servizio, evento)</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>410</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+2. AggiungiProcedura(procedura)</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>460</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>540</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+3. RiordinaElencoCompiti(Assegnamento, posizione)</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>820</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4. ConsultaTabelloneTurni()</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>860</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Tabellone dei turni</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>920</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+5. GeneraAssegnamento(Assegnamento, turno?, cuoco?, stimaTempo?, dosi?, continuazione?)</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>960</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato
+layer=3</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>290</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+1. CreaFoglioRiepilogativo(servizio, evento)</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>330</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio riepilogativo registrato</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>640</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+3. RiordinaElencoCompiti(Assegnamento, posizione)</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>690</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>590</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>322</x><y>530</y><w>760</w><h>200</h></coordinates><panel_attributes>ALT
+fg=#4CAF50
+lw=2
+--
+
+
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>282</x><y>510</y><w>820</w><h>230</h></coordinates><panel_attributes>OPT
+fg=#0693E3
+lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>282</x><y>400</y><w>820</w><h>100</h></coordinates><panel_attributes>OPT
+fg=#0693E3
+lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>232</x><y>380</y><w>910</w><h>380</h></coordinates><panel_attributes>LOOP
+fg=#fcdc00
+lw=2
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>362</x><y>240</y><w>710</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio riepilogativo registrato</panel_attributes><additional_attributes>10;20;690;20</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1042</x><y>250</y><w>20</w><h>20</h></coordinates><panel_attributes>type=termination
+fg=red
+lw=2
+layer=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>202</x><y>190</y><w>970</w><h>590</h></coordinates><panel_attributes>LOOP
+fg=#fcdc00
+lw=2
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1042</x><y>600</y><w>20</w><h>20</h></coordinates><panel_attributes>type=termination
+fg=red
+lw=2
+layer=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>122</x><y>170</y><w>1080</w><h>1160</h></coordinates><panel_attributes>ALT
+fg=#4CAF50
+lw=2
+--
+
+
+
+
+
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>302</x><y>810</y><w>800</w><h>90</h></coordinates><panel_attributes>OPT
+fg=#0693E3
+lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>232</x><y>790</y><w>890</w><h>500</h></coordinates><panel_attributes>LOOP
+fg=#fcdc00
+lw=2
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>142</x><y>370</y><w>1040</w><h>940</h></coordinates><panel_attributes>LOOP
+fg=#fcdc00
+lw=2
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>302</x><y>910</y><w>780</w><h>360</h></coordinates><panel_attributes>ALT
+fg=#4CAF50
+lw=2
+--
+
+
+
+
+
+
+
+
+
+
+-.
+
+
+
+
+
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>322</x><y>950</y><w>750</w><h>130</h></coordinates><panel_attributes>ALT
+fg=#4CAF50
+lw=2
+--
+
+
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>1030</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+5d. Cuoco non disponibile nel dato turno
+layer=3</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1042</x><y>1040</y><w>20</w><h>20</h></coordinates><panel_attributes>type=termination
+fg=red
+lw=2
+layer=3</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>1110</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+5a. SpecificaAssegnamentoCompletato(Assegnamento)
+layer=2</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>1140</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato
+layer=3</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>1180</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+5c. EliminaAssegnamento(Assegnamento)
+layer=2</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>1220</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+Foglio aggiornato
+layer=3</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element></diagram>
