@@ -154,8 +154,8 @@ currentProcedures
 </panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>1440</y><w>1350</w><h>700</h></coordinates><panel_attributes>SummarySheetManagement
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>1500</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 currentSheet
-m1=0..1</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>1660</y><w>340</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
-assignments (LinkedHashMap&lt;Assignment, Assignment&gt;)
+m1=0..1</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>1660</y><w>100</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+assignments
 m1=0..n</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>1760</y><w>280</w><h>230</h></coordinates><panel_attributes>Assignment
 --
 -estimatedTime: Time
