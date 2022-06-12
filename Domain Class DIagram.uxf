@@ -37,7 +37,7 @@ m1=0..n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;70;10;10&lt;/add
 Ingredients
 m1=0..n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;14;90;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1870&lt;/x&gt;&lt;y&gt;950&lt;/y&gt;&lt;w&gt;230&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;Preparation
 --
-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLPackage</id><coordinates><x>650</x><y>0</y><w>300</w><h>510</h></coordinates><panel_attributes>UserManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>100</x><y>530</y><w>1000</w><h>570</h></coordinates><panel_attributes>MenuManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1120</x><y>550</y><w>1740</w><h>880</h></coordinates><panel_attributes>ProcedureManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>580</y><w>350</w><h>290</h></coordinates><panel_attributes>MenuManager
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt; i</help_text><element><id>UMLPackage</id><coordinates><x>650</x><y>0</y><w>300</w><h>510</h></coordinates><panel_attributes>UserManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>100</x><y>530</y><w>1000</w><h>570</h></coordinates><panel_attributes>MenuManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1120</x><y>550</y><w>1740</w><h>880</h></coordinates><panel_attributes>ProcedureManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>580</y><w>350</w><h>290</h></coordinates><panel_attributes>MenuManager
 --
 -menuFeatures: String[]
 --
@@ -137,17 +137,17 @@ currentUser
 m1=0..1
 </panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>80</y><w>210</w><h>490</h></coordinates><panel_attributes>lt=&lt;-
 owner
-m1=1</panel_attributes><additional_attributes>190;20;10;20;10;470</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>620</y><w>550</w><h>300</h></coordinates><panel_attributes>ProcedureManager
+m1=1</panel_attributes><additional_attributes>190;20;10;20;10;470</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>620</y><w>550</w><h>310</h></coordinates><panel_attributes>ProcedureManager
 --
 
 --
 *event sender methods*
 +addReceiver(er: ProcedureEventReceiver)
 +removeReceiver(er: ProcedureEventReceiver)
--notifyIngredientAdded(P: Procedure)
--notifyAddedPrepAsIngredient(P: Procedure)
--notifyCookinStepAdded(Cs: CookingStep)
-+notifyProcedureAdded(Pro: Procedure)
+-notifyIngredientAdded(pro: Procedure, ig: Ingredient)
+-notifyAddedPrepAsIngredient(p: Procedure)
+-notifyCookinStepAdded(cs: CookingStep)
++notifyProcedureAdded(pro: Procedure)
 
 --
 *operations methods*
@@ -157,8 +157,8 @@ m1=1</panel_attributes><additional_attributes>190;20;10;20;10;470</additional_at
 +addSimpleCookingStep(desc: String, prepInAdv?: boolean, repetitions?: Integer)
 +addGroupingCookingStep(desc: String, CSList: ArrayList&lt;CookingStep&gt;, repetitions?: Integer)
 +detailProcedure(ann: String, port?: Integer, tActivity?: Time, tTotal?: Time, tCompletion?: Time)
-+setCurrentProcedures(Pro: Procedure)
-+setOldProcedure(Pro: Procedure)
++setCurrentProcedures(pro: Procedure)
++setOldProcedure(pro: Procedure)
 
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1710</x><y>670</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
@@ -234,7 +234,7 @@ m1=1
 -tCompletion: LocalTime
 -preparableInAdvance: boolean
 --
-+addIngredient(name: Ingredient, amount?: Integer, unitOfMeasure?: String)
++addIngredient(name: Ingredient, amount?: Float, unitOfMeasure?: String)
 +addSimpleCookingStep(desc: String, prepInAdv?: boolean, repetitions?: Integer)
 +addGroupingCookingStep(desc: String, CSList: ArrayList&lt;CookingStep&gt;, repetitions?: Integer)
 +extrapolateProcedure(name: String, isRicetta: boolean)
@@ -321,13 +321,13 @@ name: String
 --
 
 --
-/+updateIngredientAdded(P: Procedure)/
-/+updateAddedPrepAsIngredient(P: Procedure)/
-/+updateCookingStepAdded(P: Procedure, Cs, CookinkStep)/
-/+updateProcedureAdded(P: Procedure)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>910</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
+/+updateIngredientAdded(p: Procedure, ig: Ingredient)/
+/+updateAddedPrepAsIngredient(p: Procedure)/
+/+updateCookingStepAdded(p: Procedure, cs: CookinkStep)/
+/+updateProcedureAdded(p: Procedure)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>920</y><w>110</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
 eventReceivers
-m1=0..n</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1790</x><y>770</y><w>400</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
-Ingredients (HashMap&lt;ingredient, Tuple(&lt;amount&gt;,&lt;unitOfMeasure&gt;)
+m1=0..n</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1790</x><y>770</y><w>400</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+Ingredients (HashMap&lt;Ingredient, Tuple(&lt;amount&gt;,&lt;unitOfMeasure&gt;)
 m1=0..n</panel_attributes><additional_attributes>10;190;10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1920</x><y>1230</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 prepAsIngredient
 m1=0..n</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2120</x><y>840</y><w>30</w><h>370</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>1860</x><y>840</y><w>220</w><h>380</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;240;10;240;10;360</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2440</x><y>950</y><w>310</w><h>110</h></coordinates><panel_attributes>ProcedureBook
