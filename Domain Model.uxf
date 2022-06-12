@@ -192,7 +192,7 @@ descrizione: testo
 preparabile in anticipo: sì/no
 ripetizione: numero</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>640</y><w>190</w><h>70</h></coordinates><panel_attributes>Passo semplice
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1860</x><y>640</y><w>190</w><h>70</h></coordinates><panel_attributes>raggruppamento
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1860</x><y>640</y><w>190</w><h>70</h></coordinates><panel_attributes>Raggruppamento
 --
 fg=#1BE1A1
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1880</x><y>810</y><w>160</w><h>70</h></coordinates><panel_attributes>lt=-
@@ -204,7 +204,7 @@ m1=0..n
 m2=0..1</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>660</y><w>190</w><h>90</h></coordinates><panel_attributes>lt=-
 continuazione di v
 m2=0..1
-m1=0..1</panel_attributes><additional_attributes>10;10;70;10;70;60;10;60</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1860</x><y>570</y><w>190</w><h>60</h></coordinates><panel_attributes>Un Raggruppamento è preparabile
+m1=0..1</panel_attributes><additional_attributes>10;10;70;10;70;60;10;60</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1860</x><y>560</y><w>200</w><h>70</h></coordinates><panel_attributes>Un Raggruppamento è preparabile
 in anticipo se lo sono tutti i Passi 
 semplici che lo compongono
 fg=#1BE1A1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1651</x><y>995</y><w>140</w><h>80</h></coordinates><panel_attributes>Ingrediente in Procedura
