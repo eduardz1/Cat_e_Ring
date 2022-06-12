@@ -61,10 +61,10 @@ put(cook, oldTime + time)</panel_attributes><additional_attributes>10;20;190;20<
 get(cook)</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1398</x><y>0</y><w>200</w><h>50</h></coordinates><panel_attributes>shift.myCook:
 HashMap&lt;Cook, AvaiableTime&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1492</x><y>40</y><w>30</w><h>580</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;560</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1492</x><y>520</y><w>20</w><h>30</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1492</x><y>580</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1300</x><y>530</y><w>210</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
 oldTime</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>760</x><y>630</y><w>580</w><h>140</h></coordinates><panel_attributes>LOOP
-[for each Agm in
+[for each c in
  currentSheet.assignments]
 fg=#FCB900
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>770</x><y>690</y><w>560</w><h>60</h></coordinates><panel_attributes>ALT [Agm.getContinuation() == as]
+lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>770</x><y>690</y><w>560</w><h>60</h></coordinates><panel_attributes>ALT [c.getContinuation() == as]
 fg=#4CAF50
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>700</y><w>310</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-Agm.setContinuation(as.getContinuation())</panel_attributes><additional_attributes>10;10;60;10;60;40;10;40</additional_attributes></element></diagram>
+lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>700</y><w>290</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+c.setContinuation(as.getContinuation())</panel_attributes><additional_attributes>10;10;60;10;60;40;10;40</additional_attributes></element></diagram>
