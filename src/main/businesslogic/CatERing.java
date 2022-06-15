@@ -25,7 +25,7 @@ public class CatERing {
     private final SummarySheetManager summarySheetMgr;
     private final ShiftManager shiftMgr;
 
-    // Do we need MenuPersistance as a variable?
+    // Do we need MenuPersistence as a variable?
     private CatERing() {
         menuMgr = new MenuManager();
         recipeMgr = new ProcedureManager();

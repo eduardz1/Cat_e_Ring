@@ -3,7 +3,6 @@ package main.businesslogic.service;
 /**
  * ServiceManager
  */
-public interface ServiceManager {
-
-  
+public class ServiceManager {
+    private Service currentService;
 }

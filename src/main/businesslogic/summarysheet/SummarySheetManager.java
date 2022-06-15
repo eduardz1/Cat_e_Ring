@@ -1,15 +1,16 @@
 package main.businesslogic.summarysheet;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.Event;
-import main.businesslogic.menu.MenuException;
 import main.businesslogic.procedure.Procedure;
 import main.businesslogic.service.Service;
-import main.businesslogic.shift.Cook;
 import main.businesslogic.shift.Shift;
 import main.businesslogic.user.User;
 
@@ -50,56 +51,46 @@ public class SummarySheetManager {
         this.notifyProcedureRemoved(pro);
     }
 
-    public void defineAssignment(Assignment as, String quantity, Shift shift, Cook cook, LocalTime time,
-            Assignment cont) {
-        // TODO
-        // TODO check wheter the cook has enough time with the modified assignment,
-        // update the previous cook to reflect the new time he has
+    public void deleteAssignment(Assignment as) throws UseCaseLogicException, SummarySheetException {
+        if(this.currentSheet == null) {
+            throw new UseCaseLogicException("No current sheet");
+        }
+        if(!currentSheet.getAssignments().contains(as)){
+            throw new SummarySheetException("No assignment in array");
+        }
+        currentSheet.deleteAssignment(as);
+        this.notifyAssignmentRemoved(as);
     }
 
-    // #region defineAssignment
-    public void defineAssignment(Assignment as, String quantity, Shift shift) { // only mandatory arguments
-        this.defineAssignment(as, quantity, shift, null, null, null);
-    }
+    public Assignment defineAssignment(Assignment assignment,
+                                       Optional<Integer> quantity,
+                                       Optional<Shift> shift,
+                                       Optional<User> cook,
+                                       Optional<Duration> estimatedTime,
+                                       Optional<Assignment> continuation) throws UseCaseLogicException {
+        if (this.currentSheet == null) {
+            throw new UseCaseLogicException("defineAssignment: " + "currentSheet was not initialized");
+        }
+        if (!this.currentSheet.hasAssignment(assignment)) {
+            throw new UseCaseLogicException("defineAssignment: " + "currentSheet does not contain assignment");
+        }
+        if (continuation.isPresent() && !this.currentSheet.hasAssignment(continuation.get())) {
+            throw new UseCaseLogicException("defineAssignment: " + "currentSheet does not contain continuation");
+        }
+        if (continuation.isPresent() && continuation.get().equals(assignment)) {
+            throw new UseCaseLogicException("defineAssignment: " + "continuation can't be equal to main assignment");
+        }
+        if (cook.isPresent() && !cook.get().isCook()) {
+            throw new UseCaseLogicException("defineAssigment: " + "user is not a cook");
+        }
+        if (shift.isPresent() && (shift.get().getDate().isBefore(LocalDate.now()))) {
+            throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+        }
 
-    public void defineAssignment(Assignment as, String quantity, Shift shift, Cook cook) {
-        this.defineAssignment(as, quantity, shift, cook, null, null);
+        Assignment as = this.currentSheet.defineAssignment(assignment, quantity, shift, cook, estimatedTime, continuation);
+        notifyAssignmentDefined(as);
+        return as;
     }
-
-    public void defineAssignment(Assignment as, String quantity, Shift shift, LocalTime time) {
-        this.defineAssignment(as, quantity, shift, null, time, null);
-    }
-
-    public void defineAssignment(Assignment as, String quantity, Shift shift, Cook cook, LocalTime time) {
-        this.defineAssignment(as, quantity, shift, cook, time, null);
-    }
-
-    public void defineAssignment(Assignment as, String quantity, Shift shift, Assignment cont) {
-        this.defineAssignment(as, quantity, shift, null, null, cont);
-    }
-
-    public void defineAssignment(Assignment as, String quantity, Shift shift, Cook cook, Assignment cont) {
-        this.defineAssignment(as, quantity, shift, cook, null, cont);
-    }
-
-    public void defineAssignment(Assignment as, String quantity, Shift shift, LocalTime time, Assignment cont) {
-        this.defineAssignment(as, quantity, shift, null, time, cont);
-    }
-    // #endregion
-
-    public void modifyAssignment(Assignment as, String quantity, Shift shift, Cook cook, LocalTime time) {
-        // TODO
-    }
-
-    // #region modifyAssignment
-    public void modifyAssignment(Assignment as, String quantity, Shift shift, Cook cook) {
-        this.modifyAssignment(as, quantity, shift, cook, null);
-    }
-
-    public void modifyAssignment(Assignment as, String quantity, Shift shift, LocalTime time) {
-        this.modifyAssignment(as, quantity, shift, null, time);
-    }
-    // #endregion
 
     public void procedureReady(Assignment as) throws UseCaseLogicException{
         if(this.currentSheet == null) {
@@ -132,7 +123,7 @@ public class SummarySheetManager {
         this.currentSheet = sheet;
     }
 
-    public void seCurrenttSummarySheet(SummarySheet sheet) {
+    public void seCurrentSummarySheet(SummarySheet sheet) {
         this.currentSheet = sheet;
     }
 
@@ -202,9 +193,9 @@ public class SummarySheetManager {
         }
     }
 
-    private void notifyAssignmentModified(Assignment as) {
+    private void notifyAssignmentRemoved(Assignment as) {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
-            eventReceiver.updateAssignmentModified(currentSheet, as);
+            eventReceiver.updateAssignmentRemoved(currentSheet, as);
         }
     }
 

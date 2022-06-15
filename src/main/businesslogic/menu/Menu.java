@@ -75,7 +75,7 @@ public class Menu {
 
     }
 
-    public static void savefreeItemDeleted(Menu m, MenuItem mi) {
+    public static void saveFreeItemDeleted(Menu m, MenuItem mi) {
 
     }
 
@@ -498,7 +498,7 @@ public class Menu {
         });
     }
 
-    public ArrayList<MenuItem> getAllItems() { // TODO check wheter to use ArrayList or ObservableList
+    public ArrayList<MenuItem> getAllItems() { // TODO check whether to use ArrayList or ObservableList
         ArrayList<MenuItem> items = new ArrayList<>();
         for (Section s : this.sections) {
             items.addAll(s.getItems());

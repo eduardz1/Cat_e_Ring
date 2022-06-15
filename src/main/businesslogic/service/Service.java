@@ -5,11 +5,5 @@ import main.businesslogic.menu.Menu;
 /**
  * Service
  */
-public class Service {
-    private Menu referenceMenu;
-
-    public Menu getMenu() {
-        return this.referenceMenu;
-    }
-
+public record Service(Event linkedEvent, Menu referencedMenu) {
 }

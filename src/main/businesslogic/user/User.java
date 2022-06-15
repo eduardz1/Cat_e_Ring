@@ -5,6 +5,7 @@ import main.persistence.PersistenceManager;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class User {
@@ -27,6 +28,10 @@ public class User {
 
     public boolean isChef() {
         return roles.contains(Role.CHEF);
+    }
+
+    public boolean isCook() {
+        return roles.contains(Role.CUOCO);
     }
 
     public String getUserName() {
@@ -84,5 +89,18 @@ public class User {
             });
         }
         return u;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

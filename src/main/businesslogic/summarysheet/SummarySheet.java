@@ -1,16 +1,25 @@
 package main.businesslogic.summarysheet;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.event.Event;
+import main.businesslogic.CatERing;
+import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.procedure.Procedure;
 import main.businesslogic.service.Service;
+import main.businesslogic.shift.Shift;
+import main.businesslogic.user.User;
+import main.persistence.BatchUpdateHandler;
+import main.persistence.PersistenceManager;
 
 /**
  * SummarySheet
@@ -20,11 +29,15 @@ public class SummarySheet {
     private int id;
     private final Service service;
     private final ObservableList<Assignment> assignments;
+
+    private final User owner; // FIXME add this in the DSD
+
     protected SummarySheet(Service service) {
         this.service = service;
         this.assignments = FXCollections.observableArrayList();
+        this.owner = service.linkedEvent().getChefAssigned();
 
-        for (MenuItem item : service.getMenu().getAllItems()) {
+        for (MenuItem item : service.referencedMenu().getAllItems()) {
             Assignment assignment = new Assignment(item.getItemRecipe());
             this.assignments.add(assignment);
         }
@@ -56,8 +69,8 @@ public class SummarySheet {
         }
     }
 
-    public ArrayList<Assignment> getAssignments() {
-        return new ArrayList<>(this.assignments);
+    public ObservableList<Assignment> getAssignments() {
+        return FXCollections.unmodifiableObservableList(this.assignments);
     }
 
     public void moveAssignments(Assignment as, int position) {
@@ -65,12 +78,85 @@ public class SummarySheet {
         this.assignments.add(position, as);
     }
 
-    public void removeAssignment(Assignment as) {
+    public void deleteAssignment(Assignment as) {
         for(Assignment continuation : this.assignments) {
             if(continuation.getContinuation() == as) {
                 continuation.setContinuation(as.getContinuation());
             }
         }
         this.assignments.remove(as);
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "SummarySheet di ID: " + id +
+                ", si riferisce al servizio: " + service +
+                ", ed ha i seguenti assegnamenti: " + assignments;
+    }
+
+    private void updateAssignments(ObservableList<Assignment> newAssignments) {
+        // TODO
+    }
+
+    // STATIC METHODS FOR PERSISTENCE
+
+    public static void saveNewSummarySheet(SummarySheet ss) {
+        String summarySheetInsert = "INSERT INTO catering.SummarySheets (owner_id) VALUES (?);";
+        int res = PersistenceManager.executeUpdate(summarySheetInsert); // FIXME I have no idea how this works
+
+        if(res <= 0) return; // menu non inserito
+
+        if(ss.assignments.size() > 0) {
+            Assignment.saveAllNewAssignments(ss.id, ss.assignments);
+        }
+
+        loadedSheets.put(ss.id, ss);
+    }
+
+    public static void deleteSummarySheet(SummarySheet ss) {
+        // delete assignments
+        String delAss = "DELETE FROM SummarySheetAssignments WHERE summarysheet_id = " + ss.id;
+        PersistenceManager.executeUpdate(delAss);
+
+        String del = "DELETE FROM SummarySheets WHERE id = " + ss.id;
+        PersistenceManager.executeUpdate(del);
+        loadedSheets.remove(ss);
+    }
+
+    public static void saveAssignmentsOrder(SummarySheet ss) {
+        String upd = "UPDATE SummarySheetAssignments SET position = ? WHERE id = ?";
+        PersistenceManager.executeBatchUpdate(upd, ss.assignments.size(), new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setInt(1, batchCount);
+                ps.setInt(2, ss.assignments.get(batchCount).getId());
+            }
+
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                // no generated ids to handle
+            }
+        });
+    }
+
+    public Assignment defineAssignment(Assignment assignment,
+                                       Optional<Integer> quantity,
+                                       Optional<Shift> shift,
+                                       Optional<User> cook,
+                                       Optional<Duration> estimatedTime,
+                                       Optional<Assignment> continuation) throws UseCaseLogicException {
+        quantity.ifPresent(assignment::setQuantity);
+        continuation.ifPresent(assignment::setContinuation);
+
+        // Can throw exception if the time can´t be assigned
+        if (cook.isPresent()) assignment.setCook(cook.get());
+        if (shift.isPresent()) assignment.setShift(shift.get());
+        if (estimatedTime.isPresent()) assignment.setEstimatedTime(estimatedTime.get());
+
+        return assignment;
     }
 }

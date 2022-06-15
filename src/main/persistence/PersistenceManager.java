@@ -99,7 +99,8 @@ public class PersistenceManager {
     public static int executeUpdate(String update) {
         int result = 0;
         logIn();
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        try (
+                Connection conn = DriverManager.getConnection(url, username, password);
                 PreparedStatement ps = conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
             result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();

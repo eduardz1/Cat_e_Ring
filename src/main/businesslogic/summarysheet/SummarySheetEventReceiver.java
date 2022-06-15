@@ -17,4 +17,6 @@ public interface SummarySheetEventReceiver {
     void updateAssignmentModified(SummarySheet ss, Assignment as);
 
 	void updateProcedureRemoved(SummarySheet ss, Procedure pro);
+
+    void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as);
 }
