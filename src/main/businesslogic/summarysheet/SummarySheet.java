@@ -4,14 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.procedure.Procedure;
@@ -62,11 +59,7 @@ public class SummarySheet {
     }
 
     public void removeProcedure(Procedure pro) {
-        for (Assignment assignment : this.assignments) {
-            if (assignment.getProcedure() == pro) {
-                this.assignments.remove(assignment);
-            }
-        }
+        this.assignments.removeIf(assignment -> assignment.getProcedure() == pro);
     }
 
     public ObservableList<Assignment> getAssignments() {
@@ -124,7 +117,7 @@ public class SummarySheet {
 
         String del = "DELETE FROM SummarySheets WHERE id = " + ss.id;
         PersistenceManager.executeUpdate(del);
-        loadedSheets.remove(ss);
+        loadedSheets.remove(ss); // FIXME
     }
 
     public static void saveAssignmentsOrder(SummarySheet ss) {

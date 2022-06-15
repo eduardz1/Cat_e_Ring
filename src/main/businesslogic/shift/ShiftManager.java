@@ -22,9 +22,6 @@ public class ShiftManager {
         if (!cook.isCook()) {
             throw new UseCaseLogicException("removeShift: " + "user specified is not a cook");
         }
-        if (cook == null) {
-            throw new IllegalArgumentException("removeShift: " + "user can´t be null");
-        }
         if (shift == null) {
             throw new IllegalArgumentException("removeShift: " + "shift can´t be null");
         }
@@ -65,9 +62,6 @@ public class ShiftManager {
         if (!cook.isCook()) {
             throw new UseCaseLogicException("isAssigned: " + "user specified is not a cook");
         }
-        if (cook == null) {
-            throw new IllegalArgumentException("isAssigned: " + "user can´t be null");
-        }
         if (shift == null) {
             throw new IllegalArgumentException("isAssigned: " + "shift can´t be null");
         }
@@ -81,9 +75,6 @@ public class ShiftManager {
         }
         if (!cook.isCook()) {
             throw new UseCaseLogicException("isAvailable: " + "user specified is not a cook");}
-        if (cook == null) {
-            throw new IllegalArgumentException("isAvailable: " + "user can´t be null");
-        }
         if (shift == null) {
             throw new IllegalArgumentException("isAvailable: " + "shift can´t be null");
         }

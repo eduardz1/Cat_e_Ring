@@ -2,7 +2,6 @@ package main.businesslogic.summarysheet;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -81,7 +80,7 @@ public class SummarySheetManager {
             throw new UseCaseLogicException("defineAssignment: " + "continuation can't be equal to main assignment");
         }
         if (cook.isPresent() && !cook.get().isCook()) {
-            throw new UseCaseLogicException("defineAssigment: " + "user is not a cook");
+            throw new UseCaseLogicException("defineAssignment: " + "user is not a cook");
         }
         if (shift.isPresent() && (shift.get().getDate().isBefore(LocalDate.now()))) {
             throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
