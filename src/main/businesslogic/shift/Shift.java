@@ -23,12 +23,13 @@ public class Shift {
     private final ObservableMap<User, Duration> myCooks;
     private int id;
 
-    public Shift(LocalDate date, Duration startTime, Duration endTime) {
+    public Shift(User user, LocalDate date, Duration startTime, Duration endTime) {
         this.id = 0;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.myCooks = FXCollections.observableHashMap();
+        myCooks.put(user, endTime.minus(startTime));
     }
 
     @Override
@@ -51,14 +52,7 @@ public class Shift {
         return FXCollections.observableArrayList(myCooks.keySet());
     }
 
-    public void increaseAvailableTime(User cook, Duration time) throws UseCaseLogicException{
-        if (cook == null || time == null) {
-            throw new IllegalArgumentException();
-        }
-        if(!isAssigned(cook)) {
-            throw new UseCaseLogicException("increaseAvailableTime: " + "cook specified is not assigned to this Shift");
-        }
-
+    public void increaseAvailableTime(User cook, Duration time){
         myCooks.put(cook, myCooks.get(cook).plus(time));
     }
 

@@ -32,12 +32,11 @@ public class Assignment {
         this.itemProcedure = procedure;
         this.completed = false;
         this.quantity = 0;
-        this.estimatedTime = null;
+        this.estimatedTime = Duration.ofSeconds(0);
         this.continuation = null;
         this.selShift = null;
         this.selCook = null;
     }
-
 
     public void setCook(User cook) throws UseCaseLogicException {
         if (selShift != null && estimatedTime != null) {
@@ -159,34 +158,33 @@ public class Assignment {
     // STATIC METHODS FOR PERSISTENCE
 
     public static void saveAllNewAssignments(int summarysheet_id, List<Assignment> assignments) {
-        String AssInsert = "INSERT INTO catering.assignments (completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String AssInsert = "INSERT INTO catering.assignment (id_summary_sheet, completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         int[] result = PersistenceManager.executeBatchUpdate(AssInsert, assignments.size(), new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setBoolean(1, assignments.get(batchCount).isCompleted());
-                ps.setInt(2, summarysheet_id);
-                ps.setInt(3, as.getQuantity());
-                ps.setLong(4, (int) as.getEstimatedTime().toMinutes());
-                ps.setInt(5, as.getContinuation().getId());
-                ps.setInt(6, as.getSelShift().getId());
-                ps.setInt(7, as.getSelCook().getId());
-                ps.setInt(8, as.getProcedure().getId());
+                ps.setInt(1, summarysheet_id);
+                ps.setBoolean(2, assignments.get(batchCount).isCompleted());
+                ps.setInt(3, assignments.get(batchCount).getQuantity());
+                ps.setLong(4, (int) assignments.get(batchCount).getEstimatedTime().toMinutes());
+                ps.setInt(5, 0);
+                ps.setInt(6, 0);
+                ps.setInt(7, 0);
+                ps.setInt(8, assignments.get(batchCount).getProcedure().getId());
             }
-
             @Override
             public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
-
+                assignments.get(count).id = rs.getInt(1);
             }
         });
     }
 
     public static void saveNewAssignments(int ssId, Assignment as) {
-        String InsertAssignment = "INSERT INTO catering.assignments (completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String InsertAssignment = "INSERT INTO catering.assignment (completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
         int[] result = PersistenceManager.executeBatchUpdate(InsertAssignment, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-              ps.setBoolean(1, as.isCompleted());
-              ps.setInt(2, ssId);
+              ps.setInt(1, ssId);
+                ps.setBoolean(2, as.isCompleted());
               ps.setInt(3, as.getQuantity());
               ps.setLong(4, (int) as.getEstimatedTime().toMinutes());
               ps.setInt(5, as.getContinuation().getId());

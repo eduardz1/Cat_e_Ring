@@ -21,6 +21,7 @@ import main.persistence.PersistenceManager;
 /**
  * SummarySheet
  */
+
 public class SummarySheet {
     private static final Map<Integer, SummarySheet> loadedSheets = FXCollections.observableHashMap();
     private final ServiceInfo service;
@@ -75,8 +76,13 @@ public class SummarySheet {
         this.assignments.add(position, as);
     }
 
-    public void deleteAssignment(Assignment as) {
+    public void deleteAssignment(Assignment as){
         for(Assignment continuation : this.assignments) {
+
+            if(as.isDefined())
+            {
+                as.getSelShift().increaseAvailableTime(as.getSelCook(), as.getEstimatedTime());
+            }
             if(continuation.getContinuation() == as) {
                 continuation.setContinuation(as.getContinuation());
             }
@@ -106,29 +112,28 @@ public class SummarySheet {
     // STATIC METHODS FOR PERSISTENCE
 
     public static void saveNewSummarySheet(SummarySheet ss) {
-        String summarySheetInsert = "INSERT INTO catering.SummarySheets (owner_id) VALUES (?);";
-        int res = PersistenceManager.executeUpdate(summarySheetInsert); // FIXME I have no idea how this works
-
-        if(res <= 0) return; // menu non inserito
-
+        String summarySheetInsert = "INSERT INTO catering.SummarySheet (id_summary_sheet, id_service) VALUES (?, ?);";
+        int[] res = PersistenceManager.executeBatchUpdate(summarySheetInsert, 1, new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setInt(1, ss.id);
+                ps.setInt(2, ss.service.getId());
+            }
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                if (count == 0) {
+                    ss.id = rs.getInt(1);
+                }
+            }
+        });
         if(ss.assignments.size() > 0) {
             Assignment.saveAllNewAssignments(ss.id, ss.assignments);
         }
-
         loadedSheets.put(ss.id, ss);
     }
 
-    public static void deleteSummarySheet(SummarySheet ss) {
-        // delete assignments
-        String delAss = "DELETE FROM SummarySheetAssignments WHERE summarysheet_id = " + ss.id;
-        PersistenceManager.executeUpdate(delAss);
 
-        String del = "DELETE FROM SummarySheets WHERE id = " + ss.id;
-        PersistenceManager.executeUpdate(del);
-        loadedSheets.remove(ss);
-    }
-
-    public static void saveAssignmentsOrder(SummarySheet ss) {
+    public static void saveAssignmentsOrder(SummarySheet ss) {   //TODO
         String upd = "UPDATE SummarySheetAssignments SET position = ? WHERE id = ?";
         PersistenceManager.executeBatchUpdate(upd, ss.assignments.size(), new BatchUpdateHandler() {
             @Override
