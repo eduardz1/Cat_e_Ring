@@ -5,10 +5,13 @@ import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.summarysheet.SummarySheet;
+import main.businesslogic.summarysheet.Assignment;
 import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing1 {
+import java.time.Duration;
+import java.util.Optional;
+
+public class TestCatERing5 {
     public static void main(String[] args) {
         try {
             /*
@@ -29,12 +32,28 @@ public class TestCatERing1 {
                             + " AND SERVICE "
                             + service.getName());
 
-            SummarySheet ss =
+            System.out.println(
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service, event);
+                            .createSummarySheet(service, event));
+            ObservableList<Assignment> assignments =
+                    CatERing.getInstance()
+                            .getSummarySheetManager()
+                            .getCurrentSheet()
+                            .getAssignments();
 
-            System.out.println(ss);
+            System.out.println("TEST DEFINING ASSIGNMENT " + assignments.get(0).getId());
+            CatERing.getInstance()
+                    .getSummarySheetManager()
+                    .defineAssignment(
+                            assignments.get(0),
+                            Optional.of(3),
+                            Optional.of(
+                                    CatERing.getInstance().getShiftManager().getShifts().get(0)),
+                            Optional.empty(),
+                            Optional.of(Duration.ofMinutes(30)),
+                            Optional.of(assignments.get(1))); // FIXME getShifts returns null ATM
+
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

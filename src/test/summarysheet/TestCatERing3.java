@@ -5,10 +5,10 @@ import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.summarysheet.SummarySheet;
+import main.businesslogic.summarysheet.Assignment;
 import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing1 {
+public class TestCatERing3 {
     public static void main(String[] args) {
         try {
             /*
@@ -29,12 +29,27 @@ public class TestCatERing1 {
                             + " AND SERVICE "
                             + service.getName());
 
-            SummarySheet ss =
+            System.out.println(
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service, event);
+                            .createSummarySheet(service, event));
+            ObservableList<Assignment> assignments =
+                    CatERing.getInstance()
+                            .getSummarySheetManager()
+                            .getCurrentSheet()
+                            .getAssignments();
 
-            System.out.println(ss);
+            System.out.println("ORIGINAL ASSIGNMENTS ORDER:\n" + assignments);
+
+            System.out.println("TESTING REORDERING OF ASSIGNMENTS: 1st -> 2nd");
+            CatERing.getInstance()
+                    .getSummarySheetManager()
+                    .changeAssignmentOrder(assignments.get(0), 1);
+
+            System.out.println("NEW ASSIGNMENTS ORDER:\n" + assignments);
+            System.out.println(
+                    "UPDATED SUMMARY SHEET:\n"
+                            + CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

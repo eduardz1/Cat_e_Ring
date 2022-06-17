@@ -11,4 +11,8 @@ public class UserManager {
     public User getCurrentUser() {
         return this.currentUser;
     }
+
+    public User loadUser(String username) {
+        return User.loadUser(username);
+    }
 }

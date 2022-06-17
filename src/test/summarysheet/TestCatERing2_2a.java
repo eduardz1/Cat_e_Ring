@@ -5,10 +5,10 @@ import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.summarysheet.SummarySheet;
+import main.businesslogic.procedure.Procedure;
 import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing1 {
+public class TestCatERing2_2a {
     public static void main(String[] args) {
         try {
             /*
@@ -29,12 +29,21 @@ public class TestCatERing1 {
                             + " AND SERVICE "
                             + service.getName());
 
-            SummarySheet ss =
+            System.out.println(
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service, event);
+                            .createSummarySheet(service, event));
 
-            System.out.println(ss);
+            Procedure procedure = CatERing.getInstance().getProcedureManager().getRecipes().get(0);
+            System.out.println("TEST ADDING PROCEDURE " + procedure + " TO SUMMARY SHEET");
+            CatERing.getInstance().getSummarySheetManager().addProcedure(procedure);
+
+            System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
+
+            System.out.println("TEST REMOVING PROCEDURE " + procedure + " FROM SUMMARY SHEET");
+            CatERing.getInstance().getSummarySheetManager().removeProcedure(procedure);
+
+            System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

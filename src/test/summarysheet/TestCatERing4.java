@@ -5,10 +5,9 @@ import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.summarysheet.SummarySheet;
 import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing1 {
+public class TestCatERing4 {
     public static void main(String[] args) {
         try {
             /*
@@ -29,12 +28,14 @@ public class TestCatERing1 {
                             + " AND SERVICE "
                             + service.getName());
 
-            SummarySheet ss =
+            System.out.println(
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service, event);
+                            .createSummarySheet(service, event));
 
-            System.out.println(ss);
+            System.out.println(
+                    "TEST ASKING FOR SHIFT BOARD:\n"
+                            + CatERing.getInstance().getSummarySheetManager().getShiftBoard());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

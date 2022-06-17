@@ -147,16 +147,7 @@ lw=2
 
 
 -.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>1070</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setShift(shift)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1890</x><y>20</y><w>20</w><h>120</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1900</x><y>90</y><w>210</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.erestimatedTime=time</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1410</x><y>0</y><w>500</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setEstimatedTime(time)</panel_attributes><additional_attributes>10;20;480;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1230</x><y>0</y><w>1170</w><h>150</h></coordinates><panel_attributes>OPT
-time!=null
-fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1560</x><y>30</y><w>780</w><h>60</h></coordinates><panel_attributes>OPT 
-[this.selShift!=null &amp;&amp; this.selCook !=null]
-fg=#4CAF50
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2280</x><y>50</y><w>20</w><h>30</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1900</x><y>30</y><w>400</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-decreseAvaiableTime(cook, this.estimatedTime)</panel_attributes><additional_attributes>10;20;380;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>1400</y><w>680</w><h>90</h></coordinates><panel_attributes>OPT [quantity!=null]
+setShift(shift)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>1400</y><w>680</w><h>90</h></coordinates><panel_attributes>OPT [quantity!=null]
 fg=#0693E3
 lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>1400</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
 setQuantity(s)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>1430</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
