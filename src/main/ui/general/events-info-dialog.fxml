@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="292.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.general.EventsInfoDialog">
+<BorderPane prefHeight="292.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.general.EventsInfoDialog">
    <bottom>
        <FlowPane alignment="CENTER" prefHeight="43.0" prefWidth="383.0" BorderPane.alignment="CENTER">
            <Button mnemonicParsing="false" onAction="#okButtonPressed" text="Ok">

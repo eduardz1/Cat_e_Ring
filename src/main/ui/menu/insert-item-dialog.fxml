@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="141.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.menu.InsertItemDialog">
+<BorderPane prefHeight="141.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.menu.InsertItemDialog">
    <bottom>
        <FlowPane alignment="CENTER" hgap="5.0" prefHeight="0.0" prefWidth="409.0" BorderPane.alignment="CENTER">
            <BorderPane.margin>

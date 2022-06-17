@@ -8,5 +8,4 @@ public class Recipe extends Procedure {
     public Recipe() {
         super();
     }
-
 }

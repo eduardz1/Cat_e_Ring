@@ -6,21 +6,15 @@ import javafx.collections.ObservableMap;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.user.User;
 
-import java.time.LocalDate;
 import java.time.Duration;
+import java.time.LocalDate;
 
-/**
- * Shift
- */
+/** Shift */
 public class Shift {
-    public LocalDate getDate() {
-        return date;
-    }
-
+    private final ObservableMap<User, Duration> myCooks;
     private LocalDate date;
     private Duration startTime;
     private Duration endTime;
-    private final ObservableMap<User, Duration> myCooks;
     private int id;
 
     public Shift(User user, LocalDate date, Duration startTime, Duration endTime) {
@@ -30,6 +24,22 @@ public class Shift {
         this.endTime = endTime;
         this.myCooks = FXCollections.observableHashMap();
         myCooks.put(user, endTime.minus(startTime));
+    }
+
+    public void setStartTime(Duration startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(Duration endTime) {
+        this.endTime = endTime;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
@@ -44,21 +54,23 @@ public class Shift {
             return false;
         }
         Shift other = (Shift) obj;
-        return this.date.equals(other.date) && this.startTime.equals(other.startTime)
+        return this.date.equals(other.date)
+                && this.startTime.equals(other.startTime)
                 && this.endTime.equals(other.endTime);
     }
 
-    public ObservableList<User> getMyCooks(){
+    public ObservableList<User> getMyCooks() {
         return FXCollections.observableArrayList(myCooks.keySet());
     }
 
-    public void increaseAvailableTime(User cook, Duration time){
+    public void increaseAvailableTime(User cook, Duration time) {
         myCooks.put(cook, myCooks.get(cook).plus(time));
     }
 
-    public void decreaseAvailableTime(User cook, Duration time) throws UseCaseLogicException{
-        if(!isAvailable(cook, time)) {
-            throw new UseCaseLogicException("decreaseAvailableTime: " + "cook does not have enough time left");
+    public void decreaseAvailableTime(User cook, Duration time) throws UseCaseLogicException {
+        if (!isAvailable(cook, time)) {
+            throw new UseCaseLogicException(
+                    "decreaseAvailableTime: " + "cook does not have enough time left");
         }
 
         myCooks.put(cook, myCooks.get(cook).minus(time));
@@ -73,12 +85,17 @@ public class Shift {
             throw new IllegalArgumentException();
         }
         if (!isAssigned(cook)) {
-            throw new UseCaseLogicException("increaseAvailableTime: " + "cook specified is not assigned to this Shift");
+            throw new UseCaseLogicException(
+                    "increaseAvailableTime: " + "cook specified is not assigned to this Shift");
         }
         return !myCooks.get(cook).minus(time).isZero();
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

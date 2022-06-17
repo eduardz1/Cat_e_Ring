@@ -6,13 +6,11 @@ import main.businesslogic.user.User;
 import java.time.Duration;
 import java.util.ArrayList;
 
-/**
- * ShiftManager
- */
+/** ShiftManager */
 public class ShiftManager {
 
-    private ShiftBoard shiftBoard;
     private final ArrayList<ShiftManagerEventReceiver> eventReceiver;
+    private ShiftBoard shiftBoard;
 
     public ShiftManager() {
         this.eventReceiver = new ArrayList<>();
@@ -26,7 +24,7 @@ public class ShiftManager {
             throw new IllegalArgumentException("removeShift: " + "shift can´t be null");
         }
 
-        shiftBoard.removeShift(cook, shift); //TODO implement, check exception
+        shiftBoard.removeShift(cook, shift); // TODO implement, check exception
     }
 
     public ArrayList<Shift> getShifts() {
@@ -74,11 +72,11 @@ public class ShiftManager {
             throw new UseCaseLogicException("isAvailable: " + "shiftBoard was not initialized");
         }
         if (!cook.isCook()) {
-            throw new UseCaseLogicException("isAvailable: " + "user specified is not a cook");}
+            throw new UseCaseLogicException("isAvailable: " + "user specified is not a cook");
+        }
         if (shift == null) {
             throw new IllegalArgumentException("isAvailable: " + "shift can´t be null");
         }
         return this.shiftBoard.isAvailable(cook, shift, time);
     }
-
 }

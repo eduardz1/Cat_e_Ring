@@ -5,7 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="109.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.menu.ChooseSectionDialog">
+<BorderPane prefHeight="109.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.menu.ChooseSectionDialog">
    <center>
        <VBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="190.0" spacing="5.0"
              BorderPane.alignment="CENTER_LEFT">

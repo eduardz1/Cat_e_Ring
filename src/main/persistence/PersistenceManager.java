@@ -21,8 +21,7 @@ public class PersistenceManager {
     }
 
     private static void logIn() {
-        if (username != null && password != null)
-            return;
+        if (username != null && password != null) return;
 
         System.out.println("Inserire username e password per accedere al database");
         Scanner scanner = new Scanner(System.in);
@@ -33,14 +32,12 @@ public class PersistenceManager {
         if (console != null) { // if running on a terminal instead of an IDE
             password = new String(console.readPassword("Password: "));
         } else {
-           System.out.println("Password: ");
+            System.out.println("Password: ");
             password = scanner.nextLine();
         }
 
         scanner.close();
     }
-
-
 
     public static void testSQLConnection() {
         logIn();
@@ -68,15 +65,15 @@ public class PersistenceManager {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
     }
 
-    public static int[] executeBatchUpdate(String parametrizedQuery, int itemNumber, BatchUpdateHandler handler) {
+    public static int[] executeBatchUpdate(
+            String parametrizedQuery, int itemNumber, BatchUpdateHandler handler) {
         int[] result = new int[0];
         logIn();
-        try (
-                Connection conn = DriverManager.getConnection(url, username, password);
-                PreparedStatement ps = conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+                PreparedStatement ps =
+                        conn.prepareStatement(parametrizedQuery, Statement.RETURN_GENERATED_KEYS)) {
             for (int i = 0; i < itemNumber; i++) {
                 handler.handleBatchItem(ps, i);
                 ps.addBatch();
@@ -99,9 +96,9 @@ public class PersistenceManager {
     public static int executeUpdate(String update) {
         int result = 0;
         logIn();
-        try (
-                Connection conn = DriverManager.getConnection(url, username, password);
-                PreparedStatement ps = conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+                PreparedStatement ps =
+                        conn.prepareStatement(update, Statement.RETURN_GENERATED_KEYS)) {
             result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {

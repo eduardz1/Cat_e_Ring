@@ -1,4 +1,5 @@
 package test.menu;
+
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
@@ -21,12 +22,16 @@ public class TestCatERing4a {
             Section primi = CatERing.getInstance().getMenuManager().defineSection("Primi");
             Section secondi = CatERing.getInstance().getMenuManager().defineSection("Secondi");
 
-            ObservableList<Recipe> recipes = CatERing.getInstance().getProcedureManager().getRecipes();
-            MenuItem it1 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
+            ObservableList<Recipe> recipes =
+                    CatERing.getInstance().getProcedureManager().getRecipes();
+            MenuItem it1 =
+                    CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);
-            MenuItem it2 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
-            MenuItem it3 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
+            MenuItem it2 =
+                    CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
+            MenuItem it3 =
+                    CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(3));
             MenuItem freeit = CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
             System.out.println(m.testString());

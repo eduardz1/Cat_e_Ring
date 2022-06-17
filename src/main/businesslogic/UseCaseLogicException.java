@@ -6,6 +6,5 @@ public class UseCaseLogicException extends Exception {
         super(string);
     }
 
-    public UseCaseLogicException() {
-    }
+    public UseCaseLogicException() {}
 }

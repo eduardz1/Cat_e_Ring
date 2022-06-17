@@ -30,6 +30,115 @@ public class Section {
         }
     }
 
+    // STATIC METHODS FOR PERSISTENCE
+    public static void saveNewSection(int menuid, Section sec, int posInMenu) {
+        String secInsert =
+                "INSERT INTO catering.MenuSections (menu_id, name, position) VALUES ("
+                        + menuid
+                        + ", "
+                        + "'"
+                        + PersistenceManager.escapeString(sec.name)
+                        + "', "
+                        + posInMenu
+                        + ");";
+        PersistenceManager.executeUpdate(secInsert);
+        sec.id = PersistenceManager.getLastId();
+
+        if (sec.sectionItems.size() > 0) {
+            MenuItem.saveAllNewItems(menuid, sec.id, sec.sectionItems);
+        }
+    }
+
+    public static void saveAllNewSections(int menuid, List<Section> sections) {
+        String secInsert =
+                "INSERT INTO catering.MenuSections (menu_id, name, position) VALUES (?, ?, ?);";
+        PersistenceManager.executeBatchUpdate(
+                secInsert,
+                sections.size(),
+                new BatchUpdateHandler() {
+                    @Override
+                    public void handleBatchItem(PreparedStatement ps, int batchCount)
+                            throws SQLException {
+                        ps.setInt(1, menuid);
+                        ps.setString(
+                                2, PersistenceManager.escapeString(sections.get(batchCount).name));
+                        ps.setInt(3, batchCount);
+                    }
+
+                    @Override
+                    public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                        sections.get(count).id = rs.getInt(1);
+                    }
+                });
+
+        // salva le voci delle sezioni
+        for (Section s : sections) {
+            if (s.sectionItems.size() > 0) {
+                MenuItem.saveAllNewItems(menuid, s.id, s.sectionItems);
+            }
+        }
+    }
+
+    public static ObservableList<Section> loadSectionsFor(int menu_id) {
+        ObservableList<Section> result = FXCollections.observableArrayList();
+        String query =
+                "SELECT * FROM MenuSections WHERE menu_id = " + menu_id + " ORDER BY position";
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    Section s = new Section(rs.getString("name"));
+                    s.id = rs.getInt("id");
+                    result.add(s);
+                });
+
+        for (Section s : result) {
+            // load items
+            s.sectionItems = MenuItem.loadItemsFor(menu_id, s.id);
+        }
+
+        return result;
+    }
+
+    public static void deleteSection(int menu_id, Section s) {
+        // delete items
+        String itemdel =
+                "DELETE FROM MenuItems WHERE section_id = " + s.id + " AND menu_id = " + menu_id;
+        PersistenceManager.executeUpdate(itemdel);
+
+        String secdel = "DELETE FROM MenuSections WHERE id = " + s.id;
+        PersistenceManager.executeUpdate(secdel);
+    }
+
+    public static void saveSectionName(Section s) {
+        String upd =
+                "UPDATE MenuSections SET name = '"
+                        + PersistenceManager.escapeString(s.name)
+                        + "'"
+                        + " WHERE id = "
+                        + s.id;
+        PersistenceManager.executeUpdate(upd);
+    }
+
+    public static void saveItemOrder(Section s) {
+        String upd = "UPDATE MenuItems SET position = ? WHERE id = ?";
+        PersistenceManager.executeBatchUpdate(
+                upd,
+                s.sectionItems.size(),
+                new BatchUpdateHandler() {
+                    @Override
+                    public void handleBatchItem(PreparedStatement ps, int batchCount)
+                            throws SQLException {
+                        ps.setInt(1, batchCount);
+                        ps.setInt(2, s.sectionItems.get(batchCount).getId());
+                    }
+
+                    @Override
+                    public void handleGeneratedIds(ResultSet rs, int count) {
+                        // no generated ids to handle
+                    }
+                });
+    }
+
     public void addItem(MenuItem mi) {
         this.sectionItems.add(mi);
     }
@@ -52,8 +161,7 @@ public class Section {
 
     private MenuItem findItemById(int id) {
         for (MenuItem mi : sectionItems) {
-            if (mi.getId() == id)
-                return mi;
+            if (mi.getId() == id) return mi;
         }
         return null;
     }
@@ -101,94 +209,5 @@ public class Section {
 
     public void removeItem(MenuItem mi) {
         sectionItems.remove(mi);
-    }
-
-    // STATIC METHODS FOR PERSISTENCE
-    public static void saveNewSection(int menuid, Section sec, int posInMenu) {
-        String secInsert = "INSERT INTO catering.MenuSections (menu_id, name, position) VALUES (" +
-                menuid + ", " +
-                "'" + PersistenceManager.escapeString(sec.name) + "', " +
-                posInMenu +
-                ");";
-        PersistenceManager.executeUpdate(secInsert);
-        sec.id = PersistenceManager.getLastId();
-
-        if (sec.sectionItems.size() > 0) {
-            MenuItem.saveAllNewItems(menuid, sec.id, sec.sectionItems);
-        }
-    }
-
-    public static void saveAllNewSections(int menuid, List<Section> sections) {
-        String secInsert = "INSERT INTO catering.MenuSections (menu_id, name, position) VALUES (?, ?, ?);";
-        PersistenceManager.executeBatchUpdate(secInsert, sections.size(), new BatchUpdateHandler() {
-            @Override
-            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, menuid);
-                ps.setString(2, PersistenceManager.escapeString(sections.get(batchCount).name));
-                ps.setInt(3, batchCount);
-            }
-
-            @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
-                sections.get(count).id = rs.getInt(1);
-            }
-        });
-
-        // salva le voci delle sezioni
-        for (Section s : sections) {
-            if (s.sectionItems.size() > 0) {
-                MenuItem.saveAllNewItems(menuid, s.id, s.sectionItems);
-            }
-        }
-    }
-
-    public static ObservableList<Section> loadSectionsFor(int menu_id) {
-        ObservableList<Section> result = FXCollections.observableArrayList();
-        String query = "SELECT * FROM MenuSections WHERE menu_id = " + menu_id +
-                " ORDER BY position";
-        PersistenceManager.executeQuery(query, rs -> {
-            Section s = new Section(rs.getString("name"));
-            s.id = rs.getInt("id");
-            result.add(s);
-        });
-
-        for (Section s : result) {
-            // load items
-            s.sectionItems = MenuItem.loadItemsFor(menu_id, s.id);
-        }
-
-        return result;
-    }
-
-    public static void deleteSection(int menu_id, Section s) {
-        // delete items
-        String itemdel = "DELETE FROM MenuItems WHERE section_id = " + s.id +
-                " AND menu_id = " + menu_id;
-        PersistenceManager.executeUpdate(itemdel);
-
-        String secdel = "DELETE FROM MenuSections WHERE id = " + s.id;
-        PersistenceManager.executeUpdate(secdel);
-    }
-
-    public static void saveSectionName(Section s) {
-        String upd = "UPDATE MenuSections SET name = '" + PersistenceManager.escapeString(s.name) + "'" +
-                " WHERE id = " + s.id;
-        PersistenceManager.executeUpdate(upd);
-    }
-
-    public static void saveItemOrder(Section s) {
-        String upd = "UPDATE MenuItems SET position = ? WHERE id = ?";
-        PersistenceManager.executeBatchUpdate(upd, s.sectionItems.size(), new BatchUpdateHandler() {
-            @Override
-            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, batchCount);
-                ps.setInt(2, s.sectionItems.get(batchCount).getId());
-            }
-
-            @Override
-            public void handleGeneratedIds(ResultSet rs, int count) {
-                // no generated ids to handle
-            }
-        });
     }
 }

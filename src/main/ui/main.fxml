@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 <AnchorPane fx:id="paneContainer" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Main">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.Main">
     <fx:include fx:id="startPane" source="start.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
 </AnchorPane>

@@ -4,6 +4,6 @@ import main.businesslogic.user.User;
 
 public class Event {
     public User assignedTo() {
-    return null;
-  }
+        return null;
+    }
 }

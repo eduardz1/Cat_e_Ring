@@ -1,4 +1,5 @@
 package test.menu;
+
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
@@ -32,7 +33,8 @@ public class TestCatERing {
             System.out.println(m.testString());
 
             System.out.println("\nTEST GET EVENT INFO");
-            ObservableList<EventInfo> events = CatERing.getInstance().getEventManager().getEventInfo();
+            ObservableList<EventInfo> events =
+                    CatERing.getInstance().getEventManager().getEventInfo();
             for (EventInfo e : events) {
                 System.out.println(e);
                 for (ServiceInfo s : e.getServices()) {
@@ -42,7 +44,8 @@ public class TestCatERing {
             System.out.println();
 
             System.out.println("\nTEST GET RECIPES AND INSERT ITEM IN SECTION");
-            ObservableList<Recipe> recipes = CatERing.getInstance().getProcedureManager().getRecipes();
+            ObservableList<Recipe> recipes =
+                    CatERing.getInstance().getProcedureManager().getRecipes();
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);
@@ -56,7 +59,8 @@ public class TestCatERing {
             System.out.println(m.testString());
 
             System.out.println("\nTEST EDIT FEATURES");
-            Map<String, Boolean> f = CatERing.getInstance().getMenuManager().getCurrentMenu().getFeatures();
+            Map<String, Boolean> f =
+                    CatERing.getInstance().getMenuManager().getCurrentMenu().getFeatures();
             String[] fNames = f.keySet().toArray(new String[0]);
             boolean[] vals = new boolean[fNames.length];
             Arrays.fill(vals, true);

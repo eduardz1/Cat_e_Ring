@@ -11,21 +11,12 @@ import main.persistence.SummarySheetPersistence;
 
 public class CatERing {
     private static CatERing singleInstance;
-
-    public static CatERing getInstance() {
-        if (singleInstance == null) {
-            singleInstance = new CatERing();
-        }
-        return singleInstance;
-    }
-
     private final MenuManager menuMgr;
     private final ProcedureManager recipeMgr;
     private final UserManager userMgr;
     private final EventManager eventMgr;
     private final SummarySheetManager summarySheetMgr;
     private final ShiftManager shiftMgr;
-
     // Do we need MenuPersistence as a variable?
     private CatERing() {
         menuMgr = new MenuManager();
@@ -36,7 +27,13 @@ public class CatERing {
         shiftMgr = new ShiftManager();
         menuMgr.addEventReceiver(new MenuPersistence());
         summarySheetMgr.addEventReceiver(new SummarySheetPersistence());
+    }
 
+    public static CatERing getInstance() {
+        if (singleInstance == null) {
+            singleInstance = new CatERing();
+        }
+        return singleInstance;
     }
 
     public MenuManager getMenuManager() {
@@ -62,5 +59,4 @@ public class CatERing {
     public SummarySheetManager getSummarySheetManager() {
         return summarySheetMgr;
     }
-
 }

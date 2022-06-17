@@ -12,14 +12,10 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     }
 
     @Override
-    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {
-
-    }
+    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {}
 
     @Override
-    public void updateAssignmentCompleted(SummarySheet ss, Assignment as) {
-
-    }
+    public void updateAssignmentCompleted(SummarySheet ss, Assignment as) {}
 
     @Override
     public void updateSummarySheetCreated(SummarySheet ss) {
@@ -32,12 +28,8 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     }
 
     @Override
-    public void updateProcedureRemoved(SummarySheet ss, Procedure pro) {
-
-    }
+    public void updateProcedureRemoved(SummarySheet ss, Procedure pro) {}
 
     @Override
-    public void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as) {
-
-    }
+    public void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as) {}
 }

@@ -1,12 +1,5 @@
 package main.businesslogic.summarysheet;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.Duration;
-import java.util.Map;
-import java.util.Optional;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.businesslogic.UseCaseLogicException;
@@ -18,12 +11,17 @@ import main.businesslogic.user.User;
 import main.persistence.BatchUpdateHandler;
 import main.persistence.PersistenceManager;
 
-/**
- * SummarySheet
- */
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.Duration;
+import java.util.Map;
+import java.util.Optional;
 
+/** SummarySheet */
 public class SummarySheet {
-    private static final Map<Integer, SummarySheet> loadedSheets = FXCollections.observableHashMap();
+    private static final Map<Integer, SummarySheet> loadedSheets =
+            FXCollections.observableHashMap();
     private final ServiceInfo service;
     private final ObservableList<Assignment> assignments;
     private final User owner;
@@ -41,6 +39,55 @@ public class SummarySheet {
         }
     }
 
+    public static void saveNewSummarySheet(SummarySheet ss) {
+        String summarySheetInsert =
+                "INSERT INTO catering.SummarySheet (id_summary_sheet, id_service) VALUES (?, ?);";
+        int[] res =
+                PersistenceManager.executeBatchUpdate(
+                        summarySheetInsert,
+                        1,
+                        new BatchUpdateHandler() {
+                            @Override
+                            public void handleBatchItem(PreparedStatement ps, int batchCount)
+                                    throws SQLException {
+                                ps.setInt(1, ss.id);
+                                ps.setInt(2, ss.service.getId());
+                            }
+
+                            @Override
+                            public void handleGeneratedIds(ResultSet rs, int count)
+                                    throws SQLException {
+                                if (count == 0) {
+                                    ss.id = rs.getInt(1);
+                                }
+                            }
+                        });
+        if (ss.assignments.size() > 0) {
+            Assignment.saveAllNewAssignments(ss.id, ss.assignments);
+        }
+        loadedSheets.put(ss.id, ss);
+    }
+
+    public static void saveAssignmentsOrder(SummarySheet ss) { // TODO
+        String upd = "UPDATE SummarySheetAssignments SET position = ? WHERE id = ?";
+        PersistenceManager.executeBatchUpdate(
+                upd,
+                ss.assignments.size(),
+                new BatchUpdateHandler() {
+                    @Override
+                    public void handleBatchItem(PreparedStatement ps, int batchCount)
+                            throws SQLException {
+                        ps.setInt(1, batchCount);
+                        ps.setInt(2, ss.assignments.get(batchCount).getId());
+                    }
+
+                    @Override
+                    public void handleGeneratedIds(ResultSet rs, int count) {
+                        // no generated ids to handle
+                    }
+                });
+    }
+
     public Assignment addAssignment(Procedure pro) {
         Assignment as = new Assignment(pro);
         this.assignments.add(as);
@@ -52,19 +99,16 @@ public class SummarySheet {
     }
 
     public void assignmentCompleted(Assignment assignment) {
-       assignment.setReady(); 
+        assignment.setReady();
     }
 
-    public boolean hasAssignment(Assignment assignment) {   // controlla se nel foglio esiste un dato assegnamento
+    public boolean hasAssignment(
+            Assignment assignment) { // controlla se nel foglio esiste un dato assegnamento
         return this.assignments.contains(assignment);
     }
 
     public void removeProcedure(Procedure pro) {
-        for (Assignment assignment : this.assignments) {
-            if (assignment.getProcedure() == pro) {
-                this.assignments.remove(assignment);
-            }
-        }
+        this.assignments.removeIf(assignment -> assignment.getProcedure() == pro);
     }
 
     public ObservableList<Assignment> getAssignments() {
@@ -76,14 +120,13 @@ public class SummarySheet {
         this.assignments.add(position, as);
     }
 
-    public void deleteAssignment(Assignment as){
-        for(Assignment continuation : this.assignments) {
+    public void deleteAssignment(Assignment as) {
+        for (Assignment continuation : this.assignments) {
 
-            if(as.isDefined())
-            {
+            if (as.isDefined()) {
                 as.getSelShift().increaseAvailableTime(as.getSelCook(), as.getEstimatedTime());
             }
-            if(continuation.getContinuation() == as) {
+            if (continuation.getContinuation() == as) {
                 continuation.setContinuation(as.getContinuation());
             }
         }
@@ -100,61 +143,26 @@ public class SummarySheet {
 
     @Override
     public String toString() {
-        return "SummarySheet di ID: " + id +
-                ",\n\t si riferisce al servizio: " + service +
-                ",\n\t ed ha i seguenti assegnamenti: " + assignments;
+        return "SummarySheet di ID: "
+                + id
+                + ",\n\t si riferisce al servizio: "
+                + service
+                + ",\n\t ed ha i seguenti assegnamenti: "
+                + assignments;
     }
 
     private void updateAssignments(ObservableList<Assignment> newAssignments) {
         // TODO
     }
 
-    // STATIC METHODS FOR PERSISTENCE
-
-    public static void saveNewSummarySheet(SummarySheet ss) {
-        String summarySheetInsert = "INSERT INTO catering.SummarySheet (id_summary_sheet, id_service) VALUES (?, ?);";
-        int[] res = PersistenceManager.executeBatchUpdate(summarySheetInsert, 1, new BatchUpdateHandler() {
-            @Override
-            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, ss.id);
-                ps.setInt(2, ss.service.getId());
-            }
-            @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
-                if (count == 0) {
-                    ss.id = rs.getInt(1);
-                }
-            }
-        });
-        if(ss.assignments.size() > 0) {
-            Assignment.saveAllNewAssignments(ss.id, ss.assignments);
-        }
-        loadedSheets.put(ss.id, ss);
-    }
-
-
-    public static void saveAssignmentsOrder(SummarySheet ss) {   //TODO
-        String upd = "UPDATE SummarySheetAssignments SET position = ? WHERE id = ?";
-        PersistenceManager.executeBatchUpdate(upd, ss.assignments.size(), new BatchUpdateHandler() {
-            @Override
-            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, batchCount);
-                ps.setInt(2, ss.assignments.get(batchCount).getId());
-            }
-
-            @Override
-            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
-                // no generated ids to handle
-            }
-        });
-    }
-
-    public Assignment defineAssignment(Assignment assignment,
-                                       Optional<Integer> quantity,
-                                       Optional<Shift> shift,
-                                       Optional<User> cook,
-                                       Optional<Duration> estimatedTime,
-                                       Optional<Assignment> continuation) throws UseCaseLogicException {
+    public Assignment defineAssignment(
+            Assignment assignment,
+            Optional<Integer> quantity,
+            Optional<Shift> shift,
+            Optional<User> cook,
+            Optional<Duration> estimatedTime,
+            Optional<Assignment> continuation)
+            throws UseCaseLogicException {
         quantity.ifPresent(assignment::setQuantity);
         continuation.ifPresent(assignment::setContinuation);
 

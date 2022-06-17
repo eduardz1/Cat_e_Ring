@@ -9,10 +9,11 @@ import main.businesslogic.user.User;
 import java.util.ArrayList;
 
 public class MenuManager {
-    private final String[] menuFeatures = { "Richiede cucina", "Richiede cuoco", "Finger food", "Buffet",
-            "Piatti caldi" };
-    private Menu currentMenu;
+    private final String[] menuFeatures = {
+        "Richiede cucina", "Richiede cuoco", "Finger food", "Buffet", "Piatti caldi"
+    };
     private final ArrayList<MenuEventReceiver> eventReceivers;
+    private Menu currentMenu;
 
     public MenuManager() {
         eventReceivers = new ArrayList<>();
@@ -48,9 +49,9 @@ public class MenuManager {
         return sec;
     }
 
-    public MenuItem insertItem(Recipe recipe, Section sec, String desc) throws UseCaseLogicException {
-        if (this.currentMenu == null)
-            throw new UseCaseLogicException();
+    public MenuItem insertItem(Recipe recipe, Section sec, String desc)
+            throws UseCaseLogicException {
+        if (this.currentMenu == null) throw new UseCaseLogicException();
         if (sec != null && this.currentMenu.getSectionPosition(sec) < 0)
             throw new UseCaseLogicException();
         MenuItem mi = this.currentMenu.addItem(recipe, sec, desc);
@@ -70,11 +71,10 @@ public class MenuManager {
         return this.insertItem(rec, null, desc);
     }
 
-    public void setAdditionalFeatures(String[] features, boolean[] values) throws UseCaseLogicException {
-        if (this.currentMenu == null)
-            throw new UseCaseLogicException();
-        if (features.length != values.length)
-            throw new UseCaseLogicException();
+    public void setAdditionalFeatures(String[] features, boolean[] values)
+            throws UseCaseLogicException {
+        if (this.currentMenu == null) throw new UseCaseLogicException();
+        if (features.length != values.length) throw new UseCaseLogicException();
         for (int i = 0; i < features.length; i++) {
             this.currentMenu.setFeatureValue(features[i], values[i]);
         }
@@ -82,23 +82,20 @@ public class MenuManager {
     }
 
     public void changeTitle(String title) throws UseCaseLogicException {
-        if (currentMenu == null)
-            throw new UseCaseLogicException();
+        if (currentMenu == null) throw new UseCaseLogicException();
         currentMenu.setTitle(title);
         this.notifyMenuTitleChanged();
     }
 
     public void publish() throws UseCaseLogicException {
-        if (currentMenu == null)
-            throw new UseCaseLogicException();
+        if (currentMenu == null) throw new UseCaseLogicException();
         currentMenu.setPublished(true);
         this.notifyMenuPublishedState();
     }
 
     public void deleteMenu(Menu m) throws UseCaseLogicException, MenuException {
         User u = CatERing.getInstance().getUserManager().getCurrentUser();
-        if (!u.isChef())
-            throw new UseCaseLogicException();
+        if (!u.isChef()) throw new UseCaseLogicException();
         if (m.isInUse() || !m.isOwner(u)) {
             throw new MenuException();
         }
@@ -107,8 +104,7 @@ public class MenuManager {
 
     public void chooseMenu(Menu m) throws UseCaseLogicException, MenuException {
         User u = CatERing.getInstance().getUserManager().getCurrentUser();
-        if (!u.isChef())
-            throw new UseCaseLogicException();
+        if (!u.isChef()) throw new UseCaseLogicException();
         if (m.isInUse() || !m.isOwner(u)) {
             throw new MenuException();
         }
@@ -168,8 +164,9 @@ public class MenuManager {
             currentMenu.moveFreeItem(mi, position);
             this.notifyFreeItemsRearranged();
         } else {
-            if (currentMenu == null || currentMenu.getSectionPosition(sec) < 0 || sec.getItemPosition(mi) < 0)
-                throw new UseCaseLogicException();
+            if (currentMenu == null
+                    || currentMenu.getSectionPosition(sec) < 0
+                    || sec.getItemPosition(mi) < 0) throw new UseCaseLogicException();
             if (position < 0 || position >= sec.getItemsCount())
                 throw new IllegalArgumentException();
             sec.moveItem(mi, position);
@@ -183,8 +180,7 @@ public class MenuManager {
 
     public void assignItemToSection(MenuItem mi, Section sec) throws UseCaseLogicException {
         // condiz 1: deve eserci un currentMenu
-        if (currentMenu == null)
-            throw new UseCaseLogicException();
+        if (currentMenu == null) throw new UseCaseLogicException();
 
         // condiz 2: la sezione se specificata deve appartenere al current menu
         if (sec != null && currentMenu.getSectionPosition(sec) < 0)
@@ -196,19 +192,16 @@ public class MenuManager {
             throw new UseCaseLogicException();
 
         // spostamento non necessario
-        if (sec == oldsec)
-            return;
+        if (sec == oldsec) return;
 
         // spostiamo!
         this.currentMenu.changeItemSection(mi, oldsec, sec);
 
         this.notifyItemSectionChanged(mi, sec);
-
     }
 
     public void editMenuItemDescription(MenuItem mi, String desc) throws UseCaseLogicException {
-        if (currentMenu == null)
-            throw new UseCaseLogicException();
+        if (currentMenu == null) throw new UseCaseLogicException();
         if (currentMenu.getSectionForItem(mi) == null && currentMenu.getFreeItemPosition(mi) < 0)
             throw new UseCaseLogicException();
 
@@ -218,8 +211,7 @@ public class MenuManager {
     }
 
     public void deleteItem(MenuItem mi) throws UseCaseLogicException {
-        if (currentMenu == null)
-            throw new UseCaseLogicException();
+        if (currentMenu == null) throw new UseCaseLogicException();
         Section sec;
         try {
             sec = currentMenu.getSectionForItem(mi);
@@ -322,12 +314,12 @@ public class MenuManager {
         }
     }
 
-    public void setCurrentMenu(Menu m) {
-        this.currentMenu = m;
-    }
-
     public Menu getCurrentMenu() {
         return this.currentMenu;
+    }
+
+    public void setCurrentMenu(Menu m) {
+        this.currentMenu = m;
     }
 
     public ObservableList<Menu> getAllMenus() {

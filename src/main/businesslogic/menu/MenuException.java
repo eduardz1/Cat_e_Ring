@@ -1,4 +1,3 @@
 package main.businesslogic.menu;
 
-public class MenuException extends Exception {
-}
+public class MenuException extends Exception {}
