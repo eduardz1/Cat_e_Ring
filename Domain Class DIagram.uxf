@@ -295,18 +295,18 @@ m2=1</panel_attributes><additional_attributes>1190;1890;1190;2560;10;2560;10;10;
 /+updateAssignmentDeleted(ss: SummarySheet, as: Assignmet)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>1850</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=-&gt;
 eventReceivers
 m2=0..n</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1680</x><y>1450</y><w>1020</w><h>460</h></coordinates><panel_attributes>ServiceManagement
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1700</x><y>1480</y><w>300</w><h>100</h></coordinates><panel_attributes>ServiceManager
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1700</x><y>1480</y><w>300</w><h>80</h></coordinates><panel_attributes>EventManager
 --
 
 --
-+assignedTo(ev: Event): User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2000</x><y>1640</y><w>270</w><h>110</h></coordinates><panel_attributes>Service
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2000</x><y>1640</y><w>270</w><h>110</h></coordinates><panel_attributes>ServiceInfo
 --
 
 --
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1640</x><y>1600</y><w>380</w><h>150</h></coordinates><panel_attributes>lt=-&gt;
 service
 m2=1</panel_attributes><additional_attributes>10;10;100;10;100;120;360;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1990</x><y>1520</y><w>170</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
-currentService
+
 m2=1
 </panel_attributes><additional_attributes>10;20;140;20;140;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1280</x><y>1800</y><w>210</w><h>140</h></coordinates><panel_attributes>lt=-&gt;
 continuation
@@ -392,6 +392,5 @@ m1=0..1</panel_attributes><additional_attributes>180;20;10;20</additional_attrib
 --
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2260</x><y>1680</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
-event
-m1=1</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2260</x><y>1690</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element></diagram>

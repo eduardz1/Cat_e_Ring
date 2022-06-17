@@ -130,7 +130,7 @@ public class Menu {
         this.sections.add(new Section("Secondi"));
         this.sections.add(new Section("Dessert"));
 
-        Recipe[] all = CatERing.getInstance().getRecipeManager().getRecipes().toArray(new Recipe[0]);
+        Recipe[] all = CatERing.getInstance().getProcedureManager().getRecipes().toArray(new Recipe[0]);
         freeItems.add(new MenuItem(all[3]));
         freeItems.add(new MenuItem(all[4]));
         freeItems.add(new MenuItem(all[5]));
@@ -291,6 +291,15 @@ public class Menu {
             freeItems.remove(mi);
         else
             sec.removeItem(mi);
+    }
+
+    public ArrayList<MenuItem> getAllItems() { // TODO check whether to use ArrayList or ObservableList
+        ArrayList<MenuItem> items = new ArrayList<>();
+        for (Section s : this.sections) {
+            items.addAll(s.getItems());
+        }
+        items.addAll(this.freeItems);
+        return items;
     }
 
     // STATIC METHODS FOR PERSISTENCE
@@ -496,14 +505,5 @@ public class Menu {
                 // no generated ids to handle
             }
         });
-    }
-
-    public ArrayList<MenuItem> getAllItems() { // TODO check whether to use ArrayList or ObservableList
-        ArrayList<MenuItem> items = new ArrayList<>();
-        for (Section s : this.sections) {
-            items.addAll(s.getItems());
-        }
-        items.addAll(this.freeItems);
-        return items;
     }
 }

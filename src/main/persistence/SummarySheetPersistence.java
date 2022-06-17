@@ -8,7 +8,7 @@ import main.businesslogic.summarysheet.SummarySheetEventReceiver;
 public class SummarySheetPersistence implements SummarySheetEventReceiver {
     @Override
     public void updateProcedureAdded(SummarySheet ss, Assignment as) {
-        Assignment.saveNewAssignments(as);
+        Assignment.saveNewAssignments(ss.getId(), as);
     }
 
     @Override

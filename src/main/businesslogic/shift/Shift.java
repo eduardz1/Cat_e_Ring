@@ -24,6 +24,7 @@ public class Shift {
     private final ObservableMap<User, Duration> myCooks;
 
     public Shift(LocalDate date, Duration startTime, Duration endTime) {
+        this.id = 0;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -81,5 +82,9 @@ public class Shift {
             throw new UseCaseLogicException("increaseAvailableTime: " + "cook specified is not assigned to this Shift");
         }
         return !myCooks.get(cook).minus(time).isZero();
+    }
+
+    public int getId() {
+        return id;
     }
 }

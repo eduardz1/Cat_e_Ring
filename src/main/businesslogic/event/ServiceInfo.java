@@ -14,11 +14,12 @@ public class ServiceInfo implements EventItemInfo {
     private Time timeStart;
     private Time timeEnd;
     private int participants;
+    private Menu menu;
+    private EventInfo eventInfo;
 
     public ServiceInfo(String name) {
         this.name = name;
     }
-
 
     public String toString() {
         return name + ": " + date + " (" + timeStart + "-" + timeEnd + "), " + participants + " pp.";
@@ -26,9 +27,9 @@ public class ServiceInfo implements EventItemInfo {
 
     // STATIC METHODS FOR PERSISTENCE
 
-    public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id) {
+    public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id, EventInfo e) {
         ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
-        String query = "SELECT id, name, service_date, time_start, time_end, expected_participants " +
+        String query = "SELECT id, name, service_date, time_start, time_end, expected_participants, approved_menu_id " +
                 "FROM Services WHERE event_id = " + event_id;
         PersistenceManager.executeQuery(query, rs -> {
             String s = rs.getString("name");
@@ -38,6 +39,12 @@ public class ServiceInfo implements EventItemInfo {
             serv.timeStart = rs.getTime("time_start");
             serv.timeEnd = rs.getTime("time_end");
             serv.participants = rs.getInt("expected_participants");
+            int idMenu=rs.getInt("approved_menu_id");
+            ObservableList<Menu> Omenu = CatERing.getInstance().getMenuManager().getAllMenus();
+            for(int i = 0; i < Omenu.size(); i++) {
+                if(Omenu.get(i).getId()==idMenu) serv.menu = Omenu.get(i);
+            }
+            serv.eventInfo = e; // temporary, need to change when working on Event/Services UC
             result.add(serv);
         });
 

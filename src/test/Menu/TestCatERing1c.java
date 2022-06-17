@@ -1,4 +1,4 @@
-package test;
+package test.Menu;
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
@@ -22,7 +22,7 @@ public class TestCatERing1c {
             Section primi = CatERing.getInstance().getMenuManager().defineSection("Primi");
             Section secondi = CatERing.getInstance().getMenuManager().defineSection("Secondi");
 
-            ObservableList<Recipe> recipes = CatERing.getInstance().getRecipeManager().getRecipes();
+            ObservableList<Recipe> recipes = CatERing.getInstance().getProcedureManager().getRecipes();
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);

@@ -26,6 +26,10 @@ public class SummarySheetManager {
         this.eventReceivers = new ArrayList<>();
     }
 
+    private void setCurrentSummarySheet(SummarySheet sheet) {
+        this.currentSheet = sheet;
+    }
+
     public Assignment addProcedure(Procedure pro) throws UseCaseLogicException {
         if(this.currentSheet == null) {
             throw new UseCaseLogicException("No current sheet");
@@ -46,7 +50,6 @@ public class SummarySheetManager {
         if(!currentSheet.isAssigned(pro)) {
             throw new UseCaseLogicException("Cannot remove assigned procedure");
         }
-
         currentSheet.removeProcedure(pro); // FIXME check return if necessary
         this.notifyProcedureRemoved(pro);
     }
@@ -119,14 +122,6 @@ public class SummarySheetManager {
         return sheet;
     }
 
-    private void setCurrentSummarySheet(SummarySheet sheet) {
-        this.currentSheet = sheet;
-    }
-
-    public void seCurrentSummarySheet(SummarySheet sheet) {
-        this.currentSheet = sheet;
-    }
-
     public void changeAssignmentOrder(Assignment as, int position) throws UseCaseLogicException {
         if(this.currentSheet == null) {
             throw new UseCaseLogicException("No current sheet");
@@ -142,7 +137,7 @@ public class SummarySheetManager {
         }
 
         this.currentSheet.moveAssignments(as, position);
-        this.notifyAssignmentRearranged(as);
+        this.notifyAssignmentRearranged();
     }
 
     public ArrayList<Shift> getShiftBoard() throws UseCaseLogicException {
@@ -187,9 +182,9 @@ public class SummarySheetManager {
         }
     }
 
-    private void notifyAssignmentRearranged(Assignment as) {
+    private void notifyAssignmentRearranged() {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
-            eventReceiver.updateAssignmentRearranged(as);
+            eventReceiver.updateAssignmentRearranged(this.currentSheet);
         }
     }
 
@@ -203,5 +198,13 @@ public class SummarySheetManager {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
             eventReceiver.updateProcedureRemoved(currentSheet, pro);
         }
+    }
+
+    public void addEventReceiver(SummarySheetEventReceiver rec) {
+        this.eventReceivers.add(rec);
+    }
+
+    public void removeEventReceiver(MenuEventReceiver rec) {
+        this.eventReceivers.remove(rec);
     }
 }

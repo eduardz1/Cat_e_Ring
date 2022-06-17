@@ -7,6 +7,7 @@ import main.businesslogic.shift.ShiftManager;
 import main.businesslogic.summarysheet.SummarySheetManager;
 import main.businesslogic.user.UserManager;
 import main.persistence.MenuPersistence;
+import main.persistence.SummarySheetPersistence;
 
 public class CatERing {
     private static CatERing singleInstance;
@@ -34,13 +35,15 @@ public class CatERing {
         summarySheetMgr = new SummarySheetManager();
         shiftMgr = new ShiftManager();
         menuMgr.addEventReceiver(new MenuPersistence());
+        summarySheetMgr.addEventReceiver(new SummarySheetPersistence());
+
     }
 
     public MenuManager getMenuManager() {
         return menuMgr;
     }
 
-    public ProcedureManager getRecipeManager() {
+    public ProcedureManager getProcedureManager() {
         return recipeMgr;
     }
 

@@ -22,6 +22,10 @@ public class EventInfo implements EventItemInfo {
         id = 0;
     }
 
+    public User getOrganizer() {
+        return organizer;
+    }
+
     public ObservableList<ServiceInfo> getServices() {
         return FXCollections.unmodifiableObservableList(this.services);
     }
@@ -48,7 +52,7 @@ public class EventInfo implements EventItemInfo {
         });
 
         for (EventInfo e : all) {
-            e.services = ServiceInfo.loadServiceInfoForEvent(e.id);
+            e.services = ServiceInfo.loadServiceInfoForEvent(e.id, e);
         }
         return all;
     }
