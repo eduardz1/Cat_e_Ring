@@ -1,4 +1,4 @@
-package test.Menu;
+package test.menu;
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
@@ -7,7 +7,7 @@ import main.businesslogic.menu.MenuItem;
 import main.businesslogic.menu.Section;
 import main.businesslogic.procedure.Recipe;
 
-public class TestCatERing4b {
+public class TestCatERing4c {
     public static void main(String[] args) {
         try {
             /*
@@ -26,15 +26,15 @@ public class TestCatERing4b {
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);
             MenuItem it2 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
-            CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
+            MenuItem it3 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(3));
             MenuItem freeit = CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
             System.out.println(m.testString());
 
-            System.out.println("\nTEST CHANGE ITEM DESCRIPTION");
-            it1.setDescription("Nuovo antipasto");
-            it2.setDescription("Nuovo secondo");
-            freeit.setDescription("Nuovo piatto unico");
+            System.out.println("\nTEST REMOVE ITEM");
+            CatERing.getInstance().getMenuManager().deleteItem(it1);
+            CatERing.getInstance().getMenuManager().deleteItem(it2);
+            CatERing.getInstance().getMenuManager().deleteItem(freeit);
             System.out.println(m.testString());
 
         } catch (UseCaseLogicException ex) {

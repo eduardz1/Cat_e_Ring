@@ -1,13 +1,14 @@
-package test.SummarySheet;
+package test.summarysheet;
 
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
-import main.businesslogic.menu.Menu;
-import main.businesslogic.menu.Section;
-import main.businesslogic.procedure.Recipe;
+import main.businesslogic.event.EventInfo;
+import main.businesslogic.event.ServiceInfo;
+import main.businesslogic.summarysheet.SummarySheet;
+import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing1a {
+public class TestCatERing1 {
     public static void main(String[] args) {
         try {
             /*
@@ -26,10 +27,6 @@ public class TestCatERing1a {
             SummarySheet ss = CatERing.getInstance().getSummarySheetManager().createSummarySheet(service, event);
 
             System.out.println(ss);
-
-            System.out.println("TEST DELETION OF SUMMARY SHEET");
-            CatERing.getInstance().getSummarySheetManager().deleteSummarySheet(ss);
-
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

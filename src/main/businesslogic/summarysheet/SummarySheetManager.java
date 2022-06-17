@@ -22,6 +22,11 @@ import main.businesslogic.user.User;
 public class SummarySheetManager {
 
     private SummarySheet currentSheet;
+    
+    public SummarySheet getCurrentSheet() {
+        return currentSheet;
+    }
+
     private final ArrayList<SummarySheetEventReceiver> eventReceivers;
 
     public SummarySheetManager() {

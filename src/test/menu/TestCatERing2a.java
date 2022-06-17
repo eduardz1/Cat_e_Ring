@@ -1,13 +1,12 @@
-package test.Menu;
+package test.menu;
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.Menu;
-import main.businesslogic.menu.MenuItem;
 import main.businesslogic.menu.Section;
 import main.businesslogic.procedure.Recipe;
 
-public class TestCatERing4a {
+public class TestCatERing2a {
     public static void main(String[] args) {
         try {
             /*
@@ -22,20 +21,21 @@ public class TestCatERing4a {
             Section secondi = CatERing.getInstance().getMenuManager().defineSection("Secondi");
 
             ObservableList<Recipe> recipes = CatERing.getInstance().getProcedureManager().getRecipes();
-            MenuItem it1 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
+            CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);
-            MenuItem it2 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
-            MenuItem it3 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
+            CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
+            CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(3));
-            MenuItem freeit = CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
+            CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
             System.out.println(m.testString());
 
-            System.out.println("\nTEST CHANGE ITEM SECTION");
-            CatERing.getInstance().getMenuManager().assignItemToSection(it1, secondi);
-            CatERing.getInstance().getMenuManager().assignItemToSection(it2, primi);
-            CatERing.getInstance().getMenuManager().assignItemToSection(it3);
-            CatERing.getInstance().getMenuManager().assignItemToSection(freeit, antipasti);
+            System.out.println("\nTEST DELETE SECTION WITH ITEMS");
+            CatERing.getInstance().getMenuManager().deleteSection(antipasti, true);
+            System.out.println(m.testString());
+
+            System.out.println("\nTEST DELETE SECTION WITHOUT ITEMS");
+            CatERing.getInstance().getMenuManager().deleteSection(primi, true);
             System.out.println(m.testString());
 
         } catch (UseCaseLogicException ex) {

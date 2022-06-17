@@ -1,4 +1,4 @@
-package test.Menu;
+package test.menu;
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;

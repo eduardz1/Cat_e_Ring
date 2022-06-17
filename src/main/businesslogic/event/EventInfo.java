@@ -10,6 +10,27 @@ import java.sql.Date;
 public class EventInfo implements EventItemInfo {
     private int id;
     private final String name;
+    
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getDateStart() {
+        return dateStart;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
+    }
+
+    public int getParticipants() {
+        return participants;
+    }
+
     private Date dateStart;
     private Date dateEnd;
     private int participants;

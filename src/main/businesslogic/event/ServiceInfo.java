@@ -14,6 +14,27 @@ public class ServiceInfo implements EventItemInfo {
     private int id;
     private final String name;
     private Date date;
+    
+    public String getName() {
+        return name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Time getTimeStart() {
+        return timeStart;
+    }
+
+    public Time getTimeEnd() {
+        return timeEnd;
+    }
+
+    public int getParticipants() {
+        return participants;
+    }
+
     private Time timeStart;
     private Time timeEnd;
     private int participants;
