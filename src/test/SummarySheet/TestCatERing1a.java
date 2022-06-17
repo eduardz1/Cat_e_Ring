@@ -3,17 +3,11 @@ package test.SummarySheet;
 import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
-import main.businesslogic.event.Event;
-import main.businesslogic.event.EventInfo;
-import main.businesslogic.event.ServiceInfo;
 import main.businesslogic.menu.Menu;
 import main.businesslogic.menu.Section;
 import main.businesslogic.procedure.Recipe;
-import main.businesslogic.summarysheet.SummarySheet;
-import main.businesslogic.summarysheet.SummarySheetException;
 
-public class TestCatERing2a {
-
+public class TestCatERing1a {
     public static void main(String[] args) {
         try {
             /*
@@ -24,21 +18,17 @@ public class TestCatERing2a {
             System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
             ObservableList<EventInfo> Events = CatERing.getInstance().getEventManager().getEventInfo();
 
-            EventInfo event1 = Events.get(0);
-            EventInfo event2 = Events.get(1);
-            ServiceInfo service1 = event.getServices().get(0);
-            ServiceInfo service2 = event.getServices().get(0);
+            EventInfo event = Events.get(0);
+            ServiceInfo service = event.getServices().get(0);
 
-            System.out.println("TEST CREATION OF NEW SUMMARY SHEET FOR EVENT " + event1.getName() + " AND SERVICE " + service1.getName());
-            System.out.println("TEST CREATION OF NEW SUMMARY SHEET FOR EVENT " + event2.getName() + " AND SERVICE " + service2.getName());
+            System.out.println("TEST CREATION OF NEW SUMMARY SHEET FOR EVENT " + event.getName() + " AND SERVICE " + service.getName());
             
-            SummarySheet ss1 = CatERing.getInstance().getSummarySheetManager().createSummarySheet(service1, event1);
-            SummarySheet ss2 = CatERing.getInstance().getSummarySheetManager().createSummarySheet(service2, event2);
-
-            System.out.println("TEST GETTING SUMMARY SHEET FOR EVENT " + event1.getName() + " AND SERVICE " + service1.getName());
-            CatERing.getInstance().getSummarySheetManager().chooseSummarySheet(ss1);
+            SummarySheet ss = CatERing.getInstance().getSummarySheetManager().createSummarySheet(service, event);
 
             System.out.println(ss);
+
+            System.out.println("TEST DELETION OF SUMMARY SHEET");
+            CatERing.getInstance().getSummarySheetManager().deleteSummarySheet(ss);
 
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
