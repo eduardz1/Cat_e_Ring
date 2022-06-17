@@ -21,8 +21,6 @@ public class TestCatERing1 {
             ObservableList<EventInfo> Events =
                     CatERing.getInstance().getEventManager().getEventInfo();
 
-            CatERing.getInstance().getUserManager().fakeLogin("Lidia");
-            System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
             ObservableList<Menu> boh = CatERing.getInstance().getMenuManager().getAllMenus();
             System.out.println(boh.get(0).getId());
             System.out.println(boh.get(0).getFreeItems());
@@ -36,6 +34,8 @@ public class TestCatERing1 {
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
+
+            System.out.println("event organizer is " + event.getOrganizer().getUserName());
 
             SummarySheet ss =
                     CatERing.getInstance()

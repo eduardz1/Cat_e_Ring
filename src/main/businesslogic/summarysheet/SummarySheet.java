@@ -41,7 +41,7 @@ public class SummarySheet {
 
     public static void saveNewSummarySheet(SummarySheet ss) {
         String summarySheetInsert =
-                "INSERT INTO catering.SummarySheet (id_summary_sheet, id_service) VALUES (?, ?);";
+                "INSERT INTO catering.SummarySheets (id_summary_sheet, id_service) VALUES (?, ?);";
         int[] res =
                 PersistenceManager.executeBatchUpdate(
                         summarySheetInsert,

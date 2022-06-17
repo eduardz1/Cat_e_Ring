@@ -27,7 +27,7 @@ public class ServiceInfo implements EventItemInfo {
         ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
         String query =
                 "SELECT id, name, service_date, time_start, time_end, expected_participants, approved_menu_id "
-                        + "FROM Services WHERE event_id = "
+                        + "FROM Services WHERE id = "
                         + event_id;
         PersistenceManager.executeQuery(
                 query,
