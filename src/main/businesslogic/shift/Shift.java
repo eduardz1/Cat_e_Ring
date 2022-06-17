@@ -12,7 +12,6 @@ import java.time.Duration;
 /**
  * Shift
  */
-
 public class Shift {
     public LocalDate getDate() {
         return date;
@@ -22,6 +21,7 @@ public class Shift {
     private Duration startTime;
     private Duration endTime;
     private final ObservableMap<User, Duration> myCooks;
+    private int id;
 
     public Shift(LocalDate date, Duration startTime, Duration endTime) {
         this.id = 0;

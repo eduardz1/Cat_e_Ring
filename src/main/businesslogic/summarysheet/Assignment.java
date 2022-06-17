@@ -61,10 +61,6 @@ public class Assignment {
         this.completed = true;
     }
     
-    public void setContinue(Assignment assignment) {
-        this.continuation = assignment;
-    }
-    
     public Procedure getProcedure() {
         return this.itemProcedure;
     }
@@ -152,11 +148,7 @@ public class Assignment {
         this.continuation = continuation;
     }
 
-    public void setSelShift(Shift selShift) {
-        this.selShift = selShift;
-    }
-
-    public void setItemProcedure(Procedure itemProcedure) {
+    public void setProcedure(Procedure itemProcedure) {
         this.itemProcedure = itemProcedure;
     }
 
@@ -171,7 +163,7 @@ public class Assignment {
         int[] result = PersistenceManager.executeBatchUpdate(AssInsert, assignments.size(), new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setBoolean(1, assignments.get().isCompleted());
+                ps.setBoolean(1, assignments.get(batchCount).isCompleted());
                 ps.setInt(2, summarysheet_id);
                 ps.setInt(3, as.getQuantity());
                 ps.setLong(4, (int) as.getEstimatedTime().toMinutes());

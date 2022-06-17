@@ -23,12 +23,12 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
 
     @Override
     public void updateSummarySheetCreated(SummarySheet ss) {
-     SummarySheet.saveNewSummarySheet(ss);
+        SummarySheet.saveNewSummarySheet(ss);
     }
 
     @Override
     public void updateAssignmentRearranged(SummarySheet ss) {
-    SummarySheet.saveAssignmentsOrder(ss);
+        SummarySheet.saveAssignmentsOrder(ss);
     }
 
     @Override

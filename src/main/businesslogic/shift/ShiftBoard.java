@@ -22,8 +22,7 @@ public class ShiftBoard {
 
     public boolean isAssigned(User cook, Shift shift) throws UseCaseLogicException {
         if (!this.shiftList.contains(shift)) {
-            throw new UseCaseLogicException("isAssigned: " +
-                    "shift is not present in the shift board");
+            throw new UseCaseLogicException("isAssigned: " + "shift is not present in the shift board");
         }
 
         return shift.isAssigned(cook);
@@ -31,8 +30,7 @@ public class ShiftBoard {
 
     public boolean isAvailable(User cook, Shift shift, Duration time) throws UseCaseLogicException {
         if (!this.shiftList.contains(shift)) {
-            throw new UseCaseLogicException("isAssigned: " +
-                    "shift is not present in the shift board");
+            throw new UseCaseLogicException("isAssigned: " + "shift is not present in the shift board");
         }
 
         return shift.isAvailable(cook, time);

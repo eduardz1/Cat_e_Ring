@@ -4,18 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
+import main.businesslogic.event.ServiceInfo;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.procedure.Procedure;
-import main.businesslogic.service.Service;
 import main.businesslogic.shift.Shift;
 import main.businesslogic.user.User;
 import main.persistence.BatchUpdateHandler;
@@ -26,18 +23,18 @@ import main.persistence.PersistenceManager;
  */
 public class SummarySheet {
     private static final Map<Integer, SummarySheet> loadedSheets = FXCollections.observableHashMap();
-    private int id;
-    private final Service service;
+    private final ServiceInfo service;
     private final ObservableList<Assignment> assignments;
+    private final User owner;
+    private int id;
 
-    private final User owner; // FIXME add this in the DSD
-
-    protected SummarySheet(Service service) {
+    protected SummarySheet(ServiceInfo service) {
+        this.id = 0;
         this.service = service;
         this.assignments = FXCollections.observableArrayList();
-        this.owner = service.linkedEvent().getChefAssigned();
+        this.owner = service.getEventInfo().getOrganizer(); // TODO check for ownership in modify
 
-        for (MenuItem item : service.referencedMenu().getAllItems()) {
+        for (MenuItem item : service.getMenu().getAllItems()) {
             Assignment assignment = new Assignment(item.getItemRecipe());
             this.assignments.add(assignment);
         }
@@ -87,6 +84,10 @@ public class SummarySheet {
         this.assignments.remove(as);
     }
 
+    public User getOwner() {
+        return this.owner;
+    }
+
     public int getId() {
         return this.id;
     }
@@ -94,8 +95,8 @@ public class SummarySheet {
     @Override
     public String toString() {
         return "SummarySheet di ID: " + id +
-                ", si riferisce al servizio: " + service +
-                ", ed ha i seguenti assegnamenti: " + assignments;
+                ",\n\t si riferisce al servizio: " + service +
+                ",\n\t ed ha i seguenti assegnamenti: " + assignments;
     }
 
     private void updateAssignments(ObservableList<Assignment> newAssignments) {

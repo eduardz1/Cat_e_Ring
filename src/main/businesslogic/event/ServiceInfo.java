@@ -1,5 +1,8 @@
 package main.businesslogic.event;
 
+import main.businesslogic.CatERing;
+import main.businesslogic.menu.Menu;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.persistence.PersistenceManager;
@@ -19,6 +22,17 @@ public class ServiceInfo implements EventItemInfo {
 
     public ServiceInfo(String name) {
         this.name = name;
+    }
+
+    public EventInfo getEventInfo() {
+        return this.eventInfo;
+    }
+
+    public Menu getMenu() {
+        return this.menu;
+    }
+    public int getId() {
+        return id;
     }
 
     public String toString() {
