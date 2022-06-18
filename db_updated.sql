@@ -24,53 +24,31 @@ CREATE DATABASE IF NOT EXISTS `catering` DEFAULT CHARACTER SET utf8mb4 COLLATE u
 USE `catering`;
 -- --------------------------------------------------------
 --
--- Struttura della tabella `Menus`
+-- Table structure for table `Events`
 --
-CREATE TABLE `Menus` (
-  `id` int(11) NOT NULL,
-  `title` tinytext DEFAULT NULL,
-  `owner_id` int(11) DEFAULT NULL,
-  `published` tinyint(1) DEFAULT 0,
-  PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
--- Dump dei dati per la tabella `Menus`
---
-INSERT INTO `Menus` (`id`, `title`, `owner_id`, `published`)
-VALUES (80, 'Coffee break mattutino', 2, 1),
-  (82, 'Coffee break pomeridiano', 2, 1),
-  (86, 'Cena di compleanno pesce', 3, 1),
-  (89, 'Titolo Nuovo', 2, 1),
-  (90, 'Titolo Nuovo', 2, 1),
-  (91, 'Titolo Nuovo', 2, 1),
-  (92, 'Titolo Nuovo', 2, 1),
-  (93, 'Titolo Nuovo', 2, 1),
-  (94, 'Titolo Nuovo', 2, 1),
-  (95, 'Titolo Nuovo', 2, 1);
--- --------------------------------------------------------
---
--- Struttura della tabella `Events`
---
+DROP TABLE IF EXISTS `Events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
 CREATE TABLE `Events` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `date_start` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
   `expected_participants` int(11) DEFAULT NULL,
   `organizer_id` int(11) NOT NULL,
-  PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
 --
--- Dump dei dati per la tabella `Events`
+-- Dumping data for table `Events`
 --
-INSERT INTO `Events` (
-    `id`,
-    `name`,
-    `date_start`,
-    `date_end`,
-    `expected_participants`,
-    `organizer_id`
-  )
+LOCK TABLES `Events` WRITE;
+/*!40000 ALTER TABLE `Events` DISABLE KEYS */
+;
+INSERT INTO `Events`
 VALUES (
     1,
     'Convegno Agile Community',
@@ -95,20 +73,32 @@ VALUES (
     400,
     1
   );
+/*!40000 ALTER TABLE `Events` ENABLE KEYS */
+;
+UNLOCK TABLES;
 -- --------------------------------------------------------
 --
--- Struttura della tabella `MenuFeatures`
+-- Table structure for table `MenuFeatures`
 --
+DROP TABLE IF EXISTS `MenuFeatures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
 CREATE TABLE `MenuFeatures` (
   `menu_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL DEFAULT '',
-  `value` tinyint(1) DEFAULT 0,
-  FOREIGN KEY (menu_id) REFERENCES Menus(id)
+  `value` tinyint(1) DEFAULT '0'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
 --
--- Dump dei dati per la tabella `MenuFeatures`
+-- Dumping data for table `MenuFeatures`
 --
-INSERT INTO `MenuFeatures` (`menu_id`, `name`, `value`)
+LOCK TABLES `MenuFeatures` WRITE;
+/*!40000 ALTER TABLE `MenuFeatures` DISABLE KEYS */
+;
+INSERT INTO `MenuFeatures`
 VALUES (80, 'Richiede cuoco', 0),
   (80, 'Buffet', 0),
   (80, 'Richiede cucina', 0),
@@ -123,144 +113,37 @@ VALUES (80, 'Richiede cuoco', 0),
   (86, 'Buffet', 0),
   (86, 'Richiede cucina', 0),
   (86, 'Finger food', 0),
-  (86, 'Piatti caldi', 0),
-  (89, 'Richiede cuoco', 1),
-  (89, 'Buffet', 1),
-  (89, 'Richiede cucina', 1),
-  (89, 'Finger food', 1),
-  (89, 'Piatti caldi', 1),
-  (90, 'Richiede cuoco', 1),
-  (90, 'Buffet', 1),
-  (90, 'Richiede cucina', 1),
-  (90, 'Finger food', 1),
-  (90, 'Piatti caldi', 1),
-  (91, 'Richiede cuoco', 1),
-  (91, 'Buffet', 1),
-  (91, 'Richiede cucina', 1),
-  (91, 'Finger food', 1),
-  (91, 'Piatti caldi', 1),
-  (92, 'Richiede cuoco', 1),
-  (92, 'Buffet', 1),
-  (92, 'Richiede cucina', 1),
-  (92, 'Finger food', 1),
-  (92, 'Piatti caldi', 1),
-  (93, 'Richiede cuoco', 1),
-  (93, 'Buffet', 1),
-  (93, 'Richiede cucina', 1),
-  (93, 'Finger food', 1),
-  (93, 'Piatti caldi', 1),
-  (94, 'Richiede cuoco', 1),
-  (94, 'Buffet', 1),
-  (94, 'Richiede cucina', 1),
-  (94, 'Finger food', 1),
-  (94, 'Piatti caldi', 1),
-  (95, 'Richiede cuoco', 1),
-  (95, 'Buffet', 1),
-  (95, 'Richiede cucina', 1),
-  (95, 'Finger food', 1),
-  (95, 'Piatti caldi', 1);
+  (86, 'Piatti caldi', 0);
+/*!40000 ALTER TABLE `MenuFeatures` ENABLE KEYS */
+;
+UNLOCK TABLES;
 -- --------------------------------------------------------
 --
--- Struttura della tabella `MenuSections`
+-- Table structure for table `MenuItems`
 --
-CREATE TABLE `MenuSections` (
-  `id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  `name` tinytext DEFAULT NULL,
-  `position` int(11) DEFAULT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (menu_id) REFERENCES Menus(id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
--- Dump dei dati per la tabella `MenuSections`
---
-INSERT INTO `MenuSections` (`id`, `menu_id`, `name`, `position`)
-VALUES (41, 86, 'Antipasti', 0),
-  (42, 86, 'Primi', 1),
-  (43, 86, 'Secondi', 2),
-  (44, 86, 'Dessert', 3),
-  (47, 89, 'Antipasti', 0),
-  (48, 89, 'Primi', 1),
-  (49, 89, 'Secondi', 2),
-  (50, 90, 'Antipasti', 0),
-  (51, 90, 'Primi', 1),
-  (52, 90, 'Secondi', 2),
-  (53, 91, 'Antipasti', 0),
-  (54, 91, 'Primi', 1),
-  (55, 91, 'Secondi', 2),
-  (56, 92, 'Antipasti', 0),
-  (57, 92, 'Primi', 1),
-  (58, 92, 'Secondi', 2),
-  (59, 93, 'Antipasti', 0),
-  (60, 93, 'Primi', 1),
-  (61, 93, 'Secondi', 2),
-  (62, 94, 'Antipasti', 0),
-  (63, 94, 'Primi', 1),
-  (64, 94, 'Secondi', 2),
-  (65, 95, 'Antipasti', 0),
-  (66, 95, 'Primi', 1),
-  (67, 95, 'Secondi', 2);
--- --------------------------------------------------------
---
--- Struttura della tabella `Recipes`
---
-CREATE TABLE `Recipes` (
-  `id` int(11) NOT NULL,
-  `name` tinytext DEFAULT NULL,
-  PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
--- Dump dei dati per la tabella `Recipes`
---
-INSERT INTO `Recipes` (`id`, `name`)
-VALUES (1, 'Vitello tonnato'),
-  (2, 'Carpaccio di spada'),
-  (3, 'Alici marinate'),
-  (4, 'Insalata di riso'),
-  (5, 'Penne al sugo di baccalà'),
-  (6, 'Pappa al pomodoro'),
-  (7, 'Hamburger con bacon e cipolla caramellata'),
-  (8, 'Salmone al forno'),
-  (9, 'Croissant'),
-  (10, 'Pane al cioccolato'),
-  (11, 'Girelle all\'uvetta'),
-  (12, 'Panini al latte'),
-  (13, 'Biscotti di pasta frolla'),
-  (14, 'Lingue di gatto'),
-  (15, 'Bigné farciti'),
-  (16, 'Pizzette'),
-  (17, 'Tramezzini'),
-  (18, 'Sorbetto al limone'),
-  (19, 'Torta Saint Honoré'),
-  (20, 'Risotto alla zucca');
--- --------------------------------------------------------
---
--- Struttura della tabella `menuitems`
---
+DROP TABLE IF EXISTS `MenuItems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
 CREATE TABLE `MenuItems` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_id` int(11) NOT NULL,
   `section_id` int(11) DEFAULT NULL,
-  `description` tinytext DEFAULT NULL,
+  `description` tinytext,
   `recipe_id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (menu_id) REFERENCES Menus(id),
-  FOREIGN KEY (section_id) REFERENCES MenuSections(id),
-  FOREIGN KEY (recipe_id) REFERENCES Recipes(id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 121 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
 --
--- Dump dei dati per la tabella `MenuItems`
+-- Dumping data for table `MenuItems`
 --
-INSERT INTO `MenuItems` (
-    -- FIXME foreign ids are all fucked up
-    `id`,
-    `menu_id`,
-    `section_id`,
-    `description`,
-    `recipe_id`,
-    `position`
-  )
+LOCK TABLES `MenuItems` WRITE;
+/*!40000 ALTER TABLE `MenuItems` DISABLE KEYS */
+;
+INSERT INTO `MenuItems`
 VALUES (96, 80, 0, 'Croissant vuoti', 9, 0),
   (97, 80, 0, 'Croissant alla marmellata', 9, 1),
   (98, 80, 0, 'Pane al cioccolato mignon', 10, 2),
@@ -317,153 +200,176 @@ VALUES (96, 80, 0, 'Croissant vuoti', 9, 0),
   (116, 86, 42, 'Risotto alla zucca', 20, 1),
   (117, 86, 43, 'Salmone al forno', 8, 0),
   (118, 86, 44, 'Sorbetto al limone', 18, 0),
-  (119, 86, 44, 'Torta Saint Honoré', 19, 1),
-  (121, 89, 47, 'Vitello tonnato', 1, 0),
-  (122, 89, 47, 'Carpaccio di spada', 2, 1),
-  (123, 89, 47, 'Alici marinate', 3, 2),
-  (
-    124,
-    89,
-    49,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (125, 89, 49, 'Salmone al forno', 8, 1),
-  (126, 89, 0, 'Insalata di riso', 4, 0),
-  (127, 89, 0, 'Penne al sugo di baccalà', 5, 1),
-  (128, 90, 50, 'Vitello tonnato', 1, 0),
-  (129, 90, 50, 'Carpaccio di spada', 2, 1),
-  (130, 90, 50, 'Alici marinate', 3, 2),
-  (
-    131,
-    90,
-    52,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (132, 90, 52, 'Salmone al forno', 8, 1),
-  (133, 90, 0, 'Insalata di riso', 4, 0),
-  (134, 90, 0, 'Penne al sugo di baccalà', 5, 1),
-  (135, 91, 53, 'Vitello tonnato', 1, 0),
-  (136, 91, 53, 'Carpaccio di spada', 2, 1),
-  (137, 91, 53, 'Alici marinate', 3, 2),
-  (
-    138,
-    91,
-    55,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (139, 91, 55, 'Salmone al forno', 8, 1),
-  (140, 91, 0, 'Insalata di riso', 4, 0),
-  (141, 91, 0, 'Penne al sugo di baccalà', 5, 1),
-  (142, 92, 56, 'Vitello tonnato', 1, 0),
-  (143, 92, 56, 'Carpaccio di spada', 2, 1),
-  (144, 92, 56, 'Alici marinate', 3, 2),
-  (
-    145,
-    92,
-    58,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (146, 92, 58, 'Salmone al forno', 8, 1),
-  (147, 92, 0, 'Insalata di riso', 4, 0),
-  (148, 92, 0, 'Penne al sugo di baccalà', 5, 1),
-  (149, 93, 59, 'Vitello tonnato', 1, 0),
-  (150, 93, 59, 'Carpaccio di spada', 2, 1),
-  (151, 93, 59, 'Alici marinate', 3, 2),
-  (
-    152,
-    93,
-    61,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (153, 93, 61, 'Salmone al forno', 8, 1),
-  (154, 93, 0, 'Insalata di riso', 4, 0),
-  (155, 93, 0, 'Penne al sugo di baccalà', 5, 1),
-  (156, 94, 62, 'Vitello tonnato', 1, 0),
-  (157, 94, 62, 'Carpaccio di spada', 2, 1),
-  (158, 94, 62, 'Alici marinate', 3, 2),
-  (
-    159,
-    94,
-    64,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (160, 94, 64, 'Salmone al forno', 8, 1),
-  (161, 94, 0, 'Insalata di riso', 4, 0),
-  (162, 94, 0, 'Penne al sugo di baccalà', 5, 1),
-  (163, 95, 65, 'Vitello tonnato', 1, 0),
-  (164, 95, 65, 'Carpaccio di spada', 2, 1),
-  (165, 95, 65, 'Alici marinate', 3, 2),
-  (
-    166,
-    95,
-    67,
-    'Hamburger con bacon e cipolla caramellata',
-    7,
-    0
-  ),
-  (167, 95, 67, 'Salmone al forno', 8, 1),
-  (168, 95, 0, 'Insalata di riso', 4, 0),
-  (169, 95, 0, 'Penne al sugo di baccalà', 5, 1);
+  (119, 86, 44, 'Torta Saint Honoré', 19, 1);
+/*!40000 ALTER TABLE `MenuItems` ENABLE KEYS */
+;
+UNLOCK TABLES;
 -- --------------------------------------------------------
 --
--- Struttura della tabella `Roles`
+-- Table structure for table `MenuSections`
 --
+DROP TABLE IF EXISTS `MenuSections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
+CREATE TABLE `MenuSections` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) NOT NULL,
+  `name` tinytext,
+  `position` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 47 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
+--
+-- Dumping data for table `MenuSections`
+--
+LOCK TABLES `MenuSections` WRITE;
+/*!40000 ALTER TABLE `MenuSections` DISABLE KEYS */
+;
+INSERT INTO `MenuSections`
+VALUES (41, 86, 'Antipasti', 0),
+  (42, 86, 'Primi', 1),
+  (43, 86, 'Secondi', 2),
+  (44, 86, 'Dessert', 3),
+  (45, 87, 'Antipasti', 0);
+/*!40000 ALTER TABLE `MenuSections` ENABLE KEYS */
+;
+UNLOCK TABLES;
+--
+-- Table structure for table `Menus`
+--
+DROP TABLE IF EXISTS `Menus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
+CREATE TABLE `Menus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` tinytext,
+  `owner_id` int(11) DEFAULT NULL,
+  `published` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 89 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
+--
+-- Dumping data for table `Menus`
+--
+LOCK TABLES `Menus` WRITE;
+/*!40000 ALTER TABLE `Menus` DISABLE KEYS */
+;
+INSERT INTO `Menus`
+VALUES (80, 'Coffee break mattutino', 2, 1),
+  (82, 'Coffee break pomeridiano', 2, 1),
+  (86, 'Cena di compleanno pesce', 3, 1);
+/*!40000 ALTER TABLE `Menus` ENABLE KEYS */
+;
+UNLOCK TABLES;
+--
+-- Table structure for table `Recipes`
+--
+DROP TABLE IF EXISTS `Recipes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
+CREATE TABLE `Recipes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` tinytext,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 21 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
+--
+-- Dumping data for table `Recipes`
+--
+LOCK TABLES `Recipes` WRITE;
+/*!40000 ALTER TABLE `Recipes` DISABLE KEYS */
+;
+INSERT INTO `Recipes`
+VALUES (1, 'Vitello tonnato'),
+  (2, 'Carpaccio di spada'),
+  (3, 'Alici marinate'),
+  (4, 'Insalata di riso'),
+  (5, 'Penne al sugo di baccalà'),
+  (6, 'Pappa al pomodoro'),
+  (7, 'Hamburger con bacon e cipolla caramellata'),
+  (8, 'Salmone al forno'),
+  (9, 'Croissant'),
+  (10, 'Pane al cioccolato'),
+  (11, 'Girelle all\'uvetta'),
+  (12, 'Panini al latte'),
+  (13, 'Biscotti di pasta frolla'),
+  (14, 'Lingue di gatto'),
+  (15, 'Bigné farciti'),
+  (16, 'Pizzette'),
+  (17, 'Tramezzini'),
+  (18, 'Sorbetto al limone'),
+  (19, 'Torta Saint Honoré'),
+  (20, 'Risotto alla zucca');
+/*!40000 ALTER TABLE `Recipes` ENABLE KEYS */
+;
+UNLOCK TABLES;
+--
+-- Table structure for table `Roles`
+--
+DROP TABLE IF EXISTS `Roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
 CREATE TABLE `Roles` (
   `id` char(1) NOT NULL,
   `role` varchar(128) NOT NULL DEFAULT 'servizio',
-  PRIMARY KEY (id)
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
 --
--- Dump dei dati per la tabella `Roles`
+-- Dumping data for table `Roles`
 --
-INSERT INTO `Roles` (`id`, `role`)
+LOCK TABLES `Roles` WRITE;
+/*!40000 ALTER TABLE `Roles` DISABLE KEYS */
+;
+INSERT INTO `Roles`
 VALUES ('c', 'cuoco'),
   ('h', 'chef'),
   ('o', 'organizzatore'),
   ('s', 'servizio');
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `Roles` ENABLE KEYS */
+;
+UNLOCK TABLES;
 --
--- Struttura della tabella `Services`
+-- Table structure for table `Services`
 --
+DROP TABLE IF EXISTS `Services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
 CREATE TABLE `Services` (
-  `id` int(11) NOT NULL,
-  `id_event` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
   `name` varchar(128) DEFAULT NULL,
-  `proposed_menu_id` int(11) NOT NULL DEFAULT 0,
-  `approved_menu_id` int(11) DEFAULT 0,
+  `proposed_menu_id` int(11) NOT NULL DEFAULT '0',
+  `approved_menu_id` int(11) DEFAULT '0',
   `service_date` date DEFAULT NULL,
   `time_start` time DEFAULT NULL,
   `time_end` time DEFAULT NULL,
   `expected_participants` int(11) DEFAULT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_event) REFERENCES Events(id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
 --
--- Dump dei dati per la tabella `Services`
+-- Dumping data for table `Services`
 --
-INSERT INTO `Services` (
-    `id`,
-    `id_event`,
-    `name`,
-    `proposed_menu_id`,
-    `approved_menu_id`,
-    `service_date`,
-    `time_start`,
-    `time_end`,
-    `expected_participants`
-  )
+LOCK TABLES `Services` WRITE;
+/*!40000 ALTER TABLE `Services` DISABLE KEYS */
+;
+INSERT INTO `Services`
 VALUES (
     1,
     2,
@@ -552,6 +458,81 @@ VALUES (
     '15:00:00',
     400
   );
+/*!40000 ALTER TABLE `Services` ENABLE KEYS */
+;
+UNLOCK TABLES;
+--
+-- Table structure for table `UserRoles`
+--
+DROP TABLE IF EXISTS `UserRoles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
+CREATE TABLE `UserRoles` (
+  `user_id` int(11) NOT NULL,
+  `role_id` char(1) NOT NULL DEFAULT 's'
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
+--
+-- Dumping data for table `UserRoles`
+--
+LOCK TABLES `UserRoles` WRITE;
+/*!40000 ALTER TABLE `UserRoles` DISABLE KEYS */
+;
+INSERT INTO `UserRoles`
+VALUES (1, 'o'),
+  (2, 'o'),
+  (2, 'h'),
+  (3, 'h'),
+  (4, 'h'),
+  (4, 'c'),
+  (5, 'c'),
+  (6, 'c'),
+  (7, 'c'),
+  (8, 's'),
+  (9, 's'),
+  (10, 's'),
+  (7, 's');
+/*!40000 ALTER TABLE `UserRoles` ENABLE KEYS */
+;
+UNLOCK TABLES;
+--
+-- Table structure for table `Users`
+--
+DROP TABLE IF EXISTS `Users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */
+;
+/*!40101 SET character_set_client = utf8 */
+;
+CREATE TABLE `Users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8;
+/*!40101 SET character_set_client = @saved_cs_client */
+;
+--
+-- Dumping data for table `Users`
+--
+LOCK TABLES `Users` WRITE;
+/*!40000 ALTER TABLE `Users` DISABLE KEYS */
+;
+INSERT INTO `Users`
+VALUES (1, 'Carlin'),
+  (2, 'Lidia'),
+  (3, 'Tony'),
+  (4, 'Marinella'),
+  (5, 'Guido'),
+  (6, 'Antonietta'),
+  (7, 'Paola'),
+  (8, 'Silvia'),
+  (9, 'Marco'),
+  (10, 'Piergiorgio');
+/*!40000 ALTER TABLE `Users` ENABLE KEYS */
+;
+UNLOCK TABLES;
 -- --------------------------------------------------------
 --
 -- Struttura della tabella `Shifts`
@@ -573,55 +554,6 @@ CREATE TABLE `SummarySheets` (
   PRIMARY KEY (id),
   FOREIGN KEY (id_service) REFERENCES Services(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
--- --------------------------------------------------------
---
--- Struttura della tabella `Users`
---
-CREATE TABLE `Users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(128) NOT NULL DEFAULT '',
-  PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
--- Dump dei dati per la tabella `Users`
---
-INSERT INTO `Users` (`id`, `username`)
-VALUES (1, 'Carlin'),
-  (2, 'Lidia'),
-  (3, 'Tony'),
-  (4, 'Marinella'),
-  (5, 'Guido'),
-  (6, 'Antonietta'),
-  (7, 'Paola'),
-  (8, 'Silvia'),
-  (9, 'Marco'),
-  (10, 'Piergiorgio');
--- --------------------------------------------------------
---
--- Struttura della tabella `UserRoles`
---
-CREATE TABLE `UserRoles` (
-  `user_id` int(11) NOT NULL,
-  `role_id` char(1) NOT NULL DEFAULT 's',
-  FOREIGN KEY (user_id) REFERENCES Users(id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
--- Dump dei dati per la tabella `UserRoles`
---
-INSERT INTO `UserRoles` (`user_id`, `role_id`)
-VALUES (1, 'o'),
-  (2, 'o'),
-  (2, 'h'),
-  (3, 'h'),
-  (4, 'h'),
-  (4, 'c'),
-  (5, 'c'),
-  (6, 'c'),
-  (7, 'c'),
-  (8, 's'),
-  (9, 's'),
-  (10, 's'),
-  (7, 's');
 -- --------------------------------------------------------
 --
 -- Struttura della tabella `Assignments`
