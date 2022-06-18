@@ -7,6 +7,7 @@ import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
 import main.businesslogic.summarysheet.Assignment;
 import main.businesslogic.summarysheet.SummarySheetException;
+import main.businesslogic.user.User;
 
 import java.time.Duration;
 import java.util.Optional;
@@ -50,7 +51,7 @@ public class TestCatERing5 {
                             Optional.of(3),
                             Optional.of(
                                     CatERing.getInstance().getShiftManager().getShifts().get(0)),
-                            Optional.empty(),
+                            Optional.of(User.loadUserById(4)),
                             Optional.of(Duration.ofMinutes(30)),
                             Optional.of(assignments.get(1)));
 

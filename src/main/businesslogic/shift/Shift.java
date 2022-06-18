@@ -71,6 +71,13 @@ public class Shift {
         return all;
     }
 
+    public static void saveNewTime(Shift shift, User cook, Duration time) {
+        String upd = "UPDATE usershift SET availableTime = " +time.toMinutes()+ " WHERE id_cook = " + cook.getId()+ " AND id_shift = " + shift.getId() + ";";
+        PersistenceManager.executeUpdate(upd);
+
+    }
+
+
     @Override
     public String toString() {
         return "Shift{" +
@@ -128,7 +135,9 @@ public class Shift {
     }
 
     public void increaseAvailableTime(User cook, Duration time) {
-        myCooks.put(cook, myCooks.get(cook).plus(time));
+        Duration plus = myCooks.get(cook).plus(time);
+        myCooks.put(cook, plus);
+        saveNewTime(this, cook, plus);
     }
 
     public void decreaseAvailableTime(User cook, Duration time) throws UseCaseLogicException {
@@ -137,7 +146,11 @@ public class Shift {
                     "decreaseAvailableTime: " + "cook does not have enough time left");
         }
 
-        myCooks.put(cook, myCooks.get(cook).minus(time));
+        Duration minus = myCooks.get(cook).minus(time);
+        myCooks.put(cook, minus);
+
+         saveNewTime(this, cook, minus);
+
     }
 
     public boolean isAssigned(User cook) {

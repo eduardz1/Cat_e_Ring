@@ -7,6 +7,7 @@ import main.businesslogic.shift.ShiftManager;
 import main.businesslogic.summarysheet.SummarySheetManager;
 import main.businesslogic.user.UserManager;
 import main.persistence.MenuPersistence;
+import main.persistence.ShiftPersistence;
 import main.persistence.SummarySheetPersistence;
 
 public class CatERing {
@@ -27,6 +28,7 @@ public class CatERing {
         shiftMgr = new ShiftManager();
         menuMgr.addEventReceiver(new MenuPersistence());
         summarySheetMgr.addEventReceiver(new SummarySheetPersistence());
+        shiftMgr.addEventReceiver(new ShiftPersistence());
     }
 
     public static CatERing getInstance() {

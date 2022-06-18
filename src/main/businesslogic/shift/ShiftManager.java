@@ -2,6 +2,9 @@ package main.businesslogic.shift;
 
 import javafx.collections.ObservableList;
 import main.businesslogic.UseCaseLogicException;
+import main.businesslogic.menu.MenuEventReceiver;
+import main.businesslogic.summarysheet.Assignment;
+import main.businesslogic.summarysheet.SummarySheetEventReceiver;
 import main.businesslogic.user.User;
 
 import java.time.Duration;
@@ -10,11 +13,11 @@ import java.util.ArrayList;
 /** ShiftManager */
 public class ShiftManager {
 
-    private final ArrayList<ShiftManagerEventReceiver> eventReceiver;
+    private final ArrayList<ShiftManagerEventReceiver> eventReceivers;
     private ShiftBoard shiftBoard;
 
     public ShiftManager() {
-        this.eventReceiver = new ArrayList<>();
+        this.eventReceivers = new ArrayList<>();
     }
 
     public void removeShift(User cook, Shift shift) throws UseCaseLogicException {
@@ -32,19 +35,6 @@ public class ShiftManager {
         return shiftBoard.getAllShifts();
     }
 
-    // FIXME wtf what are you
-    private void notifyShiftRemoved(User cook, Shift shift) {
-        if (cook == null) {
-            throw new IllegalArgumentException("notifyShiftRemoved: " + "user can´t be null");
-        }
-        if (shift == null) {
-            throw new IllegalArgumentException("notifyShiftRemoved: " + "shift can´t be null");
-        }
-
-        for (ShiftManagerEventReceiver eventReceiver : eventReceiver) {
-            eventReceiver.updateShiftRemoved(cook, shift);
-        }
-    }
 
     public void setShiftBoard(ShiftBoard shiftBoard) {
         if (shiftBoard == null) {
@@ -79,5 +69,26 @@ public class ShiftManager {
             throw new IllegalArgumentException("isAvailable: " + "shift can´t be null");
         }
         return this.shiftBoard.isAvailable(cook, shift, time);
+    }
+
+    //FIXME
+    private void notifyIncreaseTime(Shift shift, User cook, Duration time) {
+        for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
+            eventReceiver.updateIncreasedTime(cook, shift, time);
+        }
+    }
+//FIXME
+    private void notifyDecreasedTime(Shift shift, User cook, Duration time) {
+        for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
+            eventReceiver.updateDecreasedTime(cook, shift, time);
+        }
+    }
+
+    public void addEventReceiver(ShiftManagerEventReceiver rec) {
+        this.eventReceivers.add(rec);
+    }
+
+    public void removeEventReceiver(MenuEventReceiver rec) {
+        this.eventReceivers.remove(rec);
     }
 }

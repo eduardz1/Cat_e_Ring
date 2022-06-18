@@ -230,7 +230,7 @@ public class SummarySheetManager {
         this.eventReceivers.add(rec);
     }
 
-    public void removeEventReceiver(MenuEventReceiver rec) {
+    public void removeEventReceiver(SummarySheetEventReceiver rec) {
         this.eventReceivers.remove(rec);
     }
 }
