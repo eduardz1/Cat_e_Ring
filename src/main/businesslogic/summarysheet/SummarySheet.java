@@ -33,6 +33,8 @@ public class SummarySheet {
         this.assignments = FXCollections.observableArrayList();
         this.owner = service.getEventInfo().getOrganizer(); // TODO check for ownership in modify
 
+        System.out.println(service.getMenu().getFreeItems());
+
         for (MenuItem item : service.getMenu().getAllItems()) {
             Assignment assignment = new Assignment(item.getItemRecipe());
             this.assignments.add(assignment);
@@ -68,7 +70,7 @@ public class SummarySheet {
         loadedSheets.put(ss.id, ss);
     }
 
-    public static void saveAssignmentsOrder(SummarySheet ss) { // TODO
+    public static void saveAssignmentsOrder(SummarySheet ss) {
         String upd = "UPDATE SummarySheetAssignments SET position = ? WHERE id = ?";
         PersistenceManager.executeBatchUpdate(
                 upd,

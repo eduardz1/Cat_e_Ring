@@ -12,7 +12,7 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     }
 
     @Override
-    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {}
+    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {Assignment.updateAssignment(as);}
 
     @Override
     public void updateAssignmentCompleted(SummarySheet ss, Assignment as) {}

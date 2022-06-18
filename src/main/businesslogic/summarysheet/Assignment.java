@@ -50,13 +50,7 @@ public class Assignment {
                                 ps.setInt(1, summarysheet_id);
                                 ps.setBoolean(2, assignments.get(batchCount).isCompleted());
                                 ps.setInt(3, assignments.get(batchCount).getQuantity());
-                                ps.setLong(
-                                        4,
-                                        (int)
-                                                assignments
-                                                        .get(batchCount)
-                                                        .getEstimatedTime()
-                                                        .toMinutes());
+                                ps.setLong(4, (int) assignments.get(batchCount).getEstimatedTime().toMinutes());
                                 ps.setInt(5, 0);
                                 ps.setInt(6, 0);
                                 ps.setInt(7, 0);
@@ -100,6 +94,13 @@ public class Assignment {
                                 }
                             }
                         });
+    }
+
+    public static void updateAssignment(Assignment as) {
+       String UpdateAss = "UPDATE Assignment SET quantity = " +as.getQuantity() + ", estimatedTime = " + as.getEstimatedTime() +
+               ", id_continuation = " +as.getContinuation().getId()+ ", id_cook = " +as.getSelCook().getId()+ ", id_shift = " +as.getSelShift().getId()+
+               " WHERE id = " +as.getId();
+       PersistenceManager.executeUpdate(UpdateAss);
     }
 
     public void setCook(User cook) throws UseCaseLogicException {
