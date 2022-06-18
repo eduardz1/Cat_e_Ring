@@ -541,7 +541,7 @@ CREATE TABLE `Shifts` (
   `date` date NOT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 -- --------------------------------------------------------
@@ -549,7 +549,7 @@ CREATE TABLE `Shifts` (
 -- Struttura della tabella `SummarySheets`
 --
 CREATE TABLE `SummarySheets` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_service` int(11) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_service) REFERENCES Services(id)
@@ -562,7 +562,7 @@ CREATE TABLE `Assignments` (
   `completed` tinyint(1) NOT NULL,
   `quantity` text NOT NULL,
   `estimatedTime` time NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_continuation` int(11) NOT NULL,
   `id_shift` int(11) NOT NULL,
   `id_cook` int(11) NOT NULL,

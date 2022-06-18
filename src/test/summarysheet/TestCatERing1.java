@@ -9,6 +9,8 @@ import main.businesslogic.menu.Menu;
 import main.businesslogic.summarysheet.SummarySheet;
 import main.businesslogic.summarysheet.SummarySheetException;
 
+import java.util.ArrayList;
+
 public class TestCatERing1 {
     public static void main(String[] args) {
         try {
@@ -21,10 +23,10 @@ public class TestCatERing1 {
             ObservableList<EventInfo> Events =
                     CatERing.getInstance().getEventManager().getEventInfo();
 
-            ObservableList<Menu> boh = CatERing.getInstance().getMenuManager().getAllMenus();
-            System.out.println(boh.get(0).getId());
-            System.out.println(boh.get(0).getFreeItems());
-            System.out.println(boh.get(0).getAllItems());
+     //       ObservableList<Menu> boh = CatERing.getInstance().getMenuManager().getAllMenus();
+      //      System.out.println(boh.get(0).getId());
+       //     System.out.println(boh.get(0).getFreeItems());
+      //      System.out.println(boh.get(0).getAllItems());
 
             EventInfo event = Events.get(0);
             ServiceInfo service = event.getServices().get(0);
