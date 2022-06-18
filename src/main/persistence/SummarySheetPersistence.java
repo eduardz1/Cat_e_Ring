@@ -12,10 +12,14 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     }
 
     @Override
-    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {Assignment.updateAssignment(as);}
+    public void updateAssignmentDefined(SummarySheet ss, Assignment as) {
+        Assignment.updateAssignment(as);
+    }
 
     @Override
-    public void updateAssignmentCompleted(SummarySheet ss, Assignment as) {}
+    public void updateAssignmentCompleted(SummarySheet ss, Assignment as) {
+        Assignment.markAssignmentCompleted(ss, as);
+    }
 
     @Override
     public void updateSummarySheetCreated(SummarySheet ss) {
@@ -28,8 +32,16 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     }
 
     @Override
-    public void updateProcedureRemoved(SummarySheet ss, Procedure pro) {}
+    public void updateProcedureRemoved(SummarySheet ss, Procedure pro) {
+        for (Assignment assignment : ss.getAssignments()) {
+            if(assignment.getProcedure().equals(pro)) {
+                Assignment.deleteAssignment(assignment);
+            }
+        }
+    }
 
     @Override
-    public void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as) {}
+    public void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as) {
+        Assignment.deleteAssignment(as); // TODO check if it is sufficient to delete the assignment from the database
+    }
 }

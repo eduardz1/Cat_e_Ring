@@ -127,8 +127,6 @@ public class MenuItem {
         PersistenceManager.executeUpdate(rem);
     }
 
-    // STATIC METHODS FOR PERSISTENCE
-
     public int getId() {
         return id;
     }

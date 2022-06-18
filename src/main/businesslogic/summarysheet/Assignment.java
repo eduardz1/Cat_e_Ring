@@ -103,6 +103,18 @@ public class Assignment {
        PersistenceManager.executeUpdate(UpdateAss);
     }
 
+
+    public static void markAssignmentCompleted(SummarySheet ss, Assignment as) {
+        String updateAss = "UPDATE Assignment SET completed = true WHERE id = " + as.getId();
+        PersistenceManager.executeUpdate(updateAss);
+    }
+
+    public static void deleteAssignment(Assignment as) {
+        String deleteAss = "DELETE FROM Assignment WHERE id = " + as.getId();
+        PersistenceManager.executeUpdate(deleteAss);
+    }
+
+
     public void setCook(User cook) throws UseCaseLogicException {
         if (selShift != null && estimatedTime != null) {
             selShift.decreaseAvailableTime(cook, this.estimatedTime);
@@ -224,4 +236,5 @@ public class Assignment {
     public int getId() {
         return this.id;
     }
+
 }
