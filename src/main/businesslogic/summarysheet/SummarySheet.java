@@ -41,7 +41,7 @@ public class SummarySheet {
 
     public static void saveNewSummarySheet(SummarySheet ss) {
         String summarySheetInsert =
-                "INSERT INTO catering.SummarySheets (id_summary_sheet, id_service) VALUES (?, ?);";
+                "INSERT INTO catering.SummarySheets (id, id_service) VALUES (?, ?);";
         int[] res =
                 PersistenceManager.executeBatchUpdate(
                         summarySheetInsert,
@@ -145,9 +145,9 @@ public class SummarySheet {
     public String toString() {
         return "SummarySheet di ID: "
                 + id
-                + ",\n\t si riferisce al servizio: "
+                + ",\n\t si riferisce al servizio:\n\t\t"
                 + service
-                + ",\n\t ed ha i seguenti assegnamenti: "
+                + ",\n\t ed ha i seguenti assegnamenti:\n\t\t"
                 + assignments;
     }
 

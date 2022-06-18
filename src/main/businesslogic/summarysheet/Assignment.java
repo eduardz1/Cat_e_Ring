@@ -38,7 +38,7 @@ public class Assignment {
 
     public static void saveAllNewAssignments(int summarysheet_id, List<Assignment> assignments) {
         String AssInsert =
-                "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         int[] result =
                 PersistenceManager.executeBatchUpdate(
                         AssInsert,
@@ -73,7 +73,7 @@ public class Assignment {
 
     public static void saveNewAssignments(int ssId, Assignment as) {
         String InsertAssignment =
-                "INSERT INTO catering.Assignments (completed, quantity, estimatedTime, id_as_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
+                "INSERT INTO catering.Assignments (completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
         int[] result =
                 PersistenceManager.executeBatchUpdate(
                         InsertAssignment,

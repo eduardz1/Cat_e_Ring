@@ -95,6 +95,7 @@ public class MenuItem {
                 rs -> {
                     MenuItem mi = new MenuItem();
                     mi.description = rs.getString("description");
+                    mi.id = rs.getInt("id");
                     result.add(mi);
                     recids.add(rs.getInt("recipe_id"));
                 });

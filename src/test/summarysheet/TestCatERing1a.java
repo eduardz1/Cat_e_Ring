@@ -21,36 +21,35 @@ public class TestCatERing1a {
             ObservableList<EventInfo> Events =
                     CatERing.getInstance().getEventManager().getEventInfo();
 
-            EventInfo event1 = Events.get(0);
-            EventInfo event2 = Events.get(1);
-            ServiceInfo service1 = event1.getServices().get(0);
-            ServiceInfo service2 = event2.getServices().get(0);
+            EventInfo convegnoAgileCommunity = Events.get(0);
+            ServiceInfo coffeeBreakMattina = convegnoAgileCommunity.getServices().get(0);
+            ServiceInfo coffeeBreakPomeriggio = convegnoAgileCommunity.getServices().get(2);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
-                            + event1.getName()
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                            + convegnoAgileCommunity.getName()
                             + " AND SERVICE "
-                            + service1.getName());
+                            + coffeeBreakMattina.getName());
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
-                            + event2.getName()
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                            + convegnoAgileCommunity.getName()
                             + " AND SERVICE "
-                            + service2.getName());
+                            + coffeeBreakPomeriggio.getName());
 
             SummarySheet ss1 =
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service1, event1);
+                            .createSummarySheet(coffeeBreakMattina, convegnoAgileCommunity);
             SummarySheet ss2 =
                     CatERing.getInstance()
                             .getSummarySheetManager()
-                            .createSummarySheet(service2, event2);
+                            .createSummarySheet(coffeeBreakPomeriggio, convegnoAgileCommunity);
 
             System.out.println(
-                    "TEST GETTING SUMMARY SHEET FOR EVENT "
-                            + event1.getName()
+                    "\nTEST GETTING SUMMARY SHEET FOR EVENT "
+                            + convegnoAgileCommunity.getName()
                             + " AND SERVICE "
-                            + service1.getName());
+                            + coffeeBreakMattina.getName());
             CatERing.getInstance().getSummarySheetManager().chooseSummarySheet(ss1);
             SummarySheet expected1 =
                     CatERing.getInstance().getSummarySheetManager().getCurrentSheet();
@@ -58,10 +57,10 @@ public class TestCatERing1a {
             System.out.println("Expected summary sheet for first event:\n" + expected1);
 
             System.out.println(
-                    "TEST GETTING SUMMARY SHEET FOR EVENT "
-                            + event2.getName()
+                    "\nTEST GETTING SUMMARY SHEET FOR EVENT "
+                            + convegnoAgileCommunity.getName()
                             + " AND SERVICE "
-                            + service2.getName());
+                            + coffeeBreakPomeriggio.getName());
             CatERing.getInstance().getSummarySheetManager().chooseSummarySheet(ss2);
             SummarySheet expected2 =
                     CatERing.getInstance().getSummarySheetManager().getCurrentSheet();
