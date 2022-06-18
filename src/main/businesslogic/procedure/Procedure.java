@@ -22,7 +22,7 @@ public abstract class Procedure {
     }
 
     public static ObservableList<Recipe> loadAllRecipes() {
-        String query = "SELECT * FROM Recipes";
+        String query = "SELECT * FROM Recipes;";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
@@ -49,7 +49,7 @@ public abstract class Procedure {
     public static Recipe loadRecipeById(int id) {
         if (all.containsKey(id)) return all.get(id);
         Recipe rec = new Recipe();
-        String query = "SELECT * FROM Recipes WHERE id = " + id;
+        String query = "SELECT * FROM Recipes WHERE id = " + id + ";";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {

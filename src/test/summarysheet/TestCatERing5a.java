@@ -52,7 +52,7 @@ public class TestCatERing5a {
                                     CatERing.getInstance().getShiftManager().getShifts().get(0)),
                             Optional.empty(),
                             Optional.of(Duration.ofMinutes(30)),
-                            Optional.of(assignments.get(1))); // FIXME getShifts returns null ATM
+                            Optional.of(assignments.get(1)));
 
             System.out.println(
                     "TEST PROCEDURE COMPLETED FOR ASSIGNMENT " + assignments.get(0).getId());

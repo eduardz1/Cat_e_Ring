@@ -1,5 +1,6 @@
 package main.businesslogic.shift;
 
+import javafx.collections.ObservableList;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.user.User;
 
@@ -27,8 +28,8 @@ public class ShiftManager {
         shiftBoard.removeShift(cook, shift); // TODO implement, check exception
     }
 
-    public ArrayList<Shift> getShifts() {
-        return null;
+    public ObservableList<Shift> getShifts() {
+        return shiftBoard.getAllShifts();
     }
 
     // FIXME wtf what are you

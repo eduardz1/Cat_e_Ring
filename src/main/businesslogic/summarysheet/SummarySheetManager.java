@@ -1,5 +1,7 @@
 package main.businesslogic.summarysheet;
 
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
@@ -12,6 +14,7 @@ import main.businesslogic.user.User;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 /** SummarySheetManager */
@@ -54,8 +57,9 @@ public class SummarySheetManager {
             throw new SummarySheetException(
                     "removeProcedure: " + "Cannot remove assigned procedure");
         }
-        currentSheet.removeProcedure(pro); // FIXME check return if necessary
         this.notifyProcedureRemoved(pro);
+        currentSheet.removeProcedure(pro); // FIXME check return if necessary
+
     }
 
     public void deleteAssignment(Assignment as)
@@ -153,7 +157,7 @@ public class SummarySheetManager {
         this.notifyAssignmentRearranged();
     }
 
-    public ArrayList<Shift> getShiftBoard() throws UseCaseLogicException {
+    public ObservableList<Shift> getShiftBoard() throws UseCaseLogicException {
         if (this.currentSheet == null) {
             throw new UseCaseLogicException("changeAssignmentOrder: " + "No current sheet");
         }

@@ -544,6 +544,58 @@ CREATE TABLE `Shifts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+--
+-- Dumping data for table `Shift`
+--
+LOCK TABLES `Shifts` WRITE;
+/*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
+;
+INSERT INTO `Shifts`
+VALUES ('2020-10-21', '09:00:00', '11:00:00',1),
+       ('2020-10-22', '10:00:00', '12:00:00',2),
+       ('2020-10-23', '11:00:00', '13:00:00',3),
+       ('2020-10-24', '12:00:00', '14:00:00',4),
+       ('2020-10-25', '13:00:00', '15:00:00',5),
+       ('2020-10-26', '14:00:00', '16:00:00',6),
+       ('2020-10-27', '15:00:00', '17:00:00',7),
+       ('2020-10-28', '16:00:00', '18:00:00',8),
+       ('2020-10-29', '17:00:00', '19:00:00',9),
+       ('2020-10-30', '18:00:00', '20:00:00',10);
+/*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
+;
+UNLOCK TABLES;
+-- --------------------------------------------------------
+--
+-- Struttura della tabella `UserShifts`
+--
+CREATE TABLE `UserShifts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_shift` int(11) NOT NULL,
+  `id_cook` int(11) NOT NULL,
+  `availableTime` bigint NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+--
+-- Dumping data for table `Shift`
+--
+LOCK TABLES `UserShifts` WRITE;
+/*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
+;
+INSERT INTO `UserShifts`
+VALUES (1, 1, 1, 0), -- FIXME set time that make sense
+       (2, 2, 2, 0),
+       (3, 3, 3, 0),
+       (4, 4, 4, 0),
+       (5, 5, 5, 0),
+       (6, 6, 6, 0),
+       (7, 7, 7, 0),
+       (8, 8, 8, 0),
+       (9, 9, 9, 0),
+       (10, 10, 10, 0);
+/*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
+;
+UNLOCK TABLES;
+
 -- --------------------------------------------------------
 --
 -- Struttura della tabella `SummarySheets`
@@ -561,6 +613,7 @@ CREATE TABLE `Assignments` (
   `completed` tinyint(1) NOT NULL,
   `quantity` int NOT NULL,
   `estimatedTime` time NOT NULL,
+  `position` int NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_continuation` int(11) NOT NULL,
   `id_shift` int(11) NOT NULL,

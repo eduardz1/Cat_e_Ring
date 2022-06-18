@@ -30,7 +30,7 @@ public class EventInfo implements EventItemInfo {
 
     public static ObservableList<EventInfo> loadAllEventInfo() {
         ObservableList<EventInfo> all = FXCollections.observableArrayList();
-        String query = "SELECT * FROM Events WHERE true";
+        String query = "SELECT * FROM Events WHERE true;";
         PersistenceManager.executeQuery(query, new ResultHandler() {
             @Override
             public void handle(ResultSet rs) throws SQLException {
@@ -46,7 +46,6 @@ public class EventInfo implements EventItemInfo {
             }
         });
         for (EventInfo e : all) {
-            System.out.println(e.id + " ciclo for Event");
             e.services = ServiceInfo.loadServiceInfoForEvent(e.id, e);
         }
         return all;

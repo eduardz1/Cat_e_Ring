@@ -38,7 +38,7 @@ public class Assignment {
 
     public static void saveAllNewAssignments(int summarysheet_id, List<Assignment> assignments) {
         String AssInsert =
-                "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_procedure, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int[] result =
                 PersistenceManager.executeBatchUpdate(
                         AssInsert,
@@ -55,6 +55,7 @@ public class Assignment {
                                 ps.setInt(6, 0);
                                 ps.setInt(7, 0);
                                 ps.setInt(8, assignments.get(batchCount).getProcedure().getId());
+                                ps.setInt(9, batchCount);
                             }
 
                             @Override
@@ -65,9 +66,9 @@ public class Assignment {
                         });
     }
 
-    public static void saveNewAssignments(int ssId, Assignment as) {
+    public static void saveNewAssignments(int ssId, Assignment as, int pos) {
         String InsertAssignment =
-                "INSERT INTO catering.Assignments (completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_Procedure) VALUES (?, ?, ?, ?, ?, ?, ?);";
+                "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_procedure, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int[] result =
                 PersistenceManager.executeBatchUpdate(
                         InsertAssignment,
@@ -79,11 +80,15 @@ public class Assignment {
                                 ps.setInt(1, ssId);
                                 ps.setBoolean(2, as.isCompleted());
                                 ps.setInt(3, as.getQuantity());
-                                ps.setLong(4, (int) as.getEstimatedTime().toMinutes());
-                                ps.setInt(5, as.getContinuation().getId());
-                                ps.setInt(6, as.getSelShift().getId());
-                                ps.setInt(7, as.getSelCook().getId());
+                                ps.setLong(4, as.getEstimatedTime().toMinutes());
+                               if(as.getContinuation()==null) ps.setInt(5, 0);
+                               else ps.setInt(5, as.getContinuation().getId());
+                                if(as.getSelShift()==null) ps.setInt(6, 0);
+                                else ps.setInt(6, as.getSelShift().getId());
+                                if(as.getSelCook()==null)ps.setInt(7, 0);
+                                else ps.setInt(7, as.getSelCook().getId());
                                 ps.setInt(8, as.getProcedure().getId());
+                                ps.setInt(9, pos-1); //FIXME
                             }
 
                             @Override
@@ -97,20 +102,35 @@ public class Assignment {
     }
 
     public static void updateAssignment(Assignment as) {
-       String UpdateAss = "UPDATE Assignment SET quantity = " +as.getQuantity() + ", estimatedTime = " + as.getEstimatedTime() +
-               ", id_continuation = " +as.getContinuation().getId()+ ", id_cook = " +as.getSelCook().getId()+ ", id_shift = " +as.getSelShift().getId()+
-               " WHERE id = " +as.getId();
-       PersistenceManager.executeUpdate(UpdateAss);
+       String upd = "UPDATE Assignments SET quantity = ?, estimatedTime = ?, id_continuation = ?, id_cook = ?, id_shift = ? WHERE id = " + as.getId() + ";";
+       PersistenceManager.executeBatchUpdate(upd, 1, new BatchUpdateHandler() {
+           @Override
+           public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+               ps.setInt(1, as.getQuantity());
+               ps.setLong(2, as.getEstimatedTime().toMinutes());
+               if(as.getContinuation()==null) ps.setInt(3, 0);
+               else ps.setInt(3, as.getContinuation().getId());
+               if(as.getSelCook()==null) ps.setInt(4, 0);
+               else ps.setInt(4, as.getSelCook().getId());
+               if(as.getSelShift()==null)  ps.setInt(5, 0);
+               else ps.setInt(5, as.getSelShift().getId());
+           }
+
+           @Override
+           public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+
+           }
+       });
     }
 
 
     public static void markAssignmentCompleted(SummarySheet ss, Assignment as) {
-        String updateAss = "UPDATE Assignment SET completed = true WHERE id = " + as.getId();
+        String updateAss = "UPDATE Assignments SET completed = true WHERE id = " + as.getId() + ";";
         PersistenceManager.executeUpdate(updateAss);
     }
 
     public static void deleteAssignment(Assignment as) {
-        String deleteAss = "DELETE FROM Assignment WHERE id = " + as.getId();
+        String deleteAss = "DELETE FROM Assignments WHERE id = " + as.getId() + ";";
         PersistenceManager.executeUpdate(deleteAss);
     }
 
@@ -174,17 +194,20 @@ public class Assignment {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
         if (obj == null) return false;
+        if (this == obj) return true;
         if (getClass() != obj.getClass()) return false;
 
         Assignment other = (Assignment) obj;
+        boolean nullables = false;
+        if(this.continuation == null) nullables &= other.continuation == null;
+        if(this.selCook == null) nullables &= other.selCook == null;
+        if(this.selShift == null) nullables &= other.selShift == null;
+        
         return this.isCompleted() == other.isCompleted()
                 && this.getQuantity().equals(other.getQuantity())
                 && this.getEstimatedTime().equals(other.getEstimatedTime())
-                && this.getContinuation().equals(other.getContinuation())
-                && this.getSelShift().equals(other.getSelShift())
-                && this.getSelCook().equals(other.getSelCook())
+                && nullables
                 && this.getProcedure().equals(other.getProcedure());
     }
 
