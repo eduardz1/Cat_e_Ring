@@ -8,14 +8,13 @@ import java.time.Duration;
 
 public class ShiftPersistence implements ShiftManagerEventReceiver {
 
-
     @Override
     public void updateIncreasedTime(User cook, Shift shift, Duration time) {
-        //Shift.saveNewIncreasedTime(shift, cook, time);
+        // Shift.saveNewIncreasedTime(shift, cook, time);
     }
 
     @Override
     public void updateDecreasedTime(User cook, Shift shift, Duration time) {
-       // Shift.saveNewDecreasedTime(shift, cook, time);
+        // Shift.saveNewDecreasedTime(shift, cook, time);
     }
 }

@@ -23,7 +23,7 @@ public class TestCatERing4 {
             ServiceInfo service = event.getServices().get(0);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
@@ -34,7 +34,7 @@ public class TestCatERing4 {
                             .createSummarySheet(service, event));
 
             System.out.println(
-                    "TEST ASKING FOR SHIFT BOARD:\n"
+                    "\nTEST ASKING FOR SHIFT BOARD:\n"
                             + CatERing.getInstance().getSummarySheetManager().getShiftBoard());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());

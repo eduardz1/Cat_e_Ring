@@ -28,7 +28,7 @@ public class TestCatERing5 {
             ServiceInfo service = event.getServices().get(0);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
@@ -43,7 +43,7 @@ public class TestCatERing5 {
                             .getCurrentSheet()
                             .getAssignments();
 
-            System.out.println("TEST DEFINING ASSIGNMENT " + assignments.get(0).getId());
+            System.out.println("\nTEST DEFINING ASSIGNMENT " + assignments.get(0).getId());
             CatERing.getInstance()
                     .getSummarySheetManager()
                     .defineAssignment(

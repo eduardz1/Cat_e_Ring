@@ -34,7 +34,7 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
     @Override
     public void updateProcedureRemoved(SummarySheet ss, Procedure pro) {
         for (Assignment assignment : ss.getAssignments()) {
-            if(assignment.getProcedure().equals(pro)) {
+            if (assignment.getProcedure().equals(pro)) {
                 Assignment.deleteAssignment(assignment);
             }
         }
@@ -42,6 +42,7 @@ public class SummarySheetPersistence implements SummarySheetEventReceiver {
 
     @Override
     public void updateAssignmentRemoved(SummarySheet currentSheet, Assignment as) {
-        Assignment.deleteAssignment(as); // TODO check if it is sufficient to delete the assignment from the database
+        Assignment.deleteAssignment(
+                as); // TODO check if it is sufficient to delete the assignment from the database
     }
 }

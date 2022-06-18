@@ -24,7 +24,7 @@ public class TestCatERing2_2a {
             ServiceInfo service = event.getServices().get(0);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
@@ -35,12 +35,12 @@ public class TestCatERing2_2a {
                             .createSummarySheet(service, event));
 
             Procedure procedure = CatERing.getInstance().getProcedureManager().getRecipes().get(0);
-            System.out.println("TEST ADDING PROCEDURE " + procedure + " TO SUMMARY SHEET");
+            System.out.println("\nTEST ADDING PROCEDURE " + procedure + " TO SUMMARY SHEET");
             CatERing.getInstance().getSummarySheetManager().addProcedure(procedure);
 
             System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
 
-            System.out.println("TEST REMOVING PROCEDURE " + procedure + " FROM SUMMARY SHEET");
+            System.out.println("\nTEST REMOVING PROCEDURE " + procedure + " FROM SUMMARY SHEET");
             CatERing.getInstance().getSummarySheetManager().removeProcedure(procedure);
 
             System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());

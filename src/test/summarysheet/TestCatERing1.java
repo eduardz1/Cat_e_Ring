@@ -9,8 +9,6 @@ import main.businesslogic.menu.Menu;
 import main.businesslogic.summarysheet.SummarySheet;
 import main.businesslogic.summarysheet.SummarySheetException;
 
-import java.util.ArrayList;
-
 public class TestCatERing1 {
     public static void main(String[] args) {
         try {

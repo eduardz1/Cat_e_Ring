@@ -2,16 +2,10 @@ package main.businesslogic.event;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.CatERing;
-import main.businesslogic.menu.Menu;
 import main.businesslogic.user.User;
 import main.persistence.PersistenceManager;
-import main.persistence.ResultHandler;
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class EventInfo implements EventItemInfo {
 
@@ -31,20 +25,19 @@ public class EventInfo implements EventItemInfo {
     public static ObservableList<EventInfo> loadAllEventInfo() {
         ObservableList<EventInfo> all = FXCollections.observableArrayList();
         String query = "SELECT * FROM Events WHERE true;";
-        PersistenceManager.executeQuery(query, new ResultHandler() {
-            @Override
-            public void handle(ResultSet rs) throws SQLException {
-                String n = rs.getString("name");
-                EventInfo e = new EventInfo(n);
-                e.id = rs.getInt("id");
-                e.dateStart = rs.getDate("date_start");
-                e.dateEnd = rs.getDate("date_end");
-                e.participants = rs.getInt("expected_participants");
-                int org = rs.getInt("organizer_id");
-                e.organizer = User.loadUserById(org);
-                all.add(e);
-            }
-        });
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    String n = rs.getString("name");
+                    EventInfo e = new EventInfo(n);
+                    e.id = rs.getInt("id");
+                    e.dateStart = rs.getDate("date_start");
+                    e.dateEnd = rs.getDate("date_end");
+                    e.participants = rs.getInt("expected_participants");
+                    int org = rs.getInt("organizer_id");
+                    e.organizer = User.loadUserById(org);
+                    all.add(e);
+                });
         for (EventInfo e : all) {
             e.services = ServiceInfo.loadServiceInfoForEvent(e.id, e);
         }
@@ -78,8 +71,6 @@ public class EventInfo implements EventItemInfo {
     public ObservableList<ServiceInfo> getServices() {
         return FXCollections.unmodifiableObservableList(this.services);
     }
-
-    // STATIC METHODS FOR PERSISTENCE
 
     public String toString() {
         return name

@@ -27,7 +27,7 @@ public class TestCatERing5b {
             ServiceInfo service = event.getServices().get(0);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
@@ -42,7 +42,7 @@ public class TestCatERing5b {
                             .getCurrentSheet()
                             .getAssignments();
 
-            System.out.println("TEST DEFINING ASSIGNMENT " + assignments.get(0).getId());
+            System.out.println("\nTEST DEFINING ASSIGNMENT " + assignments.get(0).getId());
             CatERing.getInstance()
                     .getSummarySheetManager()
                     .defineAssignment(
@@ -52,12 +52,12 @@ public class TestCatERing5b {
                                     CatERing.getInstance().getShiftManager().getShifts().get(0)),
                             Optional.empty(),
                             Optional.of(Duration.ofMinutes(30)),
-                            Optional.of(assignments.get(1))); // FIXME getShifts returns null ATM
+                            Optional.of(assignments.get(1)));
 
-            System.out.println("TEST DELETE ASSIGNMENT " + assignments.get(0).getId());
+            System.out.println("\nTEST DELETE ASSIGNMENT " + assignments.get(0).getId());
             CatERing.getInstance().getSummarySheetManager().deleteAssignment(assignments.get(0));
 
-            System.out.println("NEW ASSIGNMENT LIST:\n");
+            System.out.println("\nNEW ASSIGNMENT LIST:\n");
             System.out.println(
                     CatERing.getInstance()
                             .getSummarySheetManager()

@@ -8,7 +8,6 @@ import main.persistence.PersistenceManager;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 
 public class ServiceInfo implements EventItemInfo {
     private final String name;
@@ -19,15 +18,19 @@ public class ServiceInfo implements EventItemInfo {
     private int participants;
     private Menu menu;
     private EventInfo eventInfo;
+
     public ServiceInfo(String name) {
         this.name = name;
     }
 
     public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id, EventInfo e) {
         ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
-        String query = "SELECT id, name, service_date, time_start, time_end, expected_participants, approved_menu_id " +
-                "FROM Services WHERE event_id = " + event_id + ";";
-            ObservableList <Menu> menus = CatERing.getInstance().getMenuManager().getAllMenus();
+        String query =
+                "SELECT id, name, service_date, time_start, time_end, expected_participants, approved_menu_id "
+                        + "FROM Services WHERE event_id = "
+                        + event_id
+                        + ";";
+        ObservableList<Menu> menus = CatERing.getInstance().getMenuManager().getAllMenus();
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
@@ -44,7 +47,8 @@ public class ServiceInfo implements EventItemInfo {
                             serv.menu = m;
                         }
                     }
-                    serv.eventInfo = e; // temporary, need to change when working on Event/Services UC
+                    serv.eventInfo =
+                            e; // temporary, need to change when working on Event/Services UC
                     result.add(serv);
                 });
         return result;

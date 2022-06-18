@@ -3,8 +3,6 @@ package main.businesslogic.shift;
 import javafx.collections.ObservableList;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.MenuEventReceiver;
-import main.businesslogic.summarysheet.Assignment;
-import main.businesslogic.summarysheet.SummarySheetEventReceiver;
 import main.businesslogic.user.User;
 
 import java.time.Duration;
@@ -32,9 +30,8 @@ public class ShiftManager {
     }
 
     public ObservableList<Shift> getShifts() {
-        return shiftBoard.getAllShifts();
+        return ShiftBoard.getAllShifts();
     }
-
 
     public void setShiftBoard(ShiftBoard shiftBoard) {
         if (shiftBoard == null) {
@@ -71,13 +68,13 @@ public class ShiftManager {
         return this.shiftBoard.isAvailable(cook, shift, time);
     }
 
-    //FIXME
+    // FIXME
     private void notifyIncreaseTime(Shift shift, User cook, Duration time) {
         for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
             eventReceiver.updateIncreasedTime(cook, shift, time);
         }
     }
-//FIXME
+    // FIXME
     private void notifyDecreasedTime(Shift shift, User cook, Duration time) {
         for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
             eventReceiver.updateDecreasedTime(cook, shift, time);

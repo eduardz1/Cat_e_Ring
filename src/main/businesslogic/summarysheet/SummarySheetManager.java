@@ -1,12 +1,10 @@
 package main.businesslogic.summarysheet;
 
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.menu.MenuEventReceiver;
 import main.businesslogic.procedure.Procedure;
 import main.businesslogic.shift.Shift;
 import main.businesslogic.user.User;
@@ -14,7 +12,6 @@ import main.businesslogic.user.User;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 /** SummarySheetManager */
@@ -59,7 +56,6 @@ public class SummarySheetManager {
         }
         this.notifyProcedureRemoved(pro);
         currentSheet.removeProcedure(pro); // FIXME check return if necessary
-
     }
 
     public void deleteAssignment(Assignment as)

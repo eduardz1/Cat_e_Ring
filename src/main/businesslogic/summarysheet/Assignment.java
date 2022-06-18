@@ -50,7 +50,13 @@ public class Assignment {
                                 ps.setInt(1, summarysheet_id);
                                 ps.setBoolean(2, assignments.get(batchCount).isCompleted());
                                 ps.setInt(3, assignments.get(batchCount).getQuantity());
-                                ps.setLong(4, (int) assignments.get(batchCount).getEstimatedTime().toMinutes());
+                                ps.setLong(
+                                        4,
+                                        (int)
+                                                assignments
+                                                        .get(batchCount)
+                                                        .getEstimatedTime()
+                                                        .toMinutes());
                                 ps.setInt(5, 0);
                                 ps.setInt(6, 0);
                                 ps.setInt(7, 0);
@@ -69,7 +75,7 @@ public class Assignment {
     public static void saveNewAssignments(int ssId, Assignment as, int pos) {
         String InsertAssignment =
                 "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_procedure, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        int[] result =
+        int[] result = // FIXME handle generated ids
                 PersistenceManager.executeBatchUpdate(
                         InsertAssignment,
                         1,
@@ -81,14 +87,14 @@ public class Assignment {
                                 ps.setBoolean(2, as.isCompleted());
                                 ps.setInt(3, as.getQuantity());
                                 ps.setLong(4, as.getEstimatedTime().toMinutes());
-                               if(as.getContinuation()==null) ps.setInt(5, 0);
-                               else ps.setInt(5, as.getContinuation().getId());
-                                if(as.getSelShift()==null) ps.setInt(6, 0);
+                                if (as.getContinuation() == null) ps.setInt(5, 0);
+                                else ps.setInt(5, as.getContinuation().getId());
+                                if (as.getSelShift() == null) ps.setInt(6, 0);
                                 else ps.setInt(6, as.getSelShift().getId());
-                                if(as.getSelCook()==null)ps.setInt(7, 0);
+                                if (as.getSelCook() == null) ps.setInt(7, 0);
                                 else ps.setInt(7, as.getSelCook().getId());
                                 ps.setInt(8, as.getProcedure().getId());
-                                ps.setInt(9, pos-1); //FIXME
+                                ps.setInt(9, pos - 1); // FIXME
                             }
 
                             @Override
@@ -102,27 +108,31 @@ public class Assignment {
     }
 
     public static void updateAssignment(Assignment as) {
-       String upd = "UPDATE Assignments SET quantity = ?, estimatedTime = ?, id_continuation = ?, id_cook = ?, id_shift = ? WHERE id = " + as.getId() + ";";
-       PersistenceManager.executeBatchUpdate(upd, 1, new BatchUpdateHandler() {
-           @Override
-           public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-               ps.setInt(1, as.getQuantity());
-               ps.setLong(2, as.getEstimatedTime().toMinutes());
-               if(as.getContinuation()==null) ps.setInt(3, 0);
-               else ps.setInt(3, as.getContinuation().getId());
-               if(as.getSelCook()==null) ps.setInt(4, 0);
-               else ps.setInt(4, as.getSelCook().getId());
-               if(as.getSelShift()==null)  ps.setInt(5, 0);
-               else ps.setInt(5, as.getSelShift().getId());
-           }
+        String upd =
+                "UPDATE Assignments SET quantity = ?, estimatedTime = ?, id_continuation = ?, id_cook = ?, id_shift = ? WHERE id = "
+                        + as.getId()
+                        + ";";
+        PersistenceManager.executeBatchUpdate(
+                upd,
+                1,
+                new BatchUpdateHandler() {
+                    @Override
+                    public void handleBatchItem(PreparedStatement ps, int batchCount)
+                            throws SQLException {
+                        ps.setInt(1, as.getQuantity());
+                        ps.setLong(2, as.getEstimatedTime().toMinutes());
+                        if (as.getContinuation() == null) ps.setInt(3, 0);
+                        else ps.setInt(3, as.getContinuation().getId());
+                        if (as.getSelCook() == null) ps.setInt(4, 0);
+                        else ps.setInt(4, as.getSelCook().getId());
+                        if (as.getSelShift() == null) ps.setInt(5, 0);
+                        else ps.setInt(5, as.getSelShift().getId());
+                    }
 
-           @Override
-           public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
-
-           }
-       });
+                    @Override
+                    public void handleGeneratedIds(ResultSet rs, int count) {}
+                });
     }
-
 
     public static void markAssignmentCompleted(SummarySheet ss, Assignment as) {
         String updateAss = "UPDATE Assignments SET completed = true WHERE id = " + as.getId() + ";";
@@ -133,7 +143,6 @@ public class Assignment {
         String deleteAss = "DELETE FROM Assignments WHERE id = " + as.getId() + ";";
         PersistenceManager.executeUpdate(deleteAss);
     }
-
 
     public void setCook(User cook) throws UseCaseLogicException {
         if (selShift != null && estimatedTime != null) {
@@ -199,16 +208,17 @@ public class Assignment {
         if (getClass() != obj.getClass()) return false;
 
         Assignment other = (Assignment) obj;
-        boolean nullables = false;
-        if(this.continuation == null) nullables &= other.continuation == null;
-        if(this.selCook == null) nullables &= other.selCook == null;
-        if(this.selShift == null) nullables &= other.selShift == null;
-        
-        return this.isCompleted() == other.isCompleted()
-                && this.getQuantity().equals(other.getQuantity())
-                && this.getEstimatedTime().equals(other.getEstimatedTime())
+        boolean nullables = true;
+        if (this.continuation == null) nullables = other.continuation == null;
+        if (this.selCook == null) nullables &= other.selCook == null;
+        if (this.selShift == null) nullables &= other.selShift == null;
+
+        return this.completed == other.completed
+                && this.quantity.equals(other.quantity)
+                && this.estimatedTime.equals(other.estimatedTime)
                 && nullables
-                && this.getProcedure().equals(other.getProcedure());
+                && this.itemProcedure.equals(other.itemProcedure)
+                && this.id == other.id;
     }
 
     public boolean isCompleted() {
@@ -250,8 +260,6 @@ public class Assignment {
         return selShift;
     }
 
-    // STATIC METHODS FOR PERSISTENCE
-
     public User getSelCook() {
         return selCook;
     }
@@ -259,5 +267,4 @@ public class Assignment {
     public int getId() {
         return this.id;
     }
-
 }

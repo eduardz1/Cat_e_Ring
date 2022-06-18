@@ -24,7 +24,7 @@ public class TestCatERing3 {
             ServiceInfo service = event.getServices().get(0);
 
             System.out.println(
-                    "TEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
                             + event.getName()
                             + " AND SERVICE "
                             + service.getName());
@@ -39,16 +39,16 @@ public class TestCatERing3 {
                             .getCurrentSheet()
                             .getAssignments();
 
-            System.out.println("ORIGINAL ASSIGNMENTS ORDER:\n" + assignments);
+            System.out.println("\nORIGINAL ASSIGNMENTS ORDER:\n" + assignments);
 
-            System.out.println("TESTING REORDERING OF ASSIGNMENTS: 1st -> 2nd");
+            System.out.println("\nTESTING REORDERING OF ASSIGNMENTS: 1st -> 2nd");
             CatERing.getInstance()
                     .getSummarySheetManager()
                     .changeAssignmentOrder(assignments.get(0), 1);
 
-            System.out.println("NEW ASSIGNMENTS ORDER:\n" + assignments);
+            System.out.println("\nNEW ASSIGNMENTS ORDER:\n" + assignments);
             System.out.println(
-                    "UPDATED SUMMARY SHEET:\n"
+                    "\nUPDATED SUMMARY SHEET:\n"
                             + CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
