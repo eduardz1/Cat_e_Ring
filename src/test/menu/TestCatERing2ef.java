@@ -6,7 +6,7 @@ import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.Menu;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.menu.Section;
-import main.businesslogic.procedure.Recipe;
+import main.businesslogic.procedure.Procedure;
 
 public class TestCatERing2ef {
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class TestCatERing2ef {
             Section primi = CatERing.getInstance().getMenuManager().defineSection("Primi");
             Section secondi = CatERing.getInstance().getMenuManager().defineSection("Secondi");
 
-            ObservableList<Recipe> recipes =
+            ObservableList<Procedure> recipes =
                     CatERing.getInstance().getProcedureManager().getRecipes();
             MenuItem it1 =
                     CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);

@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import main.businesslogic.CatERing;
-import main.businesslogic.procedure.Recipe;
+import main.businesslogic.procedure.Procedure;
 import main.businesslogic.user.User;
 import main.persistence.BatchUpdateHandler;
 import main.persistence.PersistenceManager;
@@ -371,8 +371,8 @@ public class Menu {
         this.sections.add(new Section("Secondi"));
         this.sections.add(new Section("Dessert"));
 
-        Recipe[] all =
-                CatERing.getInstance().getProcedureManager().getRecipes().toArray(new Recipe[0]);
+        Procedure[] all =
+                CatERing.getInstance().getProcedureManager().getRecipes().toArray(new Procedure[0]);
         freeItems.add(new MenuItem(all[3]));
         freeItems.add(new MenuItem(all[4]));
         freeItems.add(new MenuItem(all[5]));
@@ -384,7 +384,7 @@ public class Menu {
         return sec;
     }
 
-    public MenuItem addItem(Recipe recipe, Section sec, String desc) {
+    public MenuItem addItem(Procedure recipe, Section sec, String desc) {
         MenuItem mi = new MenuItem(recipe, desc);
         if (sec != null) {
             sec.addItem(mi);
@@ -442,7 +442,7 @@ public class Menu {
                 updatedList.add(mi);
             } else {
                 prev.setDescription(mi.getDescription());
-                prev.setItemRecipe(mi.getItemRecipe());
+                prev.setItemProcedure(mi.getItemProcedure());
                 updatedList.add(prev);
             }
         }

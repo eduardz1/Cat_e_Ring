@@ -2,7 +2,7 @@ package main.businesslogic.menu;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.procedure.Recipe;
+import main.businesslogic.procedure.Procedure;
 import main.persistence.BatchUpdateHandler;
 import main.persistence.PersistenceManager;
 
@@ -15,29 +15,29 @@ import java.util.List;
 public class MenuItem {
     private int id;
     private String description;
-    private Recipe itemRecipe;
+    private Procedure itemProcedure;
 
     private MenuItem() {}
 
-    public MenuItem(Recipe rec) {
+    public MenuItem(Procedure rec) {
         this(rec, rec.getName());
     }
 
-    public MenuItem(Recipe rec, String desc) {
+    public MenuItem(Procedure rec, String desc) {
         id = 0;
-        itemRecipe = rec;
+        itemProcedure = rec;
         description = desc;
     }
 
     public MenuItem(MenuItem mi) {
         this.id = 0;
         this.description = mi.description;
-        this.itemRecipe = mi.itemRecipe;
+        this.itemProcedure = mi.itemProcedure;
     }
 
     public static void saveAllNewItems(int menuid, int sectionid, List<MenuItem> items) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES (?, ?, ?, ?, ?);";
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, Procedure_id, position) VALUES (?, ?, ?, ?, ?);";
         PersistenceManager.executeBatchUpdate(
                 itemInsert,
                 items.size(),
@@ -50,7 +50,7 @@ public class MenuItem {
                         ps.setString(
                                 3,
                                 PersistenceManager.escapeString(items.get(batchCount).description));
-                        ps.setInt(4, items.get(batchCount).itemRecipe.getId());
+                        ps.setInt(4, items.get(batchCount).itemProcedure.getId());
                         ps.setInt(5, batchCount);
                     }
 
@@ -63,7 +63,7 @@ public class MenuItem {
 
     public static void saveNewItem(int menuid, int sectionid, MenuItem mi, int pos) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES ("
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, Procedure_id, position) VALUES ("
                         + menuid
                         + ", "
                         + sectionid
@@ -71,7 +71,7 @@ public class MenuItem {
                         + "'"
                         + PersistenceManager.escapeString(mi.description)
                         + "', "
-                        + mi.itemRecipe.getId()
+                        + mi.itemProcedure.getId()
                         + ", "
                         + pos
                         + ");";
@@ -97,12 +97,12 @@ public class MenuItem {
                     mi.description = rs.getString("description");
                     mi.id = rs.getInt("id");
                     result.add(mi);
-                    recids.add(rs.getInt("recipe_id"));
+                    recids.add(rs.getInt("Procedure_id"));
                 });
 
         // carico qui le ricette perché non posso innestare due connessioni al DB
         for (int i = 0; i < result.size(); i++) {
-            result.get(i).itemRecipe = Recipe.loadRecipeById(recids.get(i));
+            result.get(i).itemProcedure = Procedure.loadProcedureById(recids.get(i));
         }
 
         return result;
@@ -143,11 +143,11 @@ public class MenuItem {
         this.description = description;
     }
 
-    public Recipe getItemRecipe() {
-        return itemRecipe;
+    public Procedure getItemProcedure() {
+        return itemProcedure;
     }
 
-    public void setItemRecipe(Recipe itemRecipe) {
-        this.itemRecipe = itemRecipe;
+    public void setItemProcedure(Procedure itemProcedure) {
+        this.itemProcedure = itemProcedure;
     }
 }

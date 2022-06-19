@@ -270,7 +270,7 @@ UNLOCK TABLES;
 --
 -- Table structure for table `Recipes`
 --
-DROP TABLE IF EXISTS `Recipes`;
+DROP TABLE IF EXISTS `procedure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */
 ;
 /*!40101 SET character_set_client = utf8 */
@@ -285,10 +285,10 @@ CREATE TABLE `Recipes` (
 --
 -- Dumping data for table `Recipes`
 --
-LOCK TABLES `Recipes` WRITE;
-/*!40000 ALTER TABLE `Recipes` DISABLE KEYS */
+LOCK TABLES `procedure` WRITE;
+/*!40000 ALTER TABLE `procedure` DISABLE KEYS */
 ;
-INSERT INTO `Recipes`
+INSERT INTO `procedure`
 VALUES (1, 'Vitello tonnato'),
   (2, 'Carpaccio di spada'),
   (3, 'Alici marinate'),
@@ -309,7 +309,7 @@ VALUES (1, 'Vitello tonnato'),
   (18, 'Sorbetto al limone'),
   (19, 'Torta Saint Honoré'),
   (20, 'Risotto alla zucca');
-/*!40000 ALTER TABLE `Recipes` ENABLE KEYS */
+/*!40000 ALTER TABLE `procedure` ENABLE KEYS */
 ;
 UNLOCK TABLES;
 --
@@ -571,11 +571,9 @@ UNLOCK TABLES;
 -- Struttura della tabella `UserShifts`
 --
 CREATE TABLE `UserShifts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_shift` int(11) NOT NULL,
   `id_cook` int(11) NOT NULL,
-  `availableTime` bigint NOT NULL,
-  PRIMARY KEY (id)
+  `availableTime` bigint NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 --
 -- Dumping data for table `Shift`

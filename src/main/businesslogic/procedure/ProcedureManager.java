@@ -6,10 +6,17 @@ import javafx.collections.ObservableList;
 public class ProcedureManager {
 
     public ProcedureManager() {
-        Recipe.loadAllRecipes();
+        Procedure.loadAllProcedure();
     }
 
-    public ObservableList<Recipe> getRecipes() {
-        return FXCollections.unmodifiableObservableList(Recipe.getAllRecipes());
+    public ObservableList<Procedure> getRecipes() {
+        return FXCollections.unmodifiableObservableList(Procedure.getAllRecipes());
+    }
+
+    public ObservableList<Procedure> getPreparation() {
+        return FXCollections.unmodifiableObservableList(Procedure.getAllPreparation());
+    }
+    public ObservableList<Procedure> getAllProcedure() {
+        return FXCollections.unmodifiableObservableList(Procedure.getAllProcedure());
     }
 }

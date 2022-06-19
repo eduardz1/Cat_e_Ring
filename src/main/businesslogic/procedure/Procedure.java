@@ -2,62 +2,76 @@ package main.businesslogic.procedure;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.businesslogic.event.EventInfo;
+import main.businesslogic.event.ServiceInfo;
 import main.persistence.PersistenceManager;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public abstract class Procedure {
-    private static final Map<Integer, Recipe> all = new HashMap<>();
-
+public class Procedure {
+    private static final ObservableList<Procedure> all = FXCollections.observableArrayList();
     protected int id;
     protected String name;
-
-    protected Procedure() {}
-
+    protected boolean procedureType;   // TRUE = ricetta FALSE = preparazione
     public Procedure(String name) {
-        id = 0;
         this.name = name;
     }
 
-    public static ObservableList<Recipe> loadAllRecipes() {
-        String query = "SELECT * FROM Recipes;";
+    public static ObservableList<Procedure> loadAllProcedure() {
+        String query = "SELECT * FROM Procedure;";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
-                    int id = rs.getInt("id");
-                    if (all.containsKey(id)) {
-                        Recipe rec = all.get(id);
-                        rec.name = rs.getString("name");
-                    } else {
-                        Recipe rec = new Recipe(rs.getString("name"));
+                        int id = rs.getInt("id");
+                        Procedure rec = new Procedure(rs.getString("name"));
                         rec.id = id;
-                        all.put(rec.id, rec);
-                    }
+                        if(rs.getString("procedureType") == "ricetta") rec.procedureType=true;
+                        else rec.procedureType=false;
+                        all.add(rec);
                 });
-        ObservableList<Recipe> ret = FXCollections.observableArrayList(all.values());
-        ret.sort(Comparator.comparing(Recipe::getName));
-
-        return ret;
+        return all;
     }
 
-    public static ObservableList<Recipe> getAllRecipes() {
-        return FXCollections.observableArrayList(all.values());
+    public static ObservableList<Procedure> getAllRecipes() {
+        ObservableList<Procedure> result = FXCollections.observableArrayList();
+        for (Procedure procedure : all) {
+            if (procedure.procedureType == true) result.add(procedure);
+        }
+        return result;
     }
 
-    public static Recipe loadRecipeById(int id) {
-        if (all.containsKey(id)) return all.get(id);
-        Recipe rec = new Recipe();
-        String query = "SELECT * FROM Recipes WHERE id = " + id + ";";
+    public static ObservableList<Procedure> getAllPreparation() {
+        ObservableList<Procedure> result = FXCollections.observableArrayList();
+        for (Procedure procedure : all) {
+            if (procedure.procedureType == false) result.add(procedure);
+        }
+        return result;
+    }
+
+    public static ObservableList<Procedure> getAllProcedure() {
+        ObservableList<Procedure> result = FXCollections.observableArrayList();
+        for (Procedure procedure : all) {
+             result.add(procedure);
+        }
+        return result;
+    }
+
+
+    public static Procedure loadProcedureById(int id) {
+        for (Procedure procedure : all) {
+            if (procedure.getId() == id) return procedure;
+        }
+        String query = "SELECT * FROM Procedure WHERE id = " + id + ";";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
-                    rec.name = rs.getString("name");
+                    Procedure rec = new Procedure(rs.getString("name"));
                     rec.id = id;
-                    all.put(rec.id, rec);
+                    if(rs.getString("procedureType") == "ricetta") rec.procedureType=true;
+                    else rec.procedureType=false;
+                    all.add(rec);
                 });
-        return rec;
+       return all.get(all.size()-1);
     }
 
     // STATIC METHODS FOR PERSISTENCE

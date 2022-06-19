@@ -15,7 +15,6 @@ import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.Menu;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.menu.Section;
-import main.businesslogic.procedure.Recipe;
 import main.ui.general.EventsInfoDialog;
 
 import java.io.IOException;

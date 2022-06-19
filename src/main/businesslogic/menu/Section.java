@@ -151,7 +151,7 @@ public class Section {
                 updatedList.add(mi);
             } else {
                 prev.setDescription(mi.getDescription());
-                prev.setItemRecipe(mi.getItemRecipe());
+                prev.setItemProcedure(mi.getItemProcedure());
                 updatedList.add(prev);
             }
         }
