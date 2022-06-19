@@ -128,11 +128,8 @@ public class SummarySheetManager {
         if (shiftDate.isBefore(LocalDate.now())) {
             throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
         }
-
-        if (shiftDate.isAfter(localServiceDate)
-                || shiftDate.isBefore(localServiceDate)
-                || startTime.after(serviceEndTime)
-                || endTime.before(serviceStartTime)) {
+ 
+        if (shiftDate.isAfter(localServiceDate)) {
             throw new UseCaseLogicException(
                     "defineAssignment: "
                             + "shift ("

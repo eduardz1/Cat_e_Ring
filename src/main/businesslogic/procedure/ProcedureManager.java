@@ -4,19 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ProcedureManager {
-
+    private final ObservableList<Procedure> procedureBoard;
+    
     public ProcedureManager() {
-        Procedure.loadAllProcedure();
+        this.procedureBoard = FXCollections.observableArrayList();
+        this.procedureBoard.addAll(Procedure.loadAllProcedures());
     }
 
     public ObservableList<Procedure> getRecipes() {
-        return FXCollections.unmodifiableObservableList(Procedure.getAllRecipes());
+        return FXCollections.observableArrayList(procedureBoard.filtered(arg0 -> arg0.isRecipe()));
     }
 
-    public ObservableList<Procedure> getPreparation() {
-        return FXCollections.unmodifiableObservableList(Procedure.getAllPreparation());
+    public ObservableList<Procedure> getPreparations() {
+        return FXCollections.observableArrayList(procedureBoard.filtered(arg0 -> arg0.isPreparation()));
     }
-    public ObservableList<Procedure> getAllProcedure() {
-        return FXCollections.unmodifiableObservableList(Procedure.getAllProcedure());
+    public ObservableList<Procedure> getAllProcedures() {
+        return procedureBoard;
     }
 }

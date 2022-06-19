@@ -13,7 +13,7 @@ import main.persistence.SummarySheetPersistence;
 public class CatERing {
     private static CatERing singleInstance;
     private final MenuManager menuMgr;
-    private final ProcedureManager recipeMgr;
+    private final ProcedureManager procedureMgr;
     private final UserManager userMgr;
     private final EventManager eventMgr;
     private final SummarySheetManager summarySheetMgr;
@@ -21,7 +21,7 @@ public class CatERing {
     // Do we need MenuPersistence as a variable?
     private CatERing() {
         menuMgr = new MenuManager();
-        recipeMgr = new ProcedureManager();
+        procedureMgr = new ProcedureManager();
         userMgr = new UserManager();
         eventMgr = new EventManager();
         summarySheetMgr = new SummarySheetManager();
@@ -43,7 +43,7 @@ public class CatERing {
     }
 
     public ProcedureManager getProcedureManager() {
-        return recipeMgr;
+        return procedureMgr;
     }
 
     public UserManager getUserManager() {

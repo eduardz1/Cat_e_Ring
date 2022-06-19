@@ -37,7 +37,7 @@ public class MenuItem {
 
     public static void saveAllNewItems(int menuid, int sectionid, List<MenuItem> items) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES (?, ?, ?, ?, ?);";
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, procedure_id, position) VALUES (?, ?, ?, ?, ?);";
         PersistenceManager.executeBatchUpdate(
                 itemInsert,
                 items.size(),
@@ -63,7 +63,7 @@ public class MenuItem {
 
     public static void saveNewItem(int menuid, int sectionid, MenuItem mi, int pos) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES ("
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, procedure_id, position) VALUES ("
                         + menuid
                         + ", "
                         + sectionid
@@ -97,7 +97,7 @@ public class MenuItem {
                     mi.description = rs.getString("description");
                     mi.id = rs.getInt("id");
                     result.add(mi);
-                    recids.add(rs.getInt("Procedure_id"));
+                    recids.add(rs.getInt("procedure_id"));
                 });
 
         // carico qui le ricette perché non posso innestare due connessioni al DB

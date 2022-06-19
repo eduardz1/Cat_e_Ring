@@ -2,7 +2,6 @@ package main.businesslogic.shift;
 
 import javafx.collections.ObservableList;
 import main.businesslogic.UseCaseLogicException;
-import main.businesslogic.menu.MenuEventReceiver;
 import main.businesslogic.user.User;
 
 import java.time.Duration;

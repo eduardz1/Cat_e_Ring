@@ -3,7 +3,7 @@
 \section[creaFoglioRiepilogativo]{\texorpdfstring{creaFoglioRiepilogativo(\myuline{servizio}: Servizio, \myuline{evento}: Evento)}}\label{h.n5k8dzisnnko}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {allo Chef h }\textbf{è assegnato un}{evento che }{ }\textbf{prevede }{servizio}
+	\item {allo Chef h }\textbf{è assegnato un }{evento che }{ }\textbf{prevede }{servizio}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
@@ -68,33 +68,58 @@
 \textbf{Pre-condizioni: }{-}\newline
 \textbf{Post-condizioni: }{-}
 
+\clearpage
 \section[generaAssegnamento]{\texorpdfstring{generaAssegnamento(\myuline{assegnamento}{:
 			  Assegnamento, }\myuline{turno}{?: Turno, }\myuline{cuoco}{?: Cuoco, }\myuline{stimaTempo}{?:
-			  testo, }\myuline{dosi}{?: testo, }\myuline{continuazione}?: Assegnamento)}}\label{h.3umm3owhjhiq}
+			  testo, }\myuline{dosi}{?: numero, }\myuline{continuazione}?: Assegnamento)}}\label{h.3umm3owhjhiq}
 \textbf{Pre-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
 	\item {È in corso la gestione dei compiti relativi a un Foglio Riepilogativo }\textit{f}
 	\item \textit{f}{ }\textbf{contiene}{ }\myuline{assegnamento}
 	\item {Se }\myuline{continuazione}{ è specificato }\textit{f}{ }\textbf{contiene}{ }\myuline{continuazione}
 	\item {il }\myuline{cuoco}{ ha dato disponibilità per }\myuline{turno} 
-	\item {il }\myuline{turno}{ non si è ancora svolto}
+	\item {il }\myuline{turno}{ non si è ancora svolto}{ ed è dopo la data del }\myuline{servizio}{ riferito a }\textit{f}
 \end{itemize}
 \textbf{Post-condizioni:}
 \begin{itemize}[label=$-$, noitemsep]
-	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }\myuline{assegnamento}{ si }\textbf{svolge}{ in }\myuline{turno}
-	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }\myuline{assegnamento.tempoStimato}{ = }\myuline{stimaTempo}
+	\item {{[}}\textbf{Se}{ }\myuline{turno}{ è specificato{]} }
+	\setlist{nolistsep}
+	\begin{itemize}[label=$-$, noitemsep]
+		\item {[}\textbf{Se esiste }{un }\myuline{cuoco}{ c che } \textbf{esegue }\myuline{assegnamento}{ e }\textbf{Se }\myuline{assegnamento.tempoStimato}{ è definito}{]}
+		\setlist{nolistsep}
+		\begin{itemize}[label=$-$, noitemsep]
+			\item {{[}}\textbf{Se}{ esiste una istanza} \textit{ct} {Cuoco in turno che associa }\textit{cuoco} e \textit{turno} {e Se {l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $<$ \myuline{assegnamento.tempoStimato}}{]}
+				  {l'istanza }\textit{ct} ha \textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $-$ \myuline{assegnamento.tempoStimato} 
+			\item \myuline{assegnamento}{ si }\textbf{svolge}{ in }\myuline{turno}
+		\end{itemize}
+    \end{itemize}
+	\item {{[}}\textbf{Se}{ }\myuline{stimaTempo}{ è specificato{]} }                       
+	\setlist{nolistsep}
+	\begin{itemize}[label=$-$, noitemsep]
+		\item {[}\textbf{Se esiste }{un }\myuline{cuoco}{ c che } \textbf{esegue }\myuline{assegnamento}{ e }\textbf{Se esiste}{un }\myuline{turno}{ t dove si } \textbf{svolge }\myuline{assegnamento}{]}
+		\setlist{nolistsep}
+		\begin{itemize}[label=$-$, noitemsep]
+			\item {{[}}\textbf{Se}{ esiste una istanza} \textit{ct} {Cuoco in turno che associa }\textit{cuoco} e \textit{turno} {e Se {l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $<$ \myuline{stimaTempo}}{]}
+			      {l'istanza }\textit{ct} ha \textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $-$ \myuline{stimaTempo} 
+			\item \myuline{assegnamento.tempoStimato} $=$ \myuline{stimaTempo}
+		\end{itemize}
+    \end{itemize}
 	\item {{[}}\textbf{Se }\myuline{cuoco}{ è specificato{]}}
 	\setlist{nolistsep}
 	\begin{itemize}[label=$-$, noitemsep]
-		\item {{[}}\textbf{Se}{ esiste una istanza} \textit{ct} {Cuoco in turno che associa}\textit{cuoco} e \textit{turno}{]} \myuline{assegnamento}{ è }\textbf{eseguito da }\myuline{cuoco}  
+		\item {[}\textbf{Se esiste }{un }\myuline{turno}{ t dove si} \textbf{svolge }\myuline{assegnamento}{ e }\textbf{Se }\myuline{assegnamento.tempoStimato}{ è definito}{]}
+		\setlist{nolistsep}
+		\begin{itemize}[label=$-$, noitemsep]
+			\item {{[}}\textbf{Se}{ esiste una istanza} \textit{ct} {Cuoco in turno che associa }\textit{cuoco} e \textit{turno} {e Se {l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $<$ \myuline{stimaTempo}}{]}
+			  	  {l'istanza }\textit{ct} ha \textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $-$ \myuline{stimaTempo} 
+			\item \myuline{assegnamento}{ è }\textbf{eseguito}{ da }\myuline{cuoco}
+		\end{itemize}
 	\end{itemize}
-	\item {{[}}\textbf{Se}{ }\myuline{dosi}{ è specificato{]} }\myuline{assegnamento.quantità}{ = }\myuline{dosi}
-	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato e }\textbf{se }
-		  \myuline{continuazione}{ $\neq$ }\myuline{assegnamento}{]} \myuline{assegnamento}{ è }\textbf{continuazione }{di }\myuline{continuazione}
-    \item {[}\textbf{Se esiste}{un }\myuline{cuoco}{ c che } \textbf{esegue }\myuline{assegnamento }{e }\textbf{Se }\myuline{assegnamento.tempoStimato}{ è definito}{]}
-    {l'istanza }\textit{ct}{ Cuoco in Turno che associa }\textit{c} e il turno \textit{t} dove viene \textbf{svolto} \myuline{assegnamento} ha \\\textit{ct.tempoDisponibile} $=$ \textit{ct.tempoDisponibile} $-$ \myuline{assegnamento.tempoStimato}	  
+	\item {{[}}\textbf{Se }\myuline{continuazione}{ è specificato{]}} \myuline{assegnamento}{ è }\textbf{continuazione}{ di }\myuline{continuazione}
+	\item {{[}}\textbf{Se }\myuline{dosi}{ è specificato{]}} \myuline{assegnamento.quantità} $=$ \myuline{dosi}
 \end{itemize}
 
+\clearpage
 \subsection[specificaAssegnamentoCompletato]{\texorpdfstring{specificaAssegnamentoCompletato(\myuline{assegnamento}: Assegnamento)}}\label{h.c49s37d45gzr}
 \textbf{Pre-condizioni: }
 \begin{itemize}[label=$-$, noitemsep]

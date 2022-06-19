@@ -131,7 +131,7 @@ CREATE TABLE `MenuItems` (
   `menu_id` int(11) NOT NULL,
   `section_id` int(11) DEFAULT NULL,
   `description` tinytext,
-  `recipe_id` int(11) NOT NULL,
+  `procedure_id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 121 DEFAULT CHARSET = utf8;
@@ -268,48 +268,49 @@ VALUES (80, 'Coffee break mattutino', 2, 1),
 ;
 UNLOCK TABLES;
 --
--- Table structure for table `Recipes`
+-- Table structure for table `Procedures`
 --
-DROP TABLE IF EXISTS `procedure`;
+DROP TABLE IF EXISTS `Procedures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */
 ;
 /*!40101 SET character_set_client = utf8 */
 ;
-CREATE TABLE `Recipes` (
+CREATE TABLE `Procedures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` tinytext,
+  `isRecipe` boolean NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 21 DEFAULT CHARSET = utf8;
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 --
--- Dumping data for table `Recipes`
+-- Dumping data for table `Procedures`
 --
-LOCK TABLES `procedure` WRITE;
-/*!40000 ALTER TABLE `procedure` DISABLE KEYS */
+LOCK TABLES `Procedures` WRITE;
+/*!40000 ALTER TABLE `Procedures` DISABLE KEYS */
 ;
-INSERT INTO `procedure`
-VALUES (1, 'Vitello tonnato'),
-  (2, 'Carpaccio di spada'),
-  (3, 'Alici marinate'),
-  (4, 'Insalata di riso'),
-  (5, 'Penne al sugo di baccalà'),
-  (6, 'Pappa al pomodoro'),
-  (7, 'Hamburger con bacon e cipolla caramellata'),
-  (8, 'Salmone al forno'),
-  (9, 'Croissant'),
-  (10, 'Pane al cioccolato'),
-  (11, 'Girelle all\'uvetta'),
-  (12, 'Panini al latte'),
-  (13, 'Biscotti di pasta frolla'),
-  (14, 'Lingue di gatto'),
-  (15, 'Bigné farciti'),
-  (16, 'Pizzette'),
-  (17, 'Tramezzini'),
-  (18, 'Sorbetto al limone'),
-  (19, 'Torta Saint Honoré'),
-  (20, 'Risotto alla zucca');
-/*!40000 ALTER TABLE `procedure` ENABLE KEYS */
+INSERT INTO `Procedures`
+VALUES (1, 'Vitello tonnato', true),
+  (2, 'Carpaccio di spada', true),
+  (3, 'Alici marinate', true),
+  (4, 'Insalata di riso', true),
+  (5, 'Penne al sugo di baccalà', true),
+  (6, 'Pappa al pomodoro', true),
+  (7, 'Hamburger con bacon e cipolla caramellata', true),
+  (8, 'Salmone al forno', true),
+  (9, 'Croissant', true),
+  (10, 'Pane al cioccolato', true),
+  (11, 'Girelle all\'uvetta', true),
+  (12, 'Panini al latte', true),
+  (13, 'Biscotti di pasta frolla', true),
+  (14, 'Lingue di gatto', true),
+  (15, 'Bigné farciti', true),
+  (16, 'Pizzette', true),
+  (17, 'Tramezzini', true),
+  (18, 'Sorbetto al limone', true),
+  (19, 'Torta Saint Honoré', true),
+  (20, 'Risotto alla zucca', true);
+/*!40000 ALTER TABLE `Procedures` ENABLE KEYS */
 ;
 UNLOCK TABLES;
 --
@@ -551,18 +552,30 @@ LOCK TABLES `Shifts` WRITE;
 /*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
 ;
 INSERT INTO `Shifts`
-VALUES ('2022-08-13', '20:00:00', '22:00:00', 1), -- Cena (Compleanno di Manuela)
-       ('2022-08-13', '22:00:00', '23:30:00', 2), -- Cena (Compleanno di Manuela)
-       ('2022-09-25', '10:30:00', '11:30:00', 3), -- Coffee break mattino (Convegno Agile Community) 
-       ('2022-09-25', '13:00:00', '14:00:00', 4), -- Colazione di Lavoro (Convegno Agile Community)
-       ('2022-09-25', '16:00:00', '16:30:00', 5), -- Coffee break pomeriggio (Convegno Agile Community)
-       ('2022-09-25', '20:00:00', '22:30:00', 6), -- Cena sociale (Convegno Agile Community) 
-       ('2022-10-02', '12:00:00', '13:00:00', 7), -- Pranzo giorno 1 (Fiera del Sedano Rapa)
-       ('2022-10-02', '13:00:00', '15:00:00', 8), -- Pranzo giorno 1 (Fiera del Sedano Rapa)
-       ('2022-10-03', '16:00:00', '18:00:00', 9), -- Pranzo giorno 2 (Fiera del Sedano Rapa)
-       ('2022-10-03', '17:00:00', '19:00:00', 10), -- Pranzo giorno 2 (Fiera del Sedano Rapa)
-       ('2022-10-04', '18:00:00', '20:00:00', 11), -- Pranzo giorno 3 (Fiera del Sedano Rapa)
-       ('2022-10-04', '18:00:00', '20:00:00', 12); -- Pranzo giorno 3 (Fiera del Sedano Rapa)
+VALUES ('2022-08-13', '20:00:00', '22:00:00', 1),
+  -- Cena (Compleanno di Manuela)
+  ('2022-08-13', '22:00:00', '23:30:00', 2),
+  -- Cena (Compleanno di Manuela)
+  ('2022-09-25', '10:30:00', '11:30:00', 3),
+  -- Coffee break mattino (Convegno Agile Community) 
+  ('2022-09-25', '13:00:00', '14:00:00', 4),
+  -- Colazione di Lavoro (Convegno Agile Community)
+  ('2022-09-25', '16:00:00', '16:30:00', 5),
+  -- Coffee break pomeriggio (Convegno Agile Community)
+  ('2022-09-25', '20:00:00', '22:30:00', 6),
+  -- Cena sociale (Convegno Agile Community) 
+  ('2022-10-02', '12:00:00', '13:00:00', 7),
+  -- Pranzo giorno 1 (Fiera del Sedano Rapa)
+  ('2022-10-02', '13:00:00', '15:00:00', 8),
+  -- Pranzo giorno 1 (Fiera del Sedano Rapa)
+  ('2022-10-03', '16:00:00', '18:00:00', 9),
+  -- Pranzo giorno 2 (Fiera del Sedano Rapa)
+  ('2022-10-03', '17:00:00', '19:00:00', 10),
+  -- Pranzo giorno 2 (Fiera del Sedano Rapa)
+  ('2022-10-04', '18:00:00', '20:00:00', 11),
+  -- Pranzo giorno 3 (Fiera del Sedano Rapa)
+  ('2022-10-04', '18:00:00', '20:00:00', 12);
+-- Pranzo giorno 3 (Fiera del Sedano Rapa)
 /*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
 ;
 UNLOCK TABLES;
@@ -582,12 +595,18 @@ LOCK TABLES `UserShifts` WRITE;
 /*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
 ;
 INSERT INTO `UserShifts`
-VALUES (1, 3, 4, 120), -- Marinella
-       (2, 1, 5, 120), -- Guido
-       (3, 4, 6, 120), -- Antonietta
-       (4, 5, 7, 120), -- Paola
-       (5, 9, 7, 120), -- Paola
-       (6, 10, 7, 120); -- Paola
+VALUES (3, 4, 120),
+  -- Marinella
+  (1, 5, 120),
+  -- Guido
+  (4, 6, 120),
+  -- Antonietta
+  (5, 7, 120),
+  -- Paola
+  (9, 7, 120),
+  -- Paola
+  (10, 7, 120);
+-- Paola
 /*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
 ;
 UNLOCK TABLES;

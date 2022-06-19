@@ -6,68 +6,41 @@ import main.persistence.PersistenceManager;
 
 
 public class Procedure {
-    private static final ObservableList<Procedure> all = FXCollections.observableArrayList();
     protected int id;
     protected String name;
-    protected boolean procedureType;   // TRUE = ricetta FALSE = preparazione
+    protected boolean isRecipe;   // TRUE = ricetta FALSE = preparazione
+
     public Procedure(String name) {
         this.name = name;
     }
 
-    public static ObservableList<Procedure> loadAllProcedure() {
-        String query = "SELECT * FROM Procedure;";
+    public static ObservableList<Procedure> loadAllProcedures() {
+        ObservableList<Procedure> res = FXCollections.observableArrayList();
+        String query = "SELECT * FROM Procedures;";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
                         int id = rs.getInt("id");
                         Procedure rec = new Procedure(rs.getString("name"));
                         rec.id = id;
-                        if(rs.getString("procedureType") == "ricetta") rec.procedureType=true;
-                        else rec.procedureType=false;
-                        all.add(rec);
+                        rec.isRecipe = rs.getBoolean("isRecipe");
+                        res.add(rec);
                 });
-        return all;
-    }
-
-    public static ObservableList<Procedure> getAllRecipes() {
-        ObservableList<Procedure> result = FXCollections.observableArrayList();
-        for (Procedure procedure : all) {
-            if (procedure.procedureType == true) result.add(procedure);
-        }
-        return result;
-    }
-
-    public static ObservableList<Procedure> getAllPreparation() {
-        ObservableList<Procedure> result = FXCollections.observableArrayList();
-        for (Procedure procedure : all) {
-            if (procedure.procedureType == false) result.add(procedure);
-        }
-        return result;
-    }
-
-    public static ObservableList<Procedure> getAllProcedure() {
-        ObservableList<Procedure> result = FXCollections.observableArrayList();
-        for (Procedure procedure : all) {
-             result.add(procedure);
-        }
-        return result;
+        return res;
     }
 
     public static Procedure loadProcedureById(int id) {
-        for (Procedure procedure : all) {
-            if (procedure.getId() == id) return procedure;
-        }
-        String query = "SELECT * FROM Procedure WHERE id = " + id + ";";
+        ObservableList<Procedure> res = FXCollections.observableArrayList();
+        String query = "SELECT * FROM Procedures WHERE id = " + id + ";";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
                     Procedure rec = new Procedure(rs.getString("name"));
                     rec.id = id;
-                    if(rs.getString("procedureType") == "ricetta") rec.procedureType=true;
-                    else rec.procedureType=false;
-                    all.add(rec);
+                    rec.isRecipe = rs.getBoolean("isRecipe");
+                    res.add(rec);
                 });
-       return all.get(all.size()-1);
+       return res.get(0); // FIXME this is a bit of an hack
     }
 
     public String getName() {
@@ -80,5 +53,13 @@ public class Procedure {
 
     public String toString() {
         return name;
+    }
+
+    public boolean isRecipe() {
+        return this.isRecipe;
+    }
+
+    public boolean isPreparation() {
+        return !this.isRecipe;
     }
 }
