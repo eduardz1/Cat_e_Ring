@@ -126,8 +126,16 @@ public class SummarySheetManager {
                         "defineAssignment: "
                                 + "shift ("
                                 + shiftDate
+                                + " "
+                                + startTime
+                                + "-"
+                                + endTime
                                 + ") date is incompatible with service date ("
                                 + localServiceDate
+                                + " "
+                                + serviceStartTime
+                                + "-"
+                                + serviceEndTime
                                 + ")");
             }
         }
