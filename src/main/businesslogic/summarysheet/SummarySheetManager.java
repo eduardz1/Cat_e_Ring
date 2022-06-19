@@ -9,9 +9,13 @@ import main.businesslogic.shift.Shift;
 import main.businesslogic.shift.ShiftBoard;
 import main.businesslogic.user.User;
 
+import java.sql.Time;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 /** SummarySheetManager */
@@ -97,8 +101,8 @@ public class SummarySheetManager {
         if (cook.isPresent() && !cook.get().isCook()) {
             throw new UseCaseLogicException("defineAssignment: " + "user is not a cook");
         }
-        if (shift.isPresent() && (shift.get().getDate().isBefore(LocalDate.now()))) {
-            throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+        if (shift.isPresent()) {
+            checkShiftValidity(shift.get());
         }
 
         Assignment as =
@@ -106,6 +110,45 @@ public class SummarySheetManager {
                         assignment, quantity, shift, cook, estimatedTime, continuation);
         notifyAssignmentDefined(as);
         return as;
+    }
+
+    private void checkShiftValidity(Shift shift) throws UseCaseLogicException {
+        LocalDate shiftDate = shift.getDate();
+        Time startTime = shift.getStartTime();
+        Time endTime = shift.getEndTime();
+
+        Date serviceDate = this.currentSheet.getService().getDate();
+        LocalDate localServiceDate =
+                Instant.ofEpochMilli(serviceDate.getTime())
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+        Time serviceStartTime = this.currentSheet.getService().getTimeStart();
+        Time serviceEndTime = this.currentSheet.getService().getTimeEnd();
+
+        if (shiftDate.isBefore(LocalDate.now())) {
+            throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+        }
+
+        if (shiftDate.isAfter(localServiceDate)
+                || shiftDate.isBefore(localServiceDate)
+                || startTime.after(serviceEndTime)
+                || endTime.before(serviceStartTime)) {
+            throw new UseCaseLogicException(
+                    "defineAssignment: "
+                            + "shift ("
+                            + shiftDate
+                            + " "
+                            + startTime
+                            + "-"
+                            + endTime
+                            + ") date is incompatible with service date ("
+                            + localServiceDate
+                            + " "
+                            + serviceStartTime
+                            + "-"
+                            + serviceEndTime
+                            + ")");
+        }
     }
 
     public void procedureReady(Assignment as) throws UseCaseLogicException, SummarySheetException {

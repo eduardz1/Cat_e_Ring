@@ -49,7 +49,7 @@ public class TestCatERing5a {
                             assignments.get(0),
                             Optional.of(3),
                             Optional.of(
-                                    CatERing.getInstance().getShiftManager().getShifts().get(0)),
+                                    CatERing.getInstance().getShiftManager().getShifts().get(2)),
                             Optional.empty(),
                             Optional.of(Duration.ofMinutes(30)),
                             Optional.of(assignments.get(1)));

@@ -30,6 +30,14 @@ public class Shift {
         this.myCooks = FXCollections.observableHashMap();
     }
 
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
     public static ObservableList<Shift> getAllShifts() {
         ObservableList<Shift> all = FXCollections.observableArrayList();
         String query = "SELECT * FROM Shifts WHERE true;";
