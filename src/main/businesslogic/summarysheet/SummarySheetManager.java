@@ -9,9 +9,13 @@ import main.businesslogic.shift.Shift;
 import main.businesslogic.shift.ShiftBoard;
 import main.businesslogic.user.User;
 
+import java.sql.Time;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 /** SummarySheetManager */
@@ -97,8 +101,35 @@ public class SummarySheetManager {
         if (cook.isPresent() && !cook.get().isCook()) {
             throw new UseCaseLogicException("defineAssignment: " + "user is not a cook");
         }
-        if (shift.isPresent() && (shift.get().getDate().isBefore(LocalDate.now()))) {
-            throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+        if (shift.isPresent()) {
+            LocalDate shiftDate = shift.get().getDate();
+            Time startTime = shift.get().getStartTime();
+            Time endTime = shift.get().getEndTime();
+
+            Date serviceDate = this.currentSheet.getService().getDate();
+            LocalDate localServiceDate =
+                    Instant.ofEpochMilli(serviceDate.getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDate();
+            Time serviceStartTime = this.currentSheet.getService().getTimeStart();
+            Time serviceEndTime = this.currentSheet.getService().getTimeEnd();
+
+            if (shiftDate.isBefore(LocalDate.now())) {
+                throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+            }
+
+            if (shiftDate.isAfter(localServiceDate)
+                    || shiftDate.isBefore(localServiceDate)
+                    || startTime.after(serviceEndTime)
+                    || endTime.before(serviceStartTime)) {
+                throw new UseCaseLogicException(
+                        "defineAssignment: "
+                                + "shift ("
+                                + shiftDate
+                                + ") date is incompatible with service date ("
+                                + localServiceDate
+                                + ")");
+            }
         }
 
         Assignment as =

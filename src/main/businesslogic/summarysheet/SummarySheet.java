@@ -144,18 +144,16 @@ public class SummarySheet {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("FOGLIO RIEPILOGATIVO (id=");
-        builder.append(this.id);
-        builder.append(")\n");
-        builder.append("\t--> riferito al SERVIZIO: ");
-        builder.append(this.service.getName());
-        builder.append("\n");
-        builder.append("\t--> contiene gli ASSEGNAMENTI:\n");
+        builder.append("FOGLIO RIEPILOGATIVO (id=")
+                .append(this.id)
+                .append(")\n")
+                .append("\t--> riferito al SERVIZIO: ")
+                .append(this.service.getName())
+                .append("\n")
+                .append("\t--> contiene gli ASSEGNAMENTI:\n");
         this.assignments.forEach(
                 assignment -> {
-                    builder.append("\t\t");
-                    builder.append(assignment.toString());
-                    builder.append("\n");
+                    builder.append("\t\t").append(assignment.toString()).append("\n");
                 });
         return builder.toString();
     }
@@ -181,5 +179,9 @@ public class SummarySheet {
         if (estimatedTime.isPresent()) assignment.setEstimatedTime(estimatedTime.get());
 
         return assignment;
+    }
+
+    public ServiceInfo getService() {
+        return service;
     }
 }
