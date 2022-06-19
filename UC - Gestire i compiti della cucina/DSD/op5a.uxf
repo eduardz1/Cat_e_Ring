@@ -1,13 +1,189 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>310</x><y>200</y><w>60</w><h>60</h></coordinates><panel_attributes>UI
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>380</x>
+      <y>180</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>UI
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>250</y><w>30</w><h>490</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;470;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>250</y><w>190</w><h>40</h></coordinates><panel_attributes>summSheet:
-SummarySheetManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>280</y><w>30</w><h>460</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;440;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>730</x><y>340</y><w>20</w><h>350</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>320</y><w>420</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-procedureReady(as: Assignment)</panel_attributes><additional_attributes>10;20;400;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>250</y><w>190</w><h>40</h></coordinates><panel_attributes>summSheet.CurrentSheet:
-SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>280</y><w>30</w><h>220</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1080</x><y>370</y><w>20</w><h>110</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>350</y><w>360</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-assignmentCompleted(as: Assignment)</panel_attributes><additional_attributes>10;20;340;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1210</x><y>250</y><w>110</w><h>50</h></coordinates><panel_attributes>assignment:
-Assignment</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1250</x><y>290</y><w>30</w><h>190</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1250</x><y>390</y><w>20</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>370</y><w>180</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setReady()</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>400</y><w>200</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.completed==true</panel_attributes><additional_attributes>10;10;70;10;70;40;10;40</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>310</y><w>1500</w><h>410</h></coordinates><panel_attributes>ALT [summSheet.currentSheet != null 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>230</y>
+      <w>30</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>730</x>
+      <y>230</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>summSheet:
+SummarySheetManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>260</y>
+      <w>30</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;440.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>800</x>
+      <y>320</y>
+      <w>20</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>300</y>
+      <w>420</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+procedureReady(as: Assignment)</panel_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1070</x>
+      <y>230</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>summSheet.CurrentSheet:
+SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1150</x>
+      <y>260</y>
+      <w>30</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1150</x>
+      <y>350</y>
+      <w>20</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>330</y>
+      <w>360</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+assignmentCompleted(as: Assignment)</panel_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>230</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>assignment:
+Assignment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>270</y>
+      <w>30</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1320</x>
+      <y>370</y>
+      <w>20</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>350</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setReady()</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1330</x>
+      <y>380</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.completed==true</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>70</x>
+      <y>290</y>
+      <w>1500</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>ALT [summSheet.currentSheet != null 
         &amp;&amp; summSheet.currentSheet.hasAssignement(as)]
 fg=#4CAF50
 lw=2
@@ -33,11 +209,113 @@ lw=2
 
 
 
--.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>460</y><w>360</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-as</panel_attributes><additional_attributes>10;20;340;20</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>510</y><w>260</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-notifyAssignmentCompleted(as)</panel_attributes><additional_attributes>10;10;70;10;70;40;20;40</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>740</x><y>550</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1370</x><y>250</y><w>180</w><h>40</h></coordinates><panel_attributes>er:
-SummarySheetEventReceiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1450</x><y>280</y><w>30</w><h>350</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;330</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1450</x><y>590</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>570</y><w>720</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-updateAssignmentCompeted(SummSheet.CurrentSheet, as)</panel_attributes><additional_attributes>10;20;700;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>500</x><y>560</y><w>980</w><h>80</h></coordinates><panel_attributes>LOOP [for all er in eventReceivers]
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>440</y>
+      <w>360</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+as</panel_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>490</y>
+      <w>290</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+notifyAssignmentCompleted(as)</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;40.0;20.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>810</x>
+      <y>530</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1440</x>
+      <y>230</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>er:
+SummarySheetEventReceiver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1520</x>
+      <y>260</y>
+      <w>30</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1520</x>
+      <y>570</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>550</y>
+      <w>720</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+updateAssignmentCompeted(SummSheet.CurrentSheet, as)</panel_attributes>
+    <additional_attributes>10.0;20.0;700.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>570</x>
+      <y>540</y>
+      <w>980</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>LOOP [for all er in eventReceivers]
 fg=#FCB900
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>670</y><w>420</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;400;20</additional_attributes></element></diagram>
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>650</y>
+      <w>420</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
+  </element>
+</diagram>

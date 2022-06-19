@@ -1,4 +1,6 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1960&lt;/x&gt;&lt;y&gt;1040&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;190&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1680&lt;/x&gt;&lt;y&gt;1020&lt;/y&gt;&lt;w&gt;300&lt;/w&gt;&lt;h&gt;40&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-&amp;gt;&amp;gt;&amp;gt;
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1960&lt;/x&gt;&lt;y&gt;1040&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;190&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1680&lt;/x&gt;&lt;y&gt;1020&lt;/y&gt;&lt;w&gt;300&lt;/w&gt;&lt;h&gt;40&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-&amp;gt;&amp;gt;&amp;gt;
 setCook(cook)&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;20;280;20&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLFrame&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1700&lt;/x&gt;&lt;y&gt;1050&lt;/y&gt;&lt;w&gt;1070&lt;/w&gt;&lt;h&gt;140&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;OPT  [this.selShift!=null &amp;amp;&amp;amp;
           this.estimatedTime !=null]
 fg=#0693E3
@@ -40,95 +42,806 @@ Ck&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;20;310;20&lt;/additio
 &amp;amp;&amp;amp; ShiftManager.isAvaiable(c, s)]
 fg=#128C86&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1660&lt;/x&gt;&lt;y&gt;150&lt;/y&gt;&lt;w&gt;210&lt;/w&gt;&lt;h&gt;30&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;assignment: Assignment&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLFrame&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1350&lt;/x&gt;&lt;y&gt;340&lt;/y&gt;&lt;w&gt;590&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;OPT 
 [q!=null]
-fg=#128C86&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>400</x><y>70</y><w>60</w><h>60</h></coordinates><panel_attributes>UI
+fg=#128C86&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text>
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>531</x>
+      <y>135</y>
+      <w>54</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>UI
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>120</y><w>30</w><h>1570</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1550;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>70</y><w>160</w><h>50</h></coordinates><panel_attributes>summSheet:
-SummarySheetManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>110</y><w>30</w><h>1580</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1560;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1140</x><y>170</y><w>20</w><h>1450</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>150</y><w>740</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-defineAssignment(assignment, cook?, quantity?, time?, shift?, continuation?)</panel_attributes><additional_attributes>10;20;720;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1590</x><y>70</y><w>190</w><h>50</h></coordinates><panel_attributes>summSheet.currentSheet:
-SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1670</x><y>110</y><w>30</w><h>1580</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1560;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1670</x><y>510</y><w>20</w><h>910</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>490</y><w>540</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-defineAssignment(assignment, cook?, quantity?, time?, shift?, continuation?)</panel_attributes><additional_attributes>10;20;520;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>1400</y><w>540</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-assignment</panel_attributes><additional_attributes>10;20;520;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1910</x><y>70</y><w>120</w><h>50</h></coordinates><panel_attributes>assignment:
-Assignment</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1960</x><y>540</y><w>20</w><h>190</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>690</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.selCook = cook</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>520</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setCook(cook)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>1550</y><w>740</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-assignment</panel_attributes><additional_attributes>10;20;720;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>1440</y><w>280</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-notifyAssignmentDefined(assignment)</panel_attributes><additional_attributes>10;10;60;10;60;30;10;30</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1150</x><y>1450</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>3200</x><y>80</y><w>220</w><h>50</h></coordinates><panel_attributes>er:
-SummarySheetEventReceiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>3290</x><y>120</y><w>40</w><h>1420</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>20;10;18;1400</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>1480</y><w>2160</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-updateAssignmentDefined(SummSheet.CurrentSheet, assignment)</panel_attributes><additional_attributes>10;20;2140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>240</y><w>750</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;730;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>900</x><y>1480</y><w>2430</w><h>60</h></coordinates><panel_attributes>LOOP for all er in eventReceivers
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>180</y>
+      <w>27</w>
+      <h>1224</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;1340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>144</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>summSheet:
+SummarySheetManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1197</x>
+      <y>180</y>
+      <w>27</w>
+      <h>1233</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;1350.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1197</x>
+      <y>216</y>
+      <w>18</w>
+      <h>1179</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>216</y>
+      <w>666</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+defineAssignment(assignment, cook?, quantity?, time?, shift?, continuation?)</panel_attributes>
+    <additional_attributes>10.0;20.0;720.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1602</x>
+      <y>162</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>summSheet.currentSheet:
+SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1674</x>
+      <y>198</y>
+      <w>27</w>
+      <h>1206</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;1320.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1674</x>
+      <y>396</y>
+      <w>18</w>
+      <h>819</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1206</x>
+      <y>378</y>
+      <w>486</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+defineAssignment(assignment, cook?, quantity?, time?, shift?, continuation?)</panel_attributes>
+    <additional_attributes>10.0;20.0;520.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1206</x>
+      <y>1197</y>
+      <w>486</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+assignment</panel_attributes>
+    <additional_attributes>10.0;20.0;520.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1890</x>
+      <y>144</y>
+      <w>108</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>assignment:
+Assignment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1935</x>
+      <y>423</y>
+      <w>18</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>558</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.selCook = cook</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1683</x>
+      <y>405</y>
+      <w>270</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setCook(cook)</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>1332</y>
+      <w>666</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+assignment</panel_attributes>
+    <additional_attributes>10.0;20.0;720.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1206</x>
+      <y>1233</y>
+      <w>288</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+notifyAssignmentDefined(assignment)</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1206</x>
+      <y>1242</y>
+      <w>18</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3051</x>
+      <y>9</y>
+      <w>198</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>er:
+SummarySheetEventReceiver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3132</x>
+      <y>45</y>
+      <w>36</w>
+      <h>1278</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>20.0;10.0;18.0;1400.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1206</x>
+      <y>1269</y>
+      <w>1953</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+updateAssignmentDefined(SummSheet.CurrentSheet, assignment)</panel_attributes>
+    <additional_attributes>10.0;20.0;2150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>288</y>
+      <w>675</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;730.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>981</x>
+      <y>1269</y>
+      <w>2187</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>LOOP for all er in eventReceivers
 fg=#FCB900
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>3300</x><y>1500</y><w>20</w><h>30</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>520</y><w>1320</w><h>220</h></coordinates><panel_attributes>OPT [cook != null]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3141</x>
+      <y>1287</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1539</x>
+      <y>405</y>
+      <w>1188</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>OPT [cook != null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2340</x><y>70</y><w>130</w><h>50</h></coordinates><panel_attributes>assignment.selShift:
-Shift</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>1210</y><w>680</w><h>90</h></coordinates><panel_attributes>OPT [continuation!=null]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2277</x>
+      <y>162</y>
+      <w>117</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>assignment.selShift:
+Shift</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1539</x>
+      <y>1026</y>
+      <w>612</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>OPT [continuation!=null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>1210</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setContinuation(s)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>1230</y><w>230</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.continuation=continuation</panel_attributes><additional_attributes>10;10;50;10;50;40;10;40</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1960</x><y>1230</y><w>20</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1700</x><y>550</y><w>1130</w><h>140</h></coordinates><panel_attributes>OPT  [this.selShift!=null &amp;&amp;
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1683</x>
+      <y>1026</y>
+      <w>270</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setContinuation(s)</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>1044</y>
+      <w>225</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.continuation=continuation</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1935</x>
+      <y>1044</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1701</x>
+      <y>432</y>
+      <w>1017</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>OPT  [this.selShift!=null &amp;&amp;
           this.estimatedTime !=null]
 fg=#0693E3
 lw=2
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2390</x><y>570</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>550</y><w>440</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-decreseAvaiableTime(cook, this.estimatedTime)</panel_attributes><additional_attributes>10;20;420;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1960</x><y>110</y><w>30</w><h>1300</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1280</additional_attributes></element><element><id>Relation</id><coordinates><x>2390</x><y>110</y><w>30</w><h>810</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;790</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>220</y><w>3340</w><h>1450</h></coordinates><panel_attributes>ALT [summSheet.currentSheet == null 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2322</x>
+      <y>450</y>
+      <w>18</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>432</y>
+      <w>396</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+decreseAvaiableTime(cook, this.estimatedTime)</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1935</x>
+      <y>180</y>
+      <w>27</w>
+      <h>1026</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2322</x>
+      <y>198</y>
+      <w>27</w>
+      <h>567</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>153</x>
+      <y>261</y>
+      <w>3024</w>
+      <h>1125</h>
+    </coordinates>
+    <panel_attributes>ALT [summSheet.currentSheet == null 
         || continuation == assignment
         || !currentSheet.hasAssignment(as)
         || !currentSheet.hasAssignment(continuation) {if present}
-        || !cook.isCook()]
+        || !cook.isCook()
+        || shift.getDate().isBefore(LocalDate.now()
+        || shift.getDate().isAfter(this.currentSheet.getService(),getDate()]
 fg=#4CAF50
 lw=2
 --
 
--.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>980</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setShift(shift)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>1310</y><w>680</w><h>90</h></coordinates><panel_attributes>OPT [quantity!=null]
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1683</x>
+      <y>819</y>
+      <w>270</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setShift(shift)</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1539</x>
+      <y>1116</y>
+      <w>612</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>OPT [quantity!=null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>1310</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setQuantity(s)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>1340</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.Quantity=quantity</panel_attributes><additional_attributes>10;10;50;10;50;40;10;40</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1960</x><y>1330</y><w>20</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>2150</x><y>590</y><w>670</w><h>90</h></coordinates><panel_attributes>ALT [!isAvailable(cook, estimatedTime)]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1683</x>
+      <y>1116</y>
+      <w>270</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setQuantity(s)</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>1143</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.Quantity=quantity</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1935</x>
+      <y>1134</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2106</x>
+      <y>468</y>
+      <w>603</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>ALT [!isAvailable(cook, estimatedTime)]
 fg=#4CAF50
 lw=2
 --
 
 -.
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>600</y><w>1990</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;1970;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2400</x><y>630</y><w>430</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.myCooks.put(cook, myCooks.get(cook).minus(estimatedTime))</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1960</x><y>1000</y><w>20</w><h>190</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>980</y><w>1770</w><h>220</h></coordinates><panel_attributes>OPT [shift != null]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>477</y>
+      <w>1791</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;1970.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2331</x>
+      <y>504</y>
+      <w>441</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.myCooks.put(cook, myCooks.get(cook).minus(estimatedTime))</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1935</x>
+      <y>837</y>
+      <w>18</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1539</x>
+      <y>819</y>
+      <w>1593</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>OPT [shift != null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1700</x><y>1010</y><w>1580</w><h>140</h></coordinates><panel_attributes>OPT  [this.selCook!=null &amp;&amp;
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1701</x>
+      <y>846</y>
+      <w>1422</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>OPT  [this.selCook!=null &amp;&amp;
           this.estimatedTime !=null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>1010</y><w>890</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-decreseAvaiableTime(cook, this.estimatedTime)</panel_attributes><additional_attributes>10;20;870;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>2600</x><y>1050</y><w>670</w><h>90</h></coordinates><panel_attributes>ALT [!isAvailable(cook, estimatedTime)]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>846</y>
+      <w>801</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+decreseAvaiableTime(cook, this.estimatedTime)</panel_attributes>
+    <additional_attributes>10.0;20.0;870.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2511</x>
+      <y>882</y>
+      <w>603</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>ALT [!isAvailable(cook, estimatedTime)]
 fg=#4CAF50
 lw=2
 --
 
 -.
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>1060</y><w>2440</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;2420;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2840</x><y>1030</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2850</x><y>1090</y><w>370</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.myCooks.put(cook, myCooks.get(cook).minus(time))</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>1150</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.selShift=shift</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1960</x><y>772</y><w>20</w><h>190</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>752</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-setEstimatedTime(time)</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1700</x><y>782</y><w>1130</w><h>140</h></coordinates><panel_attributes>OPT  [this.selShift!=null &amp;&amp;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>891</y>
+      <w>2196</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;2420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2727</x>
+      <y>864</y>
+      <w>18</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2736</x>
+      <y>918</y>
+      <w>378</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.myCooks.put(cook, myCooks.get(cook).minus(time))</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>972</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.selShift=shift</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1935</x>
+      <y>630</y>
+      <w>18</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1683</x>
+      <y>612</y>
+      <w>270</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+setEstimatedTime(time)</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1701</x>
+      <y>639</y>
+      <w>1017</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>OPT  [this.selShift!=null &amp;&amp;
           this.selCook !=null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1520</x><y>752</y><w>1320</w><h>220</h></coordinates><panel_attributes>OPT [cook != null]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1539</x>
+      <y>612</y>
+      <w>1188</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>OPT [cook != null]
 fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>782</y><w>440</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-decreseAvaiableTime(this.selCook, time)</panel_attributes><additional_attributes>10;20;420;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1970</x><y>922</y><w>210</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.estimatedTime = time</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>2150</x><y>822</y><w>670</w><h>90</h></coordinates><panel_attributes>ALT [!isAvailable(selCook, time)]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>639</y>
+      <w>396</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+decreseAvaiableTime(this.selCook, time)</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1944</x>
+      <y>765</y>
+      <w>207</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.estimatedTime = time</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2106</x>
+      <y>675</y>
+      <w>603</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>ALT [!isAvailable(selCook, time)]
 fg=#4CAF50
 lw=2
 --
 
 -.
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2390</x><y>802</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2400</x><y>862</y><w>390</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-this.myCooks.put(selCook, myCooks.get(cook).minus(time))</panel_attributes><additional_attributes>10;10;50;10;50;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>832</y><w>1990</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;1970;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2810</x><y>70</y><w>80</w><h>50</h></coordinates><panel_attributes>shift:
-Shift</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2840</x><y>110</y><w>30</w><h>1060</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1040</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>330</y><w>260</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-checkShiftValidity(shift)</panel_attributes><additional_attributes>10;10;120;10;120;40;20;40</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>660</x><y>380</y><w>610</w><h>100</h></coordinates><panel_attributes>OPT [shift.getDate().isBefore(LocalDate.now() ||
-         shift.getDate().isAfter(this.currentSheet.getService(),getDate() ||
-         shift.getDate().isBefore(this.currentSheet.getService().getDate() ||
-         shift.getStartTime().isAfter(this.currentSheet.getService().getEndTime() ||
-         shift.getEndTime().isBefore(this.currentSheet.getService().getStartTime()]
-fg=#0693E3
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1151</x><y>370</y><w>20</w><h>120</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>450</y><w>750</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;730;20</additional_attributes></element></diagram>
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2322</x>
+      <y>657</y>
+      <w>18</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2331</x>
+      <y>711</y>
+      <w>396</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+this.myCooks.put(selCook, myCooks.get(cook).minus(time))</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>684</y>
+      <w>1791</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;1970.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2700</x>
+      <y>171</y>
+      <w>72</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>shift:
+Shift</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2727</x>
+      <y>207</y>
+      <w>27</w>
+      <h>783</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;850.0</additional_attributes>
+  </element>
+</diagram>

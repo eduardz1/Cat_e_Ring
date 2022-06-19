@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.persistence.PersistenceManager;
 
-
 public class Procedure {
     protected int id;
     protected String name;
