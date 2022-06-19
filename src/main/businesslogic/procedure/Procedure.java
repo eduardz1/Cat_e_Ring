@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.persistence.PersistenceManager;
 
+import java.util.Objects;
+
 
 public class Procedure {
     private static final ObservableList<Procedure> all = FXCollections.observableArrayList();
@@ -14,8 +16,21 @@ public class Procedure {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Procedure procedure = (Procedure) o;
+        return id == procedure.id && procedureType == procedure.procedureType && name.equals(procedure.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, procedureType);
+    }
+
     public static ObservableList<Procedure> loadAllProcedure() {
-        String query = "SELECT * FROM Procedure;";
+        String query = "SELECT * FROM procedure WHERE 1;";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
@@ -24,7 +39,7 @@ public class Procedure {
                         rec.id = id;
                         if(rs.getString("procedureType") == "ricetta") rec.procedureType=true;
                         else rec.procedureType=false;
-                        all.add(rec);
+                       if(!all.contains(rec)) all.add(rec);
                 });
         return all;
     }
@@ -57,7 +72,7 @@ public class Procedure {
         for (Procedure procedure : all) {
             if (procedure.getId() == id) return procedure;
         }
-        String query = "SELECT * FROM Procedure WHERE id = " + id + ";";
+        String query = "SELECT * FROM procedure WHERE id = " + id + ";";
         PersistenceManager.executeQuery(
                 query,
                 rs -> {

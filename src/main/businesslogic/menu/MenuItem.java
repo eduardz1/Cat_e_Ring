@@ -97,7 +97,7 @@ public class MenuItem {
                     mi.description = rs.getString("description");
                     mi.id = rs.getInt("id");
                     result.add(mi);
-                    recids.add(rs.getInt("Procedure_id"));
+                    recids.add(rs.getInt("recipe_id"));
                 });
 
         // carico qui le ricette perché non posso innestare due connessioni al DB

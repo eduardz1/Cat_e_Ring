@@ -1,4 +1,6 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;620&lt;/x&gt;&lt;y&gt;640&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1050&lt;/x&gt;&lt;y&gt;220&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;490&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=.&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;470;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLFrame&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;490&lt;/x&gt;&lt;y&gt;740&lt;/y&gt;&lt;w&gt;990&lt;/w&gt;&lt;h&gt;60&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;for each
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;620&lt;/x&gt;&lt;y&gt;640&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1050&lt;/x&gt;&lt;y&gt;220&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;490&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=.&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;470;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLFrame&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;490&lt;/x&gt;&lt;y&gt;740&lt;/y&gt;&lt;w&gt;990&lt;/w&gt;&lt;h&gt;60&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;for each
 er in receivers
 fg=#FCB900
 lw=2&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1050&lt;/x&gt;&lt;y&gt;220&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;490&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=.&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;470;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1000&lt;/x&gt;&lt;y&gt;510&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;210&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;650&lt;/x&gt;&lt;y&gt;830&lt;/y&gt;&lt;w&gt;660&lt;/w&gt;&lt;h&gt;50&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;&amp;lt;-
@@ -24,13 +26,133 @@ HashMap&amp;lt;Cook, LocalTime&amp;gt;&lt;/panel_attributes&gt;&lt;additional_at
 getCurrentUser( )&lt;/panel_attributes&gt;&lt;additional_attributes&gt;280;20;10;20&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;810&lt;/x&gt;&lt;y&gt;89&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;120&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=.&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;100&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;810&lt;/x&gt;&lt;y&gt;169&lt;/y&gt;&lt;w&gt;20&lt;/w&gt;&lt;h&gt;20&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;530&lt;/x&gt;&lt;y&gt;169&lt;/y&gt;&lt;w&gt;300&lt;/w&gt;&lt;h&gt;40&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;.
 user&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;20;280;20&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLGeneric&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;760&lt;/x&gt;&lt;y&gt;49&lt;/y&gt;&lt;w&gt;120&lt;/w&gt;&lt;h&gt;50&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;userMgr:
 UserManager
-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLPackage</id><coordinates><x>290</x><y>130</y><w>60</w><h>60</h></coordinates><panel_attributes>UI
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>410</x>
+      <y>80</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>UI
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>180</y><w>30</w><h>780</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;760;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>140</y><w>170</w><h>50</h></coordinates><panel_attributes>SummSheet:
-SummarySheetManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>180</y><w>30</w><h>780</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;760;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>630</x><y>230</y><w>20</w><h>640</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>210</y><w>340</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-removeProcedure(procedure)</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>140</y><w>180</w><h>50</h></coordinates><panel_attributes>SummSheet.currentSheet:
-SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>180</y><w>30</w><h>530</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;510;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1070</x><y>480</y><w>20</w><h>210</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>460</y><w>450</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-removeProcedure(procedure)</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>300</y><w>1510</w><h>640</h></coordinates><panel_attributes>ALT [summSheet.currentSheet == null]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>130</y>
+      <w>30</w>
+      <h>780</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;760.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>90</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>SummSheet:
+SummarySheetManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>130</y>
+      <w>30</w>
+      <h>780</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;760.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>180</y>
+      <w>20</w>
+      <h>640</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>160</y>
+      <w>340</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+removeProcedure(procedure)</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>90</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>SummSheet.currentSheet:
+SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1190</x>
+      <y>130</y>
+      <w>30</w>
+      <h>530</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;510.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1190</x>
+      <y>430</y>
+      <w>20</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>410</y>
+      <w>450</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+removeProcedure(procedure)</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>120</x>
+      <y>250</y>
+      <w>1510</w>
+      <h>640</h>
+    </coordinates>
+    <panel_attributes>ALT [summSheet.currentSheet == null]
 fg=#4CAF50
 lw=2
 --
@@ -44,26 +166,216 @@ lw=2
 
 -.
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>700</y><w>280</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-notifyProcedureRemoved(procedure)</panel_attributes><additional_attributes>10;10;60;10;60;40;20;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1370</x><y>140</y><w>200</w><h>50</h></coordinates><panel_attributes>er:
-SummarySheetEventReceiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1460</x><y>180</y><w>40</w><h>650</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;13;630</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>440</x><y>760</y><w>1060</w><h>60</h></coordinates><panel_attributes>LOOP [for each er in receivers]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>650</y>
+      <w>310</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+notifyProcedureRemoved(procedure)</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;40.0;20.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1490</x>
+      <y>90</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>er:
+SummarySheetEventReceiver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1580</x>
+      <y>130</y>
+      <w>40</w>
+      <h>650</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;13.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>560</x>
+      <y>710</y>
+      <w>1060</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>LOOP [for each er in receivers]
 fg=#FCB900
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>330</y><w>340</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw UseCaseLogicException</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>Text</id><coordinates><x>10</x><y>400</y><w>210</w><h>30</h></coordinates><panel_attributes>[!summarySheet.isAssigned(procedure)]
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>280</y>
+      <w>340</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw UseCaseLogicException</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>130</x>
+      <y>350</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>[!summarySheet.isAssigned(procedure)]
 fontsize=11
-fg=#4CAF50</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>400</y><w>340</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-throw SummarySheetException</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>713</x><y>550</y><w>610</w><h>90</h></coordinates><panel_attributes>ALT [assignment.getProcedure() == procedure]
+fg=#4CAF50</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>350</y>
+      <w>340</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+throw SummarySheetException</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>830</x>
+      <y>500</y>
+      <w>610</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ALT [assignment.getProcedure() == procedure]
 fg=#4CAF50
 lw=2
 --
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>570</y><w>210</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-remove(assignment)</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>670</y><w>450</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-procedure</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>646</x><y>770</y><w>840</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>520</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+remove(assignment)</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>620</y>
+      <w>450</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+procedure</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>720</y>
+      <w>840</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
 updateProcedureRemoved(currentSheet, procedure)
-</panel_attributes><additional_attributes>820;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1461</x><y>790</y><w>20</w><h>20</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>640</x><y>740</y><w>20</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>669</x><y>500</y><w>670</w><h>160</h></coordinates><panel_attributes>LOOP [for each assignment in currentSheet.assignments]
+</panel_attributes>
+    <additional_attributes>820.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1580</x>
+      <y>740</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>760</x>
+      <y>690</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>780</x>
+      <y>450</y>
+      <w>670</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>LOOP [for each assignment in currentSheet.assignments]
 fg=#FCB900
-lw=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1184</x><y>140</y><w>180</w><h>50</h></coordinates><panel_attributes>currentSheet.assignments:
-ArrayList&lt;assignment&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1268</x><y>180</y><w>30</w><h>470</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;450;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1268</x><y>590</y><w>20</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1300</x>
+      <y>90</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>currentSheet.assignments:
+ArrayList&lt;assignment&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1380</x>
+      <y>130</y>
+      <w>30</w>
+      <h>470</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;450.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1380</x>
+      <y>540</y>
+      <w>20</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+</diagram>
