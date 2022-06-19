@@ -58,12 +58,8 @@ public class TestCatERing5a {
                     "\nTEST PROCEDURE COMPLETED FOR ASSIGNMENT " + assignments.get(0).getId());
             CatERing.getInstance().getSummarySheetManager().procedureReady(assignments.get(0));
 
-            System.out.println("\nNEW ASSIGNMENT LIST:\n");
-            System.out.println(
-                    CatERing.getInstance()
-                            .getSummarySheetManager()
-                            .getCurrentSheet()
-                            .getAssignments());
+            System.out.println("\nUPDATED SUMMARY SHEET:\n");
+            System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
 
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());

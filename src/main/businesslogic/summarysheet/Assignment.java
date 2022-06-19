@@ -181,24 +181,31 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return "Assignment{"
-                + "completed="
-                + completed
-                + ", quantity="
-                + quantity
-                + ", estimatedTime="
-                + estimatedTime
-                + ", continuation="
-                + continuation
-                + ", selShift="
-                + selShift
-                + ", selCook="
-                + selCook
-                + ", itemProcedure="
-                + itemProcedure
-                + ", id="
-                + id
-                + '}';
+        StringBuilder builder = new StringBuilder();
+        builder.append("Assignment(id=").append(this.id).append(")[completed=").append(completed);
+        if (itemProcedure != null) {
+            builder.append(", itemProcedure=").append(itemProcedure);
+        }
+        if (selCook != null) {
+            builder.append(", selCook=").append(selCook.getUserName());
+        }
+        if (selShift != null) {
+            builder.append(", selShift=").append(selShift);
+        }
+        if (estimatedTime != Duration.ofSeconds(0)) {
+            builder.append(", estimatedTime=").append(estimatedTime);
+        }
+        if (quantity != 0) {
+            builder.append(", quantity=").append(quantity);
+        }
+        if (continuation != null) {
+            builder.append(", continuation=Assignment(id=")
+                    .append(continuation.getId())
+                    .append(")");
+        }
+        builder.append("]");
+
+        return builder.toString();
     }
 
     @Override

@@ -126,7 +126,7 @@ essere associato a un Cuoco c e a un Turno t
 Il tempo stimato per generare un assegnamento C deve essere
 sempre &lt;= al tesmpo disponibile del cuoco che esegue C 
 nel turno dove viene svolto C
-fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>920</y><w>140</w><h>40</h></coordinates><panel_attributes>Tabellone dei turni
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>920</y><w>140</w><h>40</h></coordinates><panel_attributes>Tabellone dei turni (1)
 --
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>830</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=-
 m1=0..n

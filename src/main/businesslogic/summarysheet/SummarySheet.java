@@ -143,12 +143,21 @@ public class SummarySheet {
 
     @Override
     public String toString() {
-        return "SummarySheet di ID: "
-                + id
-                + ",\n\t si riferisce al servizio:\n\t\t"
-                + service
-                + ",\n\t ed ha i seguenti assegnamenti:\n\t\t"
-                + assignments;
+        StringBuilder builder = new StringBuilder();
+        builder.append("FOGLIO RIEPILOGATIVO (id=");
+        builder.append(this.id);
+        builder.append(")\n");
+        builder.append("\t--> riferito al SERVIZIO: ");
+        builder.append(this.service.getName());
+        builder.append("\n");
+        builder.append("\t--> contiene gli ASSEGNAMENTI:\n");
+        this.assignments.forEach(
+                assignment -> {
+                    builder.append("\t\t");
+                    builder.append(assignment.toString());
+                    builder.append("\n");
+                });
+        return builder.toString();
     }
 
     private void updateAssignments(ObservableList<Assignment> newAssignments) {

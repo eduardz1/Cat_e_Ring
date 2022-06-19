@@ -75,18 +75,29 @@ public class Shift {
 
     @Override
     public String toString() {
-        return "Shift{"
-                + "myCooks="
-                + myCooks
-                + ", date="
-                + date
-                + ", startTime="
-                + startTime
-                + ", endTime="
-                + endTime
-                + ", id="
-                + id
-                + '}';
+        StringBuilder builder = new StringBuilder();
+        builder.append("Shift(id=")
+                .append(this.id)
+                .append(")[date=")
+                .append(date)
+                .append(", endTime=")
+                .append(endTime)
+                .append(", startTime=")
+                .append(startTime);
+        if (myCooks.isEmpty()) {
+            builder.append(", no cooks assigned");
+        } else {
+            builder.append(", myCooks=[");
+            this.myCooks.forEach(
+                    (k, v) -> {
+                        builder.append(k.getUserName());
+                        builder.append("=");
+                        builder.append(v);
+                        builder.append(" ");
+                    });
+        }
+        builder.append("]");
+        return builder.toString();
     }
 
     public void setStartTime(Time startTime) {
@@ -162,8 +173,13 @@ public class Shift {
         }
         if (!isAssigned(cook)) {
             throw new UseCaseLogicException(
-                    "increaseAvailableTime: " + "cook specified is not assigned to this Shift");
+                    "isAvailable: "
+                            + "cook specified (id="
+                            + cook.getId()
+                            + ") is not assigned to this Shift (id="
+                            + id
+                            + ")");
         }
-        return !myCooks.get(cook).minus(time).isZero();
+        return !myCooks.get(cook).minus(time).isNegative();
     }
 }

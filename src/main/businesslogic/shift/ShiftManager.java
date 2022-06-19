@@ -15,6 +15,7 @@ public class ShiftManager {
     private ShiftBoard shiftBoard;
 
     public ShiftManager() {
+        this.shiftBoard = ShiftBoard.getShiftBoard();
         this.eventReceivers = new ArrayList<>();
     }
 
@@ -31,14 +32,6 @@ public class ShiftManager {
 
     public ObservableList<Shift> getShifts() {
         return ShiftBoard.getAllShifts();
-    }
-
-    public void setShiftBoard(ShiftBoard shiftBoard) {
-        if (shiftBoard == null) {
-            throw new IllegalArgumentException("setShiftBoard: " + "shiftBoard can't be null");
-        }
-
-        this.shiftBoard = shiftBoard;
     }
 
     public boolean isAssigned(User cook, Shift shift) throws UseCaseLogicException {
@@ -74,6 +67,7 @@ public class ShiftManager {
             eventReceiver.updateIncreasedTime(cook, shift, time);
         }
     }
+
     // FIXME
     private void notifyDecreasedTime(Shift shift, User cook, Duration time) {
         for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
@@ -87,5 +81,17 @@ public class ShiftManager {
 
     public void removeEventReceiver(MenuEventReceiver rec) {
         this.eventReceivers.remove(rec);
+    }
+
+    public ShiftBoard getShiftBoard() {
+        return this.shiftBoard;
+    }
+
+    public void setShiftBoard(ShiftBoard shiftBoard) {
+        if (shiftBoard == null) {
+            throw new IllegalArgumentException("setShiftBoard: " + "shiftBoard can't be null");
+        }
+
+        this.shiftBoard = shiftBoard;
     }
 }

@@ -57,12 +57,8 @@ public class TestCatERing5b {
             System.out.println("\nTEST DELETE ASSIGNMENT " + assignments.get(0).getId());
             CatERing.getInstance().getSummarySheetManager().deleteAssignment(assignments.get(0));
 
-            System.out.println("\nNEW ASSIGNMENT LIST:\n");
-            System.out.println(
-                    CatERing.getInstance()
-                            .getSummarySheetManager()
-                            .getCurrentSheet()
-                            .getAssignments());
+            System.out.println("\nUPDATED SUMMARY SHEET:\n");
+            System.out.println(CatERing.getInstance().getSummarySheetManager().getCurrentSheet());
 
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());

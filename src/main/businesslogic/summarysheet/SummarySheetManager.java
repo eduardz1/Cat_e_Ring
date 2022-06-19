@@ -1,12 +1,12 @@
 package main.businesslogic.summarysheet;
 
-import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
 import main.businesslogic.procedure.Procedure;
 import main.businesslogic.shift.Shift;
+import main.businesslogic.shift.ShiftBoard;
 import main.businesslogic.user.User;
 
 import java.time.Duration;
@@ -122,8 +122,11 @@ public class SummarySheetManager {
     public SummarySheet createSummarySheet(ServiceInfo service, EventInfo event)
             throws UseCaseLogicException, SummarySheetException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
-        if (!user.isChef()) throw new UseCaseLogicException();
-        if (event.getOrganizer() != user) throw new SummarySheetException();
+        if (!user.isChef())
+            throw new UseCaseLogicException(
+                    "createSummarySheet: " + "only chefs can create sheets");
+        if (event.getOrganizer() != user)
+            throw new SummarySheetException("createSummarySheet: " + "user is not the organizer");
 
         SummarySheet sheet = new SummarySheet(service);
         this.setCurrentSummarySheet(sheet);
@@ -153,15 +156,15 @@ public class SummarySheetManager {
         this.notifyAssignmentRearranged();
     }
 
-    public ObservableList<Shift> getShiftBoard() throws UseCaseLogicException {
+    public ShiftBoard getShiftBoard() throws UseCaseLogicException {
         if (this.currentSheet == null) {
             throw new UseCaseLogicException("changeAssignmentOrder: " + "No current sheet");
         }
         if (!CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
-            throw new UseCaseLogicException("getShiftBoard: " + "Only chefs can get shift board");
+            throw new UseCaseLogicException("getShiftBoard: " + "only chefs can get shift board");
         }
 
-        return CatERing.getInstance().getShiftManager().getShifts();
+        return CatERing.getInstance().getShiftManager().getShiftBoard();
     }
 
     public void chooseSummarySheet(SummarySheet ss)

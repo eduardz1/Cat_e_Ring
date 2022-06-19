@@ -5,7 +5,6 @@ import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
 import main.businesslogic.event.ServiceInfo;
-import main.businesslogic.menu.Menu;
 import main.businesslogic.summarysheet.SummarySheet;
 import main.businesslogic.summarysheet.SummarySheetException;
 
@@ -17,13 +16,7 @@ public class TestCatERing1 {
              * PersistenceManager.testSQLConnection();
              */
             CatERing.getInstance().getUserManager().fakeLogin("Lidia");
-            System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
-            ObservableList<Menu> boh = CatERing.getInstance().getMenuManager().getAllMenus();
-
-            System.out.println(boh.get(0).getId());
-            System.out.println(boh.get(0).getFreeItems());
-            System.out.println(boh.get(0).getAllItems());
-
+            System.out.println("\n" + CatERing.getInstance().getUserManager().getCurrentUser());
             ObservableList<EventInfo> Events =
                     CatERing.getInstance().getEventManager().getEventInfo();
 
@@ -42,6 +35,48 @@ public class TestCatERing1 {
                             .createSummarySheet(service, event);
 
             System.out.println(ss);
+
+            CatERing.getInstance().getUserManager().fakeLogin("Piergiorgio");
+            System.out.println("\n" + CatERing.getInstance().getUserManager().getCurrentUser());
+
+            event = Events.get(2);
+            service = event.getServices().get(0);
+
+            System.out.println(
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                            + event.getName()
+                            + " AND SERVICE "
+                            + service.getName());
+            System.out.println("\tEXPECTED RESULT: exception thrown, Piergiorgio is not a chef");
+
+            try {
+                ss =
+                        CatERing.getInstance()
+                                .getSummarySheetManager()
+                                .createSummarySheet(service, event);
+            } catch (UseCaseLogicException e) {
+                System.out.println(">>> UseCaseLogicException::" + e.getMessage());
+            }
+
+            CatERing.getInstance().getUserManager().fakeLogin("Marinella");
+            System.out.println("\n" + CatERing.getInstance().getUserManager().getCurrentUser());
+
+            System.out.println(
+                    "\nTEST CREATION OF NEW SUMMARY SHEET FOR EVENT "
+                            + event.getName()
+                            + " AND SERVICE "
+                            + service.getName());
+            System.out.println(
+                    "\tEXPECTED RESULT: exception thrown, Marinella is not the organizer");
+
+            try {
+                ss =
+                        CatERing.getInstance()
+                                .getSummarySheetManager()
+                                .createSummarySheet(service, event);
+            } catch (SummarySheetException e) {
+                System.out.println(">>> SummarySheetException::" + e.getMessage());
+            }
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

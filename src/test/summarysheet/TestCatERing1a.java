@@ -54,7 +54,8 @@ public class TestCatERing1a {
             SummarySheet expected1 =
                     CatERing.getInstance().getSummarySheetManager().getCurrentSheet();
 
-            System.out.println("Expected summary sheet for first event:\n" + expected1);
+            System.out.println(
+                    "\tEXPECTED RESULT: currentSheet updated to the first one\n\n" + expected1);
 
             System.out.println(
                     "\nTEST GETTING SUMMARY SHEET FOR EVENT "
@@ -65,7 +66,8 @@ public class TestCatERing1a {
             SummarySheet expected2 =
                     CatERing.getInstance().getSummarySheetManager().getCurrentSheet();
 
-            System.out.println("Expected summary sheet for second event:\n" + expected2);
+            System.out.println(
+                    "\tEXPECTED RESULT: currentSheet updated to the second one\n\n" + expected2);
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

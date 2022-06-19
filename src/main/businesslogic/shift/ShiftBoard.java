@@ -1,23 +1,35 @@
 package main.businesslogic.shift;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.user.User;
 
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Set;
 
 /** ShiftBoard */
 public class ShiftBoard {
-    private final Set<Shift> shiftList; // FIXME need to pass a key
+    private static volatile ShiftBoard instance;
+    private final ObservableSet<Shift> shiftList = FXCollections.observableSet();
 
-    public ShiftBoard() {
-        this.shiftList = new HashSet<>();
+    private ShiftBoard() {
+        shiftList.addAll(Shift.getAllShifts());
     }
 
     public static ObservableList<Shift> getAllShifts() {
         return Shift.getAllShifts();
+    }
+
+    public static ShiftBoard getShiftBoard() {
+        if (instance == null) {
+            synchronized (ShiftBoard.class) {
+                if (instance == null) {
+                    instance = new ShiftBoard();
+                }
+            }
+        }
+        return instance;
     }
 
     public void removeShift(User cook, Shift shift) {}
@@ -42,6 +54,14 @@ public class ShiftBoard {
 
     @Override
     public String toString() {
-        return "ShiftBoard{" + "shiftList=" + shiftList + '}';
+        StringBuilder builder = new StringBuilder();
+        builder.append("TABELLONE DEI TURNI\n");
+        this.shiftList.forEach(
+                shift -> {
+                    builder.append("\t");
+                    builder.append(shift.toString());
+                    builder.append("\n");
+                });
+        return builder.toString();
     }
 }

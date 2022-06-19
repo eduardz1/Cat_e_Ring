@@ -52,24 +52,24 @@ INSERT INTO `Events`
 VALUES (
     1,
     'Convegno Agile Community',
-    '2020-09-25',
-    '2020-09-25',
+    '2022-09-25',
+    '2022-09-25',
     100,
     2
   ),
   (
     2,
     'Compleanno di Manuela',
-    '2020-08-13',
-    '2020-08-13',
+    '2022-08-13',
+    '2022-08-13',
     25,
     2
   ),
   (
     3,
     'Fiera del Sedano Rapa',
-    '2020-10-02',
-    '2020-10-04',
+    '2022-10-02',
+    '2022-10-04',
     400,
     1
   );
@@ -376,7 +376,7 @@ VALUES (
     'Cena',
     86,
     0,
-    '2020-08-13',
+    '2022-08-13',
     '20:00:00',
     '23:30:00',
     25
@@ -387,7 +387,7 @@ VALUES (
     'Coffee break mattino',
     0,
     80,
-    '2020-09-25',
+    '2022-09-25',
     '10:30:00',
     '11:30:00',
     100
@@ -398,7 +398,7 @@ VALUES (
     'Colazione di lavoro',
     0,
     0,
-    '2020-09-25',
+    '2022-09-25',
     '13:00:00',
     '14:00:00',
     80
@@ -409,7 +409,7 @@ VALUES (
     'Coffee break pomeriggio',
     0,
     82,
-    '2020-09-25',
+    '2022-09-25',
     '16:00:00',
     '16:30:00',
     100
@@ -420,7 +420,7 @@ VALUES (
     'Cena sociale',
     0,
     0,
-    '2020-09-25',
+    '2022-09-25',
     '20:00:00',
     '22:30:00',
     40
@@ -431,7 +431,7 @@ VALUES (
     'Pranzo giorno 1',
     0,
     0,
-    '2020-10-02',
+    '2022-10-02',
     '12:00:00',
     '15:00:00',
     200
@@ -442,7 +442,7 @@ VALUES (
     'Pranzo giorno 2',
     0,
     0,
-    '2020-10-03',
+    '2022-10-03',
     '12:00:00',
     '15:00:00',
     300
@@ -453,7 +453,7 @@ VALUES (
     'Pranzo giorno 3',
     0,
     0,
-    '2020-10-04',
+    '2022-10-04',
     '12:00:00',
     '15:00:00',
     400
@@ -551,16 +551,18 @@ LOCK TABLES `Shifts` WRITE;
 /*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
 ;
 INSERT INTO `Shifts`
-VALUES ('2023-10-21', '09:00:00', '11:00:00',1),
-       ('2023-10-22', '10:00:00', '12:00:00',2),
-       ('2023-10-23', '11:00:00', '13:00:00',3),
-       ('2023-10-24', '12:00:00', '14:00:00',4),
-       ('2023-10-25', '13:00:00', '15:00:00',5),
-       ('2023-10-26', '14:00:00', '16:00:00',6),
-       ('2023-10-27', '15:00:00', '17:00:00',7),
-       ('2023-10-28', '16:00:00', '18:00:00',8),
-       ('2023-10-29', '17:00:00', '19:00:00',9),
-       ('2023-10-30', '18:00:00', '20:00:00',10);
+VALUES ('2022-08-13', '20:00:00', '22:00:00', 1), -- Cena (Compleanno di Manuela)
+       ('2022-08-13', '22:00:00', '23:30:00', 2), -- Cena (Compleanno di Manuela)
+       ('2022-09-25', '10:30:00', '11:30:00', 3), -- Coffee break mattino (Convegno Agile Community) 
+       ('2022-09-25', '13:00:00', '14:00:00', 4), -- Colazione di Lavoro (Convegno Agile Community)
+       ('2022-09-25', '16:00:00', '16:30:00', 5), -- Coffee break pomeriggio (Convegno Agile Community)
+       ('2022-09-25', '20:00:00', '22:30:00', 6), -- Cena sociale (Convegno Agile Community) 
+       ('2022-10-02', '12:00:00', '13:00:00', 7), -- Pranzo giorno 1 (Fiera del Sedano Rapa)
+       ('2022-10-02', '13:00:00', '15:00:00', 8), -- Pranzo giorno 1 (Fiera del Sedano Rapa)
+       ('2022-10-03', '16:00:00', '18:00:00', 9), -- Pranzo giorno 2 (Fiera del Sedano Rapa)
+       ('2022-10-03', '17:00:00', '19:00:00', 10), -- Pranzo giorno 2 (Fiera del Sedano Rapa)
+       ('2022-10-04', '18:00:00', '20:00:00', 11), -- Pranzo giorno 3 (Fiera del Sedano Rapa)
+       ('2022-10-04', '18:00:00', '20:00:00', 12); -- Pranzo giorno 3 (Fiera del Sedano Rapa)
 /*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
 ;
 UNLOCK TABLES;
@@ -582,20 +584,15 @@ LOCK TABLES `UserShifts` WRITE;
 /*!40000 ALTER TABLE `Shifts` DISABLE KEYS */
 ;
 INSERT INTO `UserShifts`
-VALUES (1, 1, 1, 120), -- FIXME set time that make sense
-       (2, 2, 2, 120),
-       (3, 3, 3, 120),
-       (4, 4, 4, 120),
-       (5, 5, 5, 120),
-       (6, 6, 6, 120),
-       (7, 7, 7, 120),
-       (8, 8, 8, 120),
-       (9, 9, 9, 120),
-       (10, 10, 10, 120);
+VALUES (1, 3, 4, 120), -- Marinella
+       (2, 1, 5, 120), -- Guido
+       (3, 4, 6, 120), -- Antonietta
+       (4, 5, 7, 120), -- Paola
+       (5, 9, 7, 120), -- Paola
+       (6, 10, 7, 120); -- Paola
 /*!40000 ALTER TABLE `Shifts` ENABLE KEYS */
 ;
 UNLOCK TABLES;
-
 -- --------------------------------------------------------
 --
 -- Struttura della tabella `SummarySheets`
