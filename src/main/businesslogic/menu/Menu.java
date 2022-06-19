@@ -525,9 +525,8 @@ public class Menu {
         else sec.removeItem(mi);
     }
 
-    public ArrayList<MenuItem>
-            getAllItems() { // TODO check whether to use ArrayList or ObservableList
-        ArrayList<MenuItem> items = new ArrayList<>();
+    public ObservableList<MenuItem> getAllItems() {
+        ObservableList<MenuItem> items = FXCollections.observableArrayList();
         for (Section s : this.sections) {
             items.addAll(s.getItems());
         }

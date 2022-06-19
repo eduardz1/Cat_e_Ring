@@ -42,7 +42,7 @@ public class InsertItemDialog {
     }
 
     @FXML
-    public void ProcedureComboSelection() {
+    public void recipeComboSelection() {
         Procedure sel = recipeCombo.getValue();
         descCheck.setDisable(sel == null);
         descField.setDisable(sel == null || !descCheck.isSelected());

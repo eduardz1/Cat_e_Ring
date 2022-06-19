@@ -26,7 +26,7 @@ public class ShiftManager {
             throw new IllegalArgumentException("removeShift: " + "shift can´t be null");
         }
 
-        shiftBoard.removeShift(cook, shift); // TODO implement, check exception
+        shiftBoard.removeShift(cook, shift);
     }
 
     public ObservableList<Shift> getShifts() {
@@ -58,20 +58,6 @@ public class ShiftManager {
             throw new IllegalArgumentException("isAvailable: " + "shift can´t be null");
         }
         return this.shiftBoard.isAvailable(cook, shift, time);
-    }
-
-    // FIXME
-    private void notifyIncreaseTime(Shift shift, User cook, Duration time) {
-        for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
-            eventReceiver.updateIncreasedTime(cook, shift, time);
-        }
-    }
-
-    // FIXME
-    private void notifyDecreasedTime(Shift shift, User cook, Duration time) {
-        for (ShiftManagerEventReceiver eventReceiver : eventReceivers) {
-            eventReceiver.updateDecreasedTime(cook, shift, time);
-        }
     }
 
     public void addEventReceiver(ShiftManagerEventReceiver rec) {

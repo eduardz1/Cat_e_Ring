@@ -7,7 +7,7 @@ import main.persistence.PersistenceManager;
 public class Procedure {
     protected int id;
     protected String name;
-    protected boolean isRecipe;   // TRUE = ricetta FALSE = preparazione
+    protected boolean isRecipe; // TRUE = ricetta FALSE = preparazione
 
     public Procedure(String name) {
         this.name = name;
@@ -19,11 +19,11 @@ public class Procedure {
         PersistenceManager.executeQuery(
                 query,
                 rs -> {
-                        int id = rs.getInt("id");
-                        Procedure rec = new Procedure(rs.getString("name"));
-                        rec.id = id;
-                        rec.isRecipe = rs.getBoolean("isRecipe");
-                        res.add(rec);
+                    int id = rs.getInt("id");
+                    Procedure rec = new Procedure(rs.getString("name"));
+                    rec.id = id;
+                    rec.isRecipe = rs.getBoolean("isRecipe");
+                    res.add(rec);
                 });
         return res;
     }
@@ -39,7 +39,7 @@ public class Procedure {
                     rec.isRecipe = rs.getBoolean("isRecipe");
                     res.add(rec);
                 });
-       return res.get(0); // FIXME this is a bit of an hack
+        return res.get(0);
     }
 
     public String getName() {

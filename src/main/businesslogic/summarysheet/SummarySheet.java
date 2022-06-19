@@ -54,8 +54,7 @@ public class SummarySheet {
                     }
 
                     @Override
-                    public void handleGeneratedIds(ResultSet rs, int count)
-                            throws SQLException {
+                    public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
                         if (count == 0) {
                             ss.id = rs.getInt(1);
                         }
@@ -151,9 +150,7 @@ public class SummarySheet {
                 .append("\n")
                 .append("\t--> contiene gli ASSEGNAMENTI:\n");
         this.assignments.forEach(
-                assignment -> {
-                    builder.append("\t\t").append(assignment.toString()).append("\n");
-                });
+                assignment -> builder.append("\t\t").append(assignment.toString()).append("\n"));
         return builder.toString();
     }
 

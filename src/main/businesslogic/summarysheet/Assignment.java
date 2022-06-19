@@ -44,11 +44,7 @@ public class Assignment {
                         ps.setInt(3, assignments.get(batchCount).getQuantity());
                         ps.setLong(
                                 4,
-                                (int)
-                                        assignments
-                                                .get(batchCount)
-                                                .getEstimatedTime()
-                                                .toMinutes());
+                                (int) assignments.get(batchCount).getEstimatedTime().toMinutes());
                         ps.setInt(5, 0);
                         ps.setInt(6, 0);
                         ps.setInt(7, 0);
@@ -57,8 +53,7 @@ public class Assignment {
                     }
 
                     @Override
-                    public void handleGeneratedIds(ResultSet rs, int count)
-                            throws SQLException {
+                    public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
                         assignments.get(count).id = rs.getInt(1);
                     }
                 });
@@ -85,12 +80,11 @@ public class Assignment {
                         if (as.getSelCook() == null) ps.setInt(7, 0);
                         else ps.setInt(7, as.getSelCook().getId());
                         ps.setInt(8, as.getProcedure().getId());
-                        ps.setInt(9, pos - 1); // FIXME
+                        ps.setInt(9, pos - 1);
                     }
 
                     @Override
-                    public void handleGeneratedIds(ResultSet rs, int count)
-                            throws SQLException {
+                    public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
                         if (count == 0) {
                             as.id = rs.getInt(1);
                         }

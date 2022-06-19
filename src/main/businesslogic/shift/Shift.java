@@ -30,14 +30,6 @@ public class Shift {
         this.myCooks = FXCollections.observableHashMap();
     }
 
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }
-
     public static ObservableList<Shift> getAllShifts() {
         ObservableList<Shift> all = FXCollections.observableArrayList();
         String query = "SELECT * FROM Shifts WHERE true;";
@@ -81,6 +73,22 @@ public class Shift {
         PersistenceManager.executeUpdate(upd);
     }
 
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -106,14 +114,6 @@ public class Shift {
         }
         builder.append("]");
         return builder.toString();
-    }
-
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
     }
 
     public LocalDate getDate() {
