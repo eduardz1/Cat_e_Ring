@@ -102,42 +102,7 @@ public class SummarySheetManager {
             throw new UseCaseLogicException("defineAssignment: " + "user is not a cook");
         }
         if (shift.isPresent()) {
-            LocalDate shiftDate = shift.get().getDate();
-            Time startTime = shift.get().getStartTime();
-            Time endTime = shift.get().getEndTime();
-
-            Date serviceDate = this.currentSheet.getService().getDate();
-            LocalDate localServiceDate =
-                    Instant.ofEpochMilli(serviceDate.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDate();
-            Time serviceStartTime = this.currentSheet.getService().getTimeStart();
-            Time serviceEndTime = this.currentSheet.getService().getTimeEnd();
-
-            if (shiftDate.isBefore(LocalDate.now())) {
-                throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
-            }
-
-            if (shiftDate.isAfter(localServiceDate)
-                    || shiftDate.isBefore(localServiceDate)
-                    || startTime.after(serviceEndTime)
-                    || endTime.before(serviceStartTime)) {
-                throw new UseCaseLogicException(
-                        "defineAssignment: "
-                                + "shift ("
-                                + shiftDate
-                                + " "
-                                + startTime
-                                + "-"
-                                + endTime
-                                + ") date is incompatible with service date ("
-                                + localServiceDate
-                                + " "
-                                + serviceStartTime
-                                + "-"
-                                + serviceEndTime
-                                + ")");
-            }
+            checkShiftValidity(shift.get());
         }
 
         Assignment as =
@@ -145,6 +110,45 @@ public class SummarySheetManager {
                         assignment, quantity, shift, cook, estimatedTime, continuation);
         notifyAssignmentDefined(as);
         return as;
+    }
+
+    private void checkShiftValidity(Shift shift) throws UseCaseLogicException {
+        LocalDate shiftDate = shift.getDate();
+        Time startTime = shift.getStartTime();
+        Time endTime = shift.getEndTime();
+
+        Date serviceDate = this.currentSheet.getService().getDate();
+        LocalDate localServiceDate =
+                Instant.ofEpochMilli(serviceDate.getTime())
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+        Time serviceStartTime = this.currentSheet.getService().getTimeStart();
+        Time serviceEndTime = this.currentSheet.getService().getTimeEnd();
+
+        if (shiftDate.isBefore(LocalDate.now())) {
+            throw new UseCaseLogicException("defineAssignment: " + "shift date is in the past");
+        }
+
+        if (shiftDate.isAfter(localServiceDate)
+                || shiftDate.isBefore(localServiceDate)
+                || startTime.after(serviceEndTime)
+                || endTime.before(serviceStartTime)) {
+            throw new UseCaseLogicException(
+                    "defineAssignment: "
+                            + "shift ("
+                            + shiftDate
+                            + " "
+                            + startTime
+                            + "-"
+                            + endTime
+                            + ") date is incompatible with service date ("
+                            + localServiceDate
+                            + " "
+                            + serviceStartTime
+                            + "-"
+                            + serviceEndTime
+                            + ")");
+        }
     }
 
     public void procedureReady(Assignment as) throws UseCaseLogicException, SummarySheetException {
