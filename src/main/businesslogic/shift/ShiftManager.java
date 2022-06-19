@@ -79,7 +79,7 @@ public class ShiftManager {
         this.eventReceivers.add(rec);
     }
 
-    public void removeEventReceiver(MenuEventReceiver rec) {
+    public void removeEventReceiver(ShiftManagerEventReceiver rec) {
         this.eventReceivers.remove(rec);
     }
 

@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.businesslogic.CatERing;
+import main.businesslogic.procedure.Procedure;
 
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public class InsertItemDialog {
     Stage myStage;
 
     @FXML
-    ComboBox<Recipe> recipeCombo;
+    ComboBox<Procedure> recipeCombo;
 
     @FXML
     CheckBox descCheck;
@@ -26,7 +27,7 @@ public class InsertItemDialog {
     Button insertButton;
 
     // Results
-    private Recipe selectedRecipe;
+    private Procedure selectedProcedure;
     private boolean hasDescription;
     private String description;
     private boolean confirmed;
@@ -41,8 +42,8 @@ public class InsertItemDialog {
     }
 
     @FXML
-    public void recipeComboSelection() {
-        Recipe sel = recipeCombo.getValue();
+    public void ProcedureComboSelection() {
+        Procedure sel = recipeCombo.getValue();
         descCheck.setDisable(sel == null);
         descField.setDisable(sel == null || !descCheck.isSelected());
         insertButton.setDisable(sel == null);
@@ -62,7 +63,7 @@ public class InsertItemDialog {
     @FXML
     public void aggiungiButtonPressed() {
         confirmed = true;
-        selectedRecipe = recipeCombo.getValue();
+        selectedProcedure = recipeCombo.getValue();
         hasDescription = descCheck.isSelected();
         description = descField.getText();
         myStage.close();
@@ -74,9 +75,9 @@ public class InsertItemDialog {
         myStage.close();
     }
 
-    public Optional<Recipe> getSelectedRecipe() {
-        if (!confirmed) selectedRecipe = null;
-        return Optional.ofNullable(selectedRecipe);
+    public Optional<Procedure> getSelectedProcedure() {
+        if (!confirmed) selectedProcedure = null;
+        return Optional.ofNullable(selectedProcedure);
     }
 
     public Optional<String> getDescription() {

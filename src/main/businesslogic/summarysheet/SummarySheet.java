@@ -31,10 +31,10 @@ public class SummarySheet {
         this.id = 0;
         this.service = service;
         this.assignments = FXCollections.observableArrayList();
-        this.owner = service.getEventInfo().getOrganizer(); // TODO check for ownership in modify
+        this.owner = service.getEventInfo().getOrganizer();
 
         for (MenuItem item : service.getMenu().getAllItems()) {
-            Assignment assignment = new Assignment(item.getItemRecipe());
+            Assignment assignment = new Assignment(item.getItemProcedure());
             this.assignments.add(assignment);
         }
     }
@@ -42,26 +42,25 @@ public class SummarySheet {
     public static void saveNewSummarySheet(SummarySheet ss) {
         String summarySheetInsert =
                 "INSERT INTO catering.SummarySheets (id, id_service) VALUES (?, ?);";
-        int[] res =
-                PersistenceManager.executeBatchUpdate(
-                        summarySheetInsert,
-                        1,
-                        new BatchUpdateHandler() {
-                            @Override
-                            public void handleBatchItem(PreparedStatement ps, int batchCount)
-                                    throws SQLException {
-                                ps.setInt(1, ss.id);
-                                ps.setInt(2, ss.service.getId());
-                            }
+        PersistenceManager.executeBatchUpdate(
+                summarySheetInsert,
+                1,
+                new BatchUpdateHandler() {
+                    @Override
+                    public void handleBatchItem(PreparedStatement ps, int batchCount)
+                            throws SQLException {
+                        ps.setInt(1, ss.id);
+                        ps.setInt(2, ss.service.getId());
+                    }
 
-                            @Override
-                            public void handleGeneratedIds(ResultSet rs, int count)
-                                    throws SQLException {
-                                if (count == 0) {
-                                    ss.id = rs.getInt(1);
-                                }
-                            }
-                        });
+                    @Override
+                    public void handleGeneratedIds(ResultSet rs, int count)
+                            throws SQLException {
+                        if (count == 0) {
+                            ss.id = rs.getInt(1);
+                        }
+                    }
+                });
         if (ss.assignments.size() > 0) {
             Assignment.saveAllNewAssignments(ss.id, ss.assignments);
         }
@@ -156,10 +155,6 @@ public class SummarySheet {
                     builder.append("\t\t").append(assignment.toString()).append("\n");
                 });
         return builder.toString();
-    }
-
-    private void updateAssignments(ObservableList<Assignment> newAssignments) {
-        // TODO
     }
 
     public Assignment defineAssignment(

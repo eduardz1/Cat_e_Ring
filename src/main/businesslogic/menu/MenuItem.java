@@ -37,7 +37,7 @@ public class MenuItem {
 
     public static void saveAllNewItems(int menuid, int sectionid, List<MenuItem> items) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, Procedure_id, position) VALUES (?, ?, ?, ?, ?);";
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES (?, ?, ?, ?, ?);";
         PersistenceManager.executeBatchUpdate(
                 itemInsert,
                 items.size(),
@@ -63,7 +63,7 @@ public class MenuItem {
 
     public static void saveNewItem(int menuid, int sectionid, MenuItem mi, int pos) {
         String itemInsert =
-                "INSERT INTO catering.MenuItems (menu_id, section_id, description, Procedure_id, position) VALUES ("
+                "INSERT INTO catering.MenuItems (menu_id, section_id, description, recipe_id, position) VALUES ("
                         + menuid
                         + ", "
                         + sectionid

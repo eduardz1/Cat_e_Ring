@@ -2,11 +2,8 @@ package main.businesslogic.procedure;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.businesslogic.event.EventInfo;
-import main.businesslogic.event.ServiceInfo;
 import main.persistence.PersistenceManager;
 
-import java.util.*;
 
 public class Procedure {
     private static final ObservableList<Procedure> all = FXCollections.observableArrayList();
@@ -56,7 +53,6 @@ public class Procedure {
         return result;
     }
 
-
     public static Procedure loadProcedureById(int id) {
         for (Procedure procedure : all) {
             if (procedure.getId() == id) return procedure;
@@ -73,8 +69,6 @@ public class Procedure {
                 });
        return all.get(all.size()-1);
     }
-
-    // STATIC METHODS FOR PERSISTENCE
 
     public String getName() {
         return name;

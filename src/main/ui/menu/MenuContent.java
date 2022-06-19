@@ -15,6 +15,7 @@ import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.menu.Menu;
 import main.businesslogic.menu.MenuItem;
 import main.businesslogic.menu.Section;
+import main.businesslogic.procedure.Procedure;
 import main.ui.general.EventsInfoDialog;
 
 import java.io.IOException;
@@ -190,7 +191,7 @@ public class MenuContent {
 
             stage.showAndWait();
 
-            Optional<Recipe> chosen = controller.getSelectedRecipe();
+            Optional<Procedure> chosen = controller.getSelectedProcedure();
             Optional<String> desc = controller.getDescription();
             if (chosen.isPresent()) {
                 if (selSection != null) {

@@ -59,7 +59,7 @@ public class SummarySheetManager {
                     "removeProcedure: " + "Cannot remove assigned procedure");
         }
         this.notifyProcedureRemoved(pro);
-        currentSheet.removeProcedure(pro); // FIXME check return if necessary
+        currentSheet.removeProcedure(pro);
     }
 
     public void deleteAssignment(Assignment as)
@@ -210,7 +210,7 @@ public class SummarySheetManager {
         return CatERing.getInstance().getShiftManager().getShiftBoard();
     }
 
-    public void chooseSummarySheet(SummarySheet ss)
+    public SummarySheet chooseSummarySheet(SummarySheet ss)
             throws UseCaseLogicException, SummarySheetException {
         User u = CatERing.getInstance().getUserManager().getCurrentUser();
         if (!u.isChef())
@@ -222,9 +222,8 @@ public class SummarySheetManager {
         }
 
         this.currentSheet = ss;
+        return this.currentSheet;
     }
-
-    // Event sender methods
 
     private void notifyProcedureAdded(Assignment as) {
         for (SummarySheetEventReceiver eventReceiver : eventReceivers) {
