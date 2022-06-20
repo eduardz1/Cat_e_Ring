@@ -77,6 +77,11 @@ public class TestCatERing1 {
             } catch (SummarySheetException e) {
                 System.out.println(">>> SummarySheetException::" + e.getMessage());
             }
+
+            CatERing.getInstance().getUserManager().fakeLogin("Lidia");
+            System.out.println("\n" + CatERing.getInstance().getUserManager().getCurrentUser());
+            System.out.println("\nLOADING ALL SUMMARY SHEETS IN THE DATABASE:");
+            System.out.println(CatERing.getInstance().getSummarySheetManager().getAllSheets());
         } catch (UseCaseLogicException | SummarySheetException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();

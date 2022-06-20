@@ -1,5 +1,8 @@
 package main.businesslogic.summarysheet;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.procedure.Procedure;
 import main.businesslogic.shift.Shift;
@@ -11,14 +14,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Assignment {
+    private static final Map<Integer, Assignment> loadedAssignments =
+            FXCollections.observableHashMap();
 
     private boolean completed = false;
     private Integer quantity = 0;
     private Duration estimatedTime = Duration.ZERO;
-    private Assignment continuation = null;
+    private int id_continuation = 0;
     private Shift selShift = null;
     private User selCook = null;
     private Procedure itemProcedure;
@@ -30,10 +38,10 @@ public class Assignment {
     }
 
     public static void saveAllNewAssignments(int summarysheet_id, List<Assignment> assignments) {
-        String AssInsert =
+        String query =
                 "INSERT INTO catering.Assignments (id_summary_sheet, completed, quantity, estimatedTime, id_continuation, id_shift, id_cook, id_procedure, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         PersistenceManager.executeBatchUpdate(
-                AssInsert,
+                query,
                 assignments.size(),
                 new BatchUpdateHandler() {
                     @Override
@@ -57,6 +65,76 @@ public class Assignment {
                         assignments.get(count).id = rs.getInt(1);
                     }
                 });
+        loadedAssignments.putAll(
+                assignments.stream().collect(Collectors.toMap(Assignment::getId, a -> a)));
+    }
+
+    public static ObservableList<Assignment> loadAllAssignmentsForSummarySheet(int id2) {
+        ObservableMap<Assignment, Integer> assignments = FXCollections.observableHashMap();
+        String query = "SELECT * FROM catering.Assignments WHERE id_summary_sheet = " + id2 + ";";
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    while (rs.next()) {
+                        Assignment assignment =
+                                new Assignment(
+                                        Procedure.loadProcedureById(rs.getInt("id_procedure")));
+                        assignment.id = rs.getInt("id");
+                        assignment.completed = rs.getBoolean("completed");
+                        assignment.quantity = rs.getInt("quantity");
+                        assignment.estimatedTime = Duration.ofMinutes(rs.getLong("estimatedTime"));
+                        assignment.id_continuation = rs.getInt("id_continuation");
+                        assignment.selShift =
+                                rs.getInt("id_shift") == 0
+                                        ? null
+                                        : Shift.loadShiftById(rs.getInt("id_shift"));
+                        assignment.selCook =
+                                rs.getInt("id_cook") == 0
+                                        ? null
+                                        : User.loadUserById(rs.getInt("id_cook"));
+                        assignments.put(assignment, rs.getInt("position"));
+                    }
+                });
+
+        ObservableList<Assignment> assignmentList = FXCollections.observableArrayList();
+        assignmentList.addAll(
+                assignments.keySet().stream()
+                        .sorted(Comparator.comparingInt(assignments::get))
+                        .toList());
+        loadedAssignments.putAll(
+                assignmentList.stream().collect(Collectors.toMap(Assignment::getId, a -> a)));
+        return assignmentList;
+    }
+
+    public static Assignment loadAssignmentById(int id) {
+        if (loadedAssignments.containsKey(id)) {
+            return loadedAssignments.get(id);
+        }
+        String query = "SELECT * FROM catering.Assignments WHERE id = " + id + ";";
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    while (rs.next()) {
+                        Assignment assignment =
+                                new Assignment(
+                                        Procedure.loadProcedureById(rs.getInt("id_procedure")));
+                        assignment.id = rs.getInt("id");
+                        assignment.completed = rs.getBoolean("completed");
+                        assignment.quantity = rs.getInt("quantity");
+                        assignment.estimatedTime = Duration.ofMinutes(rs.getLong("estimatedTime"));
+                        assignment.id_continuation = rs.getInt("id_continuation");
+                        assignment.selShift =
+                                rs.getInt("id_shift") == 0
+                                        ? null
+                                        : Shift.loadShiftById(rs.getInt("id_shift"));
+                        assignment.selCook =
+                                rs.getInt("id_cook") == 0
+                                        ? null
+                                        : User.loadUserById(rs.getInt("id_cook"));
+                        loadedAssignments.put(assignment.getId(), assignment);
+                    }
+                });
+        return loadedAssignments.get(id);
     }
 
     public static void saveNewAssignments(int ssId, Assignment as, int pos) {
@@ -90,6 +168,7 @@ public class Assignment {
                         }
                     }
                 });
+        loadedAssignments.put(as.getId(), as);
     }
 
     public static void updateAssignment(Assignment as) {
@@ -117,16 +196,20 @@ public class Assignment {
                     @Override
                     public void handleGeneratedIds(ResultSet rs, int count) {}
                 });
+        loadedAssignments.put(as.getId(), as);
     }
 
     public static void markAssignmentCompleted(SummarySheet ss, Assignment as) {
         String updateAss = "UPDATE Assignments SET completed = true WHERE id = " + as.getId() + ";";
         PersistenceManager.executeUpdate(updateAss);
+        as.setCompleted(true);
+        loadedAssignments.put(as.getId(), as);
     }
 
     public static void deleteAssignment(Assignment as) {
         String deleteAss = "DELETE FROM Assignments WHERE id = " + as.getId() + ";";
         PersistenceManager.executeUpdate(deleteAss);
+        loadedAssignments.remove(as.getId());
     }
 
     public void setCook(User cook) throws UseCaseLogicException {
@@ -157,7 +240,8 @@ public class Assignment {
 
     public boolean contains(Assignment assignment) {
         if (assignment == null) return false;
-        return this.continuation == assignment || this.continuation.contains(assignment);
+        return this.id_continuation == assignment.getId()
+                || Assignment.loadAssignmentById(id_continuation).contains(assignment);
     }
 
     public boolean isDefined() {
@@ -183,10 +267,8 @@ public class Assignment {
         if (quantity != 0) {
             builder.append(", quantity=").append(quantity);
         }
-        if (continuation != null) {
-            builder.append(", continuation=Assignment(id=")
-                    .append(continuation.getId())
-                    .append(")");
+        if (id_continuation != 0) {
+            builder.append(", continuation=Assignment(id=").append(id_continuation).append(")");
         }
         builder.append("]");
 
@@ -201,7 +283,7 @@ public class Assignment {
 
         Assignment other = (Assignment) obj;
         boolean nullables = true;
-        if (this.continuation == null) nullables = other.continuation == null;
+        if (this.id_continuation == 0) nullables = other.id_continuation == 0;
         if (this.selCook == null) nullables &= other.selCook == null;
         if (this.selShift == null) nullables &= other.selShift == null;
 
@@ -241,11 +323,11 @@ public class Assignment {
     }
 
     public Assignment getContinuation() {
-        return continuation;
+        return Assignment.loadAssignmentById(id_continuation);
     }
 
     public void setContinuation(Assignment continuation) {
-        this.continuation = continuation;
+        this.id_continuation = continuation.getId();
     }
 
     public Shift getSelShift() {

@@ -66,6 +66,28 @@ public class SummarySheet {
         loadedSheets.put(ss.id, ss);
     }
 
+    public static ObservableList<SummarySheet> loadAllSummarySheets() {
+        String query = "SELECT * FROM SummarySheets WHERE " + true;
+        Map<Integer, SummarySheet> newSheets = FXCollections.observableHashMap();
+
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    int id = rs.getInt("id");
+                    if (!loadedSheets.containsKey(id)) {
+                        ServiceInfo service = ServiceInfo.loadServiceInfo(rs.getInt("id_service"));
+                        SummarySheet ss = new SummarySheet(service);
+                        ss.id = id;
+                        ss.assignments.clear();
+                        ss.assignments.addAll(Assignment.loadAllAssignmentsForSummarySheet(id));
+                        newSheets.put(ss.getId(), ss);
+                    }
+                });
+
+        loadedSheets.putAll(newSheets);
+        return FXCollections.observableArrayList(loadedSheets.values());
+    }
+
     public static void saveAssignmentsOrder(SummarySheet ss) {
         String upd = "UPDATE Assignments SET position = ? WHERE id = ?;";
         PersistenceManager.executeBatchUpdate(

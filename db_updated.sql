@@ -626,7 +626,7 @@ CREATE TABLE `SummarySheets` (
 CREATE TABLE `Assignments` (
   `completed` tinyint(1) NOT NULL,
   `quantity` int NOT NULL,
-  `estimatedTime` time NOT NULL,
+  `estimatedTime` BIGINT NOT NULL,
   `position` int NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_continuation` int(11) NOT NULL,

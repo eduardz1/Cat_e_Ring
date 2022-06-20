@@ -61,6 +61,39 @@ public class Shift {
         return all;
     }
 
+    public static Shift loadShiftById(int int1) {
+        String query = "SELECT * FROM Shifts WHERE id = " + int1 + ";";
+        ObservableList<Shift> res = FXCollections.observableArrayList();
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    Date date = rs.getDate("date");
+                    LocalDate localDate =
+                            Instant.ofEpochMilli(date.getTime())
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate();
+                    Time startTime = rs.getTime("startTime");
+                    Time endTime = rs.getTime("endTime");
+                    int id = rs.getInt("id");
+                    Shift shift = new Shift(localDate, startTime, endTime);
+                    shift.id = id;
+                    String query2 = "SELECT * FROM UserShifts WHERE id_shift = " + id;
+                    PersistenceManager.executeQuery(
+                            query2,
+                            rs1 -> {
+                                int idCook = rs1.getInt("id_cook");
+                                User u = User.loadUserById(idCook);
+                                Duration time = Duration.ofMinutes(rs1.getLong("availableTime"));
+                                shift.myCooks.put(u, time);
+                            });
+                    res.add(shift);
+                });
+        if (res.size() == 0) {
+            return null;
+        }
+        return res.get(0);
+    }
+
     public static void saveNewTime(Shift shift, User cook, Duration time) {
         String upd =
                 "UPDATE UserShifts SET availableTime = "

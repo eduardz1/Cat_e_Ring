@@ -1,5 +1,6 @@
 package main.businesslogic.summarysheet;
 
+import javafx.collections.ObservableList;
 import main.businesslogic.CatERing;
 import main.businesslogic.UseCaseLogicException;
 import main.businesslogic.event.EventInfo;
@@ -168,6 +169,14 @@ public class SummarySheetManager {
         if (event.getOrganizer() != user)
             throw new SummarySheetException("createSummarySheet: " + "user is not the organizer");
 
+        ObservableList<SummarySheet> all = SummarySheet.loadAllSummarySheets();
+        if (all.stream().anyMatch(s -> s.getService().equals(service))) {
+            SummarySheet res =
+                    all.stream().filter(s -> s.getService().equals(service)).findFirst().get();
+            this.setCurrentSummarySheet(res);
+            return res;
+        }
+
         SummarySheet sheet = new SummarySheet(service);
         this.setCurrentSummarySheet(sheet);
         this.notifySummarySheetAdded(sheet);
@@ -220,6 +229,14 @@ public class SummarySheetManager {
 
         this.currentSheet = ss;
         return this.currentSheet;
+    }
+
+    public ObservableList<SummarySheet> getAllSheets() throws UseCaseLogicException {
+        User u = CatERing.getInstance().getUserManager().getCurrentUser();
+        if (!u.isChef())
+            throw new UseCaseLogicException(
+                    "chooseSummarySheet: " + "only chefs can perform this operation");
+        return SummarySheet.loadAllSummarySheets();
     }
 
     private void notifyProcedureAdded(Assignment as) {

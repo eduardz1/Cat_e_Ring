@@ -17,13 +17,13 @@ public class ServiceInfo implements EventItemInfo {
     private Time timeEnd;
     private int participants;
     private Menu menu;
-    private EventInfo eventInfo;
+    private int eventId;
 
     public ServiceInfo(String name) {
         this.name = name;
     }
 
-    public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id, EventInfo e) {
+    public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id) {
         ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
         String query =
                 "SELECT id, name, service_date, time_start, time_end, expected_participants, approved_menu_id "
@@ -41,17 +41,46 @@ public class ServiceInfo implements EventItemInfo {
                     serv.timeStart = rs.getTime("time_start");
                     serv.timeEnd = rs.getTime("time_end");
                     serv.participants = rs.getInt("expected_participants");
+                    serv.eventId = event_id;
                     int idMenu = rs.getInt("approved_menu_id");
                     for (Menu m : menus) {
                         if (m.getId() == idMenu) {
                             serv.menu = m;
                         }
                     }
-                    serv.eventInfo =
-                            e; // temporary, need to change when working on Event/Services UC
                     result.add(serv);
                 });
         return result;
+    }
+
+    public static ServiceInfo loadServiceInfo(int service_id) {
+        ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
+        String query =
+                "SELECT event_id, name, service_date, time_start, time_end, expected_participants, approved_menu_id "
+                        + "FROM Services WHERE id = "
+                        + service_id
+                        + ";";
+        ObservableList<Menu> menus = CatERing.getInstance().getMenuManager().getAllMenus();
+        PersistenceManager.executeQuery(
+                query,
+                rs -> {
+                    String s = rs.getString("name");
+                    ServiceInfo serv = new ServiceInfo(s);
+                    serv.id = service_id;
+                    serv.date = rs.getDate("service_date");
+                    serv.timeStart = rs.getTime("time_start");
+                    serv.timeEnd = rs.getTime("time_end");
+                    serv.participants = rs.getInt("expected_participants");
+                    serv.eventId = rs.getInt("event_id");
+                    int idMenu = rs.getInt("approved_menu_id");
+                    for (Menu m : menus) {
+                        if (m.getId() == idMenu) {
+                            serv.menu = m;
+                        }
+                    }
+                    result.add(serv);
+                });
+        return result.get(0);
     }
 
     public String getName() {
@@ -75,7 +104,7 @@ public class ServiceInfo implements EventItemInfo {
     }
 
     public EventInfo getEventInfo() {
-        return this.eventInfo;
+        return EventInfo.loadEventFromID(this.eventId);
     }
 
     public Menu getMenu() {
@@ -84,6 +113,23 @@ public class ServiceInfo implements EventItemInfo {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        ServiceInfo other = (ServiceInfo) obj;
+        return id == other.id;
     }
 
     public String toString() {
