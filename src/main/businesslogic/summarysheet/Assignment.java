@@ -26,7 +26,7 @@ public class Assignment {
     private boolean completed = false;
     private Integer quantity = 0;
     private Duration estimatedTime = Duration.ZERO;
-    private int id_continuation = 0;
+    private Assignment continuation = null;
     private Shift selShift = null;
     private User selCook = null;
     private Procedure itemProcedure;
@@ -83,7 +83,11 @@ public class Assignment {
                         assignment.completed = rs.getBoolean("completed");
                         assignment.quantity = rs.getInt("quantity");
                         assignment.estimatedTime = Duration.ofMinutes(rs.getLong("estimatedTime"));
-                        assignment.id_continuation = rs.getInt("id_continuation");
+                        assignment.continuation =
+                                rs.getInt("id_continuation") == 0
+                                        ? null
+                                        : Assignment.loadAssignmentById(
+                                                rs.getInt("id_continuation"));
                         assignment.selShift =
                                 rs.getInt("id_shift") == 0
                                         ? null
@@ -122,7 +126,11 @@ public class Assignment {
                         assignment.completed = rs.getBoolean("completed");
                         assignment.quantity = rs.getInt("quantity");
                         assignment.estimatedTime = Duration.ofMinutes(rs.getLong("estimatedTime"));
-                        assignment.id_continuation = rs.getInt("id_continuation");
+                        assignment.continuation =
+                                rs.getInt("id_continuation") == 0
+                                        ? null
+                                        : Assignment.loadAssignmentById(
+                                                rs.getInt("id_continuation"));
                         assignment.selShift =
                                 rs.getInt("id_shift") == 0
                                         ? null
@@ -240,8 +248,7 @@ public class Assignment {
 
     public boolean contains(Assignment assignment) {
         if (assignment == null) return false;
-        return this.id_continuation == assignment.getId()
-                || Assignment.loadAssignmentById(id_continuation).contains(assignment);
+        return this.continuation == assignment || continuation.contains(assignment);
     }
 
     public boolean isDefined() {
@@ -267,8 +274,10 @@ public class Assignment {
         if (quantity != 0) {
             builder.append(", quantity=").append(quantity);
         }
-        if (id_continuation != 0) {
-            builder.append(", continuation=Assignment(id=").append(id_continuation).append(")");
+        if (continuation != null) {
+            builder.append(", continuation=Assignment(id=")
+                    .append(continuation.getId())
+                    .append(")");
         }
         builder.append("]");
 
@@ -283,7 +292,7 @@ public class Assignment {
 
         Assignment other = (Assignment) obj;
         boolean nullables = true;
-        if (this.id_continuation == 0) nullables = other.id_continuation == 0;
+        if (this.continuation == null) nullables = other.continuation == null;
         if (this.selCook == null) nullables &= other.selCook == null;
         if (this.selShift == null) nullables &= other.selShift == null;
 
@@ -323,11 +332,11 @@ public class Assignment {
     }
 
     public Assignment getContinuation() {
-        return Assignment.loadAssignmentById(id_continuation);
+        return continuation;
     }
 
     public void setContinuation(Assignment continuation) {
-        this.id_continuation = continuation.getId();
+        this.continuation = continuation;
     }
 
     public Shift getSelShift() {
